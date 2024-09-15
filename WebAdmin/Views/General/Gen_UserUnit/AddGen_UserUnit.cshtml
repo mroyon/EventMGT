@@ -1,0 +1,83 @@
+﻿@using CLL
+@model BDO.Core.DataAccessObjects.Models.gen_userunitEntity
+@inject CLL.Localization.LocalizeService SharedLocalizer
+
+@using Microsoft.Extensions.Options
+@{
+    ViewData["Title"] = "Add View Gen  User Unit";
+}
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-footer">
+                <h5 class="card-title">@SharedLocalizer.GetLocalizedHtmlString("ADD_GEN_USERUNIT")</h5>
+            </div>
+            <!-- /.card-header -->
+            <form method="POST" id="frmAddGen_UserUnit" class="my-login-validation" novalidate="" autocomplete="off">
+                <div class="card-body">
+					 <div class="row ">
+							 <input asp-for="serial" type="hidden" />
+						 <div class="col-md-6">
+							 <div class="form-group">
+							<label class="labelNormal required " asp-for="unitid"></label> 
+							@await Component.InvokeAsync("S2None", new { selectid = "unitid", preloaded = ViewBag.preloadedDatanone , isReadOnly = false, multiple = false, isRequired = true, pkey = -99 })
+							<span asp-validation-for="unitid" class="unitiderror text-danger " id="unitiderror"></span>
+							</div>
+						</div>
+					</div>
+					 <div class="row ">
+						 <div class="col-md-6">
+							 <div class="form-group">
+							<label class="labelNormal required " asp-for="userid"></label> 
+							@await Component.InvokeAsync("S2None", new { selectid = "userid", preloaded = ViewBag.preloadedDatanone , isReadOnly = false, multiple = false, isRequired = true, pkey = -99 })
+							<span asp-validation-for="userid" class="useriderror text-danger " id="useriderror"></span>
+							</div>
+						</div>
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 <label class="labelNormal  " asp-for="ex_nvarchar3"></label>
+								 <input asp-for="ex_nvarchar3" class="form-control" /> 
+								 <span asp-validation-for="ex_nvarchar3" class="text-danger"></span>
+							</div>
+						</div>
+					</div>
+                   
+                    <div class="row btn-toolbar">
+                        <div class="col-md-6 ">
+                            <div class="form-group">
+                                <button type="submit" id="btnAddGen_UserUnit" class="btn btn-primary btn-md"><i class="fa fa-save"></i> @SharedLocalizer.GetLocalizedHtmlString("SUBMIT_REQUEST")</button>
+                                <button id="btnGoBackGen_UserUnit" class="btn btn-secondary btn-md "><i class="fas fa-arrow-circle-left"></i> @SharedLocalizer.GetLocalizedHtmlString("GO_BACK")</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!-- ./card-body -->
+        <div class="card-footer">
+            <div class="row">
+                <div class="col-md-12">
+
+                    <!-- /.description-block -->
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.card-footer -->
+    </div>
+    <!-- /.card -->
+</div>
+<!-- /.col -->
+
+
+@section Scripts {
+    <script src="~/lib/customjs/Gen_UserUnit/Gen_UserUnit.js"></script>
+}
+
+
+
+
+
