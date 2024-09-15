@@ -493,6 +493,9 @@
     <None Include="wwwroot\lib\customjs\Gen_EventInfo\Gen_EventInfo.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+    <None Include="wwwroot\lib\customjs\Gen_UserUnit\Gen_UserUnit.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="wwwroot\lib\customjs\HubContext\HubUserContext.js" />
     <None Include="wwwroot\lib\customjs\HubContext\HubUserTrackingContext.js" />       
     <None Include="wwwroot\lib\customjs\Owin_Role\Owin_Role.js" />
@@ -1212,6 +1215,21 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Update="Views\General\Gen_ServiceStatus\LandingGen_ServiceStatus.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\General\Gen_UserUnit\AddGen_UserUnit.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\General\Gen_UserUnit\DeleteGen_UserUnit.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\General\Gen_UserUnit\EditGen_UserUnit.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\General\Gen_UserUnit\GetSingleGen_UserUnit.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\General\Gen_UserUnit\LandingGen_UserUnit.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Update="Views\Home\Index.cshtml">
