@@ -48,17 +48,28 @@ namespace BFO.Core.BusinessFacadeObjects.General
                 throw GetFacadeException(ex, SourceOfException("Igen_eventinfoFacade.UpdateWithFiles"));
             }
         }
-		
-		
-		
-        
-		#endregion Save Update Delete List	
-		
-		
-    
-        
-    
-    
+
+
+
+
+        #endregion Save Update Delete List	
+
+
+        async Task<IList<gen_eventinfoEntity>> Igen_eventinfoFacadeObjects.SearchEventInfo(gen_eventinfoEntity gen_eventinfo, CancellationToken cancellationToken)
+        {
+            try
+            {
+                return await DataAccessFactory.Creategen_eventinfoDataAccess().SearchEventInfo(gen_eventinfo, cancellationToken);
+            }
+
+            catch (Exception ex)
+            {
+                throw GetFacadeException(ex, SourceOfException("IList<gen_eventinfoEntity> Igen_eventinfoFacade.GAPgListViewgen_eventinfo"));
+            }
+        }
+
+
+
         #endregion
-	}
+    }
 }

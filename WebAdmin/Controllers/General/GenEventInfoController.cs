@@ -24,6 +24,7 @@ using Microsoft.AspNetCore.StaticFiles;
 using Org.BouncyCastle.Asn1.Ocsp;
 using Web.Core.Frame.UseCases;
 using Microsoft.AspNetCore.Hosting;
+using BDO.DataAccessObjects.ExtendedEntities;
 
 namespace WebAdmin.Controllers
 {
@@ -492,6 +493,38 @@ IWebHostEnvironment webHostEnvironment)
             }
             await _gen_EventFileInfoUseCase.Delete(new Gen_EventFileInfoRequest(request), _gen_EventFileInfoPresenter);
             return _gen_EventFileInfoPresenter.ContentResult;
+        }
+
+
+
+        [HttpGet]
+        public async Task<IActionResult> SearchEventInfo(string returnUrl)
+        {
+            if (!User.Identity.IsAuthenticated) { return RedirectToAction("Account", "Login"); }
+            return View("../General/Gen_EventInfo/SearchEvent", new gen_eventinfoEntity());
+        }
+
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> SearchEventInfo(EventSearchEntity objrequest)
+        {
+            try
+            {
+                gen_eventinfoEntity genev = new gen_eventinfoEntity();
+                genev.eventcategoryid = objrequest.eventcategoryid;
+                genev.eventid = objrequest.eventid;
+                genev.eventname = objrequest.eventname;
+                genev.eventstartdate = objrequest.eventstartdate;
+                genev.eventenddate = objrequest.eventenddate;
+
+                await _gen_EventInfoUseCase.SearchEventInfo(new Gen_EventInfoRequest(genev), _gen_EventInfoPresenter);
+                return Json(_gen_EventInfoPresenter.Result);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
 

@@ -316,6 +316,55 @@ namespace Web.Core.Frame.UseCases
 			}
 		}
 
-        
+        public async Task<bool> SearchEventInfo(Gen_EventInfoRequest message, ICRUDRequestHandler<Gen_EventInfoResponse> outputPort)
+        {
+            CancellationToken cancellationToken = new CancellationToken();
+            try
+            {
+
+                IList<gen_eventinfoEntity> oblist = await BFC.Core.FacadeCreatorObjects.General.gen_eventinfoFCC.GetFacadeCreate(_contextAccessor)
+                .SearchEventInfo(message.Objgen_eventinfo, cancellationToken);
+
+                //List<dataTableButtonModel> btnActionList = new List<dataTableButtonModel>();
+                //btnActionList.Add(new dataTableButtonModel(basicCRUDButtons.New_GET));
+                //btnActionList.Add(new dataTableButtonModel(basicCRUDButtons.Edit_GET));
+                //btnActionList.Add(new dataTableButtonModel(basicCRUDButtons.Delete_GET));
+                //btnActionList.Add(new dataTableButtonModel(basicCRUDButtons.GetSingle_GET));
+                //btnActionList.Add(new dataTableButtonModel(basicCRUDButtons.CUSTOM, _sharedLocalizer["PROCESS"], "StpOrganizationEntity/userprocess"));
+                //btnActionList.Add(new dataTableButtonModel(basicCRUDButtons.CUSTOM, _sharedLocalizer["SEARCH"], "StpOrganizationEntity/usersearch"));
+
+                var data = (from t in oblist
+                            select new
+                            {
+                                t.eventid,
+                                t.eventcategoryid,
+                                t.eventcode,
+                                t.eventname,
+                                t.eventstartdate,
+                                t.eventenddate,
+                                t.eventdescription,
+                                t.eventdescription1,
+                                t.eventdescription2,
+                                t.eventspecialnote,
+                                t.isdeleted,
+                                t.eventorganizedby,
+                                t.ex_nvarchar3
+                                //datatablebuttonscode = objDTBtnPanel.genDTBtnPanel(message.Objgen_eventinfo.ControllerName, t.eventid, "eventid", _contextAccessor.HttpContext.User.Identity as ClaimsIdentity, btnActionList, _contextAccessor)
+                            }).ToList();
+
+                outputPort.GetListView(new Gen_EventInfoResponse(new AjaxResponse(oblist.Count > 0 ? oblist[0].RETURN_KEY : 0, data), true, null));
+                return true;
+
+            }
+            catch (Exception ex)
+            {
+                Gen_EventInfoResponse objResponse = new Gen_EventInfoResponse(false, _sharedLocalizer["DATA_FETCH_ERROR"], new Error(
+                    "500",
+                    ex.Message));
+                _logger.LogInformation(JsonConvert.SerializeObject(objResponse));
+                outputPort.GetListView(objResponse);
+                return true;
+            }
+        }
     }
 }
