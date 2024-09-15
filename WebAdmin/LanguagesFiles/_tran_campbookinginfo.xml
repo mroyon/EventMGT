@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="campid" value="AR:  Camp I D"></resource>
+       <resource culture="ar-kw" name="campidRequired" value="AR: Please provide  Camp I D"></resource>
+       <resource culture="ar-kw" name="registereduserid" value="AR:  Registered User I D"></resource>
+       <resource culture="ar-kw" name="registereduseridRequired" value="AR: Please provide  Registered User I D"></resource>
+       <resource culture="ar-kw" name="bookingstartdate" value="AR:  Booking Start Date"></resource>
+       <resource culture="ar-kw" name="bookingstartdateRequired" value="AR: Please provide  Booking Start Date"></resource>
+       <resource culture="ar-kw" name="bookingenddate" value="AR:  Booking End Date"></resource>
+       <resource culture="ar-kw" name="bookingenddateRequired" value="AR: Please provide  Booking End Date"></resource>
+       <resource culture="ar-kw" name="numberofdays" value="AR:  Number Of Days"></resource>
+       <resource culture="ar-kw" name="requestdate" value="AR:  Request Date"></resource>
+       <resource culture="ar-kw" name="requestviewed" value="AR:  Request Viewed"></resource>
+       <resource culture="ar-kw" name="requestvieweddate" value="AR:  Request Viewed Date"></resource>
+       <resource culture="ar-kw" name="iscanceled" value="AR:  Is Canceled"></resource>
+       <resource culture="ar-kw" name="canceldate" value="AR:  Cancel Date"></resource>
+       <resource culture="ar-kw" name="cancelednote" value="AR:  Canceled Note"></resource>
+       <resource culture="ar-kw" name="canceledby" value="AR:  Canceled By"></resource>
+       <resource culture="ar-kw" name="isconfirmed" value="AR:  Is Confirmed"></resource>
+       <resource culture="ar-kw" name="confirmeddate" value="AR:  Confirmed Date"></resource>
+       <resource culture="ar-kw" name="confirmednote" value="AR:  Confirmed Note"></resource>
+       <resource culture="ar-kw" name="confirmedby" value="AR:  Confirmed By"></resource>
+       <resource culture="ar-kw" name="totalamount" value="AR:  Total Amount"></resource>
+       <resource culture="ar-kw" name="discountamount" value="AR:  Discount Amount"></resource>
+       <resource culture="ar-kw" name="otherdiscount" value="AR:  Other Discount"></resource>
+       <resource culture="ar-kw" name="totalpayable" value="AR:  Total Payable"></resource>
+       <resource culture="ar-kw" name="paidamount" value="AR:  Paid Amount"></resource>
+       <resource culture="ar-kw" name="ispaid" value="AR:  Is Paid"></resource>
+       <resource culture="ar-kw" name="paymentdate" value="AR:  Payment Date"></resource>
+       <resource culture="ar-kw" name="paymentnote" value="AR:  Payment Note"></resource>
+       <resource culture="ar-kw" name="paymentreveivedby" value="AR:  Payment Reveived By"></resource>
+       <resource culture="ar-kw" name="isavailed" value="AR:  Is Availed"></resource>
+       <resource culture="ar-kw" name="availeddate" value="AR:  Availed Date"></resource>
+		<resource culture="ar-kw" name="campbookinginfoList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="campbookinginfoCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="campbookinginfoUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="campbookinginfoDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="campid" value=" Camp I D"></resource>
+       <resource culture="en-us" name="campidRequired" value="Please provide  Camp I D"></resource>
+       <resource culture="en-us" name="registereduserid" value=" Registered User I D"></resource>
+       <resource culture="en-us" name="registereduseridRequired" value="Please provide  Registered User I D"></resource>
+       <resource culture="en-us" name="bookingstartdate" value=" Booking Start Date"></resource>
+       <resource culture="en-us" name="bookingstartdateRequired" value="Please provide  Booking Start Date"></resource>
+       <resource culture="en-us" name="bookingenddate" value=" Booking End Date"></resource>
+       <resource culture="en-us" name="bookingenddateRequired" value="Please provide  Booking End Date"></resource>
+       <resource culture="en-us" name="numberofdays" value=" Number Of Days"></resource>
+       <resource culture="en-us" name="requestdate" value=" Request Date"></resource>
+       <resource culture="en-us" name="requestviewed" value=" Request Viewed"></resource>
+       <resource culture="en-us" name="requestvieweddate" value=" Request Viewed Date"></resource>
+       <resource culture="en-us" name="iscanceled" value=" Is Canceled"></resource>
+       <resource culture="en-us" name="canceldate" value=" Cancel Date"></resource>
+       <resource culture="en-us" name="cancelednote" value=" Canceled Note"></resource>
+       <resource culture="en-us" name="canceledby" value=" Canceled By"></resource>
+       <resource culture="en-us" name="isconfirmed" value=" Is Confirmed"></resource>
+       <resource culture="en-us" name="confirmeddate" value=" Confirmed Date"></resource>
+       <resource culture="en-us" name="confirmednote" value=" Confirmed Note"></resource>
+       <resource culture="en-us" name="confirmedby" value=" Confirmed By"></resource>
+       <resource culture="en-us" name="totalamount" value=" Total Amount"></resource>
+       <resource culture="en-us" name="discountamount" value=" Discount Amount"></resource>
+       <resource culture="en-us" name="otherdiscount" value=" Other Discount"></resource>
+       <resource culture="en-us" name="totalpayable" value=" Total Payable"></resource>
+       <resource culture="en-us" name="paidamount" value=" Paid Amount"></resource>
+       <resource culture="en-us" name="ispaid" value=" Is Paid"></resource>
+       <resource culture="en-us" name="paymentdate" value=" Payment Date"></resource>
+       <resource culture="en-us" name="paymentnote" value=" Payment Note"></resource>
+       <resource culture="en-us" name="paymentreveivedby" value=" Payment Reveived By"></resource>
+       <resource culture="en-us" name="isavailed" value=" Is Availed"></resource>
+       <resource culture="en-us" name="availeddate" value=" Availed Date"></resource>
+        <resource culture="en-us" name="campbookinginfoList" value="View All"></resource>
+		<resource culture="en-us" name="campbookinginfoCreate" value="Create"></resource>
+		<resource culture="en-us" name="campbookinginfoUpdate" value="Update"></resource>
+		<resource culture="en-us" name="campbookinginfoDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

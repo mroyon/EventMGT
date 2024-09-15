@@ -1,0 +1,88 @@
+﻿@using CLL
+@model BDO.Core.DataAccessObjects.SecurityModels.owin_roleEntity
+@inject CLL.Localization.LocalizeService SharedLocalizer
+
+@using Microsoft.Extensions.Options
+@{
+    ViewData["Title"] = @SharedLocalizer.GetLocalizedHtmlString("EDIT_OWIN_ROLE");
+}
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-footer">
+                <h5 class="card-title">@SharedLocalizer.GetLocalizedHtmlString("EDIT_OWIN_ROLE")</h5>
+            </div>
+            <!-- /.card-header -->
+            <form method="POST" id="frmEditOwin_Role" class="my-login-validation" novalidate="" autocomplete="off">
+                <div class="card-body">
+					 <div class="row ">
+							 <input asp-for="roleid" type="hidden" />
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 <label class="labelNormal required " asp-for="rolename"></label>
+								 <input asp-for="rolename" class="form-control" /> 
+								 <span asp-validation-for="rolename" class="text-danger"></span>
+							</div>
+						</div>
+					</div>
+					 <div class="row ">
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 <label class="labelNormal  " asp-for="description"></label>
+								 <textarea cols="40" rows="5" asp-for="description" class="form-control"></textarea>
+								 <span asp-validation-for="description" class="descriptionerror text-danger " id="descriptionerror" ></span>
+							</div>
+						</div>
+					</div>
+                    <div class="row ">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="labelNormal  " asp-for="isactive"></label>
+                                <select class="form-control" asp-for="isactive">
+                                    <option value="">@SharedLocalizer.GetLocalizedHtmlString("PLEASE_SELECT_DROPDOWN")</option>
+                                    <option value="True">@SharedLocalizer.GetLocalizedHtmlString("YES")</option>
+                                    <option value="False">@SharedLocalizer.GetLocalizedHtmlString("NO")</option>
+                                </select>
+                                <span asp-validation-for="isactive" class="isactiveerror text-danger " id="isactiveerror"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row btn-toolbar">
+                        <div class="col-md-6 ">
+                            <div class="form-group">
+                                <button type="submit" id="btnEditOwin_Role" class="btn btn-primary btn-md"><i class="fa fa-save"></i> @SharedLocalizer.GetLocalizedHtmlString("SUBMIT_REQUEST")</button>
+                                <button id="btnGoBackOwin_Role" class="btn btn-secondary btn-md "><i class="fas fa-arrow-circle-left"></i> @SharedLocalizer.GetLocalizedHtmlString("GO_BACK")</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!-- ./card-body -->
+        <div class="card-footer">
+            <div class="row">
+                <div class="col-md-12">
+
+                    <!-- /.description-block -->
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.card-footer -->
+    </div>
+    <!-- /.card -->
+</div>
+<!-- /.col -->
+
+
+@section Scripts {
+    <script src="~/lib/customjs/Owin_Role/Owin_Role.js"></script>
+}
+
+
+
+
+

@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="filegallerycategoryid" value="AR:  File Gallery Category I D"></resource>
+       <resource culture="ar-kw" name="filegallerycategoryidRequired" value="AR: Please provide  File Gallery Category I D"></resource>
+       <resource culture="ar-kw" name="filepath" value="AR:  File Path"></resource>
+       <resource culture="ar-kw" name="filetype" value="AR:  File Type"></resource>
+       <resource culture="ar-kw" name="fileextension" value="AR:  File Extension"></resource>
+       <resource culture="ar-kw" name="filename" value="AR:  File Name"></resource>
+       <resource culture="ar-kw" name="headingtextar" value="AR:  Heading Text A R"></resource>
+       <resource culture="ar-kw" name="headingtext" value="AR:  Heading Text"></resource>
+       <resource culture="ar-kw" name="bodytextar" value="AR:  Body Text A R"></resource>
+       <resource culture="ar-kw" name="bodytext" value="AR:  Body Text"></resource>
+		<resource culture="ar-kw" name="filegalleryList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="filegalleryCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="filegalleryUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="filegalleryDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="filegallerycategoryid" value=" File Gallery Category I D"></resource>
+       <resource culture="en-us" name="filegallerycategoryidRequired" value="Please provide  File Gallery Category I D"></resource>
+       <resource culture="en-us" name="filepath" value=" File Path"></resource>
+       <resource culture="en-us" name="filetype" value=" File Type"></resource>
+       <resource culture="en-us" name="fileextension" value=" File Extension"></resource>
+       <resource culture="en-us" name="filename" value=" File Name"></resource>
+       <resource culture="en-us" name="headingtextar" value=" Heading Text A R"></resource>
+       <resource culture="en-us" name="headingtext" value=" Heading Text"></resource>
+       <resource culture="en-us" name="bodytextar" value=" Body Text A R"></resource>
+       <resource culture="en-us" name="bodytext" value=" Body Text"></resource>
+        <resource culture="en-us" name="filegalleryList" value="View All"></resource>
+		<resource culture="en-us" name="filegalleryCreate" value="Create"></resource>
+		<resource culture="en-us" name="filegalleryUpdate" value="Update"></resource>
+		<resource culture="en-us" name="filegalleryDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

@@ -1,0 +1,120 @@
+﻿@using CLL
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+@model BDO.Core.DataAccessObjects.SecurityModels.owin_userEntity
+@inject CLL.Localization.LocalizeService SharedLocalizer
+@{
+    ViewData["Title"] = @SharedLocalizer.GetLocalizedHtmlString("ACCOUNT_LOGIN");
+}
+<section class="ftco-section">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6 text-center mb-1">
+                <img src="~/img/kaf_logo.png" alt="logo" class="login-page-logo">
+            </div>
+        </div>
+        <div class="row justify-content-center">
+            <div class="col-md-6 col-lg-4">
+                <div class="login-wrap p-0">
+                    <h3 class="mb-4 text-center">@SharedLocalizer.GetLocalizedHtmlString("LOGIN")</h3>
+
+                    <div id="accordion">
+                        <div class="card accordion-item">
+                            <div class="card-header accordion-header" id="headingOne">
+                                <h5 class="mb-0">
+                                    <button class="accordion-button btn btn-link btn-accordion-head" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                        Login with Credentials
+                                    </button>
+                                </h5>
+                            </div>
+                            <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                                <div class="accordion-body card-body">
+                                    <form method="POST" id="frmlogin" class="signin-form my-login-validation" novalidate="">
+
+
+                                        <input type="hidden" id="connectionids" name="connectionids" />
+                                        <input type="hidden" asp-for="code" />
+                                        <input type="hidden" id="KeyParam" name="KeyParam"  />
+
+                                        <div class="form-group">
+                                            <input asp-for="emailaddress" class="form-control" placeholder="Email Address" required />
+                                            <span asp-validation-for="emailaddress" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <input asp-for="password" class="form-control" placeholder="Password" required />
+                                            <span asp-validation-for="password" class="text-danger"></span>
+                                        </div>
+                                        <div class="form-group">
+                                            <button type="submit" id="btnlogin" class="form-control btn btn-primary submit px-3">
+                                                @SharedLocalizer.GetLocalizedHtmlString("LOGIN")
+                                            </button>
+
+                                        </div>
+                                        <div class="form-group d-md-flex">
+                                            <div class="w-50">
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                                                    <label class="form-check-label " for="flexCheckDefault">
+                                                        @SharedLocalizer.GetLocalizedHtmlString("REMEMBER_ME")
+                                                    </label>
+                                                </div>
+                                            </div>
+                                            <div class="w-50 text-md-right">
+                                                @Html.ActionLink(@SharedLocalizer.GetLocalizedHtmlString("FORGOT_YOUR_PASSWORD"), "ForgetPassword", "Account", null, null)
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                        
+                       
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div id="activeuserlist" class="hidden" ></div>
+
+<div class="modal fade hidden-print" id="modalcontainerWaitForMobileAuthenticated" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog new-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5>@CLL.LLClasses._Common.CivilIdAuthenticatedDialog</h5>
+            </div>
+            <div class="modal-body">
+                <p>@CLL.LLClasses._Common.CivilIdAuthenticatedMessage</p>
+				<p><div id="progressBarCivil"><div class="bar"></div></div><p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade hidden-print" id="modalcontainerWaitForCivilIdValidation" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog new-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5>@CLL.LLClasses._Common.CheckCivilIdDialog</h5>
+            </div>
+            <div class="modal-body">
+                <p>@CLL.LLClasses._Common.CheckCivilIdMessage</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    <script>
+        var dir = '';
+
+        function generateqrelement() {
+            document.getElementById('textCivilId').style.display = 'none';
+        }
+		
+		
+		
+    </script>
+}

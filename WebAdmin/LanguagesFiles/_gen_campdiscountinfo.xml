@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="campid" value="AR:  Camp I D"></resource>
+       <resource culture="ar-kw" name="campidRequired" value="AR: Please provide  Camp I D"></resource>
+       <resource culture="ar-kw" name="discounttype" value="AR:  Discount Type"></resource>
+       <resource culture="ar-kw" name="discounttypeRequired" value="AR: Please provide  Discount Type"></resource>
+       <resource culture="ar-kw" name="discount" value="AR:  Discount"></resource>
+       <resource culture="ar-kw" name="maxamount" value="AR:  Max Amount"></resource>
+       <resource culture="ar-kw" name="discountfrom" value="AR:  Discount From"></resource>
+       <resource culture="ar-kw" name="discountfromRequired" value="AR: Please provide  Discount From"></resource>
+       <resource culture="ar-kw" name="discountto" value="AR:  Discount To"></resource>
+       <resource culture="ar-kw" name="discountfor" value="AR:  Discount For"></resource>
+       <resource culture="ar-kw" name="discountforRequired" value="AR: Please provide  Discount For"></resource>
+       <resource culture="ar-kw" name="remarks" value="AR:  Remarks"></resource>
+		<resource culture="ar-kw" name="campdiscountinfoList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="campdiscountinfoCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="campdiscountinfoUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="campdiscountinfoDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="campid" value=" Camp I D"></resource>
+       <resource culture="en-us" name="campidRequired" value="Please provide  Camp I D"></resource>
+       <resource culture="en-us" name="discounttype" value=" Discount Type"></resource>
+       <resource culture="en-us" name="discounttypeRequired" value="Please provide  Discount Type"></resource>
+       <resource culture="en-us" name="discount" value=" Discount"></resource>
+       <resource culture="en-us" name="maxamount" value=" Max Amount"></resource>
+       <resource culture="en-us" name="discountfrom" value=" Discount From"></resource>
+       <resource culture="en-us" name="discountfromRequired" value="Please provide  Discount From"></resource>
+       <resource culture="en-us" name="discountto" value=" Discount To"></resource>
+       <resource culture="en-us" name="discountfor" value=" Discount For"></resource>
+       <resource culture="en-us" name="discountforRequired" value="Please provide  Discount For"></resource>
+       <resource culture="en-us" name="remarks" value=" Remarks"></resource>
+        <resource culture="en-us" name="campdiscountinfoList" value="View All"></resource>
+		<resource culture="en-us" name="campdiscountinfoCreate" value="Create"></resource>
+		<resource culture="en-us" name="campdiscountinfoUpdate" value="Update"></resource>
+		<resource culture="en-us" name="campdiscountinfoDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

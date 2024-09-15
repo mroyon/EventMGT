@@ -1,0 +1,388 @@
+﻿@using Microsoft.AspNetCore.Builder
+@using Microsoft.AspNetCore.Localization
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.Extensions.Options
+
+@using Microsoft.AspNetCore.Authorization
+@using CLL.Localization
+@inject IAuthorizationService AuthorizationService
+@inject CLL.Localization.LocalizeService SharedLocalizer
+
+
+
+@inject IViewLocalizer Localizer
+@inject IOptions<RequestLocalizationOptions> LocOptions
+@{
+    //var requestCulture = Context.Features.Get<IRequestCultureFeature>();
+    //var cultureItems = LocOptions.Value.SupportedUICultures
+    //    .Select(c => new SelectListItem { Value = c.Name, Text = c.TextInfo.ToTitleCase(c.NativeName.Contains('(') ? c.NativeName.Substring(0, c.NativeName.IndexOf('(')) : c.NativeName) })
+    //    .ToList();
+
+    //var location = new Uri($"{Context.Request.Scheme}://{Context.Request.Host}{Context.Request.Path}{Context.Request.QueryString}");
+
+    //var url = location.AbsoluteUri;
+    //var returnUrlForLanguageSwitch = Context.Request.Path;
+
+    //if (Context.Request.QueryString.HasValue)
+    //{
+    //    returnUrlForLanguageSwitch = $"{Context.Request.Path}{Context.Request.QueryString.Value}";
+    //}
+
+    //string foldername = ViewBag.foldername;
+    //string submitbutton = ViewBag.submitbutton;
+}
+
+
+<div class="form-group">
+    <label class="control-label col-md-2" for="first-name">
+        Upload Photo <span class="required">*</span>
+    </label>
+    <div class="col-md-6">
+        <div action="/FileUploader/UploadFile" class="dropzone" id="uploader">
+            Drop files here or click to upload.<br>
+        </div>
+        
+    </div>
+</div>
+
+@*<input type="text" id="foldername" value="@foldername" class="form-control" />
+<input type="text" id="submitbutton" value="@submitbutton" class="form-control" />*@
+@*<form asp-action="UploadFile" asp-controller="FileUploader" method="post" enctype="multipart/form-data" class="dropzone dropzone-design dz-clickable form-horizontal form-bordered" id="dropzoneForm" asp-antiforgery="true">
+    <div class="form-group form-actions">
+        <div class="col-md-9 col-md-offset-4">
+           
+        </div>
+    </div>
+   
+</form>*@
+@*<form class="form-group">
+    <label class="col-form-label">Files Name : </label>
+    <input type="text" id="imagesNames" value="" class="form-control" />
+    <button type="submit" id="submit" class="btn btn-sm btn-primary"><i class="fa fa-floppy-o"></i> Upload</button>
+</form>*@
+@*<div id="dZUpload" class="dropzone">
+    <div id="dropzoneWrapper" class="dz-default dz-message dz-drag-hover">
+        <h3>Drop files here or click to Upload</h3>
+       
+    </div>
+                    </div>*@
+
+@*<div class="col-md-12">
+    <div class="card">
+        <div class="card-header">
+            <h3 class="card-title">Files Uploads</h3>
+        </div>
+        <div class="card-body register-card-body">
+            <div class="form-row">
+                <div class="col-md-12" id="dropzone">
+                    <form asp-controller="FileUploader" autocomplete="off" asp-antiforgery="true" class="dropzone"
+                          id="demo-upload" enctype="multipart/form-data" asp-action="UploadFile" method="post">
+                        <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+                        <div class="form-row">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="card-footer">
+            <button type="button" id="btnupload" class="btn btn-success">Upload Files</button>
+
+            <a class="btn btn-danger" asp-controller="DemoUpload" asp-action="UploadFiles">Clear</a>
+        </div>
+    </div>
+</div>*@
+
+
+@*<div class="row">
+    <div class="col-md-12 my-3">
+        <div class="text-right mb-2">
+            @Ajax.ActionLink("Refresh", "GetProductImages", new { id = 2 }, new AjaxOptions { HttpMethod = "GET", InsertionMode = InsertionMode.Replace, UpdateTargetId = "productpictures", LoadingElementId = "loading", LoadingElementDuration = 300 }, new { @class = "btn btn-primary", id = "refreshbutton" })
+        </div>
+        <div class="mt-2">
+            <div id="productpictures" class="text-center">
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <!--/Product/UploadProductImages/5 -->
+        @using (Ajax.BeginForm("UploadProductImages", new { id = 2 }, new AjaxOptions { HttpMethod = "POST" }, new { @class = "dropzone", id = "mydropzone", enctype = "multipart/form-data" }))
+        { }
+
+    </div>
+    <div class="col-md-12 text-right mt-4">
+        <button type="button" class="btn btn-primary" id="uploadbutton">
+            <i class="fa fa-upload"></i> Upload
+        </button>
+    </div>
+</div>*@
+
+
+@section Scripts{
+    @*<script>
+        //list for save file names both client and server side
+        var fileList = new Array;
+        var i = 0;
+
+        function myParamName() {
+            return "files";
+        }
+
+        //GUID in javascript
+        function uuidv4() {
+            return ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, c =>
+                (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
+            );
+        }
+
+        Dropzone.options.dropzoneForm = {
+            autoProcessQueue: false,
+            paramName: myParamName, // The name that will be used to transfer the file
+            uploadMultiple: true,
+            addRemoveLinks: true,
+            acceptedFiles: 'image/*',
+            renameFilename: function (filename) {
+                return filename;
+            },
+            parallelUploads: 100,
+            init: function () {
+                var wrapperThis = this;
+                //submit (upload) button for upload images
+                $("#@submitbutton").click(function (e) {
+                    e.preventDefault();
+                    wrapperThis.processQueue();
+                });
+                //after images are upload : =>
+                this.on("success", function (data) {
+                    var response = $.parseJSON(data.xhr.response);
+                    //$('#imagesNames').val(response);
+                    fileList[i] = { "serverFileName": JSON.parse(response)[i], "fileName": data.name, "fileId": i };
+                    i++;
+                });
+            },
+            accept: function (file, done) {
+                done();
+            },
+            //after images are remove
+            removedfile: function (file) {
+                //check file name both server and client side
+                var rmvFile = "";
+                for (f = 0; f < fileList.length; f++) {
+                    if (fileList[f].fileName == file.name) {
+                        rmvFile = fileList[f].serverFileName;
+                    }
+
+                }
+                //if file exist send the request to the server
+                if (rmvFile) {
+                    $.ajax({
+                        type: 'POST',
+                        headers: {
+                            'RequestVerificationToken': $("input[name=__RequestVerificationToken]").val()
+                        },
+                        url: '/FileUploader/DeleteUploadedImage',
+                        data: "fileName=" + rmvFile,
+                        dataType: 'html'
+                    });
+                }
+
+                //update fileNames input
+                //var newFilesName = $('#imagesNames').val();
+                //newFilesName = newFilesName.replace(rmvFile, '');
+                //$('#imagesNames').val(newFilesName);
+
+                var _ref;
+                return (_ref = file.previewElement) != null ? _ref.parentNode.removeChild(file.previewElement) : void 0;
+            }
+        };
+
+    </script>*@
+
+
+    @*<script>
+        Dropzone.autoDiscover = false;
+        $(function () {
+            var dz = null;
+            $("#dZUpload").dropzone({
+                autoProcessQueue: false,
+                paramName: "File Upload",
+                url: "/FileUploader/UploadFile/",
+                method: "post",
+                maxFilesize: 10, //mb
+                maxThumbnailFilesize: 1, //mb
+                maxFiles: 5,
+                parallelUploads: 5,
+                acceptedFiles: ".jpeg,.png,.jpg,.pdf",
+                uploadMultiple: true,
+                addRemoveLinks: true,
+
+                init: function () {
+                    dz = this;
+                    $("#btnupload").click(function () {
+                        dz.processQueue();
+                        $(this).attr("disabled", "disabled");
+                    });
+                },
+                success: function (file) {
+                    var preview = $(file.previewElement);
+                    preview.addClass("dz-success text-success");
+                    setTimeout(function () {
+                        dz.removeFile(file);
+
+                    }, 2000);
+
+                },
+                queuecomplete: function () {
+                    alert('Files Uploaded Successfully!');
+                },
+                dictDefaultMessage: "You can drag and drop your images here.",
+                dictRemoveFile: "File Remove"
+            });
+
+        });
+
+    </script>*@
+
+
+    @*<script>
+
+        Dropzone.autoDiscover = false;
+
+        $(function () {
+
+            var dz = null;
+
+            $("#mydropzone").dropzone({
+                autoProcessQueue: false,
+                paramName: "productpictures",
+                maxFilesize: 10, //mb
+                maxThumbnailFilesize: 10, //mb
+                maxFiles: 5,
+                parallelUploads: 5,
+                acceptedFiles: ".jpeg,.png,.jpg,.pdf",
+                uploadMultiple: true,
+                addRemoveLinks: true,
+                //resizeWidth:128,
+
+                init: function () {
+                    dz = this;
+
+                    $("#uploadbutton").click(function () {
+                        dz.processQueue();
+                        $(this).attr("disabled", "disabled");
+                    });
+                },
+                success: function (file) {
+                    var preview = $(file.previewElement);
+                    preview.addClass("dz-success text-success");
+
+                    setTimeout(function () {
+                        dz.removeFile(file);
+                        $("#refreshbutton").click();
+                    }, 2000);
+                },
+                queuecomplete: function () {
+                    $("#refreshbutton").click();
+                    $("#uploadbutton").removeAttr("disabled");
+                },
+                dictDefaultMessage: "You can drag and drop your images here.",
+                dictRemoveFile: "File Remove"
+            });
+
+            $("#refreshbutton").prepend('<i id="loading" class="fa fa-refresh fa-spin" style="display:none;"></i>&nbsp;')
+            refreshProductPicture();
+        });
+        function refreshProductPicture() {
+            $("#refreshbutton").click();
+        }
+    </script>*@
+
+
+    @*<script>
+        //list for save file names both client and server side
+        var fileList = new Array;
+        var i = 0;
+
+        function myParamName() {
+            return "files";
+        }
+
+        //GUID in javascript
+        function uuidv4() {
+            return ([1e7] + -1e3 + -4e3 + -8e3 + -1e11).replace(/[018]/g, c =>
+                (c ^ crypto.getRandomValues(new Uint8Array(1))[0] & 15 >> c / 4).toString(16)
+            );
+        }
+        Dropzone.autoDiscover = false;
+        Dropzone.options.dropzoneForm = {
+            autoProcessQueue: false,
+            paramName: myParamName, // The name that will be used to transfer the file
+            uploadMultiple: true,
+            addRemoveLinks: true,
+            acceptedFiles: 'image/*',
+            renameFilename: function (filename) {
+                return uuidv4() + filename;
+            },
+            parallelUploads: 100,
+            init: function () {
+                var wrapperThis = this;
+                //submit (upload) button for upload images
+                $("#btnAddGen_News").click(function (e) {
+                    e.preventDefault();
+                    wrapperThis.processQueue();
+                });
+                //after images are upload : =>
+                this.on("success", function (data) {
+                    var response = $.parseJSON(data.xhr.response);
+                    $('#imagesNames').val(response);
+                    fileList[i] = { "serverFileName": JSON.parse(response)[i], "fileName": data.name, "fileId": i };
+                    i++;
+                });
+            },
+            accept: function (file, done) {
+                done();
+            },
+            //after images are remove
+            removedfile: function (file) {
+                //check file name both server and client side
+                var rmvFile = "";
+                for (f = 0; f < fileList.length; f++) {
+
+                    if (fileList[f].fileName == file.name) {
+                        rmvFile = fileList[f].serverFileName;
+
+                    }
+
+                }
+                //if file exist send the request to the server
+                if (rmvFile) {
+                    $.ajax({
+                        type: 'POST',
+                        headers: {
+                            'RequestVerificationToken': $("input[name=__RequestVerificationToken]").val()
+                        },
+                        url: '/Upload/DeleteUploadedImage',
+                        data: "fileName=" + rmvFile,
+                        dataType: 'html'
+                    });
+                }
+
+                //update fileNames input
+                var newFilesName = $('#imagesNames').val();
+                newFilesName = newFilesName.replace(rmvFile, '');
+                $('#imagesNames').val(newFilesName);
+
+                var _ref;
+                return (_ref = file.previewElement) != null ? _ref.parentNode.removeChild(file.previewElement) : void 0;
+            }
+        };
+
+    </script>*@
+
+    <script>
+        Dropzone.options.frmAddGen_News = {
+            maxFilesize: 20, // MB
+            acceptedFiles: "image/*"
+        };
+    </script>
+}
+

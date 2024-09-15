@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="servicestatusname" value="AR:  Service Status Name"></resource>
+       <resource culture="ar-kw" name="servicestatusnameRequired" value="AR: Please provide  Service Status Name"></resource>
+       <resource culture="ar-kw" name="serviceid" value="AR:  Service I D"></resource>
+       <resource culture="ar-kw" name="serviceidRequired" value="AR: Please provide  Service I D"></resource>
+       <resource culture="ar-kw" name="servicestatusid" value="AR:  Service Status I D"></resource>
+       <resource culture="ar-kw" name="servicestatusidRequired" value="AR: Please provide  Service Status I D"></resource>
+       <resource culture="ar-kw" name="isactive" value="AR:  Is Active"></resource>
+		<resource culture="ar-kw" name="servicestatusmappedinfoList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="servicestatusmappedinfoCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="servicestatusmappedinfoUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="servicestatusmappedinfoDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="servicestatusname" value=" Service Status Name"></resource>
+       <resource culture="en-us" name="servicestatusnameRequired" value="Please provide  Service Status Name"></resource>
+       <resource culture="en-us" name="serviceid" value=" Service I D"></resource>
+       <resource culture="en-us" name="serviceidRequired" value="Please provide  Service I D"></resource>
+       <resource culture="en-us" name="servicestatusid" value=" Service Status I D"></resource>
+       <resource culture="en-us" name="servicestatusidRequired" value="Please provide  Service Status I D"></resource>
+       <resource culture="en-us" name="isactive" value=" Is Active"></resource>
+        <resource culture="en-us" name="servicestatusmappedinfoList" value="View All"></resource>
+		<resource culture="en-us" name="servicestatusmappedinfoCreate" value="Create"></resource>
+		<resource culture="en-us" name="servicestatusmappedinfoUpdate" value="Update"></resource>
+		<resource culture="en-us" name="servicestatusmappedinfoDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="roleid" value="معرف الدور"></resource>
+       <resource culture="ar-kw" name="userid" value="معرف المستخدم"></resource>
+       <resource culture="ar-kw" name="serviceid" value="معرف الخدمة"></resource>
+       <resource culture="ar-kw" name="serviceidRequired" value="يرجى تقديم معرف الخدمة"></resource>
+       <resource culture="ar-kw" name="isactive" value="نشط"></resource>
+		<resource culture="ar-kw" name="userservicemappedList" value="مشاهدة الكلl"></resource>
+		<resource culture="ar-kw" name="userservicemappedCreate" value="خلق"></resource>
+		<resource culture="ar-kw" name="userservicemappedUpdate" value="تحديث"></resource>
+		<resource culture="ar-kw" name="userservicemappedDetails" value="التفاصيل"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="roleid" value=" Role ID"></resource>
+       <resource culture="en-us" name="userid" value=" User ID"></resource>
+       <resource culture="en-us" name="serviceid" value=" Service ID"></resource>
+       <resource culture="en-us" name="serviceidRequired" value="Please provide  Service ID"></resource>
+       <resource culture="en-us" name="isactive" value=" Is Active"></resource>
+        <resource culture="en-us" name="userservicemappedList" value="View All"></resource>
+		<resource culture="en-us" name="userservicemappedCreate" value="Create"></resource>
+		<resource culture="en-us" name="userservicemappedUpdate" value="Update"></resource>
+		<resource culture="en-us" name="userservicemappedDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

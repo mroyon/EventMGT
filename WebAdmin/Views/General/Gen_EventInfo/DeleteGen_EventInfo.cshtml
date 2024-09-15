@@ -1,0 +1,162 @@
+﻿@using CLL
+@model BDO.Core.DataAccessObjects.Models.gen_eventinfoEntity
+@inject CLL.Localization.LocalizeService SharedLocalizer
+
+@using Microsoft.Extensions.Options
+@{
+    ViewData["Title"] = @SharedLocalizer.GetLocalizedHtmlString("DELETE_GEN_EVENTINFO");
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-footer">
+                <h5 class="card-title">@SharedLocalizer.GetLocalizedHtmlString("DELETE_GEN_EVENTINFO")</h5>
+            </div>
+            <form method="POST" id="frmDeleteGen_EventInfo" class="my-login-validation" novalidate="" autocomplete="off">
+                <div class="card-body">
+                    <div class="row ">
+                        <input asp-for="eventid" type="hidden" />
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="labelNormal required " asp-for="eventcategoryid"></label>
+                                @await Component.InvokeAsync("S2Gen_EventCategory", new { selectid = "eventcategoryid", preloaded = ViewBag.preloadedDatagen_eventcategory, isReadOnly = true, multiple = false, isRequired = true, pkey = -99 })
+                                <span asp-validation-for="eventcategoryid" class="eventcategoryiderror text-danger " id="eventcategoryiderror"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="labelNormal required " asp-for="eventorganizedby"></label>
+                                @await Component.InvokeAsync("S2Gen_Unit", new { selectid = "eventorganizedby", preloaded = ViewBag.preloadedDatagen_unit, isReadOnly = true, multiple = false, isRequired = true, pkey = -99 })
+                                <span asp-validation-for="eventorganizedby" class="eventorganizedbyerror text-danger " id="eventorganizedbyerror"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="labelNormal required " asp-for="eventcode"></label>
+                                <input asp-for="eventcode" class="form-control" autocomplete="off" required readonly/>
+                                <span asp-validation-for="eventcode" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="labelNormal required " asp-for="eventname"></label>
+                                <input asp-for="eventname" class="form-control" required readonly></input>
+                                <span asp-validation-for="eventname" class="eventnameerror text-danger " id="eventnameerror"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="labelNormal required " asp-for="eventstartdate"></label>
+                                <div class="input-group date bs-datepicker">
+                                    <input asp-for="eventstartdate" class="form-control " type="text" placeholder="dd/mm/yyyy" required readonly/>
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="far fa-calendar-alt"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                                <span asp-validation-for="eventstartdate" class="text-danger"></span>
+                            </div>
+
+
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="labelNormal  " asp-for="eventenddate"></label>
+                                <div class="input-group date bs-datepicker">
+                                    <input asp-for="eventenddate" class="form-control " type="text" placeholder="dd/mm/yyyy"  readonly/>
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="far fa-calendar-alt"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                                <span asp-validation-for="eventenddate" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="labelNormal  " asp-for="eventdescription"></label>
+                                <textarea cols="40" rows="5" asp-for="eventdescription" class="form-control" autocomplete="off"></textarea>
+                                <span asp-validation-for="eventdescription" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="labelNormal  " asp-for="eventdescription1"></label>
+                                <textarea cols="40" rows="5" asp-for="eventdescription1" class="form-control" autocomplete="off"></textarea>
+                                <span asp-validation-for="eventdescription1" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="labelNormal  " asp-for="eventdescription2"></label>
+                                <textarea cols="40" rows="5" asp-for="eventdescription2" class="form-control" autocomplete="off"></textarea>
+                                <span asp-validation-for="eventdescription2" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="labelNormal  " asp-for="eventspecialnote"></label>
+                                <textarea cols="40" rows="5" asp-for="eventspecialnote" class="form-control" autocomplete="off"></textarea>
+                                <span asp-validation-for="eventspecialnote" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row btn-toolbar">
+                        <div class="col-md-6 ">
+                            <div class="form-group">
+                                <button type="submit" id="btnDeleteGen_EventInfo" data="@Url.Action("LandingGEN_EVENTINFO", "GEN_EVENTINFO")" class="btn btn-danger btn-md btnAddUser"><i class="fa fa-trash-alt"></i> @SharedLocalizer.GetLocalizedHtmlString("DELETE_REQUEST")</button>
+                                <button id="btnGoBackGen_EventInfo" data="@Url.Action("LandingGEN_EVENTINFO", "GEN_EVENTINFO")" class="btn btn-secondary btn-md "><i class="fas fa-arrow-circle-left"></i> @SharedLocalizer.GetLocalizedHtmlString("GO_BACK")</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </form>
+            <!-- ./card-body -->
+            <div class="card-footer">
+                <div class="row">
+                    <div class="col-md-12">
+
+                        <!-- /.description-block -->
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.card-footer -->
+        </div>
+        <!-- /.card -->
+    </div>
+    <!-- /.col -->
+</div>
+
+@section Scripts {
+    <script src="~/lib/customjs/Gen_EventInfo/Gen_EventInfo.js"></script>
+    <script>
+        $(function () {
+            tinymce.get('eventdescription').setMode('readonly');
+            tinymce.get('eventdescription1').setMode('readonly');
+            tinymce.get('eventdescription2').setMode('readonly');
+            tinymce.get('eventspecialnote').setMode('readonly');
+
+        })
+    </script>
+
+}
+
+
+
+
+

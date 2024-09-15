@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="filegallerycategory" value="AR:  File Gallery Category"></resource>
+       <resource culture="ar-kw" name="filegallerycategoryRequired" value="AR: Please provide  File Gallery Category"></resource>
+       <resource culture="ar-kw" name="descriptions" value="AR:  Descriptions"></resource>
+		<resource culture="ar-kw" name="filegallerycategoryList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="filegallerycategoryCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="filegallerycategoryUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="filegallerycategoryDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="filegallerycategory" value=" File Gallery Category"></resource>
+       <resource culture="en-us" name="filegallerycategoryRequired" value="Please provide  File Gallery Category"></resource>
+       <resource culture="en-us" name="descriptions" value=" Descriptions"></resource>
+        <resource culture="en-us" name="filegallerycategoryList" value="View All"></resource>
+		<resource culture="en-us" name="filegallerycategoryCreate" value="Create"></resource>
+		<resource culture="en-us" name="filegallerycategoryUpdate" value="Update"></resource>
+		<resource culture="en-us" name="filegallerycategoryDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

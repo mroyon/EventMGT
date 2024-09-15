@@ -1,0 +1,150 @@
+﻿@using CLL
+@model BDO.Core.DataAccessObjects.SecurityModels.owin_userEntity
+@inject CLL.Localization.LocalizeService SharedLocalizer
+
+@using Microsoft.Extensions.Options
+@{
+    ViewData["Title"] = "Add View Owin  User";
+    var _userplaceholder = "*****@kuwaitarmy.gov.kw";
+    if (System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.IsRightToLeft)
+    {
+        _userplaceholder = "kuwaitarmy.gov.kw@*****";
+    }
+}
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-footer">
+                <h5 class="card-title">@SharedLocalizer.GetLocalizedHtmlString("ADD_OWIN_USER")</h5>
+            </div>
+            <!-- /.card-header -->
+            <form method="POST" id="frmAddOwin_User" class="my-login-validation" novalidate="" autocomplete="off">
+                <div class="card-body">
+
+                    <div class="row ">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="labelNormal required " asp-for="username"></label>
+                                <input asp-for="username" class="form-control" onfocusout="ValidateUserName(this); return false;" placeholder='@_userplaceholder' />
+                                <span asp-validation-for="username" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="labelNormal required " asp-for="emailaddress"></label>
+                                <input asp-for="emailaddress" class="form-control" onfocusout="ValidateEmail(this); return false;" placeholder='@_userplaceholder' />
+                                <span asp-validation-for="emailaddress" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row ">
+                    </div>
+                    <div class="row ">
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="labelNormal required " asp-for="pkeyex"></label>
+                                <input type="number" asp-for="pkeyex" class="form-control pkeyex" />
+                                <span asp-validation-for="pkeyex" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="labelNormal required " asp-for="mobilenumber"></label>
+                                <input type="number" asp-for="mobilenumber" class="form-control mobilenumber" />
+                                <span asp-validation-for="mobilenumber" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        @* <div class="col-md-6">
+                        <div class="form-group">
+                        <label class="labelNormal required " asp-for="loweredusername"></label>
+                        <input asp-for="loweredusername" class="form-control" />
+                        <span asp-validation-for="loweredusername" class="text-danger"></span>
+                        </div>
+                        </div>*@
+                    </div>
+                    <div class="row ">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="labelNormal required " asp-for="newpassword"></label>
+                                <input type="password" asp-for="newpassword" class="form-control" autocomplete="new-password" />
+                                <span asp-validation-for="newpassword" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="labelNormal required " asp-for="confirmpassword"></label>
+                                <input type="password" asp-for="confirmpassword" class="form-control" />
+                                <span asp-validation-for="confirmpassword" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="labelNormal required " asp-for="roleid"></label>
+                                @await Component.InvokeAsync("S2Owin_Role", new { selectid = "roleid", preloaded = ViewBag.preloadedDataowin_role , isReadOnly = false, multiple = false, isRequired = true, pkey = -99 })
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <div class="row btn-toolbar">
+                        <div class="col-md-6 ">
+                            <div class="form-group">
+                                <button type="button" id="btnAddOwin_User" class="btn btn-primary btn-md"><i class="fa fa-save"></i> @SharedLocalizer.GetLocalizedHtmlString("SUBMIT_REQUEST")</button>
+                                <button id="btnGoBackOwin_User" class="btn btn-secondary btn-md "><i class="fas fa-arrow-circle-left"></i> @SharedLocalizer.GetLocalizedHtmlString("GO_BACK")</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!-- ./card-body -->
+        <div class="card-footer">
+            <div class="row">
+                <div class="col-md-12">
+
+                    <!-- /.description-block -->
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.card-footer -->
+    </div>
+    <!-- /.card -->
+</div>
+<!-- /.col -->
+@section Scripts {
+    <script src="~/lib/customjs/Owin_User/Owin_User.js" asp-append-version="true"></script>
+
+    <script>
+        $(function () {
+
+            $('input.pkeyex').on('keyup', function () {
+                limitText(this, 12)
+            });
+             $('input.mobilenumber').on('keyup', function () {
+                limitText(this, 8)
+            });
+        });
+        function limitText(field, maxChar) {
+            var ref = $(field),
+                val = ref.val();
+            if (val.length >= maxChar) {
+                ref.val(function () {
+                    //console.log(val.substr(0, maxChar))
+                    return val.substr(0, maxChar);
+                });
+            }
+        }
+    </script>
+}
+
+
+
+
+

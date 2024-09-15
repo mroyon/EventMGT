@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="requestguid" value="AR:  Request G U I D"></resource>
+       <resource culture="ar-kw" name="serviceid" value="AR:  Service I D"></resource>
+       <resource culture="ar-kw" name="serviceidRequired" value="AR: Please provide  Service I D"></resource>
+       <resource culture="ar-kw" name="servicename" value="AR:  Service Name"></resource>
+       <resource culture="ar-kw" name="servicenameRequired" value="AR: Please provide  Service Name"></resource>
+       <resource culture="ar-kw" name="requesterjsondata" value="AR:  Requester Json Data"></resource>
+       <resource culture="ar-kw" name="transactionrequestdate" value="AR:  Transaction Request Date"></resource>
+       <resource culture="ar-kw" name="transactionrequestdateRequired" value="AR: Please provide  Transaction Request Date"></resource>
+       <resource culture="ar-kw" name="requesttrackid" value="AR:  Request Track I D"></resource>
+       <resource culture="ar-kw" name="requesttrackidRequired" value="AR: Please provide  Request Track I D"></resource>
+       <resource culture="ar-kw" name="requesttimestamp" value="AR:  Request Time Stamp"></resource>
+       <resource culture="ar-kw" name="amount" value="AR:  Amount"></resource>
+       <resource culture="ar-kw" name="amountRequired" value="AR: Please provide  Amount"></resource>
+       <resource culture="ar-kw" name="paypaymentid" value="AR:  Pay Payment Id"></resource>
+       <resource culture="ar-kw" name="payttransid" value="AR:  Payt Trans Id"></resource>
+       <resource culture="ar-kw" name="transactiondate" value="AR:  Transaction Date"></resource>
+       <resource culture="ar-kw" name="transactionstatus" value="AR:  Transaction Status"></resource>
+       <resource culture="ar-kw" name="payresult" value="AR:  Pay Result"></resource>
+       <resource culture="ar-kw" name="udf1" value="AR: udf 1"></resource>
+       <resource culture="ar-kw" name="udf2" value="AR: udf 2"></resource>
+       <resource culture="ar-kw" name="udf3" value="AR: udf 3"></resource>
+       <resource culture="ar-kw" name="udf4" value="AR: udf 4"></resource>
+       <resource culture="ar-kw" name="udf5" value="AR: udf 5"></resource>
+       <resource culture="ar-kw" name="payresultjson" value="AR:  Pay Result Json"></resource>
+       <resource culture="ar-kw" name="callbacktablerefkey" value="AR:  Call Back Table Ref Key"></resource>
+       <resource culture="ar-kw" name="callbacktablerefname" value="AR:  Call Back Table Ref Name"></resource>
+       <resource culture="ar-kw" name="callbackdatabaserefname" value="AR:  Call Back Database Ref Name"></resource>
+       <resource culture="ar-kw" name="fileurl" value="AR:  File U R L"></resource>
+       <resource culture="ar-kw" name="returnsuccessurl" value="AR:  Return Success U R L"></resource>
+       <resource culture="ar-kw" name="returnfailedurl" value="AR:  Return Failed U R L"></resource>
+       <resource culture="ar-kw" name="validatetilldays" value="AR:  Validate Till Days"></resource>
+       <resource culture="ar-kw" name="securitytoken" value="AR:  Security Token"></resource>
+       <resource culture="ar-kw" name="securitytokenRequired" value="AR: Please provide  Security Token"></resource>
+       <resource culture="ar-kw" name="consumed" value="AR:  Consumed"></resource>
+       <resource culture="ar-kw" name="consumedRequired" value="AR: Please provide  Consumed"></resource>
+       <resource culture="ar-kw" name="consumeddatetime" value="AR:  Consumed Date Time"></resource>
+       <resource culture="ar-kw" name="isreturned" value="AR:  Is Returned"></resource>
+       <resource culture="ar-kw" name="returncause" value="AR:  Return Cause"></resource>
+       <resource culture="ar-kw" name="returndate" value="AR:  Return Date"></resource>
+       <resource culture="ar-kw" name="returnamount" value="AR:  Return Amount"></resource>
+       <resource culture="ar-kw" name="issuccess" value="AR:  Is Success"></resource>
+       <resource culture="ar-kw" name="successmsg" value="AR:  Success M S G"></resource>
+       <resource culture="ar-kw" name="successdate" value="AR:  Success Date"></resource>
+       <resource culture="ar-kw" name="isactive" value="AR:  Is Active"></resource>
+		<resource culture="ar-kw" name="paytransactioninfoList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="paytransactioninfoCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="paytransactioninfoUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="paytransactioninfoDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="requestguid" value=" Request G U I D"></resource>
+       <resource culture="en-us" name="serviceid" value=" Service I D"></resource>
+       <resource culture="en-us" name="serviceidRequired" value="Please provide  Service I D"></resource>
+       <resource culture="en-us" name="servicename" value=" Service Name"></resource>
+       <resource culture="en-us" name="servicenameRequired" value="Please provide  Service Name"></resource>
+       <resource culture="en-us" name="requesterjsondata" value=" Requester Json Data"></resource>
+       <resource culture="en-us" name="transactionrequestdate" value=" Transaction Request Date"></resource>
+       <resource culture="en-us" name="transactionrequestdateRequired" value="Please provide  Transaction Request Date"></resource>
+       <resource culture="en-us" name="requesttrackid" value=" Request Track I D"></resource>
+       <resource culture="en-us" name="requesttrackidRequired" value="Please provide  Request Track I D"></resource>
+       <resource culture="en-us" name="requesttimestamp" value=" Request Time Stamp"></resource>
+       <resource culture="en-us" name="amount" value=" Amount"></resource>
+       <resource culture="en-us" name="amountRequired" value="Please provide  Amount"></resource>
+       <resource culture="en-us" name="paypaymentid" value=" Pay Payment Id"></resource>
+       <resource culture="en-us" name="payttransid" value=" Payt Trans Id"></resource>
+       <resource culture="en-us" name="transactiondate" value=" Transaction Date"></resource>
+       <resource culture="en-us" name="transactionstatus" value=" Transaction Status"></resource>
+       <resource culture="en-us" name="payresult" value=" Pay Result"></resource>
+       <resource culture="en-us" name="udf1" value="udf 1"></resource>
+       <resource culture="en-us" name="udf2" value="udf 2"></resource>
+       <resource culture="en-us" name="udf3" value="udf 3"></resource>
+       <resource culture="en-us" name="udf4" value="udf 4"></resource>
+       <resource culture="en-us" name="udf5" value="udf 5"></resource>
+       <resource culture="en-us" name="payresultjson" value=" Pay Result Json"></resource>
+       <resource culture="en-us" name="callbacktablerefkey" value=" Call Back Table Ref Key"></resource>
+       <resource culture="en-us" name="callbacktablerefname" value=" Call Back Table Ref Name"></resource>
+       <resource culture="en-us" name="callbackdatabaserefname" value=" Call Back Database Ref Name"></resource>
+       <resource culture="en-us" name="fileurl" value=" File U R L"></resource>
+       <resource culture="en-us" name="returnsuccessurl" value=" Return Success U R L"></resource>
+       <resource culture="en-us" name="returnfailedurl" value=" Return Failed U R L"></resource>
+       <resource culture="en-us" name="validatetilldays" value=" Validate Till Days"></resource>
+       <resource culture="en-us" name="securitytoken" value=" Security Token"></resource>
+       <resource culture="en-us" name="securitytokenRequired" value="Please provide  Security Token"></resource>
+       <resource culture="en-us" name="consumed" value=" Consumed"></resource>
+       <resource culture="en-us" name="consumedRequired" value="Please provide  Consumed"></resource>
+       <resource culture="en-us" name="consumeddatetime" value=" Consumed Date Time"></resource>
+       <resource culture="en-us" name="isreturned" value=" Is Returned"></resource>
+       <resource culture="en-us" name="returncause" value=" Return Cause"></resource>
+       <resource culture="en-us" name="returndate" value=" Return Date"></resource>
+       <resource culture="en-us" name="returnamount" value=" Return Amount"></resource>
+       <resource culture="en-us" name="issuccess" value=" Is Success"></resource>
+       <resource culture="en-us" name="successmsg" value=" Success M S G"></resource>
+       <resource culture="en-us" name="successdate" value=" Success Date"></resource>
+       <resource culture="en-us" name="isactive" value=" Is Active"></resource>
+        <resource culture="en-us" name="paytransactioninfoList" value="View All"></resource>
+		<resource culture="en-us" name="paytransactioninfoCreate" value="Create"></resource>
+		<resource culture="en-us" name="paytransactioninfoUpdate" value="Update"></resource>
+		<resource culture="en-us" name="paytransactioninfoDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

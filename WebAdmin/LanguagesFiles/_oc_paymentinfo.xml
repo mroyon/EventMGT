@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="transactioncode" value="AR:  Transaction Code"></resource>
+       <resource culture="ar-kw" name="transactioncodeRequired" value="AR: Please provide  Transaction Code"></resource>
+       <resource culture="ar-kw" name="memberregistrationid" value="AR:  Member Registration I D"></resource>
+       <resource culture="ar-kw" name="memberregistrationidRequired" value="AR: Please provide  Member Registration I D"></resource>
+       <resource culture="ar-kw" name="ocfileid" value="AR:  O C File I D"></resource>
+       <resource culture="ar-kw" name="ocfileidRequired" value="AR: Please provide  O C File I D"></resource>
+       <resource culture="ar-kw" name="transactiondate" value="AR:  Transaction Date"></resource>
+       <resource culture="ar-kw" name="transactiondateRequired" value="AR: Please provide  Transaction Date"></resource>
+       <resource culture="ar-kw" name="transactionselectedmonth" value="AR:  Transaction Selected Month"></resource>
+       <resource culture="ar-kw" name="transactionselectedyear" value="AR:  Transaction Selected Year"></resource>
+       <resource culture="ar-kw" name="paymenttransactioncode" value="AR:  Payment Transaction Code"></resource>
+       <resource culture="ar-kw" name="paymenttransactioncodeRequired" value="AR: Please provide  Payment Transaction Code"></resource>
+       <resource culture="ar-kw" name="paysuccess" value="AR:  Pay Success"></resource>
+       <resource culture="ar-kw" name="paydate" value="AR:  Pay Date"></resource>
+       <resource culture="ar-kw" name="amount" value="AR:  Amount"></resource>
+       <resource culture="ar-kw" name="receiptjson" value="AR:  Receipt Json"></resource>
+		<resource culture="ar-kw" name="paymentinfoList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="paymentinfoCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="paymentinfoUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="paymentinfoDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="transactioncode" value=" Transaction Code"></resource>
+       <resource culture="en-us" name="transactioncodeRequired" value="Please provide  Transaction Code"></resource>
+       <resource culture="en-us" name="memberregistrationid" value=" Member Registration I D"></resource>
+       <resource culture="en-us" name="memberregistrationidRequired" value="Please provide  Member Registration I D"></resource>
+       <resource culture="en-us" name="ocfileid" value=" O C File I D"></resource>
+       <resource culture="en-us" name="ocfileidRequired" value="Please provide  O C File I D"></resource>
+       <resource culture="en-us" name="transactiondate" value=" Transaction Date"></resource>
+       <resource culture="en-us" name="transactiondateRequired" value="Please provide  Transaction Date"></resource>
+       <resource culture="en-us" name="transactionselectedmonth" value=" Transaction Selected Month"></resource>
+       <resource culture="en-us" name="transactionselectedyear" value=" Transaction Selected Year"></resource>
+       <resource culture="en-us" name="paymenttransactioncode" value=" Payment Transaction Code"></resource>
+       <resource culture="en-us" name="paymenttransactioncodeRequired" value="Please provide  Payment Transaction Code"></resource>
+       <resource culture="en-us" name="paysuccess" value=" Pay Success"></resource>
+       <resource culture="en-us" name="paydate" value=" Pay Date"></resource>
+       <resource culture="en-us" name="amount" value=" Amount"></resource>
+       <resource culture="en-us" name="receiptjson" value=" Receipt Json"></resource>
+        <resource culture="en-us" name="paymentinfoList" value="View All"></resource>
+		<resource culture="en-us" name="paymentinfoCreate" value="Create"></resource>
+		<resource culture="en-us" name="paymentinfoUpdate" value="Update"></resource>
+		<resource culture="en-us" name="paymentinfoDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

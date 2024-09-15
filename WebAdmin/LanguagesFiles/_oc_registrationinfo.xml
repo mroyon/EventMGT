@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="membershipcode" value="AR:  Member Ship Code"></resource>
+       <resource culture="ar-kw" name="membershipcodeRequired" value="AR: Please provide  Member Ship Code"></resource>
+       <resource culture="ar-kw" name="ocfileid" value="AR:  O C File I D"></resource>
+       <resource culture="ar-kw" name="ocfileidRequired" value="AR: Please provide  O C File I D"></resource>
+       <resource culture="ar-kw" name="ocfamilymemberid" value="AR:  O C Family Member I D"></resource>
+       <resource culture="ar-kw" name="isfamilymember" value="AR:  Is Family Member"></resource>
+       <resource culture="ar-kw" name="isfamilymemberRequired" value="AR: Please provide  Is Family Member"></resource>
+       <resource culture="ar-kw" name="registrationdate" value="AR:  Registration Date"></resource>
+       <resource culture="ar-kw" name="registrationdateRequired" value="AR: Please provide  Registration Date"></resource>
+       <resource culture="ar-kw" name="isactive" value="AR:  Is Active"></resource>
+       <resource culture="ar-kw" name="isreviewed" value="AR:  Is Reviewed"></resource>
+       <resource culture="ar-kw" name="reviewdate" value="AR:  Review Date"></resource>
+       <resource culture="ar-kw" name="reviewednote" value="AR:  Reviewed Note"></resource>
+       <resource culture="ar-kw" name="reviewedby" value="AR:  Reviewed By"></resource>
+       <resource culture="ar-kw" name="isblocked" value="AR:  Is Blocked"></resource>
+       <resource culture="ar-kw" name="blockeddate" value="AR:  Blocked Date"></resource>
+       <resource culture="ar-kw" name="blockednote" value="AR:  Blocked Note"></resource>
+		<resource culture="ar-kw" name="registrationinfoList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="registrationinfoCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="registrationinfoUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="registrationinfoDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="membershipcode" value=" Member Ship Code"></resource>
+       <resource culture="en-us" name="membershipcodeRequired" value="Please provide  Member Ship Code"></resource>
+       <resource culture="en-us" name="ocfileid" value=" O C File I D"></resource>
+       <resource culture="en-us" name="ocfileidRequired" value="Please provide  O C File I D"></resource>
+       <resource culture="en-us" name="ocfamilymemberid" value=" O C Family Member I D"></resource>
+       <resource culture="en-us" name="isfamilymember" value=" Is Family Member"></resource>
+       <resource culture="en-us" name="isfamilymemberRequired" value="Please provide  Is Family Member"></resource>
+       <resource culture="en-us" name="registrationdate" value=" Registration Date"></resource>
+       <resource culture="en-us" name="registrationdateRequired" value="Please provide  Registration Date"></resource>
+       <resource culture="en-us" name="isactive" value=" Is Active"></resource>
+       <resource culture="en-us" name="isreviewed" value=" Is Reviewed"></resource>
+       <resource culture="en-us" name="reviewdate" value=" Review Date"></resource>
+       <resource culture="en-us" name="reviewednote" value=" Reviewed Note"></resource>
+       <resource culture="en-us" name="reviewedby" value=" Reviewed By"></resource>
+       <resource culture="en-us" name="isblocked" value=" Is Blocked"></resource>
+       <resource culture="en-us" name="blockeddate" value=" Blocked Date"></resource>
+       <resource culture="en-us" name="blockednote" value=" Blocked Note"></resource>
+        <resource culture="en-us" name="registrationinfoList" value="View All"></resource>
+		<resource culture="en-us" name="registrationinfoCreate" value="Create"></resource>
+		<resource culture="en-us" name="registrationinfoUpdate" value="Update"></resource>
+		<resource culture="en-us" name="registrationinfoDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

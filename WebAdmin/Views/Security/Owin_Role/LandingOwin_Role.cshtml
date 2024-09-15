@@ -1,0 +1,140 @@
+﻿
+@using CLL
+@model BDO.Core.DataAccessObjects.SecurityModels.owin_roleEntity
+@inject CLL.Localization.LocalizeService SharedLocalizer
+
+@using Microsoft.Extensions.Options
+@{
+    ViewData["Title"] = @SharedLocalizer.GetLocalizedHtmlString("OWIN_ROLE_LIST");
+}
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-footer">
+                <h5 class="card-title">@SharedLocalizer.GetLocalizedHtmlString("OWIN_ROLE_LIST")</h5>
+            </div>
+            <!-- /.card-header -->
+
+            <div class="card-body">
+                <form method="POST" id="frmDTOwin_Rolelist" class="my-login-validation" novalidate="" autocomplete="off">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <table id="DTOwin_Rolelist" class="table table-striped table-bordered" @*style="width:100%"*@ cellspacing="0">
+                                <thead>
+                                    <tr>
+										 <th><label class="labelNormal  " asp-for="roleid"></label></th>
+										 <th><label class="labelNormal  " asp-for="rolename"></label></th>
+										 <th><label class="labelNormal  " asp-for="isactive"></label></th>
+										 <th><label class="labelNormal  " asp-for="description"></label></th>
+                                        <th>@SharedLocalizer.GetLocalizedHtmlString("ACTIONS_BUTTONS")</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+            <!-- ./card-body -->
+            <div class="card-footer">
+                <div class="row">
+                    <div class="col-md-12">
+
+                        <!-- /.description-block -->
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.card-footer -->
+        </div>
+        <!-- /.card -->
+    </div>
+    <!-- /.col -->
+</div>
+
+
+@section Scripts {
+    <script>
+        $(function () {
+             var dt = $("#DTOwin_Rolelist").DataTable({
+				 "ajax": $.fn.dataTable.json({ url: "/Owin_Role/ListOwin_Role" }),
+				 "buttons": { 
+					 "buttons": [ 
+						 { 
+							 text: '<i class="fas fa-plus-square" aria-hidden="true"></i> @SharedLocalizer.GetLocalizedHtmlString("ADD_NEW_RECORD")', 
+							 className: 'btn btn-primary mr-1', 
+							 action: function (e, dt, node, config) { 
+								 location.href = "/Owin_Role/AddOwin_Role"; 
+							 },
+							exportOptions: {
+								columns: [1, 2,3]
+							}
+						 }, 
+						 { 
+							 extend: 'copy', 
+							 text: '<i class="fas fa-copy" aria-hidden="true"></i> @SharedLocalizer.GetLocalizedHtmlString("COPY_LIST")',
+							className: 'btn btn-info mr-1',
+							exportOptions: {
+								columns: [1, 2,3]
+							}
+						 }, 
+						 { 
+							 extend: 'excel', 
+							 text: '<i class="fas fa-file-excel" aria-hidden="true"></i> @SharedLocalizer.GetLocalizedHtmlString("EXCEL_EXPORT")',
+							className: 'btn btn-info mr-1',
+							exportOptions: {
+								columns: [1, 2, 3]
+							}
+						 }, 
+						 { 
+							 extend: 'csv', 
+							 text: '<i class="fas fa-file-csv" aria-hidden="true"></i> @SharedLocalizer.GetLocalizedHtmlString("CSV_EXPORT")',
+							className: 'btn btn-info mr-1',
+							exportOptions: {
+								columns: [1, 2, 3]
+							}
+						 }, 
+						 { 
+							 extend: 'pdf', 
+							 text: '<i class="fa fa-print" aria-hidden="true"></i> @SharedLocalizer.GetLocalizedHtmlString("PRINT")', 
+							 className: 'btn btn-info mr-1', 
+							 exportOptions: {
+								columns: [1, 2, 3]
+							}
+						 }] 
+				 }, 
+				 columnDefs: [ 
+					 { targets: 0, "visible": false, searchable: false },
+					 { targets: 1, "visible": true, "sortable": true },
+					 { targets: 2, "visible": true, "sortable": true },
+					 { targets: 3, "visible": true, "sortable": true },
+					 { targets: 4, "visible": true, "sortable": false, "className": "text-center" }
+				 ], 
+				 "columns": [ 
+					 { "data": "roleid", "name": "roleid", "autoWidth": true },
+					 { "data": "rolename", "name": "rolename", "autoWidth": true },
+					 //{ "data": "isactive", "name": "isactive", "autoWidth": true },
+					 {
+						"data": "isactive", "className": "text-center", render: function (data, type, full, row) {
+							var cntrl = full.isactive == true || full.isactive == "Yes" ? "<i class='fa fa-check check' aria-hidden='true'></i>" : "<i class='fa fa-times notcheck' aria-hidden='true'></i>";
+                            return cntrl;
+                        }
+                    },
+					 { "data": "description", "name": "description", "autoWidth": true },
+					 { 
+							 "data": "datatablebuttonscode", render: function (data, type, full, row) { 
+									 return data;
+							 } 
+					 } 
+				 ] 
+			 }); 
+
+        });
+
+    </script>
+}
+
+
+
+

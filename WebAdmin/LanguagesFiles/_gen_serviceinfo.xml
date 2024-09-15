@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="servicear" value="الخدمة باللغة العربية"></resource>
+       <resource culture="ar-kw" name="servicearRequired" value="يرجى تقديم اسم الخدمة باللغة العربية"></resource>
+       <resource culture="ar-kw" name="serviceen" value="الخدمة باللغة الإنجليزية"></resource>
+       <resource culture="ar-kw" name="serviceenRequired" value="يرجى تقديم اسم الخدمة باللغة الإنجليزية"></resource>
+       <resource culture="ar-kw" name="descriptionar" value="الوصف باللغة العربية"></resource>
+       <resource culture="ar-kw" name="descriptionen" value="الوصف باللغة الإنجليزية"></resource>
+       <resource culture="ar-kw" name="isactive" value="نشط"></resource>
+		<resource culture="ar-kw" name="serviceinfoList" value="مشاهدة الكل"></resource>
+		<resource culture="ar-kw" name="serviceinfoCreate" value="خلق"></resource>
+		<resource culture="ar-kw" name="serviceinfoUpdate" value="تحديث"></resource>
+		<resource culture="ar-kw" name="serviceinfoDetails" value="التفاصيل"></resource>
+
+	<!--  ar-kwabic (ar-kw) -->
+
+	<!--  English (en-US) -->
+	<resource culture="en-us" name="servicear" value=" Service in Arabic"></resource>
+	<resource culture="en-us" name="servicearRequired" value="Please provide Service in Arabic"></resource>
+	<resource culture="en-us" name="serviceen" value=" Service in English"></resource>
+	<resource culture="en-us" name="serviceenRequired" value="Please provide  Service in English"></resource>
+	<resource culture="en-us" name="descriptionar" value=" Description in Arabic"></resource>
+	<resource culture="en-us" name="descriptionen" value=" Description in English"></resource>
+	<resource culture="en-us" name="isactive" value=" Is Active"></resource>
+	<resource culture="en-us" name="serviceinfoList" value="View All"></resource>
+	<resource culture="en-us" name="serviceinfoCreate" value="Create"></resource>
+	<resource culture="en-us" name="serviceinfoUpdate" value="Update"></resource>
+	<resource culture="en-us" name="serviceinfoDetails" value="Detail"></resource>
+	<!--  English (en-US) -->
+
+</resources>

@@ -1,0 +1,1322 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <TypeScriptTarget>ES6</TypeScriptTarget>
+  </PropertyGroup>
+
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <TypeScriptTarget>ES6</TypeScriptTarget>
+  </PropertyGroup>
+
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <TypeScriptTarget>ES6</TypeScriptTarget>
+  </PropertyGroup>
+
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <TypeScriptTarget>ES6</TypeScriptTarget>
+  </PropertyGroup>
+
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
+    <TypeScriptTarget>ES6</TypeScriptTarget>
+  </PropertyGroup>
+
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
+    <TypeScriptTarget>ES6</TypeScriptTarget>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <CopyRefAssembliesToPublishDirectory>false</CopyRefAssembliesToPublishDirectory>
+    <UserSecretsId>105060e9-3994-4e4c-8636-1babbe1377c7</UserSecretsId>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <Platforms>AnyCPU;x64;x86</Platforms>
+	<RunAnalyzersDuringBuild>False</RunAnalyzersDuringBuild>
+	<GenerateDocumentationFile>True</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>C:\Projects\WebTemplates\CoreWebTemplate_V3.1\WebSolutionTemplate\WebAdmin\WebAdmin.xml</DocumentationFile>
+    <NoWarn>1701;1702;1998;1587</NoWarn>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x86'">
+    <DocumentationFile>C:\Projects\WebTemplates\CoreWebTemplate_V3.1\WebSolutionTemplate\WebAdmin\WebAdmin.xml</DocumentationFile>
+    <NoWarn>1701;1702;1998;1587</NoWarn>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <DocumentationFile>C:\Projects\Saheel-Application-Integration-Core\WebSolutionTemplate\WebAdmin\bin\Debug\net6.0\WebAdmin.xml</DocumentationFile>
+    <NoWarn>1701;1702;1998;1587</NoWarn>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <NoWarn>1701;1702;1998;1587</NoWarn>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <NoWarn>1701;1702;1998;1587</NoWarn>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x86'">
+    <NoWarn>1701;1702;1998;1587</NoWarn>
+  </PropertyGroup>
+  <ItemGroup>
+    <Content Remove="Views\Account\AddUser.cshtml" />
+    <Content Remove="Views\OnlineUser\Components\ShowUserList\Default.cshtml" />
+    <Content Remove="wwwroot\lib\customjs\cusfileuploadpropic.js" />
+    <Content Remove="wwwroot\lib\customjs\General\genFaq.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Controllers\Extended\**" />
+    <Compile Remove="Controllers\UserControl\**" />
+    <Compile Remove="ViewComponents\UserControl\**" />
+    <Compile Remove="Views\Account\UserManagement\**" />
+    <Compile Remove="Views\Shared\Components\UserControl\**" />
+    <Compile Remove="wwwroot\lib\admin-lte\css\alt\**" />
+    <Compile Remove="wwwroot\lib\bootstrap\dist\**" />
+    <Compile Remove="wwwroot\lib\customjs\Gen_ImageGallery\**" />
+    <Compile Remove="wwwroot\lib\datatables\**" />
+    <Compile Remove="wwwroot\lib\popperjs\**" />
+    <Content Remove="Controllers\Extended\**" />
+    <Content Remove="Controllers\UserControl\**" />
+    <Content Remove="ViewComponents\UserControl\**" />
+    <Content Remove="Views\Account\UserManagement\**" />    
+    <Content Remove="Views\Shared\Components\UserControl\**" />
+    <Content Remove="wwwroot\lib\admin-lte\css\alt\**" />
+    <Content Remove="wwwroot\lib\bootstrap\dist\**" />
+    <Content Remove="wwwroot\lib\customjs\Gen_ImageGallery\**" />
+    <Content Remove="wwwroot\lib\datatables\**" />
+    <Content Remove="wwwroot\lib\popperjs\**" />
+    <EmbeddedResource Remove="Controllers\Extended\**" />
+    <EmbeddedResource Remove="Controllers\UserControl\**" />
+    <EmbeddedResource Remove="ViewComponents\UserControl\**" />
+    <EmbeddedResource Remove="Views\Account\UserManagement\**" />    
+    <EmbeddedResource Remove="Views\Shared\Components\UserControl\**" />
+    <EmbeddedResource Remove="wwwroot\lib\admin-lte\css\alt\**" />
+    <EmbeddedResource Remove="wwwroot\lib\bootstrap\dist\**" />
+    <EmbeddedResource Remove="wwwroot\lib\customjs\Gen_ImageGallery\**" />
+    <EmbeddedResource Remove="wwwroot\lib\datatables\**" />
+    <EmbeddedResource Remove="wwwroot\lib\popperjs\**" />
+    <None Remove="Controllers\Extended\**" />
+    <None Remove="Controllers\UserControl\**" />
+    <None Remove="ViewComponents\UserControl\**" />
+    <None Remove="Views\Account\UserManagement\**" />
+    <None Remove="Views\General\OCFamilyMembersRegistrationProcess\**" />
+    <None Remove="Views\General\OCOfficersRegistrationProcess\**" />
+    <None Remove="Views\Shared\Components\UserControl\**" />
+    <None Remove="wwwroot\lib\admin-lte\css\alt\**" />
+    <None Remove="wwwroot\lib\bootstrap\dist\**" />
+    <None Remove="wwwroot\lib\customjs\Gen_ImageGallery\**" />
+    <None Remove="wwwroot\lib\datatables\**" />
+    <None Remove="wwwroot\lib\popperjs\**" />
+    <TypeScriptCompile Remove="Controllers\Extended\**" />
+    <TypeScriptCompile Remove="Controllers\UserControl\**" />
+    <TypeScriptCompile Remove="ViewComponents\UserControl\**" />
+    <TypeScriptCompile Remove="Views\General\OCFamilyMembersRegistrationProcess\**" />
+    <TypeScriptCompile Remove="Views\General\OCOfficersRegistrationProcess\**" />
+    <TypeScriptCompile Remove="Views\Shared\Components\UserControl\**" />
+    <TypeScriptCompile Remove="wwwroot\lib\bootstrap\dist\**" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Controllers\OwinUserController.cs" />
+    <Compile Remove="SignalRServices\MessageHub.cs" />
+    <Compile Remove="SignalRServices\NotificationUserHub.cs" />
+  </ItemGroup>
+
+  <ItemGroup>    
+    <Content Remove="wwwroot\lib\customjs\UserManagement\usermanagement.js" />
+    <Content Remove="wwwroot\Reports\KAFGetMilitaryInfo.rdlc" />
+    <Content Remove="wwwroot\Reports\Sahel_ReenlistedRecruitmentService.rdlc" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="EmailTemplate\accountActivation.html" />
+    <None Remove="EmailTemplate\accountActivationEN.html" />
+    <None Remove="EmailTemplate\contactUs.html" />
+    <None Remove="EmailTemplate\contactUsEN.html" />
+    <None Remove="EmailTemplate\emailTemplateVote.html" />
+    <None Remove="EmailTemplate\emailTemplateVoteEN.html" />
+    <None Remove="EmailTemplate\forgetPasswordAuthCodeAR-KW.html" />
+    <None Remove="EmailTemplate\forgetPasswordAuthCodeEN-US.html" />
+    <None Remove="EmailTemplate\sendMailToMember.html" />
+    <None Remove="EmailTemplate\sendMailToMemberEN.html" />
+    <None Remove="LanguagesFiles\_Common.xml" />
+    <None Remove="LanguagesFiles\_CommonHtml_resource.xml" />
+    <None Remove="LanguagesFiles\_configsmsgateway.xml" />
+    <None Remove="LanguagesFiles\_configsmsgatewaydetail.xml" />
+    <None Remove="LanguagesFiles\_gen_faq.xml" />
+    <None Remove="LanguagesFiles\_gen_faqcategory.xml" />
+    <None Remove="LanguagesFiles\_gen_imagegallary.xml" />
+    <None Remove="LanguagesFiles\_gen_imagegallarycategory.xml" />
+    <None Remove="LanguagesFiles\_gen_militaryunit.xml" />
+    <None Remove="LanguagesFiles\_gen_news.xml" />
+    <None Remove="LanguagesFiles\_gen_newscategory.xml" />
+    <None Remove="LanguagesFiles\_gen_publication.xml" />
+    <None Remove="LanguagesFiles\_gen_services.xml" />
+    <None Remove="LanguagesFiles\_gen_servicestype.xml" />
+    <None Remove="LanguagesFiles\_gen_usefullink.xml" />
+    <None Remove="LanguagesFiles\_gen_usefullinkcategory.xml" />
+    <None Remove="LanguagesFiles\_notificationfilerequestinfo.xml" />
+    <None Remove="LanguagesFiles\_notificationregisteredapplicationinfo.xml" />
+    <None Remove="LanguagesFiles\_notificationrequestinfo.xml" />
+    <None Remove="LanguagesFiles\_notificationrequestrecipientlist.xml" />
+    <None Remove="LanguagesFiles\_oc_familymembersinfo.xml" />
+    <None Remove="LanguagesFiles\_oc_officersfileinfo.xml" />
+    <None Remove="LanguagesFiles\_oc_paymentinfo.xml" />
+    <None Remove="LanguagesFiles\_oc_registrationinfo.xml" />
+    <None Remove="LanguagesFiles\_oc_registrationinfomaster.xml" />
+    <None Remove="LanguagesFiles\_owin_formaction.xml" />
+    <None Remove="LanguagesFiles\_owin_forminfo.xml" />
+    <None Remove="LanguagesFiles\_owin_lastworkingpage.xml" />
+    <None Remove="LanguagesFiles\_owin_role.xml" />
+    <None Remove="LanguagesFiles\_owin_rolepermission.xml" />
+    <None Remove="LanguagesFiles\_owin_user.xml" />
+    <None Remove="LanguagesFiles\_owin_userclaims.xml" />
+    <None Remove="LanguagesFiles\_owin_userlogintrail.xml" />
+    <None Remove="LanguagesFiles\_owin_userpasswordresetinfo.xml" />
+    <None Remove="LanguagesFiles\_owin_userprefferencessettings.xml" />
+    <None Remove="LanguagesFiles\_owin_userrole.xml" />
+    <None Remove="LanguagesFiles\_owin_userroles.xml" />
+    <None Remove="LanguagesFiles\_owin_userstatuschangehistory.xml" />
+    <None Remove="LanguagesFiles\_paytransactioninfo.xml" />
+    <None Remove="LanguagesFiles\_Responses.xml" />
+    <None Remove="LanguagesFiles\_sahelnotificationdata.xml" />
+    <None Remove="LanguagesFiles\_servicestatusmappedinfo.xml" />
+    <None Remove="LanguagesFiles\_Status.xml" />
+    <None Remove="LanguagesFiles\_transervicerequestsalary.xml" />
+    <None Remove="LanguagesFiles\_tran_login.xml" />
+    <None Remove="LanguagesFiles\_tran_pacisigninrequestinfo.xml" />
+    <None Remove="WebAdmin.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="LanguagesFiles\_gen_faqcategory.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="EmailTemplate\accountActivation.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="EmailTemplate\accountActivationEN.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="EmailTemplate\contactUs.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="EmailTemplate\contactUsEN.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="EmailTemplate\emailTemplateVote.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="EmailTemplate\emailTemplateVoteEN.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="EmailTemplate\forgetPasswordAuthCodeAR-KW.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="EmailTemplate\forgetPasswordAuthCodeEN-US.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="EmailTemplate\sendMailToMember.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="EmailTemplate\sendMailToMemberEN.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="LanguagesFiles\_Common.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="LanguagesFiles\_CommonHtml_resource.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="LanguagesFiles\_configsmsgateway.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="LanguagesFiles\_configsmsgatewaydetail.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="LanguagesFiles\_gen_faq.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="LanguagesFiles\_gen_faqcategory.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="LanguagesFiles\_gen_imagegallary.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="LanguagesFiles\_gen_imagegallarycategory.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="LanguagesFiles\_gen_militaryunit.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="LanguagesFiles\_gen_news.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="LanguagesFiles\_gen_newscategory.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="LanguagesFiles\_gen_publication.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="LanguagesFiles\_gen_services.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="LanguagesFiles\_gen_servicestype.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="LanguagesFiles\_gen_usefullink.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="LanguagesFiles\_gen_usefullinkcategory.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="LanguagesFiles\_notificationfilerequestinfo.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="LanguagesFiles\_notificationregisteredapplicationinfo.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="LanguagesFiles\_notificationrequestinfo.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="LanguagesFiles\_notificationrequestrecipientlist.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="LanguagesFiles\_oc_familymembersinfo.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="LanguagesFiles\_oc_officersfileinfo.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="LanguagesFiles\_oc_paymentinfo.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="LanguagesFiles\_oc_registrationinfo.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="LanguagesFiles\_oc_registrationinfomaster.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="LanguagesFiles\_owin_formaction.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="LanguagesFiles\_owin_forminfo.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="LanguagesFiles\_owin_lastworkingpage.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="LanguagesFiles\_owin_role.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="LanguagesFiles\_owin_rolepermission.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="LanguagesFiles\_owin_user.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="LanguagesFiles\_owin_userclaims.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="LanguagesFiles\_owin_userlogintrail.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="LanguagesFiles\_owin_userpasswordresetinfo.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="LanguagesFiles\_owin_userprefferencessettings.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="LanguagesFiles\_owin_userrole.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="LanguagesFiles\_owin_userroles.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="LanguagesFiles\_owin_userstatuschangehistory.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="LanguagesFiles\_paytransactioninfo.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="LanguagesFiles\_Responses.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="LanguagesFiles\_sahelnotificationdata.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="LanguagesFiles\_servicestatusmappedinfo.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="LanguagesFiles\_Status.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="LanguagesFiles\_transervicerequestsalary.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="LanguagesFiles\_tran_login.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="LanguagesFiles\_tran_pacisigninrequestinfo.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="WebAdmin.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="wwwroot\Reports\KAFGetMilitaryInfo.rdlc" />
+    <EmbeddedResource Include="wwwroot\Reports\Sahel_ReenlistedRecruitmentService.rdlc" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Views\OnlineUser\Components\ShowUserList\Default.cshtml" />
+    <None Include="wwwroot\lib\admin-lte\css\adminltertl.css.map" />
+    <None Include="wwwroot\lib\admin-lte\css\adminltertl.min.css.map" />
+    <None Include="wwwroot\lib\admin-lte\js\adminlte.js" />
+    <None Include="wwwroot\lib\admin-lte\js\adminlte.js.map" />
+    <None Include="wwwroot\lib\admin-lte\js\adminlte.min.js" />
+    <None Include="wwwroot\lib\admin-lte\js\adminlte.min.js.map" />
+    <None Include="wwwroot\lib\admin-lte\js\demo.js" />
+    <None Include="wwwroot\lib\admin-lte\js\demo.min.js" />
+    <None Include="wwwroot\lib\admin-lte\js\pages\dashboard.js" />
+    <None Include="wwwroot\lib\admin-lte\js\pages\dashboard.min.js" />
+    <None Include="wwwroot\lib\admin-lte\js\pages\dashboard2.js" />
+    <None Include="wwwroot\lib\admin-lte\js\pages\dashboard2.min.js" />
+    <None Include="wwwroot\lib\admin-lte\js\pages\dashboard3.js" />
+    <None Include="wwwroot\lib\admin-lte\js\pages\dashboard3.min.js" />
+    <None Include="wwwroot\lib\bootstrap-sweetalert\sweetalert.js" />
+    <None Include="wwwroot\lib\bootstrap-sweetalert\sweetalert.min.css.map" />
+    <None Include="wwwroot\lib\bootstrap-sweetalert\sweetalert.min.js" />
+    <None Include="wwwroot\lib\Chartjs\chart.js" />
+    <None Include="wwwroot\lib\Chartjs\chart.min.js" />
+    <None Include="wwwroot\lib\customjs\ChainEffectJS\ChainEffectJTriggers.js" />
+    <None Include="wwwroot\lib\customjs\cusfileuploadpropic.js" />
+    <None Include="wwwroot\lib\customjs\HubContext\HubUserContext.js" />
+    <None Include="wwwroot\lib\customjs\HubContext\HubUserTrackingContext.js" />
+    <None Include="wwwroot\lib\customjs\OC_RegistrationProcess\OC_RegistrationProcess.js" />
+    <None Include="wwwroot\lib\customjs\OfficersClub\OC_PaymentInfo\OC_PaymentInfo.js" />
+    <None Include="wwwroot\lib\customjs\OfficersClub\OC_RegistrationOfficersBlock\OC_RegistrationOfficersBlock.js" />
+    <None Include="wwwroot\lib\customjs\OfficersClub\OC_RegistrationOfficersFamilyBlock\OC_RegistrationOfficersFamilyBlock.js" />
+    <None Include="wwwroot\lib\customjs\OfficersClub\OC_RegistrationOfficersFamilyReview\OC_RegistrationOfficersFamilyReview.js" />
+    <None Include="wwwroot\lib\customjs\OfficersClub\OC_RegistrationOfficersReview\OC_RegistrationOfficersReview.js" />
+    <None Include="wwwroot\lib\customjs\OfficersClub\OC_RegistrationInfoMaster\OC_RegistrationInfoMaster.js" />
+    <None Include="wwwroot\lib\customjs\Owin_Role\Owin_Role.js" />
+    <None Include="wwwroot\lib\customjs\profileactivities.js" />
+    <None Include="wwwroot\lib\customjs\jqajaxproxy.js" />
+    <None Include="wwwroot\lib\customjs\ServiceStatusMappedInfo\ServiceStatusMappedInfo.js" />
+    <None Include="wwwroot\lib\customjs\UserManagement\usermanagement.js" />
+    <None Include="wwwroot\lib\customjs\userprofilefunctions.js" />
+    <None Include="wwwroot\lib\customjs\utilityfunctions.js" />
+    <None Include="wwwroot\lib\datatables.net-bs4\dataTables.bootstrap4.js" />
+    <None Include="wwwroot\lib\datatables.net-bs4\dataTables.bootstrap4.min.js" />
+    <None Include="wwwroot\lib\font-awesome\js\all.js" />
+    <None Include="wwwroot\lib\font-awesome\js\all.min.js" />
+    <None Include="wwwroot\lib\font-awesome\js\brands.js" />
+    <None Include="wwwroot\lib\font-awesome\js\brands.min.js" />
+    <None Include="wwwroot\lib\font-awesome\js\conflict-detection.js" />
+    <None Include="wwwroot\lib\font-awesome\js\conflict-detection.min.js" />
+    <None Include="wwwroot\lib\font-awesome\js\fontawesome.js" />
+    <None Include="wwwroot\lib\font-awesome\js\fontawesome.min.js" />
+    <None Include="wwwroot\lib\font-awesome\js\regular.js" />
+    <None Include="wwwroot\lib\font-awesome\js\regular.min.js" />
+    <None Include="wwwroot\lib\font-awesome\js\solid.js" />
+    <None Include="wwwroot\lib\font-awesome\js\solid.min.js" />
+    <None Include="wwwroot\lib\font-awesome\js\v4-shims.js" />
+    <None Include="wwwroot\lib\font-awesome\js\v4-shims.min.js" />
+    <None Include="wwwroot\lib\font-awesome\sprites\brands.svg" />
+    <None Include="wwwroot\lib\font-awesome\sprites\regular.svg" />
+    <None Include="wwwroot\lib\font-awesome\sprites\solid.svg" />
+    <None Include="wwwroot\lib\font-awesome\webfonts\fa-brands-400.svg" />
+    <None Include="wwwroot\lib\font-awesome\webfonts\fa-brands-400.woff2" />
+    <None Include="wwwroot\lib\font-awesome\webfonts\fa-regular-400.svg" />
+    <None Include="wwwroot\lib\font-awesome\webfonts\fa-regular-400.woff2" />
+    <None Include="wwwroot\lib\font-awesome\webfonts\fa-solid-900.svg" />
+    <None Include="wwwroot\lib\font-awesome\webfonts\fa-solid-900.woff2" />
+    <None Include="wwwroot\lib\Google_Chart\charts\loader.js" />
+    <None Include="wwwroot\lib\Google_Chart\charts\offlineSaving\js\jsapi_compiled_corechart_module.js" />
+    <None Include="wwwroot\lib\Google_Chart\charts\offlineSaving\js\jsapi_compiled_default_module.js" />
+    <None Include="wwwroot\lib\Google_Chart\charts\offlineSaving\js\jsapi_compiled_format_module.js" />
+    <None Include="wwwroot\lib\Google_Chart\charts\offlineSaving\js\jsapi_compiled_fw_module.js" />
+    <None Include="wwwroot\lib\Google_Chart\charts\offlineSaving\js\jsapi_compiled_gauge_module.js" />
+    <None Include="wwwroot\lib\Google_Chart\charts\offlineSaving\js\jsapi_compiled_orgchart_module.js" />
+    <None Include="wwwroot\lib\Google_Chart\charts\offlineSaving\js\jsapi_compiled_timeline_module.js" />
+    <None Include="wwwroot\lib\Google_Chart\charts\offlineSaving\js\jsapi_compiled_ui_module.js" />
+    <None Include="wwwroot\lib\Google_Chart\charts\offlineSaving\loader.js" />
+    <None Include="wwwroot\lib\Google_Chart\charts\offlineSaving\third_party\dygraphs\dygraph-tickers-combined.js" />
+    <None Include="wwwroot\lib\jquery-ajax-unobtrusive\jquery.unobtrusive-ajax.js" />
+    <None Include="wwwroot\lib\jquery-ajax-unobtrusive\jquery.unobtrusive-ajax.min.js" />
+    <None Include="wwwroot\lib\jquery-mapael\js\jquery.mapael.js" />
+    <None Include="wwwroot\lib\jquery-mapael\js\jquery.mapael.min.js" />
+    <None Include="wwwroot\lib\jquery-mapael\js\maps\france_departments.js" />
+    <None Include="wwwroot\lib\jquery-mapael\js\maps\france_departments.min.js" />
+    <None Include="wwwroot\lib\jquery-mapael\js\maps\usa_states.js" />
+    <None Include="wwwroot\lib\jquery-mapael\js\maps\usa_states.min.js" />
+    <None Include="wwwroot\lib\jquery-mapael\js\maps\world_countries.js" />
+    <None Include="wwwroot\lib\jquery-mapael\js\maps\world_countries.min.js" />
+    <None Include="wwwroot\lib\jquery-mapael\js\maps\world_countries_mercator.js" />
+    <None Include="wwwroot\lib\jquery-mapael\js\maps\world_countries_mercator.min.js" />
+    <None Include="wwwroot\lib\jquery-mapael\js\maps\world_countries_miller.js" />
+    <None Include="wwwroot\lib\jquery-mapael\js\maps\world_countries_miller.min.js" />
+    <None Include="wwwroot\lib\jquery-mousewheel\jquery.mousewheel.js" />
+    <None Include="wwwroot\lib\jquery-mousewheel\jquery.mousewheel.min.js" />
+    <None Include="wwwroot\lib\jquery-validate\additional-methods.js" />
+    <None Include="wwwroot\lib\jquery-validate\additional-methods.min.js" />
+    <None Include="wwwroot\lib\jquery-validate\jquery.validate.js" />
+    <None Include="wwwroot\lib\jquery-validate\jquery.validate.min.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_ar.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_ar.min.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_az.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_az.min.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_bg.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_bg.min.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_bn_BD.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_bn_BD.min.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_ca.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_ca.min.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_cs.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_cs.min.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_da.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_da.min.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_de.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_de.min.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_el.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_el.min.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_es.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_es.min.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_es_AR.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_es_AR.min.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_es_PE.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_es_PE.min.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_et.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_et.min.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_eu.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_eu.min.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_fa.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_fa.min.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_fi.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_fi.min.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_fr.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_fr.min.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_ge.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_ge.min.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_gl.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_gl.min.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_he.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_he.min.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_hr.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_hr.min.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_hu.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_hu.min.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_hy_AM.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_hy_AM.min.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_id.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_id.min.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_is.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_is.min.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_it.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_it.min.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_ja.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_ja.min.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_ka.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_ka.min.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_kk.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_kk.min.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_ko.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_ko.min.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_lt.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_lt.min.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_lv.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_lv.min.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_mk.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_mk.min.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_my.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_my.min.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_nl.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_nl.min.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_no.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_no.min.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_pl.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_pl.min.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_pt_BR.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_pt_BR.min.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_pt_PT.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_pt_PT.min.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_ro.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_ro.min.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_ru.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_ru.min.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_sd.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_sd.min.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_si.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_si.min.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_sk.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_sk.min.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_sl.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_sl.min.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_sr.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_sr.min.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_sr_lat.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_sr_lat.min.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_sv.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_sv.min.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_th.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_th.min.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_tj.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_tj.min.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_tr.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_tr.min.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_uk.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_uk.min.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_ur.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_ur.min.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_vi.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_vi.min.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_zh.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_zh.min.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_zh_TW.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\messages_zh_TW.min.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\methods_de.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\methods_de.min.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\methods_es_CL.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\methods_es_CL.min.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\methods_fi.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\methods_fi.min.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\methods_it.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\methods_it.min.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\methods_nl.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\methods_nl.min.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\methods_pt.js" />
+    <None Include="wwwroot\lib\jquery-validate\localization\methods_pt.min.js" />
+    <None Include="wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.js" />
+    <None Include="wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.min.js" />
+    <None Include="wwwroot\lib\jquery-validation\dist\additional-methods.js" />
+    <None Include="wwwroot\lib\jquery-validation\dist\additional-methods.min.js" />
+    <None Include="wwwroot\lib\jquery-validation\dist\jquery.validate.js" />
+    <None Include="wwwroot\lib\jquery-validation\dist\jquery.validate.min.js" />
+    <None Include="wwwroot\lib\jquery-validation\LICENSE.md" />
+    <None Include="wwwroot\lib\jquery.ui\jquery-ui.js" />
+    <None Include="wwwroot\lib\jquery.ui\jquery-ui.min.js" />
+    <None Include="wwwroot\lib\jquery\jquery.js" />
+    <None Include="wwwroot\lib\jquery\jquery.min.js" />
+    <None Include="wwwroot\lib\overlayscrollbars\js\OverlayScrollbars.js" />
+    <None Include="wwwroot\lib\overlayscrollbars\js\OverlayScrollbars.min.js" />
+    <None Include="wwwroot\lib\raphael\raphael.js" />
+    <None Include="wwwroot\lib\raphael\raphael.min.js" />
+    <None Include="wwwroot\lib\temp\js\custom\account\api-keys\api-keys.js" />
+    <None Include="wwwroot\lib\temp\js\custom\account\referrals\referral-program.js" />
+    <None Include="wwwroot\lib\temp\js\custom\account\security\license-usage.js" />
+    <None Include="wwwroot\lib\temp\js\custom\account\security\security-summary.js" />
+    <None Include="wwwroot\lib\temp\js\custom\account\settings\deactivate-account.js" />
+    <None Include="wwwroot\lib\temp\js\custom\account\settings\profile-details.js" />
+    <None Include="wwwroot\lib\temp\js\custom\account\settings\signin-methods.js" />
+    <None Include="wwwroot\lib\temp\js\custom\apps\calendar\calendar.js" />
+    <None Include="wwwroot\lib\temp\js\custom\apps\chat\chat.js" />
+    <None Include="wwwroot\lib\temp\js\custom\apps\customers\add.js" />
+    <None Include="wwwroot\lib\temp\js\custom\apps\customers\list\export.js" />
+    <None Include="wwwroot\lib\temp\js\custom\apps\customers\list\list.js" />
+    <None Include="wwwroot\lib\temp\js\custom\apps\customers\update.js" />
+    <None Include="wwwroot\lib\temp\js\custom\apps\customers\view\add-payment.js" />
+    <None Include="wwwroot\lib\temp\js\custom\apps\customers\view\adjust-balance.js" />
+    <None Include="wwwroot\lib\temp\js\custom\apps\customers\view\invoices.js" />
+    <None Include="wwwroot\lib\temp\js\custom\apps\customers\view\payment-method.js" />
+    <None Include="wwwroot\lib\temp\js\custom\apps\customers\view\payment-table.js" />
+    <None Include="wwwroot\lib\temp\js\custom\apps\customers\view\statement.js" />
+    <None Include="wwwroot\lib\temp\js\custom\apps\ecommerce\catalog\categories.js" />
+    <None Include="wwwroot\lib\temp\js\custom\apps\ecommerce\catalog\products.js" />
+    <None Include="wwwroot\lib\temp\js\custom\apps\ecommerce\catalog\save-category.js" />
+    <None Include="wwwroot\lib\temp\js\custom\apps\ecommerce\catalog\save-product.js" />
+    <None Include="wwwroot\lib\temp\js\custom\apps\file-manager\list.js" />
+    <None Include="wwwroot\lib\temp\js\custom\apps\file-manager\settings.js" />
+    <None Include="wwwroot\lib\temp\js\custom\apps\inbox\compose.js" />
+    <None Include="wwwroot\lib\temp\js\custom\apps\inbox\listing.js" />
+    <None Include="wwwroot\lib\temp\js\custom\apps\inbox\reply.js" />
+    <None Include="wwwroot\lib\temp\js\custom\apps\invoices\create.js" />
+    <None Include="wwwroot\lib\temp\js\custom\apps\projects\list\list.js" />
+    <None Include="wwwroot\lib\temp\js\custom\apps\projects\project\project.js" />
+    <None Include="wwwroot\lib\temp\js\custom\apps\projects\settings\settings.js" />
+    <None Include="wwwroot\lib\temp\js\custom\apps\projects\targets\targets.js" />
+    <None Include="wwwroot\lib\temp\js\custom\apps\projects\users\users.js" />
+    <None Include="wwwroot\lib\temp\js\custom\apps\subscriptions\add\advanced.js" />
+    <None Include="wwwroot\lib\temp\js\custom\apps\subscriptions\add\customer-select.js" />
+    <None Include="wwwroot\lib\temp\js\custom\apps\subscriptions\add\products.js" />
+    <None Include="wwwroot\lib\temp\js\custom\apps\subscriptions\list\export.js" />
+    <None Include="wwwroot\lib\temp\js\custom\apps\subscriptions\list\list.js" />
+    <None Include="wwwroot\lib\temp\js\custom\apps\support-center\tickets\create.js" />
+    <None Include="wwwroot\lib\temp\js\custom\apps\user-management\permissions\add-permission.js" />
+    <None Include="wwwroot\lib\temp\js\custom\apps\user-management\permissions\list.js" />
+    <None Include="wwwroot\lib\temp\js\custom\apps\user-management\permissions\update-permission.js" />
+    <None Include="wwwroot\lib\temp\js\custom\apps\user-management\roles\list\add.js" />
+    <None Include="wwwroot\lib\temp\js\custom\apps\user-management\roles\list\update-role.js" />
+    <None Include="wwwroot\lib\temp\js\custom\apps\user-management\roles\view\update-role.js" />
+    <None Include="wwwroot\lib\temp\js\custom\apps\user-management\roles\view\view.js" />
+    <None Include="wwwroot\lib\temp\js\custom\apps\user-management\users\list\add.js" />
+    <None Include="wwwroot\lib\temp\js\custom\apps\user-management\users\list\export-users.js" />
+    <None Include="wwwroot\lib\temp\js\custom\apps\user-management\users\list\table.js" />
+    <None Include="wwwroot\lib\temp\js\custom\apps\user-management\users\view\add-auth-app.js" />
+    <None Include="wwwroot\lib\temp\js\custom\apps\user-management\users\view\add-one-time-password.js" />
+    <None Include="wwwroot\lib\temp\js\custom\apps\user-management\users\view\add-schedule.js" />
+    <None Include="wwwroot\lib\temp\js\custom\apps\user-management\users\view\add-task.js" />
+    <None Include="wwwroot\lib\temp\js\custom\apps\user-management\users\view\update-details.js" />
+    <None Include="wwwroot\lib\temp\js\custom\apps\user-management\users\view\update-email.js" />
+    <None Include="wwwroot\lib\temp\js\custom\apps\user-management\users\view\update-password.js" />
+    <None Include="wwwroot\lib\temp\js\custom\apps\user-management\users\view\update-role.js" />
+    <None Include="wwwroot\lib\temp\js\custom\apps\user-management\users\view\view.js" />
+    <None Include="wwwroot\lib\temp\js\custom\authentication\password-reset\new-password.js" />
+    <None Include="wwwroot\lib\temp\js\custom\authentication\password-reset\password-reset.js" />
+    <None Include="wwwroot\lib\temp\js\custom\authentication\sign-in\general.js" />
+    <None Include="wwwroot\lib\temp\js\custom\authentication\sign-in\two-steps.js" />
+    <None Include="wwwroot\lib\temp\js\custom\authentication\sign-up\coming-soon.js" />
+    <None Include="wwwroot\lib\temp\js\custom\authentication\sign-up\free-trial.js" />
+    <None Include="wwwroot\lib\temp\js\custom\authentication\sign-up\general.js" />
+    <None Include="wwwroot\lib\temp\js\custom\documentation\base\indicator.js" />
+    <None Include="wwwroot\lib\temp\js\custom\documentation\base\rotate.js" />
+    <None Include="wwwroot\lib\temp\js\custom\documentation\base\toasts.js" />
+    <None Include="wwwroot\lib\temp\js\custom\documentation\charts\amcharts\charts.js" />
+    <None Include="wwwroot\lib\temp\js\custom\documentation\charts\amcharts\maps.js" />
+    <None Include="wwwroot\lib\temp\js\custom\documentation\charts\amcharts\stock-charts.js" />
+    <None Include="wwwroot\lib\temp\js\custom\documentation\charts\apexcharts.js" />
+    <None Include="wwwroot\lib\temp\js\custom\documentation\charts\chartjs.js" />
+    <None Include="wwwroot\lib\temp\js\custom\documentation\charts\flotcharts\axis.js" />
+    <None Include="wwwroot\lib\temp\js\custom\documentation\charts\flotcharts\bar.js" />
+    <None Include="wwwroot\lib\temp\js\custom\documentation\charts\flotcharts\basic.js" />
+    <None Include="wwwroot\lib\temp\js\custom\documentation\charts\flotcharts\dynamic.js" />
+    <None Include="wwwroot\lib\temp\js\custom\documentation\charts\flotcharts\pie.js" />
+    <None Include="wwwroot\lib\temp\js\custom\documentation\charts\flotcharts\stack.js" />
+    <None Include="wwwroot\lib\temp\js\custom\documentation\charts\flotcharts\tracking.js" />
+    <None Include="wwwroot\lib\temp\js\custom\documentation\charts\google-charts\column.js" />
+    <None Include="wwwroot\lib\temp\js\custom\documentation\charts\google-charts\line.js" />
+    <None Include="wwwroot\lib\temp\js\custom\documentation\charts\google-charts\pie.js" />
+    <None Include="wwwroot\lib\temp\js\custom\documentation\documentation.js" />
+    <None Include="wwwroot\lib\temp\js\custom\documentation\editors\ckeditor\balloon-block.js" />
+    <None Include="wwwroot\lib\temp\js\custom\documentation\editors\ckeditor\balloon.js" />
+    <None Include="wwwroot\lib\temp\js\custom\documentation\editors\ckeditor\classic.js" />
+    <None Include="wwwroot\lib\temp\js\custom\documentation\editors\ckeditor\document.js" />
+    <None Include="wwwroot\lib\temp\js\custom\documentation\editors\ckeditor\inline.js" />
+    <None Include="wwwroot\lib\temp\js\custom\documentation\editors\quill\autosave.js" />
+    <None Include="wwwroot\lib\temp\js\custom\documentation\editors\quill\basic.js" />
+    <None Include="wwwroot\lib\temp\js\custom\documentation\editors\tinymce\basic.js" />
+    <None Include="wwwroot\lib\temp\js\custom\documentation\editors\tinymce\hidden.js" />
+    <None Include="wwwroot\lib\temp\js\custom\documentation\editors\tinymce\plugins.js" />
+    <None Include="wwwroot\lib\temp\js\custom\documentation\forms\bootstrap-maxlength.js" />
+    <None Include="wwwroot\lib\temp\js\custom\documentation\forms\clipboard.js" />
+    <None Include="wwwroot\lib\temp\js\custom\documentation\forms\daterangepicker.js" />
+    <None Include="wwwroot\lib\temp\js\custom\documentation\forms\dialer.js" />
+    <None Include="wwwroot\lib\temp\js\custom\documentation\forms\dropzonejs.js" />
+    <None Include="wwwroot\lib\temp\js\custom\documentation\forms\flatpickr.js" />
+    <None Include="wwwroot\lib\temp\js\custom\documentation\forms\formrepeater\advanced.js" />
+    <None Include="wwwroot\lib\temp\js\custom\documentation\forms\formrepeater\basic.js" />
+    <None Include="wwwroot\lib\temp\js\custom\documentation\forms\formrepeater\nested.js" />
+    <None Include="wwwroot\lib\temp\js\custom\documentation\forms\formvalidation\advanced.js" />
+    <None Include="wwwroot\lib\temp\js\custom\documentation\forms\formvalidation\basic.js" />
+    <None Include="wwwroot\lib\temp\js\custom\documentation\forms\image-input.js" />
+    <None Include="wwwroot\lib\temp\js\custom\documentation\forms\inputmask.js" />
+    <None Include="wwwroot\lib\temp\js\custom\documentation\forms\multiselectsplitter.js" />
+    <None Include="wwwroot\lib\temp\js\custom\documentation\forms\nouislider.js" />
+    <None Include="wwwroot\lib\temp\js\custom\documentation\forms\password-meter.js" />
+    <None Include="wwwroot\lib\temp\js\custom\documentation\forms\recaptcha.js" />
+    <None Include="wwwroot\lib\temp\js\custom\documentation\forms\select2.js" />
+    <None Include="wwwroot\lib\temp\js\custom\documentation\forms\tagify.js" />
+    <None Include="wwwroot\lib\temp\js\custom\documentation\general\blockui.js" />
+    <None Include="wwwroot\lib\temp\js\custom\documentation\general\cropper.js" />
+    <None Include="wwwroot\lib\temp\js\custom\documentation\general\datatables\advanced.js" />
+    <None Include="wwwroot\lib\temp\js\custom\documentation\general\datatables\api.js" />
+    <None Include="wwwroot\lib\temp\js\custom\documentation\general\datatables\basic.js" />
+    <None Include="wwwroot\lib\temp\js\custom\documentation\general\datatables\server-side.js" />
+    <None Include="wwwroot\lib\temp\js\custom\documentation\general\datatables\subtable.js" />
+    <None Include="wwwroot\lib\temp\js\custom\documentation\general\draggable\cards.js" />
+    <None Include="wwwroot\lib\temp\js\custom\documentation\general\draggable\multiple-containers.js" />
+    <None Include="wwwroot\lib\temp\js\custom\documentation\general\draggable\restricted.js" />
+    <None Include="wwwroot\lib\temp\js\custom\documentation\general\draggable\swappable.js" />
+    <None Include="wwwroot\lib\temp\js\custom\documentation\general\drawer.js" />
+    <None Include="wwwroot\lib\temp\js\custom\documentation\general\fullcalendar\background-events.js" />
+    <None Include="wwwroot\lib\temp\js\custom\documentation\general\fullcalendar\basic.js" />
+    <None Include="wwwroot\lib\temp\js\custom\documentation\general\fullcalendar\drag-n-drop.js" />
+    <None Include="wwwroot\lib\temp\js\custom\documentation\general\fullcalendar\locales.js" />
+    <None Include="wwwroot\lib\temp\js\custom\documentation\general\fullcalendar\selectable-dates.js" />
+    <None Include="wwwroot\lib\temp\js\custom\documentation\general\fullcalendar\timezone.js" />
+    <None Include="wwwroot\lib\temp\js\custom\documentation\general\jkanban\basic.js" />
+    <None Include="wwwroot\lib\temp\js\custom\documentation\general\jkanban\color.js" />
+    <None Include="wwwroot\lib\temp\js\custom\documentation\general\jkanban\fixed-height.js" />
+    <None Include="wwwroot\lib\temp\js\custom\documentation\general\jkanban\restricted.js" />
+    <None Include="wwwroot\lib\temp\js\custom\documentation\general\jkanban\rich.js" />
+    <None Include="wwwroot\lib\temp\js\custom\documentation\general\jstree\ajax.js" />
+    <None Include="wwwroot\lib\temp\js\custom\documentation\general\jstree\basic.js" />
+    <None Include="wwwroot\lib\temp\js\custom\documentation\general\jstree\checkable.js" />
+    <None Include="wwwroot\lib\temp\js\custom\documentation\general\jstree\contextual.js" />
+    <None Include="wwwroot\lib\temp\js\custom\documentation\general\jstree\customicons.js" />
+    <None Include="wwwroot\lib\temp\js\custom\documentation\general\jstree\dragdrop.js" />
+    <None Include="wwwroot\lib\temp\js\custom\documentation\general\scroll.js" />
+    <None Include="wwwroot\lib\temp\js\custom\documentation\general\search\basic.js" />
+    <None Include="wwwroot\lib\temp\js\custom\documentation\general\search\menu.js" />
+    <None Include="wwwroot\lib\temp\js\custom\documentation\general\search\responsive.js" />
+    <None Include="wwwroot\lib\temp\js\custom\documentation\general\stepper.js" />
+    <None Include="wwwroot\lib\temp\js\custom\documentation\general\sweetalert.js" />
+    <None Include="wwwroot\lib\temp\js\custom\documentation\general\toastr.js" />
+    <None Include="wwwroot\lib\temp\js\custom\documentation\general\typed.js" />
+    <None Include="wwwroot\lib\temp\js\custom\documentation\general\vis-timeline\basic.js" />
+    <None Include="wwwroot\lib\temp\js\custom\documentation\general\vis-timeline\group.js" />
+    <None Include="wwwroot\lib\temp\js\custom\documentation\general\vis-timeline\interaction.js" />
+    <None Include="wwwroot\lib\temp\js\custom\documentation\general\vis-timeline\style.js" />
+    <None Include="wwwroot\lib\temp\js\custom\documentation\general\vis-timeline\template.js" />
+    <None Include="wwwroot\lib\temp\js\custom\documentation\search.js" />
+    <None Include="wwwroot\lib\temp\js\custom\intro.js" />
+    <None Include="wwwroot\lib\temp\js\custom\landing.js" />
+    <None Include="wwwroot\lib\temp\js\custom\layout-builder\layout-builder.js" />
+    <None Include="wwwroot\lib\temp\js\custom\modals\create-account.js" />
+    <None Include="wwwroot\lib\temp\js\custom\modals\create-api-key.js" />
+    <None Include="wwwroot\lib\temp\js\custom\modals\create-app.js" />
+    <None Include="wwwroot\lib\temp\js\custom\modals\create-campaign.js" />
+    <None Include="wwwroot\lib\temp\js\custom\modals\create-project\budget.js" />
+    <None Include="wwwroot\lib\temp\js\custom\modals\create-project\complete.js" />
+    <None Include="wwwroot\lib\temp\js\custom\modals\create-project\files.js" />
+    <None Include="wwwroot\lib\temp\js\custom\modals\create-project\main.js" />
+    <None Include="wwwroot\lib\temp\js\custom\modals\create-project\settings.js" />
+    <None Include="wwwroot\lib\temp\js\custom\modals\create-project\targets.js" />
+    <None Include="wwwroot\lib\temp\js\custom\modals\create-project\team.js" />
+    <None Include="wwwroot\lib\temp\js\custom\modals\create-project\type.js" />
+    <None Include="wwwroot\lib\temp\js\custom\modals\new-address.js" />
+    <None Include="wwwroot\lib\temp\js\custom\modals\new-card.js" />
+    <None Include="wwwroot\lib\temp\js\custom\modals\new-target.js" />
+    <None Include="wwwroot\lib\temp\js\custom\modals\offer-a-deal\complete.js" />
+    <None Include="wwwroot\lib\temp\js\custom\modals\offer-a-deal\details.js" />
+    <None Include="wwwroot\lib\temp\js\custom\modals\offer-a-deal\finance.js" />
+    <None Include="wwwroot\lib\temp\js\custom\modals\offer-a-deal\main.js" />
+    <None Include="wwwroot\lib\temp\js\custom\modals\offer-a-deal\type.js" />
+    <None Include="wwwroot\lib\temp\js\custom\modals\select-location.js" />
+    <None Include="wwwroot\lib\temp\js\custom\modals\share-earn.js" />
+    <None Include="wwwroot\lib\temp\js\custom\modals\two-factor-authentication.js" />
+    <None Include="wwwroot\lib\temp\js\custom\modals\upgrade-plan.js" />
+    <None Include="wwwroot\lib\temp\js\custom\modals\users-search.js" />
+    <None Include="wwwroot\lib\temp\js\custom\pages\careers\apply.js" />
+    <None Include="wwwroot\lib\temp\js\custom\pages\general\contact.js" />
+    <None Include="wwwroot\lib\temp\js\custom\pages\pricing\general.js" />
+    <None Include="wwwroot\lib\temp\js\custom\pages\profile\followers.js" />
+    <None Include="wwwroot\lib\temp\js\custom\pages\search\horizontal.js" />
+    <None Include="wwwroot\lib\temp\js\custom\widgets.js" />
+    <None Include="wwwroot\lib\temp\js\scripts.bundle.js" />
+    <None Include="wwwroot\lib\temp\media\flags\australia.svg" />
+    <None Include="wwwroot\lib\temp\media\flags\france.svg" />
+    <None Include="wwwroot\lib\temp\media\flags\germany.svg" />
+    <None Include="wwwroot\lib\temp\media\flags\japan.svg" />
+    <None Include="wwwroot\lib\temp\media\flags\spain.svg" />
+    <None Include="wwwroot\lib\temp\media\flags\united-kingdom.svg" />
+    <None Include="wwwroot\lib\temp\media\flags\united-states.svg" />
+    <None Include="wwwroot\lib\temp\media\icons\duotune\abstract\abs001.svg" />
+    <None Include="wwwroot\lib\temp\media\icons\duotune\arrows\arr001.svg" />
+    <None Include="wwwroot\lib\temp\media\icons\duotune\art\art001.svg" />
+    <None Include="wwwroot\lib\temp\media\icons\duotune\coding\cod001.svg" />
+    <None Include="wwwroot\lib\temp\media\icons\duotune\communication\com001.svg" />
+    <None Include="wwwroot\lib\temp\media\icons\duotune\ecommerce\ecm001.svg" />
+    <None Include="wwwroot\lib\temp\media\icons\duotune\electronics\elc001.svg" />
+    <None Include="wwwroot\lib\temp\media\icons\duotune\files\fil001.svg" />
+    <None Include="wwwroot\lib\temp\media\icons\duotune\finance\fin001.svg" />
+    <None Include="wwwroot\lib\temp\media\logos\logo-1-dark.svg" />
+    <None Include="wwwroot\lib\temp\media\logos\logo-1.svg" />
+    <None Include="wwwroot\lib\temp\media\logos\logo-2.svg" />
+    <None Include="wwwroot\lib\temp\media\logos\logo-landing-dark.svg" />
+    <None Include="wwwroot\lib\temp\media\logos\logo-landing.svg" />
+    <None Include="wwwroot\lib\temp\media\logos\mail.svg" />
+    <None Include="wwwroot\lib\temp\media\svg\avatars\001-boy.svg" />
+    <None Include="wwwroot\lib\temp\media\svg\avatars\004-boy-1.svg" />
+    <None Include="wwwroot\lib\temp\media\svg\avatars\006-girl-3.svg" />
+    <None Include="wwwroot\lib\temp\media\svg\avatars\014-girl-7.svg" />
+    <None Include="wwwroot\lib\temp\media\svg\avatars\018-girl-9.svg" />
+    <None Include="wwwroot\lib\temp\media\svg\avatars\020-girl-11.svg" />
+    <None Include="wwwroot\lib\temp\media\svg\avatars\029-boy-11.svg" />
+    <None Include="wwwroot\lib\temp\media\svg\avatars\043-boy-18.svg" />
+    <None Include="wwwroot\lib\temp\media\svg\avatars\047-girl-25.svg" />
+    <None Include="wwwroot\lib\temp\media\svg\brand-logos\aon.svg" />
+    <None Include="wwwroot\lib\temp\media\svg\brand-logos\apple-black.svg" />
+    <None Include="wwwroot\lib\temp\media\svg\brand-logos\aspnetzero.svg" />
+    <None Include="wwwroot\lib\temp\media\svg\brand-logos\atica.svg" />
+    <None Include="wwwroot\lib\temp\media\svg\brand-logos\aven.svg" />
+    <None Include="wwwroot\lib\temp\media\svg\brand-logos\bebo.svg" />
+    <None Include="wwwroot\lib\temp\media\svg\brand-logos\behance.svg" />
+    <None Include="wwwroot\lib\temp\media\svg\brand-logos\code-lab.svg" />
+    <None Include="wwwroot\lib\temp\media\svg\brand-logos\disqus.svg" />
+    <None Include="wwwroot\lib\temp\media\svg\brand-logos\dribbble-icon-1.svg" />
+    <None Include="wwwroot\lib\temp\media\svg\brand-logos\duolingo.svg" />
+    <None Include="wwwroot\lib\temp\media\svg\brand-logos\facebook-4.svg" />
+    <None Include="wwwroot\lib\temp\media\svg\brand-logos\figma-1.svg" />
+    <None Include="wwwroot\lib\temp\media\svg\brand-logos\fox-hub.svg" />
+    <None Include="wwwroot\lib\temp\media\svg\brand-logos\fujifilm.svg" />
+    <None Include="wwwroot\lib\temp\media\svg\brand-logos\github.svg" />
+    <None Include="wwwroot\lib\temp\media\svg\brand-logos\google-icon.svg" />
+    <None Include="wwwroot\lib\temp\media\svg\brand-logos\hp-3.svg" />
+    <None Include="wwwroot\lib\temp\media\svg\brand-logos\instagram-2-1.svg" />
+    <None Include="wwwroot\lib\temp\media\svg\brand-logos\kanba.svg" />
+    <None Include="wwwroot\lib\temp\media\svg\brand-logos\kickstarter.svg" />
+    <None Include="wwwroot\lib\temp\media\svg\brand-logos\kpmg.svg" />
+    <None Include="wwwroot\lib\temp\media\svg\brand-logos\leaf.svg" />
+    <None Include="wwwroot\lib\temp\media\svg\brand-logos\nasa.svg" />
+    <None Include="wwwroot\lib\temp\media\svg\brand-logos\pinterest-p.svg" />
+    <None Include="wwwroot\lib\temp\media\svg\brand-logos\plurk.svg" />
+    <None Include="wwwroot\lib\temp\media\svg\brand-logos\reddit.svg" />
+    <None Include="wwwroot\lib\temp\media\svg\brand-logos\rgb.svg" />
+    <None Include="wwwroot\lib\temp\media\svg\brand-logos\sentry-3.svg" />
+    <None Include="wwwroot\lib\temp\media\svg\brand-logos\slack-icon.svg" />
+    <None Include="wwwroot\lib\temp\media\svg\brand-logos\spotify.svg" />
+    <None Include="wwwroot\lib\temp\media\svg\brand-logos\telegram.svg" />
+    <None Include="wwwroot\lib\temp\media\svg\brand-logos\tower.svg" />
+    <None Include="wwwroot\lib\temp\media\svg\brand-logos\treva.svg" />
+    <None Include="wwwroot\lib\temp\media\svg\brand-logos\truman.svg" />
+    <None Include="wwwroot\lib\temp\media\svg\brand-logos\tvit.svg" />
+    <None Include="wwwroot\lib\temp\media\svg\brand-logos\twitch.svg" />
+    <None Include="wwwroot\lib\temp\media\svg\brand-logos\twitter.svg" />
+    <None Include="wwwroot\lib\temp\media\svg\brand-logos\vimeo.svg" />
+    <None Include="wwwroot\lib\temp\media\svg\brand-logos\vodafone.svg" />
+    <None Include="wwwroot\lib\temp\media\svg\brand-logos\volicity-9.svg" />
+    <None Include="wwwroot\lib\temp\media\svg\brand-logos\xing-icon.svg" />
+    <None Include="wwwroot\lib\temp\media\svg\brand-logos\youtube-play.svg" />
+    <None Include="wwwroot\lib\temp\media\svg\card-logos\american-express.svg" />
+    <None Include="wwwroot\lib\temp\media\svg\card-logos\dark\american-express.svg" />
+    <None Include="wwwroot\lib\temp\media\svg\card-logos\dark\mastercard.svg" />
+    <None Include="wwwroot\lib\temp\media\svg\card-logos\dark\visa.svg" />
+    <None Include="wwwroot\lib\temp\media\svg\card-logos\mastercard.svg" />
+    <None Include="wwwroot\lib\temp\media\svg\card-logos\visa.svg" />
+    <None Include="wwwroot\lib\temp\media\svg\files\ai.svg" />
+    <None Include="wwwroot\lib\temp\media\svg\files\blank-image-dark.svg" />
+    <None Include="wwwroot\lib\temp\media\svg\files\blank-image.svg" />
+    <None Include="wwwroot\lib\temp\media\svg\files\css.svg" />
+    <None Include="wwwroot\lib\temp\media\svg\files\dark\ai.svg" />
+    <None Include="wwwroot\lib\temp\media\svg\files\dark\css.svg" />
+    <None Include="wwwroot\lib\temp\media\svg\files\dark\doc.svg" />
+    <None Include="wwwroot\lib\temp\media\svg\files\dark\folder-document.svg" />
+    <None Include="wwwroot\lib\temp\media\svg\files\dark\pdf.svg" />
+    <None Include="wwwroot\lib\temp\media\svg\files\dark\sql.svg" />
+    <None Include="wwwroot\lib\temp\media\svg\files\dark\tif.svg" />
+    <None Include="wwwroot\lib\temp\media\svg\files\dark\upload.svg" />
+    <None Include="wwwroot\lib\temp\media\svg\files\dark\xml.svg" />
+    <None Include="wwwroot\lib\temp\media\svg\files\doc.svg" />
+    <None Include="wwwroot\lib\temp\media\svg\files\folder-document.svg" />
+    <None Include="wwwroot\lib\temp\media\svg\files\pdf.svg" />
+    <None Include="wwwroot\lib\temp\media\svg\files\sql.svg" />
+    <None Include="wwwroot\lib\temp\media\svg\files\tif.svg" />
+    <None Include="wwwroot\lib\temp\media\svg\files\upload.svg" />
+    <None Include="wwwroot\lib\temp\media\svg\files\xml.svg" />
+    <None Include="wwwroot\lib\temp\media\svg\illustrations\landing.svg" />
+    <None Include="wwwroot\lib\temp\media\svg\misc\infography.svg" />
+    <None Include="wwwroot\lib\temp\media\svg\misc\octagon.svg" />
+    <None Include="wwwroot\lib\temp\media\svg\misc\smartphone-dark.svg" />
+    <None Include="wwwroot\lib\temp\media\svg\misc\smartphone.svg" />
+    <None Include="wwwroot\lib\temp\media\svg\misc\taieri.svg" />
+    <None Include="wwwroot\lib\temp\media\svg\misc\video-play.svg" />
+    <None Include="wwwroot\lib\temp\media\svg\social-logos\dribbble.svg" />
+    <None Include="wwwroot\lib\temp\media\svg\social-logos\facebook.svg" />
+    <None Include="wwwroot\lib\temp\media\svg\social-logos\github.svg" />
+    <None Include="wwwroot\lib\temp\media\svg\social-logos\google.svg" />
+    <None Include="wwwroot\lib\temp\media\svg\social-logos\instagram.svg" />
+    <None Include="wwwroot\lib\temp\media\svg\social-logos\twitter.svg" />
+    <None Include="wwwroot\lib\temp\media\svg\social-logos\youtube.svg" />
+    <None Include="wwwroot\lib\temp\plugins\custom\ckeditor\ckeditor-balloon-block.bundle.js" />
+    <None Include="wwwroot\lib\temp\plugins\custom\ckeditor\ckeditor-balloon.bundle.js" />
+    <None Include="wwwroot\lib\temp\plugins\custom\ckeditor\ckeditor-classic.bundle.js" />
+    <None Include="wwwroot\lib\temp\plugins\custom\ckeditor\ckeditor-document.bundle.js" />
+    <None Include="wwwroot\lib\temp\plugins\custom\ckeditor\ckeditor-inline.bundle.js" />
+    <None Include="wwwroot\lib\temp\plugins\custom\cookiealert\cookiealert.bundle.js" />
+    <None Include="wwwroot\lib\temp\plugins\custom\cropper\cropper.bundle.js" />
+    <None Include="wwwroot\lib\temp\plugins\custom\datatables\datatables.bundle.js" />
+    <None Include="wwwroot\lib\temp\plugins\custom\draggable\draggable.bundle.js" />
+    <None Include="wwwroot\lib\temp\plugins\custom\flotcharts\flotcharts.bundle.js" />
+    <None Include="wwwroot\lib\temp\plugins\custom\formrepeater\formrepeater.bundle.js" />
+    <None Include="wwwroot\lib\temp\plugins\custom\fslightbox\fslightbox.bundle.js" />
+    <None Include="wwwroot\lib\temp\plugins\custom\fullcalendar\fullcalendar.bundle.js" />
+    <None Include="wwwroot\lib\temp\plugins\custom\jkanban\jkanban.bundle.js" />
+    <None Include="wwwroot\lib\temp\plugins\custom\jstree\jstree.bundle.js" />
+    <None Include="wwwroot\lib\temp\plugins\custom\leaflet\leaflet.bundle.js" />
+    <None Include="wwwroot\lib\temp\plugins\custom\prismjs\prismjs.bundle.js" />
+    <None Include="wwwroot\lib\temp\plugins\custom\tinymce\tinymce.bundle.js" />
+    <None Include="wwwroot\lib\temp\plugins\custom\typedjs\typedjs.bundle.js" />
+    <None Include="wwwroot\lib\temp\plugins\custom\vis-timeline\vis-timeline.bundle.js" />
+    <None Include="wwwroot\lib\temp\plugins\global\fonts\%40fortawesome\fa-brands-400.svg" />
+    <None Include="wwwroot\lib\temp\plugins\global\fonts\%40fortawesome\fa-brands-400.woff2" />
+    <None Include="wwwroot\lib\temp\plugins\global\fonts\%40fortawesome\fa-regular-400.svg" />
+    <None Include="wwwroot\lib\temp\plugins\global\fonts\%40fortawesome\fa-regular-400.woff2" />
+    <None Include="wwwroot\lib\temp\plugins\global\fonts\%40fortawesome\fa-solid-900.svg" />
+    <None Include="wwwroot\lib\temp\plugins\global\fonts\%40fortawesome\fa-solid-900.woff2" />
+    <None Include="wwwroot\lib\temp\plugins\global\fonts\bootstrap-icons\bootstrap-icons.woff2" />
+    <None Include="wwwroot\lib\temp\plugins\global\fonts\line-awesome\la-brands-400.svg" />
+    <None Include="wwwroot\lib\temp\plugins\global\fonts\line-awesome\la-brands-400.woff2" />
+    <None Include="wwwroot\lib\temp\plugins\global\fonts\line-awesome\la-regular-400.svg" />
+    <None Include="wwwroot\lib\temp\plugins\global\fonts\line-awesome\la-regular-400.woff2" />
+    <None Include="wwwroot\lib\temp\plugins\global\fonts\line-awesome\la-solid-900.svg" />
+    <None Include="wwwroot\lib\temp\plugins\global\fonts\line-awesome\la-solid-900.woff2" />
+    <None Include="wwwroot\lib\temp\plugins\global\plugins.bundle.js" />
+    <None Include="wwwroot\lib\toastr\toastr.js.map" />
+    <None Include="wwwroot\lib\toastr\toastr.min.js" />
+    <None Include="wwwroot\webfonts\fa-brands-400.svg" />
+    <None Include="wwwroot\webfonts\fa-brands-400.woff2" />
+    <None Include="wwwroot\webfonts\fa-regular-400.svg" />
+    <None Include="wwwroot\webfonts\fa-regular-400.woff2" />
+    <None Include="wwwroot\webfonts\fa-solid-900.svg" />
+    <None Include="wwwroot\webfonts\fa-solid-900.woff2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AspNetCore.CacheOutput" Version="2.1.0" />
+    <PackageReference Include="AspNetCore.CacheOutput.Redis" Version="2.1.0" />
+    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="8.0.0" />
+    <PackageReference Include="AutoMapper" Version="12.0.1" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.0" />
+    <PackageReference Include="BuildBundlerMinifier" Version="3.2.449" />
+    <PackageReference Include="BundlerMinifier.Core" Version="3.2.449" />
+    <PackageReference Include="FluentValidation.AspNetCore" Version="11.2.2" />
+    <PackageReference Include="IdentityServer4" Version="4.1.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.5" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="6.0.5" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="6.0.5" />
+    <PackageReference Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="7.0.2" />
+    <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="4.9.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.17.0" />
+    <PackageReference Include="NWebsec.AspNetCore.Middleware" Version="3.0.0" />
+    <PackageReference Include="ReportViewerCore.NETCore" Version="15.1.17" />
+    <PackageReference Include="Serilog" Version="2.12.0" />
+    <PackageReference Include="Serilog.AspNetCore" Version="6.1.0" />
+    <PackageReference Include="Serilog.Enrichers.Environment" Version="2.2.0" />
+    <PackageReference Include="Serilog.Enrichers.Process" Version="2.0.2" />
+    <PackageReference Include="Serilog.Enrichers.Thread" Version="3.1.0" />
+    <PackageReference Include="Serilog.Settings.Configuration" Version="3.4.0" />
+    <PackageReference Include="Serilog.Sinks.Async" Version="1.5.0" />
+    <PackageReference Include="Serilog.Sinks.MongoDB" Version="5.3.1" />
+    <PackageReference Include="StackExchange.Redis.Extensions.Core" Version="8.0.5" />
+    <PackageReference Include="StackExchange.Redis.Extensions.AspNetCore" Version="8.0.5" />
+    <PackageReference Include="StackExchange.Redis.Extensions.Newtonsoft" Version="8.0.5" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Filters" Version="7.0.6" />
+    <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="6.5.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="6.5.0" />
+    
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\AppConfig\AppConfig.csproj" />
+    <ProjectReference Include="..\BDO\BDO.csproj" />
+    <ProjectReference Include="..\BFC\BFC.csproj" />
+    <ProjectReference Include="..\CLL\CLL.csproj" />
+    <ProjectReference Include="..\Web.Api.Infrastructure\Web.Api.Infrastructure.csproj" />
+    <ProjectReference Include="..\Web.Core.Frame\Web.Core.Frame.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="LanguagesFiles\_Common.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="LanguagesFiles\_CommonHtml_resource.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="LanguagesFiles\_owin_formaction.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="LanguagesFiles\_owin_forminfo.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="LanguagesFiles\_owin_lastworkingpage.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="LanguagesFiles\_owin_role.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="LanguagesFiles\_owin_rolepermission.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="LanguagesFiles\_owin_user.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="LanguagesFiles\_owin_userclaims.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="LanguagesFiles\_owin_userlogintrail.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="LanguagesFiles\_owin_userpasswordresetinfo.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="LanguagesFiles\_owin_userprefferencessettings.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="LanguagesFiles\_owin_userrole.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="LanguagesFiles\_owin_userroles.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="LanguagesFiles\_owin_userstatuschangehistory.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="LanguagesFiles\_tran_login.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Properties\PublishProfiles\" />
+    <Folder Include="Views\Security\RolePermission\" />
+    <Folder Include="wwwroot\dist\css\" />
+    <Folder Include="wwwroot\dist\js\" />
+    <Folder Include="wwwroot\lib\jquery.datetimepicker\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Controllers\Securitry\OwinRoleController.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Update="Controllers\Securitry\OwinUserController.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+    <Compile Update="Controllers\Securitry\RolePermissionController.cs">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="Views\Account\AccessDenied.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\Account\ForgetPassword.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\Account\ForgetPasswordConfirmation.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\Account\InvalidRequest.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\Account\Login.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\Account\LoginWithMobileId.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\Account\PasswordReset.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\Account\ViewUserList.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\DashboardHome\Error.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\DashboardHome\Index.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\DashboardHome\Privacy.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\General\Gen_ServiceStatus\AddGen_ServiceStatus.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\General\Gen_ServiceStatus\DeleteGen_ServiceStatus.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\General\Gen_ServiceStatus\EditGen_ServiceStatus.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\General\Gen_ServiceStatus\GetSingleGen_ServiceStatus.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\General\Gen_ServiceStatus\LandingGen_ServiceStatus.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\Home\Index.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\Security\Owin_User\EmailResetOwin_User.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\Security\Owin_User\LockOwin_User.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\Security\Owin_User\PasswordResetOwin_User.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\Security\Owin_User\ReviewOwin_User.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\Security\Owin_User\UpdateRoleOwin_User.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\Security\RolePermission\LandingOwin_RolePermission.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\Shared\Components\BreadCrumbs\Default.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\Shared\Components\ChangePassword\Default.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\Shared\Components\FileUploader\FileUploader.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\Shared\Components\FooterPublic\Default.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\Shared\Components\MINServices\CivilServiceComm\CivilServiceComm.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\Shared\Components\MINServices\DepartedService\DepartedService.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\Shared\Components\MINServices\DisabledService\DisabledService.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\Shared\Components\MINServices\KFSDService\KFSDService.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\Shared\Components\MINServices\KNGService\KNGService.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\Shared\Components\MINServices\KPCService\KPCService.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\Shared\Components\MINServices\KuwaitUniService\KuwaitUniService.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\Shared\Components\MINServices\ManpowerService\ManpowerService.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\Shared\Components\MINServices\MOEService\MOEService.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\Shared\Components\MINServices\MOHEService\MOHEService.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\Shared\Components\MINServices\MOINewService\MOINewService.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\Shared\Components\MINServices\MOIService\MOIService.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\Shared\Components\MINServices\PIFSSService\PIFSSService.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\Shared\Components\MINServices\PAAETService\PAAETService.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\Shared\Components\MINServices\PACIService\PACIService.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\Shared\Components\MINServices\PUCFinancialService\PUCFinancialService.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\Shared\Components\MINServices\PUCService\PUCService.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\Shared\Components\S2Owin_FormAction\Default.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\Shared\Components\S2Owin_Role\Default.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\Shared\Components\S2Owin_User\Default.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\Shared\Components\S2ServiceInfo\Default.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\Shared\Components\S2ServiceStatus\Default.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\Shared\Components\Select2\GenericDropDownList.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\Shared\Components\ServiceStatusCheckboxList\Default.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\Shared\Error.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\Shared\_DashboardLayout.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\Shared\_Layout.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\Shared\_LayoutPublic.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\Shared\_LayoutViewComponent.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\Shared\_LoginPartial.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\Shared\_ValidationScriptsPartial.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\customjs\HubContextCivil\HubCivilUserContext.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\customjs\HubContextQR\HubQRUserContext.js">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="LanguagesFiles\_gen_campcategory.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="LanguagesFiles\_gen_campdiscountinfo.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="LanguagesFiles\_gen_campimageinfo.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="LanguagesFiles\_gen_campinfo.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="LanguagesFiles\_gen_campinfohist.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="LanguagesFiles\_gen_campinfoutilities.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="LanguagesFiles\_gen_camputilities.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="LanguagesFiles\_gen_filegallery.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="LanguagesFiles\_gen_filegallerycategory.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="LanguagesFiles\_gen_serviceinfo.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="LanguagesFiles\_gen_servicestatus.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="LanguagesFiles\_tran_campbookinginfo.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="LanguagesFiles\_tran_campreviewinfo.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="LanguagesFiles\_tran_registereduserinfo.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="LanguagesFiles\_tran_userservicemapped.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+	<ItemGroup>
+		<Content Update="*\.cshtml">
+			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
+		</Content>
+	</ItemGroup>
+	
+  <Target Name="ChangeAliasesOfStrongNameAssemblies" BeforeTargets="FindReferenceAssembliesForReferences;ResolveReferences">
+    <ItemGroup>
+      <ReferencePath Condition="'%(FileName)' == 'StackExchange.Redis.StrongName'">
+        <Aliases>signed</Aliases>
+      </ReferencePath>
+    </ItemGroup>
+  </Target>
+  
+</Project>

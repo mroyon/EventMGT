@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="occivilid" value="AR:  O C Civil I D"></resource>
+       <resource culture="ar-kw" name="occivilidRequired" value="AR: Please provide  O C Civil I D"></resource>
+       <resource culture="ar-kw" name="ocmilitaryid" value="AR:  O C Military I D"></resource>
+       <resource culture="ar-kw" name="ocmilitaryidRequired" value="AR: Please provide  O C Military I D"></resource>
+       <resource culture="ar-kw" name="hrbasicid" value="AR:  Hr Basic I D"></resource>
+       <resource culture="ar-kw" name="hrbasicidRequired" value="AR: Please provide  Hr Basic I D"></resource>
+       <resource culture="ar-kw" name="ocemailaddress" value="AR:  O C Email Address"></resource>
+       <resource culture="ar-kw" name="ocemailaddressRequired" value="AR: Please provide  O C Email Address"></resource>
+       <resource culture="ar-kw" name="ocphonenumber" value="AR:  O C Phone Number"></resource>
+       <resource culture="ar-kw" name="ocphonenumberRequired" value="AR: Please provide  O C Phone Number"></resource>
+       <resource culture="ar-kw" name="officerpacijsondata" value="AR:  Officer Paci Json Data"></resource>
+       <resource culture="ar-kw" name="filecreationdate" value="AR:  File Creation Date"></resource>
+       <resource culture="ar-kw" name="fileisactive" value="AR:  File Is Active"></resource>
+       <resource culture="ar-kw" name="hrdatajsondata" value="AR:  Hr Military Json Data"></resource>
+       <resource culture="ar-kw" name="issynced" value="AR:  Is Synced"></resource>
+       <resource culture="ar-kw" name="lastpacisynceddate" value="AR:  Last Paci Synced Date"></resource>
+       <resource culture="ar-kw" name="memberisregistered" value="AR:  Member Is Registered"></resource>
+		<resource culture="ar-kw" name="officersfileinfoList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="officersfileinfoCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="officersfileinfoUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="officersfileinfoDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="occivilid" value=" O C Civil I D"></resource>
+       <resource culture="en-us" name="occivilidRequired" value="Please provide  O C Civil I D"></resource>
+       <resource culture="en-us" name="ocmilitaryid" value=" O C Military I D"></resource>
+       <resource culture="en-us" name="ocmilitaryidRequired" value="Please provide  O C Military I D"></resource>
+       <resource culture="en-us" name="hrbasicid" value=" Hr Basic I D"></resource>
+       <resource culture="en-us" name="hrbasicidRequired" value="Please provide  Hr Basic I D"></resource>
+       <resource culture="en-us" name="ocemailaddress" value=" O C Email Address"></resource>
+       <resource culture="en-us" name="ocemailaddressRequired" value="Please provide  O C Email Address"></resource>
+       <resource culture="en-us" name="ocphonenumber" value=" O C Phone Number"></resource>
+       <resource culture="en-us" name="ocphonenumberRequired" value="Please provide  O C Phone Number"></resource>
+       <resource culture="en-us" name="officerpacijsondata" value=" Officer Paci Json Data"></resource>
+       <resource culture="en-us" name="filecreationdate" value=" File Creation Date"></resource>
+       <resource culture="en-us" name="fileisactive" value=" File Is Active"></resource>
+       <resource culture="en-us" name="hrdatajsondata" value=" Hr Military Json Data"></resource>
+       <resource culture="en-us" name="issynced" value=" Is Synced"></resource>
+       <resource culture="en-us" name="lastpacisynceddate" value=" Last Paci Synced Date"></resource>
+       <resource culture="en-us" name="memberisregistered" value=" Member Is Registered"></resource>
+        <resource culture="en-us" name="officersfileinfoList" value="View All"></resource>
+		<resource culture="en-us" name="officersfileinfoCreate" value="Create"></resource>
+		<resource culture="en-us" name="officersfileinfoUpdate" value="Update"></resource>
+		<resource culture="en-us" name="officersfileinfoDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

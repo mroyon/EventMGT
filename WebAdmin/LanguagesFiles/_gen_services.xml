@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="servicetypeid" value="نوع الخدمة"></resource>
+       <resource culture="ar-kw" name="servicetypeidRequired" value="يرجى تقديم نوع الخدمة"></resource>
+       <resource culture="ar-kw" name="servicename" value="اسم الخدمة"></resource>
+       <resource culture="ar-kw" name="servicenameRequired" value="يرجى تقديم اسم الخدمة"></resource>
+       <resource culture="ar-kw" name="servicenamear" value="اسم الخدمة"></resource>
+       <resource culture="ar-kw" name="servicenamearRequired" value="يرجى تقديم اسم الخدمة"></resource>
+       <resource culture="ar-kw" name="servicedescription" value="وصف الخدمة"></resource>
+       <resource culture="ar-kw" name="servicedescriptionar" value="وصف الخدمة"></resource>
+       <resource culture="ar-kw" name="servicelogopath" value="مسار شعار الخدمة"></resource>
+       <resource culture="ar-kw" name="servicelogopathRequired" value="يرجى تقديم مسار شعار الخدمة"></resource>
+       <resource culture="ar-kw" name="serviceurl" value="رابط الخدمة"></resource>
+		<resource culture="ar-kw" name="servicesList" value="مشاهدة الكل"></resource>
+		<resource culture="ar-kw" name="servicesCreate" value="خلق"></resource>
+		<resource culture="ar-kw" name="servicesUpdate" value="تحديث"></resource>
+		<resource culture="ar-kw" name="servicesDetails" value="التفاصيل"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="servicetypeid" value=" Service Type ID"></resource>
+       <resource culture="en-us" name="servicetypeidRequired" value="Please provide  Service Type ID"></resource>
+       <resource culture="en-us" name="servicename" value=" Service Name"></resource>
+       <resource culture="en-us" name="servicenameRequired" value="Please provide  Service Name"></resource>
+       <resource culture="en-us" name="servicenamear" value=" Service Name Arabic"></resource>
+       <resource culture="en-us" name="servicenamearRequired" value="Please provide  Service Name Arabic"></resource>
+       <resource culture="en-us" name="servicedescription" value=" Service Description"></resource>
+       <resource culture="en-us" name="servicedescriptionar" value=" Service Description Arabic"></resource>
+       <resource culture="en-us" name="servicelogopath" value=" Service Logo Path"></resource>
+       <resource culture="en-us" name="servicelogopathRequired" value="Please provide  Service Logo Path"></resource>
+       <resource culture="en-us" name="serviceurl" value=" Service URL"></resource>
+        <resource culture="en-us" name="servicesList" value="View All"></resource>
+		<resource culture="en-us" name="servicesCreate" value="Create"></resource>
+		<resource culture="en-us" name="servicesUpdate" value="Update"></resource>
+		<resource culture="en-us" name="servicesDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="civilid" value="AR:  Civil I D"></resource>
+       <resource culture="ar-kw" name="civilidRequired" value="AR: Please provide  Civil I D"></resource>
+       <resource culture="ar-kw" name="fullname" value="AR:  Full Name"></resource>
+       <resource culture="ar-kw" name="emailaddress" value="AR:  Email Address"></resource>
+       <resource culture="ar-kw" name="emailaddressRequired" value="AR: Please provide  Email Address"></resource>
+       <resource culture="ar-kw" name="phone" value="AR:  Phone"></resource>
+       <resource culture="ar-kw" name="phoneRequired" value="AR: Please provide  Phone"></resource>
+       <resource culture="ar-kw" name="registereddate" value="AR:  Registered Date"></resource>
+       <resource culture="ar-kw" name="registereddateRequired" value="AR: Please provide  Registered Date"></resource>
+       <resource culture="ar-kw" name="isactive" value="AR:  Is Active"></resource>
+       <resource culture="ar-kw" name="isactiveRequired" value="AR: Please provide  Is Active"></resource>
+       <resource culture="ar-kw" name="userid" value="AR:  User I D"></resource>
+       <resource culture="ar-kw" name="useridRequired" value="AR: Please provide  User I D"></resource>
+       <resource culture="ar-kw" name="profilephoto" value="AR:  Profile Photo"></resource>
+       <resource culture="ar-kw" name="usertype" value="AR:  User Type"></resource>
+       <resource culture="ar-kw" name="militaryno" value="AR:  Military No"></resource>
+       <resource culture="ar-kw" name="unitname" value="AR:  Unit Name"></resource>
+		<resource culture="ar-kw" name="registereduserinfoList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="registereduserinfoCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="registereduserinfoUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="registereduserinfoDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="civilid" value=" Civil I D"></resource>
+       <resource culture="en-us" name="civilidRequired" value="Please provide  Civil I D"></resource>
+       <resource culture="en-us" name="fullname" value=" Full Name"></resource>
+       <resource culture="en-us" name="emailaddress" value=" Email Address"></resource>
+       <resource culture="en-us" name="emailaddressRequired" value="Please provide  Email Address"></resource>
+       <resource culture="en-us" name="phone" value=" Phone"></resource>
+       <resource culture="en-us" name="phoneRequired" value="Please provide  Phone"></resource>
+       <resource culture="en-us" name="registereddate" value=" Registered Date"></resource>
+       <resource culture="en-us" name="registereddateRequired" value="Please provide  Registered Date"></resource>
+       <resource culture="en-us" name="isactive" value=" Is Active"></resource>
+       <resource culture="en-us" name="isactiveRequired" value="Please provide  Is Active"></resource>
+       <resource culture="en-us" name="userid" value=" User I D"></resource>
+       <resource culture="en-us" name="useridRequired" value="Please provide  User I D"></resource>
+       <resource culture="en-us" name="profilephoto" value=" Profile Photo"></resource>
+       <resource culture="en-us" name="usertype" value=" User Type"></resource>
+       <resource culture="en-us" name="militaryno" value=" Military No"></resource>
+       <resource culture="en-us" name="unitname" value=" Unit Name"></resource>
+        <resource culture="en-us" name="registereduserinfoList" value="View All"></resource>
+		<resource culture="en-us" name="registereduserinfoCreate" value="Create"></resource>
+		<resource culture="en-us" name="registereduserinfoUpdate" value="Update"></resource>
+		<resource culture="en-us" name="registereduserinfoDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

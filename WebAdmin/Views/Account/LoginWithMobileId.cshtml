@@ -1,0 +1,363 @@
+﻿@{
+    ViewData["Title"] = "Login with Mobile Id";
+}
+
+@section styles{
+    <link href="~/css/form-wizard.css" asp-append-version="true" rel="stylesheet" />
+    <style>
+        body {
+            font-family: "droid arabic kufi";
+        }
+
+        .center {
+            border-radius: 10px;
+            position: absolute;
+            top: 50%;
+            transform: translate(0, -50%);
+            padding: 10px;
+            box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px;
+        }
+
+        .panel-bg {
+            background: white;
+        }
+    </style>
+}
+    <div class="loading" style="display: none;"> Loading…</div>
+    <section class="ftco-section ">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-3 text-center mb-1 panel-bg center">
+                    <a class="logo mb-5">
+                        <img src="/img/newKuwait.png" alt="logo" height="50">
+                    </a>
+                    <h5 class="font-size-16 mb-4 mt-5">تسجيل الدخول لوحة تحكم تطبيق سهل</h5>
+                    <div class="login-wrap p-0">
+                        <form id="wizardForm">
+                            <div class="panel panel-primary">
+                                <div class="tab" style="display: block;">
+                                    <div class="panel-body">
+                                        <div class="col-xs-12 padding-top-20 text-center">
+                                            <div class="col-xs-12 civil-input padding-bottom-20" style="display: none;">
+                                                <div class="alert alert-danger upgrade-alert" style="display: none;text-align: justify;">
+                                                    <i class="fa fa-info-circle"></i>
+                                                    يجب تفعيل المصادقة من القائمة الرئيسية لتطبيق هويتي
+                                                    <a class="more-info-auth" style="color: black;font-weight: bold;" data-toggle="popover" title="" data-content="1- قم بفتح تطبيق هويتي &lt;br /&gt; 2- إختر تفعيل المصادقة من القائمة الرئيسية&lt;br /&gt; 3- إتبع الخطوات لتفعيل المصادقة&lt;br /&gt;" data-placement="bottom" data-html="true" data-original-title="خطوات تفعيل المصادقة">معرفة المزيد؟</a>
+                                                </div>
+                                                <label class="pull-right">
+                                                    الرقم المدني (*)
+                                                    <span class="text-danger validate-span validate-civil-input" style="display: none">حقل مطلوب</span>
+                                                </label>
+                                                <input type="text" id="mobileIdCivilNo" class="form-control onlyNo" autocomplete="off">
+                                            </div>
+                                            <a class="btn btn-primary btn-submit-form mobile-id-button" onclick="callMobileId();">
+                                                الدخول بإستخدام تطبيق هويتي <i class="fa fa-lock"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab">
+                                    <div class="panel-body">
+                                        <div class="col-xs-12 text-center">
+                                            <div>
+                                                <img id="mid-code" style="max-width: 160px; width: 160px;" class="center-block">
+                                            </div>
+                                            <div class="col-xs-12">
+                                                <div class="progressBar qr">
+                                                    <div class="bar"></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 ">
+                                            <div class="panel-default">
+                                                <div class="panel-heading">
+                                                    <strong>خطوات التحقق</strong>
+                                                </div>
+                                                <div class="panel-body">
+                                                    <ol>
+                                                        <li class="padding-top-10 padding-bottom-10">قم بفتح تطبيق هويتي</li>
+                                                        <li class="padding-top-10 padding-bottom-10">إختر المصادقة</li>
+                                                        <li class="padding-top-10 padding-bottom-10">إختر مصادقة من خلال مسح رمز QR</li>
+                                                        <li class="padding-top-10 padding-bottom-10">قم بمسح رمز ال QR الظاهر امامك</li>
+                                                    </ol>
+                                                    <div class="alert alert-info margin-top-10" style="text-align: justify;">
+                                                        <i class="fa fa-info-circle"></i> في حال عدم امكانية إختيار المصادقة، يجب تفعيل المصادقة من القائمة الرئيسية للتطبيق
+                                                        <a class="more-info-auth" style="color: black;font-weight: bold;" data-toggle="popover" title="" data-content="1- قم بفتح تطبيق هويتي &lt;br /&gt; 2- إختر تفعيل المصادقة من القائمة الرئيسية&lt;br /&gt; 3- إتبع الخطوات لتفعيل المصادقة&lt;br /&gt;" data-placement="bottom" data-html="true" data-original-title="خطوات تفعيل المصادقة">معرفة المزيد؟</a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="tab">
+                                    <div class="progressBar pn">
+                                        <div class="bar"></div>
+                                    </div>
+                                    <div class="panel panel-default">
+                                        <div class="panel-heading">
+                                            <strong>خطوات التحقق</strong>
+                                        </div>
+                                        <div class="panel-body" dir="rtl">
+                                            <div class="col-xs-12">
+                                                <ol dir="rtl">
+                                                    <li class="padding-top-10 padding-bottom-10">قم بفتح تطبيق هويتي</li>
+                                                    <li class="padding-top-10 padding-bottom-10">إختر المصادقة</li>
+                                                    <li class="padding-top-10 padding-bottom-10">إختر طلبات المصادقة</li>
+                                                    <li class="padding-top-10 padding-bottom-10">قم بالموافقه علي الطلب للحصول على الخدمة</li>
+                                                </ol>
+                                                <div class="alert alert-info margin-top-10" style="text-align: justify;">
+                                                    <i class="fa fa-info-circle"></i> في حال عدم امكانية إختيار المصادقة، يجب تفعيل المصادقة من القائمة الرئيسية للتطبيق
+                                                    <a class="more-info-auth" style="color: black;font-weight: bold;" data-toggle="popover" title="" data-content="1- قم بفتح تطبيق هويتي &lt;br /&gt; 2- إختر تفعيل المصادقة من القائمة الرئيسية&lt;br /&gt; 3- إتبع الخطوات لتفعيل المصادقة&lt;br /&gt;" data-placement="bottom" data-html="true" data-original-title="خطوات تفعيل المصادقة">معرفة المزيد؟</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="panel-footer" style="display: none">
+                                    <!-- Circles which indicates the steps of the form: -->
+                                    <div style="text-align: center; margin-top: 40px;">
+                                        <span class="step active"></span>
+                                        <span class="step"></span>
+                                        <span class="step"></span>
+                                    </div>
+                                    <div style="overflow: auto;">
+                                        <button type="button" id="prevBtn" class="btn btn-default btn-lg" style="display: none;">
+                                            السابق
+                                        </button>
+                                        <button type="button" id="nextBtn" onclick="" class="btn btn-primary btn-lg">التالي</button>
+                                    </div>
+                                </div>
+
+                                <input type="hidden" class="requestId">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    @section Scripts {
+
+    <script src="~/js/form-wizard.js" asp-append-version="true"></script>
+
+    <script type="text/javascript">
+
+        //const connection = new signalR.HubConnectionBuilder()
+        //    .withUrl("/admin/hub", {
+        //        skipNegotiation: true,
+        //        transport: signalR.HttpTransportType.WebSockets
+        //    })
+        //    .build();
+
+        async function start() {
+            try {
+                //await connection.start();
+            } catch (err) {
+                //console.log(err);
+                //setTimeout(start, 5000);
+            }
+        }
+
+        //connection.onclose(async () => {
+        //    await start();
+        //});
+
+        // Start the connection.
+        start();
+
+        //connection.on("ReceiveSignal", (data) => {
+        //    checkCall();
+        //});
+
+
+        const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        $(".civil-input").hide();
+        $(".upgrade-alert").hide();
+        $(document).ready(function () {
+
+            $('[data-toggle="popover"]').popover({ trigger: 'hover' });
+
+            if (isMobile) {
+                $(".civil-input").show();
+
+                $(".civil-input").on('keypress',
+                    function (e) {
+                        if (e.keyCode == 13) {
+
+                            e.preventDefault();
+                            $(".btn-submit-form").trigger("click");
+
+                            return false;
+                        }
+
+                    });
+            }
+
+            //hideLoader();
+        });
+
+        wizardform = $("#wizardForm");
+        $(".confirm-modal").hide();
+        setSelect2 = false;
+        var timeout;
+        var seconds = 0;
+        var verified = false;
+
+        function callMobileId() {
+            //if (isMobile) {
+            //    if ($("#mobileIdCivilNo").val() === "") {
+            //        $(".validate-civil-input").show();
+            //        return;
+            //    } else {
+            //        $(".validate-civil-input").hide();
+            //        pushNotification();
+            //    }
+            //} else {
+            generateQr();
+            //}
+        }
+
+        function generateQr() {
+
+            ajaxGetHandler("/account/GenerateQr", { returnUrl: "/" }, function (response) {
+                progress(120, 120, $('.qr'));
+                if (response.responsecode == 200) {
+                    // $('#mid-code').attr('src', 'data:image/png;base64,' + res.qrImage);
+                    $('#mid-code').attr('src', '/img/dummy-qr.png');
+                    //$('.requestId').val(res.requestId);
+                    nextPrev(1, false);
+                    progress(120, 120, $('.qr'));
+                } else {
+                    toastr.error(res.message, 'خطا');
+                }
+
+            }, false, false);
+        };
+
+
+        function checkCall() {
+            $.ajax({
+                type: "GET",
+                url: '/account/check-qr',
+                dataType: "json",
+                data: {
+                    requestId: $(".requestId").val()
+                },
+                async: true,
+                contentType: "application/json",
+                success: function (res) {
+                    if (res.status == true) {
+
+                        if (res.isUsed) {
+                            toastr.error('كود QR مستخدم من قبل',
+                                'خطأ');
+                            nextPrev(isMobile ? -2 : -1);
+                            clearTimeout(timeout);
+
+                        } else if (res.isAuth === 901) {
+
+                            verified = true;
+                            window.showLoader();
+                            window.location.href = res.returnUrl;
+                        } else if (res.isAuth === 902) {
+                            toastr.error('تم رفض طلب المصادقة علي الخدمة',
+                                'خطأ');
+                            verified = false;
+                            clearTimeout(timeout);
+                            nextPrev(isMobile ? -2 : -1);
+                        }
+                        else if (res.isAuth === 903) {
+                            toastr.error('عفوا المستخدم غير مسجل بقاعدة البيانات', 'خطأ');
+                            verified = false;
+                            clearTimeout(timeout);
+                            nextPrev(isMobile ? -2 : -1);
+                        }
+                        else if (res.isAuth === 904) {
+                            toastr.error('تم إيقاف المستخدم من الدخول إلي النظام', 'خطأ');
+                            verified = false;
+                            clearTimeout(timeout);
+                            nextPrev(isMobile ? -2 : -1);
+                        }
+                    }
+                },
+                error: function () {
+                    console.error('Error happened while checking qr');
+                    verified = false;
+                },
+                complete: function () {
+
+                    seconds = 0;
+                }
+            });
+        }
+
+        function progress(timeleft, timetotal, $element, move = false) {
+            var progressBarWidth = timeleft * $element.width() / timetotal;
+            $element.find('div').animate({ width: progressBarWidth }, 500)
+                .html(Math.floor(timeleft / 60) + ":" + timeleft % 60);
+            if (timeleft > 0) {
+                timeout = setTimeout(function () {
+                    progress(timeleft - 1, timetotal, $element);
+                    seconds++;
+                },
+                    1000);
+            } else {
+                if (!verified && !move) {
+                    clearTimeout(timeout);
+                    toastr.error('لم يتم التحقق من الهوية، برجاء المحاولة مجددا', 'خطأ');
+                    if (isMobile) {
+                        nextPrev(-2);
+                    } else {
+                        nextPrev(-1);
+                    }
+                }
+            }
+        };
+
+        function pushNotification() {
+            window.showLoader();
+            $(".upgrade-alert").hide();
+            $.ajax({
+                type: "GET",
+                url: '/account/push-notification-mobile',
+                data: {
+                    civilId: $("#mobileIdCivilNo").val()
+                },
+                headers: {
+                    'XSRF-TOKEN': $('input[name="__RequestVerificationToken"]').val()
+                },
+                dataType: "json",
+                async: true,
+                contentType: "application/json",
+                success: function (res) {
+                    if (res.status == true) {
+                        $('.requestId').val(res.requestId);
+                        nextPrev(2, false);
+                        progress(120, 120, $('.pn'));
+                    } else {
+                        if (res.needUpgrade) {
+                            $(".upgrade-alert").show();
+                        } else {
+                            toastr.error(res.message, 'خطأ');
+                        }
+
+                    }
+                },
+                error: function () {
+                    console.error('Error happened while pushing notification');
+                },
+                complete: function () {
+
+                    window.hideLoader();
+                }
+            });
+        }
+
+    </script>
+
+
+    <script>
+        var dir = '';
+    </script>
+}

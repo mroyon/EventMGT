@@ -1,0 +1,106 @@
+﻿@using CLL
+@model BDO.Core.DataAccessObjects.Models.gen_servicestatusEntity
+@inject CLL.Localization.LocalizeService SharedLocalizer
+
+@using Microsoft.Extensions.Options
+@{
+    ViewData["Title"] = @SharedLocalizer.GetLocalizedHtmlString("DELETE_GEN_SERVICESTATUS");
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-footer">
+                <h5 class="card-title">@SharedLocalizer.GetLocalizedHtmlString("DELETE_GEN_SERVICESTATUS")</h5>
+            </div>
+            <form method="POST" id="frmDeleteGen_ServiceStatus" class="my-login-validation" novalidate="" autocomplete="off">
+                <div class="card-body">
+                    <div class="row">
+                        <input asp-for="servicestatusid" type="hidden" />
+                    </div>
+                    
+					 <div class="row ">
+							 <input asp-for="servicestatusid" type="hidden" />
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 <label class="labelNormal required " asp-for="servicestatusar"></label>
+								 <input asp-for="servicestatusar" class="form-control" autocomplete="off" readonly="readonly"/> 
+								 <span asp-validation-for="servicestatusar" class="text-danger"></span>
+							</div>
+						</div>
+					</div>
+					 <div class="row ">
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 <label class="labelNormal required " asp-for="servicestatusen"></label>
+								 <input asp-for="servicestatusen" class="form-control" autocomplete="off" readonly="readonly"/> 
+								 <span asp-validation-for="servicestatusen" class="text-danger"></span>
+							</div>
+						</div>
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 <label class="labelNormal  " asp-for="descriptionar"></label>
+								 <input asp-for="descriptionar" class="form-control" autocomplete="off" readonly="readonly"/> 
+								 <span asp-validation-for="descriptionar" class="text-danger"></span>
+							</div>
+						</div>
+					</div>
+					 <div class="row ">
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 <label class="labelNormal  " asp-for="descriptionen"></label>
+								 <input asp-for="descriptionen" class="form-control" autocomplete="off" readonly="readonly"/> 
+								 <span asp-validation-for="descriptionen" class="text-danger"></span>
+							</div>
+						</div>
+						 <div class="col-md-6">
+							 <div class="form-group">
+							 <label class="form-check-label" asp-for="isactive"></label> 
+							 <select class="form-control" asp-for="isactive" disabled="true"> 
+								 <option value="">@SharedLocalizer.GetLocalizedHtmlString("PLEASE_SELECT_DROPDOWN")</option> 
+								 <option value="true">@SharedLocalizer.GetLocalizedHtmlString("YES")</option> 
+								 <option value="false">@SharedLocalizer.GetLocalizedHtmlString("NO")</option> 
+							 </select>
+							 <span asp-validation-for="isactive" class="text-danger"></span>
+							</div>
+						</div>
+					</div>
+                    
+                    
+                     <div class="row btn-toolbar">
+                        <div class="col-md-6 ">
+                            <div class="form-group">
+                                <button type="submit" id="btnDeleteGen_ServiceStatus" data="@Url.Action("LandingGEN_SERVICESTATUS", "GEN_SERVICESTATUS")" class="btn btn-danger btn-md btnAddUser"><i class="fa fa-trash-alt"></i> @SharedLocalizer.GetLocalizedHtmlString("DELETE_REQUEST")</button>
+                                <button id="btnGoBackGen_ServiceStatus" data="@Url.Action("LandingGEN_SERVICESTATUS", "GEN_SERVICESTATUS")" class="btn btn-secondary btn-md "><i class="fas fa-arrow-circle-left"></i> @SharedLocalizer.GetLocalizedHtmlString("GO_BACK")</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </form>
+            <!-- ./card-body -->
+            <div class="card-footer">
+                <div class="row">
+                    <div class="col-md-12">
+
+                        <!-- /.description-block -->
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.card-footer -->
+        </div>
+        <!-- /.card -->
+    </div>
+    <!-- /.col -->
+</div>
+
+@section Scripts {
+    <script src="~/lib/customjs/Gen_ServiceStatus/Gen_ServiceStatus.js"></script>
+}
+
+
+
+
+

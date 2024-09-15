@@ -1,0 +1,415 @@
+﻿@using CLL
+@model BDO.Core.DataAccessObjects.SecurityModels.owin_userEntity
+@inject CLL.Localization.LocalizeService SharedLocalizer
+
+@using Microsoft.Extensions.Options
+@{
+    ViewData["Title"] = @SharedLocalizer.GetLocalizedHtmlString("EDIT_OWIN_USER");
+}
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-footer">
+                <h5 class="card-title">@SharedLocalizer.GetLocalizedHtmlString("EDIT_OWIN_USER")</h5>
+            </div>
+            <!-- /.card-header -->
+            <form method="POST" id="frmEditOwin_User" class="my-login-validation" novalidate="" autocomplete="off">
+                <div class="card-body">
+					 <div class="row ">
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 <label class="labelNormal required " asp-for="applicationid"></label>
+								 <input asp-for="applicationid" class="form-control" /> 
+								 <span asp-validation-for="applicationid" class="text-danger"></span>
+							</div>
+						</div>
+							 <input asp-for="userid" type="hidden" />
+					</div>
+					 <div class="row ">
+						 <div class="col-md-6">
+							 <div class="form-group">
+							 <label class="labelNormal required " asp-for="masteruserid"></label> 
+							 <input asp-for="masteruserid" class="form-control"  />
+							 <span asp-validation-for="masteruserid" class="text-danger"></span>
+							</div>
+						</div>
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 <label class="labelNormal required " asp-for="username"></label>
+								 <input asp-for="username" class="form-control" /> 
+								 <span asp-validation-for="username" class="text-danger"></span>
+							</div>
+						</div>
+					</div>
+					 <div class="row ">
+
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="labelNormal required " asp-for="pkeyex"></label>
+                                <input type="number" asp-for="confirmpassword" class="form-control" />
+                                <span asp-validation-for="pkeyex" class="text-danger"></span>
+                            </div>
+                        </div>
+
+
+                        @* <div class="col-md-6">
+                        <div class="form-group">
+                        <label class="labelNormal required " asp-for="loweredusername"></label>
+                        <input asp-for="loweredusername" class="form-control" />
+                        <span asp-validation-for="loweredusername" class="text-danger"></span>
+                        </div>
+                        </div>*@
+                    </div>
+					 <div class="row ">
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 <label class="labelNormal required " asp-for="emailaddress"></label>
+								 <input asp-for="emailaddress" class="form-control" /> 
+								 <span asp-validation-for="emailaddress" class="text-danger"></span>
+							</div>
+						</div>
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 <label class="labelNormal required " asp-for="loweredusername"></label>
+								 <input asp-for="loweredusername" class="form-control" /> 
+								 <span asp-validation-for="loweredusername" class="text-danger"></span>
+							</div>
+						</div>
+					</div>
+					 <div class="row ">
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 <label class="labelNormal  " asp-for="mobilenumber"></label>
+								 <input asp-for="mobilenumber" class="form-control" /> 
+								 <span asp-validation-for="mobilenumber" class="text-danger"></span>
+							</div>
+						</div>
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 <label class="labelNormal  " asp-for="userprofilephoto"></label>
+								 <input asp-for="userprofilephoto" class="form-control" /> 
+								 <span asp-validation-for="userprofilephoto" class="text-danger"></span>
+							</div>
+						</div>
+					</div>
+					 <div class="row ">
+						 <div class="col-md-6">
+							 <div class="form-group">
+							 <label class="form-check-label" asp-for="isanonymous"></label> 
+							 <select class="form-control" asp-for="isanonymous" > 
+								 <option value="">@SharedLocalizer.GetLocalizedHtmlString("PLEASE_SELECT_DROPDOWN")</option> 
+								 <option value="true">@SharedLocalizer.GetLocalizedHtmlString("YES")</option> 
+								 <option value="false">@SharedLocalizer.GetLocalizedHtmlString("NO")</option> 
+							 </select>
+							 <span asp-validation-for="isanonymous" class="text-danger"></span>
+							</div>
+						</div>
+						 <div class="col-md-6">
+							 <div class="form-group">
+							 <label class="form-check-label" asp-for="ischildenable"></label> 
+							 <select class="form-control" asp-for="ischildenable" > 
+								 <option value="">@SharedLocalizer.GetLocalizedHtmlString("PLEASE_SELECT_DROPDOWN")</option> 
+								 <option value="true">@SharedLocalizer.GetLocalizedHtmlString("YES")</option> 
+								 <option value="false">@SharedLocalizer.GetLocalizedHtmlString("NO")</option> 
+							 </select>
+							 <span asp-validation-for="ischildenable" class="text-danger"></span>
+							</div>
+						</div>
+					</div>
+					 <div class="row ">
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 <label class="labelNormal required " asp-for="masprivatekey"></label>
+								 <textarea cols="40" rows="5" asp-for="masprivatekey" class="form-control"></textarea>
+								 <span asp-validation-for="masprivatekey" class="masprivatekeyerror text-danger " id="masprivatekeyerror" ></span>
+							</div>
+						</div>
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 <label class="labelNormal required " asp-for="maspublickey"></label>
+								 <textarea cols="40" rows="5" asp-for="maspublickey" class="form-control"></textarea>
+								 <span asp-validation-for="maspublickey" class="maspublickeyerror text-danger " id="maspublickeyerror" ></span>
+							</div>
+						</div>
+					</div>
+					 <div class="row ">
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 <label class="labelNormal required " asp-for="password"></label>
+								 <textarea cols="40" rows="5" asp-for="password" class="form-control"></textarea>
+								 <span asp-validation-for="password" class="passworderror text-danger " id="passworderror" ></span>
+							</div>
+						</div>
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 <label class="labelNormal required " asp-for="passwordsalt"></label>
+								 <textarea cols="40" rows="5" asp-for="passwordsalt" class="form-control"></textarea>
+								 <span asp-validation-for="passwordsalt" class="passwordsalterror text-danger " id="passwordsalterror" ></span>
+							</div>
+						</div>
+					</div>
+					 <div class="row ">
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 <label class="labelNormal required " asp-for="passwordkey"></label>
+								 <textarea cols="40" rows="5" asp-for="passwordkey" class="form-control"></textarea>
+								 <span asp-validation-for="passwordkey" class="passwordkeyerror text-danger " id="passwordkeyerror" ></span>
+							</div>
+						</div>
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 <label class="labelNormal required " asp-for="passwordvector"></label>
+								 <textarea cols="40" rows="5" asp-for="passwordvector" class="form-control"></textarea>
+								 <span asp-validation-for="passwordvector" class="passwordvectorerror text-danger " id="passwordvectorerror" ></span>
+							</div>
+						</div>
+					</div>
+					 <div class="row ">
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 <label class="labelNormal  " asp-for="mobilepin"></label>
+								 <input asp-for="mobilepin" class="form-control" /> 
+								 <span asp-validation-for="mobilepin" class="text-danger"></span>
+							</div>
+						</div>
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 <label class="labelNormal  " asp-for="passwordquestion"></label>
+								 <input asp-for="passwordquestion" class="form-control" /> 
+								 <span asp-validation-for="passwordquestion" class="text-danger"></span>
+							</div>
+						</div>
+					</div>
+					 <div class="row ">
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 <label class="labelNormal  " asp-for="passwordanswer"></label>
+								 <input asp-for="passwordanswer" class="form-control" /> 
+								 <span asp-validation-for="passwordanswer" class="text-danger"></span>
+							</div>
+						</div>
+						 <div class="col-md-6">
+							 <div class="form-group">
+							 <label class="form-check-label" asp-for="approved"></label> 
+							 <select class="form-control" asp-for="approved" > 
+								 <option value="">@SharedLocalizer.GetLocalizedHtmlString("PLEASE_SELECT_DROPDOWN")</option> 
+								 <option value="true">@SharedLocalizer.GetLocalizedHtmlString("YES")</option> 
+								 <option value="false">@SharedLocalizer.GetLocalizedHtmlString("NO")</option> 
+							 </select>
+							 <span asp-validation-for="approved" class="text-danger"></span>
+							</div>
+						</div>
+					</div>
+					 <div class="row ">
+						 <div class="col-md-6">
+							 <div class="form-group">
+							 <label class="form-check-label" asp-for="locked"></label> 
+							 <select class="form-control" asp-for="locked" > 
+								 <option value="">@SharedLocalizer.GetLocalizedHtmlString("PLEASE_SELECT_DROPDOWN")</option> 
+								 <option value="true">@SharedLocalizer.GetLocalizedHtmlString("YES")</option> 
+								 <option value="false">@SharedLocalizer.GetLocalizedHtmlString("NO")</option> 
+							 </select>
+							 <span asp-validation-for="locked" class="text-danger"></span>
+							</div>
+						</div>
+						 <div class="col-md-6">
+							 <div class="form-group">
+							 <label class="labelNormal  " asp-for="lastlogindate"></label> 
+							 <input asp-for="lastlogindate" class="form-control"  type="date" asp-format="{0:dd/MM/yyyy}"   />
+							 <span asp-validation-for="lastlogindate" class="text-danger"></span> 
+							</div>
+						</div>
+					</div>
+					 <div class="row ">
+						 <div class="col-md-6">
+							 <div class="form-group">
+							 <label class="labelNormal  " asp-for="lastpasschangeddate"></label> 
+							 <input asp-for="lastpasschangeddate" class="form-control"  type="date" asp-format="{0:dd/MM/yyyy}"   />
+							 <span asp-validation-for="lastpasschangeddate" class="text-danger"></span> 
+							</div>
+						</div>
+						 <div class="col-md-6">
+							 <div class="form-group">
+							 <label class="labelNormal  " asp-for="lastlockoutdate"></label> 
+							 <input asp-for="lastlockoutdate" class="form-control"  type="date" asp-format="{0:dd/MM/yyyy}"   />
+							 <span asp-validation-for="lastlockoutdate" class="text-danger"></span> 
+							</div>
+						</div>
+					</div>
+					 <div class="row ">
+						 <div class="col-md-6">
+							 <div class="form-group">
+							 <label class="labelNormal  " asp-for="failedpasswordattemptcount"></label> 
+							 <input asp-for="failedpasswordattemptcount" class="form-control"  />
+							 <span asp-validation-for="failedpasswordattemptcount" class="text-danger"></span>
+							</div>
+						</div>
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 <label class="labelNormal  " asp-for="comment"></label>
+								 <textarea cols="40" rows="5" asp-for="comment" class="form-control"></textarea>
+								 <span asp-validation-for="comment" class="commenterror text-danger " id="commenterror" ></span>
+							</div>
+						</div>
+					</div>
+					 <div class="row ">
+						 <div class="col-md-6">
+							 <div class="form-group">
+							 <label class="labelNormal  " asp-for="lastactivitydate"></label> 
+							 <input asp-for="lastactivitydate" class="form-control"  type="date" asp-format="{0:dd/MM/yyyy}"   />
+							 <span asp-validation-for="lastactivitydate" class="text-danger"></span> 
+							</div>
+						</div>
+						 <div class="col-md-6">
+							 <div class="form-group">
+							 <label class="form-check-label" asp-for="isapproved"></label> 
+							 <select class="form-control" asp-for="isapproved" > 
+								 <option value="">@SharedLocalizer.GetLocalizedHtmlString("PLEASE_SELECT_DROPDOWN")</option> 
+								 <option value="true">@SharedLocalizer.GetLocalizedHtmlString("YES")</option> 
+								 <option value="false">@SharedLocalizer.GetLocalizedHtmlString("NO")</option> 
+							 </select>
+							 <span asp-validation-for="isapproved" class="text-danger"></span>
+							</div>
+						</div>
+					</div>
+					 <div class="row ">
+						 <div class="col-md-6">
+							 <div class="form-group">
+							 <label class="labelNormal  " asp-for="approvedby"></label> 
+							 <input asp-for="approvedby" class="form-control"  />
+							 <span asp-validation-for="approvedby" class="text-danger"></span>
+							</div>
+						</div>
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 <label class="labelNormal  " asp-for="approvedbyusername"></label>
+								 <input asp-for="approvedbyusername" class="form-control" /> 
+								 <span asp-validation-for="approvedbyusername" class="text-danger"></span>
+							</div>
+						</div>
+					</div>
+					 <div class="row ">
+						 <div class="col-md-6">
+							 <div class="form-group">
+							 <label class="labelNormal  " asp-for="approveddate"></label> 
+							 <input asp-for="approveddate" class="form-control"  type="date" asp-format="{0:dd/MM/yyyy}"   />
+							 <span asp-validation-for="approveddate" class="text-danger"></span> 
+							</div>
+						</div>
+						 <div class="col-md-6">
+							 <div class="form-group">
+							 <label class="form-check-label" asp-for="isemailconfirmed"></label> 
+							 <select class="form-control" asp-for="isemailconfirmed" > 
+								 <option value="">@SharedLocalizer.GetLocalizedHtmlString("PLEASE_SELECT_DROPDOWN")</option> 
+								 <option value="true">@SharedLocalizer.GetLocalizedHtmlString("YES")</option> 
+								 <option value="false">@SharedLocalizer.GetLocalizedHtmlString("NO")</option> 
+							 </select>
+							 <span asp-validation-for="isemailconfirmed" class="text-danger"></span>
+							</div>
+						</div>
+					</div>
+					 <div class="row ">
+						 <div class="col-md-6">
+							 <div class="form-group">
+							 <label class="labelNormal  " asp-for="emailconfirmationbyuserdate"></label> 
+							 <input asp-for="emailconfirmationbyuserdate" class="form-control"  type="date" asp-format="{0:dd/MM/yyyy}"   />
+							 <span asp-validation-for="emailconfirmationbyuserdate" class="text-danger"></span> 
+							</div>
+						</div>
+						 <div class="col-md-6">
+							 <div class="form-group">
+							 <label class="form-check-label" asp-for="twofactorenable"></label> 
+							 <select class="form-control" asp-for="twofactorenable" > 
+								 <option value="">@SharedLocalizer.GetLocalizedHtmlString("PLEASE_SELECT_DROPDOWN")</option> 
+								 <option value="true">@SharedLocalizer.GetLocalizedHtmlString("YES")</option> 
+								 <option value="false">@SharedLocalizer.GetLocalizedHtmlString("NO")</option> 
+							 </select>
+							 <span asp-validation-for="twofactorenable" class="text-danger"></span>
+							</div>
+						</div>
+					</div>
+					 <div class="row ">
+						 <div class="col-md-6">
+							 <div class="form-group">
+							 <label class="form-check-label" asp-for="ismobilenumberconfirmed"></label> 
+							 <select class="form-control" asp-for="ismobilenumberconfirmed" > 
+								 <option value="">@SharedLocalizer.GetLocalizedHtmlString("PLEASE_SELECT_DROPDOWN")</option> 
+								 <option value="true">@SharedLocalizer.GetLocalizedHtmlString("YES")</option> 
+								 <option value="false">@SharedLocalizer.GetLocalizedHtmlString("NO")</option> 
+							 </select>
+							 <span asp-validation-for="ismobilenumberconfirmed" class="text-danger"></span>
+							</div>
+						</div>
+						 <div class="col-md-6">
+							 <div class="form-group">
+							 <label class="labelNormal  " asp-for="mobilenumberconfirmedbyuserdate"></label> 
+							 <input asp-for="mobilenumberconfirmedbyuserdate" class="form-control"  type="date" asp-format="{0:dd/MM/yyyy}"   />
+							 <span asp-validation-for="mobilenumberconfirmedbyuserdate" class="text-danger"></span> 
+							</div>
+						</div>
+					</div>
+					 <div class="row ">
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 <label class="labelNormal  " asp-for="securitystamp"></label>
+								 <input asp-for="securitystamp" class="form-control" /> 
+								 <span asp-validation-for="securitystamp" class="text-danger"></span>
+							</div>
+						</div>
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 <label class="labelNormal  " asp-for="concurrencystamp"></label>
+								 <input asp-for="concurrencystamp" class="form-control" /> 
+								 <span asp-validation-for="concurrencystamp" class="text-danger"></span>
+							</div>
+						</div>
+					</div>
+					 <div class="row ">
+						 <div class="col-md-6">
+							 <div class="form-group">
+							 <label class="labelNormal  " asp-for="webuseronly"></label> 
+							 <input asp-for="webuseronly" class="form-control"  />
+							 <span asp-validation-for="webuseronly" class="text-danger"></span>
+							</div>
+						</div>
+					</div>
+                   
+                    <div class="row btn-toolbar">
+                        <div class="col-md-6 ">
+                            <div class="form-group">
+                                <button type="submit" id="btnEditOwin_User" class="btn btn-primary btn-md"><i class="fa fa-save"></i> @SharedLocalizer.GetLocalizedHtmlString("SUBMIT_REQUEST")</button>
+                                <button id="btnGoBackOwin_User" class="btn btn-secondary btn-md "><i class="fas fa-arrow-circle-left"></i> @SharedLocalizer.GetLocalizedHtmlString("GO_BACK")</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!-- ./card-body -->
+        <div class="card-footer">
+            <div class="row">
+                <div class="col-md-12">
+
+                    <!-- /.description-block -->
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.card-footer -->
+    </div>
+    <!-- /.card -->
+</div>
+<!-- /.col -->
+
+
+@section Scripts {
+    <script src="~/lib/customjs/Owin_User/Owin_User.js"></script>
+}
+
+
+
+
+

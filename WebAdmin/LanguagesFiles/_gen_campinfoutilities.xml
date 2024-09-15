@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="campid" value="AR:  Camp I D"></resource>
+       <resource culture="ar-kw" name="campidRequired" value="AR: Please provide  Camp I D"></resource>
+       <resource culture="ar-kw" name="utilitiesid" value="AR:  Utilities I D"></resource>
+       <resource culture="ar-kw" name="utilitiesidRequired" value="AR: Please provide  Utilities I D"></resource>
+       <resource culture="ar-kw" name="remarks" value="AR:  Remarks"></resource>
+		<resource culture="ar-kw" name="campinfoutilitiesList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="campinfoutilitiesCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="campinfoutilitiesUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="campinfoutilitiesDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="campid" value=" Camp I D"></resource>
+       <resource culture="en-us" name="campidRequired" value="Please provide  Camp I D"></resource>
+       <resource culture="en-us" name="utilitiesid" value=" Utilities I D"></resource>
+       <resource culture="en-us" name="utilitiesidRequired" value="Please provide  Utilities I D"></resource>
+       <resource culture="en-us" name="remarks" value=" Remarks"></resource>
+        <resource culture="en-us" name="campinfoutilitiesList" value="View All"></resource>
+		<resource culture="en-us" name="campinfoutilitiesCreate" value="Create"></resource>
+		<resource culture="en-us" name="campinfoutilitiesUpdate" value="Update"></resource>
+		<resource culture="en-us" name="campinfoutilitiesDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

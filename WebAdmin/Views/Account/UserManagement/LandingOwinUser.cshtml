@@ -1,0 +1,116 @@
+﻿@using CLL
+@model BDO.Core.DataAccessObjects.SecurityModels.owin_userEntity
+@inject CLL.Localization.LocalizeService SharedLocalizer
+
+@using Microsoft.Extensions.Options
+@{
+    ViewData["Title"] = @SharedLocalizer.GetLocalizedHtmlString("VIEW_USER_LIST");
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-footer">
+                <h5 class="card-title">@SharedLocalizer.GetLocalizedHtmlString("VIEW_USER_LIST")</h5>
+            </div>
+            <!-- /.card-header -->
+
+            <div class="card-body">
+                <form method="POST" id="frmchangepassword" class="my-login-validation" novalidate="" autocomplete="off">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <table id="dtusers" class="table table-striped table-bordered" @*style="width:100%"*@ cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th><label class="labelNormal  " asp-for="userid"></label></th>
+                                        @*<th class="hidden"></th>*@
+                                        <th><label class="labelNormal  " asp-for="username"></label></th>
+                                        <th><label class="labelNormal  " asp-for="emailaddress"></label></th>
+                                        <th><label class="labelNormal  " asp-for="mobilenumber"></label></th>
+                                        <th>@SharedLocalizer.GetLocalizedHtmlString("ACTIONS_BUTTONS")</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+            <!-- ./card-body -->
+            <div class="card-footer">
+                <div class="row">
+                    <div class="col-md-12">
+
+                        <!-- /.description-block -->
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.card-footer -->
+        </div>
+        <!-- /.card -->
+    </div>
+    <!-- /.col -->
+</div>
+
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            var dt = $("#dtusers").DataTable({
+                "ajax": $.fn.dataTable.json({ url: "/OwinUser/ListOwinUser" }),
+                "buttons": {
+                    "buttons": [
+                        {
+                            text: '<i class="fas fa-plus-square" aria-hidden="true"></i> @SharedLocalizer.GetLocalizedHtmlString("ADD_NEW_RECORD")',
+                            className: 'btn btn-primary mr-1',
+                            action: function (e, dt, node, config) {
+                                location.href = "/OwinUser/AddOwinUser";
+                            }
+                        },
+                        {
+                            extend: 'copy',
+                            text: '<i class="fas fa-copy" aria-hidden="true"></i> @SharedLocalizer.GetLocalizedHtmlString("COPY_LIST")',
+                            className: 'btn btn-info mr-1',
+                        },
+                        {
+                            extend: 'excel',
+                            text: '<i class="fas fa-file-excel" aria-hidden="true"></i> @SharedLocalizer.GetLocalizedHtmlString("EXCEL_EXPORT")',
+                            className: 'btn btn-info mr-1',
+                        },
+                        {
+                            extend: 'csv',
+                            text: '<i class="fas fa-file-csv" aria-hidden="true"></i> @SharedLocalizer.GetLocalizedHtmlString("CSV_EXPORT")',
+                            className: 'btn btn-info mr-1',
+                        },
+                        {
+                            extend: 'pdf',
+                            text: '<i class="fa fa-print" aria-hidden="true"></i> @SharedLocalizer.GetLocalizedHtmlString("PRINT")',
+                            className: 'btn btn-info mr-1',
+                        }]
+                },
+                columnDefs: [
+                    { targets: 0, "visible": false, searchable: false },    // Fix the column width
+                    { targets: 1, "visible": true },
+                    { targets: 2, "visible": true },
+                    { targets: 3, "visible": true },
+                    { targets: 4, "visible": true, "sortable": false, "className": "text-center" }
+                ],
+                "columns": [
+                    { "data": "userid", "name": "userid", "autoWidth": true },
+                    { "data": "username", "name": "username", "autoWidth": true },
+                    { "data": "emailaddress", "name": "emailaddress", "autoWidth": true },
+                    { "data": "mobilenumber", "name": "mobilenumber", "autoWidth": true },
+                    {
+                        "data": "datatablebuttonscode", render: function (data, type, full, row) {
+                            return data;
+                        }
+                    }
+                ]
+            });
+        });
+
+    </script>
+}
+

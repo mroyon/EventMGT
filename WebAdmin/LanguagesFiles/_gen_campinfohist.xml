@@ -1,0 +1,98 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="campid" value="AR:  Camp I D"></resource>
+       <resource culture="ar-kw" name="campidRequired" value="AR: Please provide  Camp I D"></resource>
+       <resource culture="ar-kw" name="campcategoryid" value="AR:  Camp Category I D"></resource>
+       <resource culture="ar-kw" name="campcategoryidRequired" value="AR: Please provide  Camp Category I D"></resource>
+       <resource culture="ar-kw" name="campnamear" value="AR:  Camp Name Ar"></resource>
+       <resource culture="ar-kw" name="campnamearRequired" value="AR: Please provide  Camp Name Ar"></resource>
+       <resource culture="ar-kw" name="campnameen" value="AR:  Camp Name En"></resource>
+       <resource culture="ar-kw" name="campnameenRequired" value="AR: Please provide  Camp Name En"></resource>
+       <resource culture="ar-kw" name="descriptionar" value="AR:  Description Ar"></resource>
+       <resource culture="ar-kw" name="descriptionen" value="AR:  Description En"></resource>
+       <resource culture="ar-kw" name="maxbookingdays" value="AR:  Max Booking Days"></resource>
+       <resource culture="ar-kw" name="isavailable" value="AR:  Is Available"></resource>
+       <resource culture="ar-kw" name="rentamountperdays" value="AR:  Rent Amount Per Days"></resource>
+       <resource culture="ar-kw" name="rentamountperweeks" value="AR:  Rent Amount Per Weeks"></resource>
+       <resource culture="ar-kw" name="rentamountpermonths" value="AR:  Rent Amount Per Months"></resource>
+       <resource culture="ar-kw" name="discrount" value="AR:  Discrount"></resource>
+       <resource culture="ar-kw" name="discrountpercentage" value="AR:  Discrount Percentage"></resource>
+       <resource culture="ar-kw" name="discountfrom" value="AR:  Discount From"></resource>
+       <resource culture="ar-kw" name="discountto" value="AR:  Discount To"></resource>
+       <resource culture="ar-kw" name="discrountactive" value="AR:  Discrount Active"></resource>
+       <resource culture="ar-kw" name="numberofrooms" value="AR:  Number Of Rooms"></resource>
+       <resource culture="ar-kw" name="numberofrestroom" value="AR:  Number Of Restroom"></resource>
+       <resource culture="ar-kw" name="campaddressone" value="AR:  Camp Address One"></resource>
+       <resource culture="ar-kw" name="campaddresstwo" value="AR:  Camp Address Two"></resource>
+       <resource culture="ar-kw" name="geomaplocation" value="AR:  Geo Map Location"></resource>
+       <resource culture="ar-kw" name="cityid" value="AR:  City I D"></resource>
+       <resource culture="ar-kw" name="isclosed" value="AR:  Is Closed"></resource>
+       <resource culture="ar-kw" name="openingdate" value="AR:  Opening Date"></resource>
+       <resource culture="ar-kw" name="hasparkingfacility" value="AR:  Has Parking Facility"></resource>
+       <resource culture="ar-kw" name="haschildplayground" value="AR:  Has Child Playground"></resource>
+       <resource culture="ar-kw" name="hasswimmingpool" value="AR:  Has Swimmingpool"></resource>
+       <resource culture="ar-kw" name="hasbbq" value="AR:  Has B B Q"></resource>
+       <resource culture="ar-kw" name="hasgym" value="AR:  Has Gym"></resource>
+       <resource culture="ar-kw" name="hasprivatebeach" value="AR:  Has Private Beach"></resource>
+       <resource culture="ar-kw" name="hashotspringbath" value="AR:  Has Hot Spring Bath"></resource>
+       <resource culture="ar-kw" name="hashottubjacuzzi" value="AR:  Has Hot Tub Jacuzzi"></resource>
+       <resource culture="ar-kw" name="haskitchen" value="AR:  Has Kitchen"></resource>
+       <resource culture="ar-kw" name="hasshoppingcomplex" value="AR:  Has Shopping Complex"></resource>
+		<resource culture="ar-kw" name="campinfohistList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="campinfohistCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="campinfohistUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="campinfohistDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="campid" value=" Camp I D"></resource>
+       <resource culture="en-us" name="campidRequired" value="Please provide  Camp I D"></resource>
+       <resource culture="en-us" name="campcategoryid" value=" Camp Category I D"></resource>
+       <resource culture="en-us" name="campcategoryidRequired" value="Please provide  Camp Category I D"></resource>
+       <resource culture="en-us" name="campnamear" value=" Camp Name Ar"></resource>
+       <resource culture="en-us" name="campnamearRequired" value="Please provide  Camp Name Ar"></resource>
+       <resource culture="en-us" name="campnameen" value=" Camp Name En"></resource>
+       <resource culture="en-us" name="campnameenRequired" value="Please provide  Camp Name En"></resource>
+       <resource culture="en-us" name="descriptionar" value=" Description Ar"></resource>
+       <resource culture="en-us" name="descriptionen" value=" Description En"></resource>
+       <resource culture="en-us" name="maxbookingdays" value=" Max Booking Days"></resource>
+       <resource culture="en-us" name="isavailable" value=" Is Available"></resource>
+       <resource culture="en-us" name="rentamountperdays" value=" Rent Amount Per Days"></resource>
+       <resource culture="en-us" name="rentamountperweeks" value=" Rent Amount Per Weeks"></resource>
+       <resource culture="en-us" name="rentamountpermonths" value=" Rent Amount Per Months"></resource>
+       <resource culture="en-us" name="discrount" value=" Discrount"></resource>
+       <resource culture="en-us" name="discrountpercentage" value=" Discrount Percentage"></resource>
+       <resource culture="en-us" name="discountfrom" value=" Discount From"></resource>
+       <resource culture="en-us" name="discountto" value=" Discount To"></resource>
+       <resource culture="en-us" name="discrountactive" value=" Discrount Active"></resource>
+       <resource culture="en-us" name="numberofrooms" value=" Number Of Rooms"></resource>
+       <resource culture="en-us" name="numberofrestroom" value=" Number Of Restroom"></resource>
+       <resource culture="en-us" name="campaddressone" value=" Camp Address One"></resource>
+       <resource culture="en-us" name="campaddresstwo" value=" Camp Address Two"></resource>
+       <resource culture="en-us" name="geomaplocation" value=" Geo Map Location"></resource>
+       <resource culture="en-us" name="cityid" value=" City I D"></resource>
+       <resource culture="en-us" name="isclosed" value=" Is Closed"></resource>
+       <resource culture="en-us" name="openingdate" value=" Opening Date"></resource>
+       <resource culture="en-us" name="hasparkingfacility" value=" Has Parking Facility"></resource>
+       <resource culture="en-us" name="haschildplayground" value=" Has Child Playground"></resource>
+       <resource culture="en-us" name="hasswimmingpool" value=" Has Swimmingpool"></resource>
+       <resource culture="en-us" name="hasbbq" value=" Has B B Q"></resource>
+       <resource culture="en-us" name="hasgym" value=" Has Gym"></resource>
+       <resource culture="en-us" name="hasprivatebeach" value=" Has Private Beach"></resource>
+       <resource culture="en-us" name="hashotspringbath" value=" Has Hot Spring Bath"></resource>
+       <resource culture="en-us" name="hashottubjacuzzi" value=" Has Hot Tub Jacuzzi"></resource>
+       <resource culture="en-us" name="haskitchen" value=" Has Kitchen"></resource>
+       <resource culture="en-us" name="hasshoppingcomplex" value=" Has Shopping Complex"></resource>
+        <resource culture="en-us" name="campinfohistList" value="View All"></resource>
+		<resource culture="en-us" name="campinfohistCreate" value="Create"></resource>
+		<resource culture="en-us" name="campinfohistUpdate" value="Update"></resource>
+		<resource culture="en-us" name="campinfohistDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

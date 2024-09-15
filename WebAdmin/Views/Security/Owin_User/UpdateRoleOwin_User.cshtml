@@ -1,0 +1,145 @@
+﻿@using CLL
+@model BDO.Core.DataAccessObjects.SecurityModels.owin_userEntity
+@inject CLL.Localization.LocalizeService SharedLocalizer
+
+@using Microsoft.Extensions.Options
+@{
+    ViewData["Title"] = @SharedLocalizer.GetLocalizedHtmlString("UPDATE_OWIN_USER");
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-footer">
+                <h5 class="card-title">@SharedLocalizer.GetLocalizedHtmlString("UPDATE_OWIN_USER")</h5>
+            </div>
+            <!-- /.card-header -->
+            <form method="POST" id="frmUpdateRoleOwin_User" class="my-login-validation" novalidate="" autocomplete="off">
+                <div class="card-body">
+
+                    <input type="hidden" asp-for="masteruserid" class="form-control" />
+                    <input type="hidden" asp-for="applicationid" class="form-control" />
+                    <input type="hidden" asp-for="userid" class="form-control" />
+
+                    <div class="row ">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="labelNormal required " asp-for="username"></label>
+                                <input asp-for="username" class="form-control" readonly="readonly" disabled="disabled" />
+                                <span asp-validation-for="username" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="labelNormal required " asp-for="emailaddress"></label>
+                                <input asp-for="emailaddress" class="form-control" readonly="readonly" disabled="disabled" />
+                                <span asp-validation-for="emailaddress" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="labelNormal required " asp-for="pkeyex"></label>
+                                <input type="number" asp-for="pkeyex" class="form-control"  readonly="readonly" disabled="disabled"/>
+                                <span asp-validation-for="pkeyex" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="labelNormal  " asp-for="mobilenumber"></label>
+                                <input asp-for="mobilenumber" class="form-control" readonly="readonly" disabled="disabled" />
+                                <span asp-validation-for="mobilenumber" class="text-danger"></span>
+                            </div>
+                        </div>
+                        
+                        @* <div class="col-md-6">
+                        <div class="form-group">
+                        <label class="labelNormal  " asp-for="userprofilephoto"></label>
+                        <input asp-for="userprofilephoto" class="form-control" />
+                        <span asp-validation-for="userprofilephoto" class="text-danger"></span>
+                        </div>
+                        </div>*@
+                    </div>
+                    <div class="row ">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-check-label" asp-for="isreviewed"></label>
+                                <select class="form-control" asp-for="isreviewed" readonly="readonly" disabled="disabled">
+                                    <option value="">@SharedLocalizer.GetLocalizedHtmlString("PLEASE_SELECT_DROPDOWN")</option>
+                                    <option value="true">@SharedLocalizer.GetLocalizedHtmlString("YES")</option>
+                                    <option value="false">@SharedLocalizer.GetLocalizedHtmlString("NO")</option>
+                                </select>
+                                <span asp-validation-for="isapproved" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="form-check-label" asp-for="locked"></label>
+                                <select class="form-control" asp-for="locked" readonly="readonly" disabled="disabled">
+                                    <option value="">@SharedLocalizer.GetLocalizedHtmlString("PLEASE_SELECT_DROPDOWN")</option>
+                                    <option value="true">@SharedLocalizer.GetLocalizedHtmlString("YES")</option>
+                                    <option value="false">@SharedLocalizer.GetLocalizedHtmlString("NO")</option>
+                                </select>
+                                <span asp-validation-for="locked" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+                    @*<div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="labelNormal  " asp-for="BaseSecurityParam.createdbyusername"></label>
+                                <input asp-for="BaseSecurityParam.createdbyusername" class="form-control" readonly="readonly" disabled="disabled" />
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="labelNormal  " asp-for="BaseSecurityParam.createddate"></label>
+                                <input asp-for="BaseSecurityParam.createddate" class="form-control" type="date" readonly="readonly" disabled="disabled" />
+                            </div>
+                        </div>
+                    </div>*@
+                    <br />
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="labelNormal required " asp-for="roleid"></label>
+                                @await Component.InvokeAsync("S2Owin_Role", new { selectid = "roleid", preloaded = ViewBag.preloadedDataowin_role , isReadOnly = false, multiple = false, isRequired = true, pkey = -99 })
+                                <span asp-validation-for="roleid" class="roleiderror text-danger " id="roleiderror"></span>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row btn-toolbar">
+                        <div class="col-md-6 ">
+                            <div class="form-group">
+                                <button type="submit" id="btnUpdateRoleOwin_User" class="btn btn-primary btn-md"><i class="fa fa-save"></i> @SharedLocalizer.GetLocalizedHtmlString("SUBMIT_REQUEST")</button>
+                                <button id="btnGoBackOwin_User" class="btn btn-secondary btn-md "><i class="fas fa-arrow-circle-left"></i> @SharedLocalizer.GetLocalizedHtmlString("GO_BACK")</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!-- ./card-body -->
+        <div class="card-footer">
+            <div class="row">
+                <div class="col-md-12">
+
+                    <!-- /.description-block -->
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.card-footer -->
+    </div>
+    <!-- /.card -->
+</div>
+<!-- /.col -->
+@section Scripts {
+    <script src="~/lib/customjs/Owin_User/Owin_User.js"></script>
+}
+
+
+

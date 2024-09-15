@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="utilities" value="AR:  Utilities"></resource>
+       <resource culture="ar-kw" name="utilitiesRequired" value="AR: Please provide  Utilities"></resource>
+       <resource culture="ar-kw" name="utilitieseng" value="AR:  Utilities Eng"></resource>
+		<resource culture="ar-kw" name="camputilitiesList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="camputilitiesCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="camputilitiesUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="camputilitiesDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="utilities" value=" Utilities"></resource>
+       <resource culture="en-us" name="utilitiesRequired" value="Please provide  Utilities"></resource>
+       <resource culture="en-us" name="utilitieseng" value=" Utilities Eng"></resource>
+        <resource culture="en-us" name="camputilitiesList" value="View All"></resource>
+		<resource culture="en-us" name="camputilitiesCreate" value="Create"></resource>
+		<resource culture="en-us" name="camputilitiesUpdate" value="Update"></resource>
+		<resource culture="en-us" name="camputilitiesDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

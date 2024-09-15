@@ -1,0 +1,138 @@
+﻿@using CLL
+@*@model BDO.Core.DataAccessObjects.Models.Owin_RoleEntity*@
+@inject CLL.Localization.LocalizeService SharedLocalizer
+@{
+    Layout = "_LayoutViewComponent";
+}
+@{
+    string selectid = ViewBag.selectid;
+    string strisReadOnly = ViewBag.isReadOnly.ToString().ToLower();
+    string strmultiple = ViewBag.multiple.ToString().ToLower();
+    bool isRequired = ViewBag.isRequired;
+    long? pkey = string.IsNullOrEmpty(ViewBag.pkey) == true ? null : long.Parse(ViewBag.pkey);
+    int minimumInputLength = 0;
+    string lang = System.Threading.Thread.CurrentThread.CurrentUICulture.Name.ToLowerInvariant().ToLower();
+    ViewBag.ServiceStatusData = ViewBag.ServiceStatusData != null ? ViewBag.ServiceStatusData : "undefined";
+
+
+    <div class="row">
+            <div class="col-lg-12 mx-auto">
+                <div class="card shadow border-0 mb-5">
+                    <div class="card-body p-3">
+
+                        <ul class="list-group row" name="@selectid" id="@selectid" style="flex-direction:row;">
+                        </ul>
+                        <span class="field-validation-valid text-danger @selectid" data-valmsg-for="@selectid" data-valmsg-replace="true"></span>
+                    </div>
+                </div>
+
+            </div>
+    </div>
+
+
+}
+@section scripts
+    {
+    <script type="text/javascript">
+
+        function test() {
+
+        }
+
+        $(function () {
+
+
+
+            var dat = @Html.Raw(ViewBag.ServiceStatusData);
+
+            console.log("ServiceStatusData: " + dat);
+
+            if (dat != undefined) {
+                $.each(dat, function (key, val) {
+
+                    var strIsActiveChecked = val.isactive == true ? "checked" : "";
+                    var strIsServiceChecked = val.strMasterID != "-99" ? "checked" : "";
+
+                    if (@strisReadOnly== true) {
+                        $("#@selectid").append("<li class= 'list-group-item rounded-0 list-group-item rounded-0 col-lg-6' >" +
+                            "<div class='custom-control custom-checkbox' > " +
+                            "<div class='row'>" +
+                            "<div class='col-lg-3'>" +
+                            "<input disabled readonly  class= 'custom-control-input singleservicestatus' serviceusermappedid='" + val.strMasterID + "' id='chkservicestatus-" + val.strMasterID + "' servicestatusid='" + val.servicestatusid + "'  type = 'checkbox' " + strIsServiceChecked + " > " +
+                            "<label disabled  readonly class= 'cursor-pointer font-italic d-block custom-control-label' for='chkservicestatus-" + val.strMasterID + "' servicestatusid='" + val.servicestatusid + "'> " + val.servicestatusar + " </label>" +
+                            "</div>" +
+                            "<div class='col-lg-5'>" +
+                            "<input disabled class= 'form-control singleservicestatusname' serviceusermappedid='" + val.strMasterID + "' id='txtservicestatus-" + val.Id + "' servicestatusid='" + val.Id + "'  type = 'text' value='" + val.servicestatusar + "' > " +
+                            "</div>" +
+                            "<div class='col-lg-1'>" +
+
+                            "</div>" +
+                            "<div class='col-lg-3'>" +
+                            "<input disabled readonly  style='margin-left:10px;' serviceusermappedid='" + val.strMasterID + "' class= 'custom-control-input singleservicestatusisactive' id='chkservicestatusisactive-" + val.strMasterID + "' servicestatusid='" + val.servicestatusid + "' " + strIsActiveChecked + " type = 'checkbox' > " +
+                            "<label disabled readonly class= 'cursor-pointer font-italic d-block custom-control-label' for='chkservicestatusisactive-" + val.strMasterID + "' servicestatusid='" + val.servicestatusid + "'> Active </label>" +
+                            "</div>" +
+                            "</div>" +
+                            "</div>" +
+                            "</li> ");
+
+                    }
+                    else {
+                        $("#@selectid").append("<li class= 'list-group-item rounded-0 list-group-item rounded-0 col-lg-6' >" +
+                            "<div class='custom-control custom-checkbox' > " +
+                            "<div class='row'>" +
+                            "<div class='col-lg-3'>" +
+                            "<input class= 'custom-control-input singleservicestatus' serviceusermappedid='" + val.strMasterID + "' id='chkservicestatus-" + val.strMasterID + "' servicestatusid='" + val.servicestatusid + "'  type = 'checkbox' " + strIsServiceChecked + " > " +
+                            "<label class= 'cursor-pointer font-italic d-block custom-control-label' for='chkservicestatus-" + val.strMasterID + "' servicestatusid='" + val.servicestatusid + "'> " + val.servicestatusar + " </label>" +
+                            "</div>" +
+                            "<div class='col-lg-5'>" +
+                            "<input class= 'form-control singleservicestatusname' serviceusermappedid='" + val.strMasterID + "' id='txtservicestatus-" + val.Id + "' servicestatusid='" + val.Id + "'  type = 'text' value='" + val.servicestatusar + "' > " +
+                            "</div>" +
+                            "<div class='col-lg-1'>" +
+
+                            "</div>" +
+                            "<div class='col-lg-3'>" +
+                            "<input style='margin-left:10px;' serviceusermappedid='" + val.strMasterID + "' class= 'custom-control-input singleservicestatusisactive' id='chkservicestatusisactive-" + val.strMasterID + "' servicestatusid='" + val.servicestatusid + "' " + strIsActiveChecked + " type = 'checkbox' > " +
+                            "<label class= 'cursor-pointer font-italic d-block custom-control-label' for='chkservicestatusisactive-" + val.strMasterID + "' servicestatusid='" + val.servicestatusid + "'> Active </label>" +
+                            "</div>" +
+                            "</div>" +
+                            "</div>" +
+                            "</li> ");
+
+                    }
+                });
+
+            }
+            else {
+                ajaxGetHandler("/Gen_ServiceStatus/GetAllDataForDropDowndGen_ServiceStatus", null, function (data) {
+                    // console.log(data);
+
+                    $.each(data.data, function (key, val) {
+
+                        //console.log(data);
+                        $("#@selectid").append("<li class= 'list-group-item rounded-0 list-group-item rounded-0 col-lg-6' >" +
+                            "<div class='custom-control custom-checkbox' > " +
+                            "<div class='row'>" +
+                            "<div class='col-lg-3'>" +
+                            "<input class= 'custom-control-input singleservicestatus' id='chkservicestatus-" + val.Id + "' servicestatusid='" + val.Id + "'  type = 'checkbox' > " +
+                            "<label class= 'cursor-pointer font-italic d-block custom-control-label' for='chkservicestatus-" + val.Id + "' servicestatusid='" + val.Id + "'> " + val.Text + " </label>" +
+                            "</div>" +
+                            "<div class='col-lg-5'>" +
+                            "<input class= 'form-control singleservicestatusname' id='txtservicestatus-" + val.Id + "' servicestatusid='" + val.Id + "'  type = 'text' value='" + val.Text + "' > " +
+                            "</div>" +
+                            "<div class='col-lg-1'>" +
+                           
+                            "</div>" +
+                            "<div class='col-lg-3' style='text-alight:right;'>" +
+                            "<input style='margin-left:10px;' class= 'custom-control-input singleservicestatusisactive' id='chkservicestatusisactive-" + val.Id + "' servicestatusid='" + val.Id + "'  type = 'checkbox' > " +
+                            "<label class= 'cursor-pointer font-italic d-block custom-control-label' for='chkservicestatusisactive-" + val.Id + "' servicestatusid='" + val.Id + "'> Active </label>" +
+                            "</div>" +
+                            "</div>" +
+                            "</div>" +
+                            "</li> ");
+                    });
+
+                }, false, false);
+            }
+        });
+    </script>
+}

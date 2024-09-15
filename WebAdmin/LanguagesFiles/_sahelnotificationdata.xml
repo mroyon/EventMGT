@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="notificationrequestjson" value="AR:  Notification Request J Son"></resource>
+       <resource culture="ar-kw" name="notificationrequestjsonRequired" value="AR: Please provide  Notification Request J Son"></resource>
+       <resource culture="ar-kw" name="notificationresponsejson" value="AR:  Notification Response J Son"></resource>
+       <resource culture="ar-kw" name="notificationresponsejsonRequired" value="AR: Please provide  Notification Response J Son"></resource>
+       <resource culture="ar-kw" name="applicantcivilid" value="AR:  Applicant Civil I D"></resource>
+       <resource culture="ar-kw" name="issuccess" value="AR:  Is Success"></resource>
+       <resource culture="ar-kw" name="sentdatetime" value="AR:  Sent Datetime"></resource>
+       <resource culture="ar-kw" name="sentdatetimeRequired" value="AR: Please provide  Sent Datetime"></resource>
+       <resource culture="ar-kw" name="referenceapptag" value="AR:  Reference App T A G"></resource>
+       <resource culture="ar-kw" name="referenceapptagRequired" value="AR: Please provide  Reference App T A G"></resource>
+       <resource culture="ar-kw" name="referenceid" value="AR:  Reference I D"></resource>
+		<resource culture="ar-kw" name="sahelnotificationdataList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="sahelnotificationdataCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="sahelnotificationdataUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="sahelnotificationdataDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="notificationrequestjson" value=" Notification Request J Son"></resource>
+       <resource culture="en-us" name="notificationrequestjsonRequired" value="Please provide  Notification Request J Son"></resource>
+       <resource culture="en-us" name="notificationresponsejson" value=" Notification Response J Son"></resource>
+       <resource culture="en-us" name="notificationresponsejsonRequired" value="Please provide  Notification Response J Son"></resource>
+       <resource culture="en-us" name="applicantcivilid" value=" Applicant Civil I D"></resource>
+       <resource culture="en-us" name="issuccess" value=" Is Success"></resource>
+       <resource culture="en-us" name="sentdatetime" value=" Sent Datetime"></resource>
+       <resource culture="en-us" name="sentdatetimeRequired" value="Please provide  Sent Datetime"></resource>
+       <resource culture="en-us" name="referenceapptag" value=" Reference App T A G"></resource>
+       <resource culture="en-us" name="referenceapptagRequired" value="Please provide  Reference App T A G"></resource>
+       <resource culture="en-us" name="referenceid" value=" Reference I D"></resource>
+        <resource culture="en-us" name="sahelnotificationdataList" value="View All"></resource>
+		<resource culture="en-us" name="sahelnotificationdataCreate" value="Create"></resource>
+		<resource culture="en-us" name="sahelnotificationdataUpdate" value="Update"></resource>
+		<resource culture="en-us" name="sahelnotificationdataDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="unitid" value="AR:  Unit I D"></resource>
+       <resource culture="ar-kw" name="unitidRequired" value="AR: Please provide  Unit I D"></resource>
+       <resource culture="ar-kw" name="userid" value="AR:  User Id"></resource>
+       <resource culture="ar-kw" name="useridRequired" value="AR: Please provide  User Id"></resource>
+       <resource culture="ar-kw" name="ex_date1" value="AR:  Ex Date 1"></resource>
+       <resource culture="ar-kw" name="ex_date2" value="AR:  Ex Date 2"></resource>
+       <resource culture="ar-kw" name="ex_nvarchar1" value="AR:  Ex Nvarchar 1"></resource>
+       <resource culture="ar-kw" name="ex_nvarchar2" value="AR:  Ex Nvarchar 2"></resource>
+       <resource culture="ar-kw" name="ex_nvarchar3" value="AR:  Ex Nvarchar 3"></resource>
+       <resource culture="ar-kw" name="ex_bigint1" value="AR:  Ex Bigint 1"></resource>
+       <resource culture="ar-kw" name="ex_bigint2" value="AR:  Ex Bigint 2"></resource>
+       <resource culture="ar-kw" name="ex_decimal1" value="AR:  Ex Decimal 1"></resource>
+       <resource culture="ar-kw" name="ex_decimal2" value="AR:  Ex Decimal 2"></resource>
+		<resource culture="ar-kw" name="userunitList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="userunitCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="userunitUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="userunitDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="unitid" value=" Unit I D"></resource>
+       <resource culture="en-us" name="unitidRequired" value="Please provide  Unit I D"></resource>
+       <resource culture="en-us" name="userid" value=" User Id"></resource>
+       <resource culture="en-us" name="useridRequired" value="Please provide  User Id"></resource>
+       <resource culture="en-us" name="ex_date1" value=" Ex Date 1"></resource>
+       <resource culture="en-us" name="ex_date2" value=" Ex Date 2"></resource>
+       <resource culture="en-us" name="ex_nvarchar1" value=" Ex Nvarchar 1"></resource>
+       <resource culture="en-us" name="ex_nvarchar2" value=" Ex Nvarchar 2"></resource>
+       <resource culture="en-us" name="ex_nvarchar3" value=" Ex Nvarchar 3"></resource>
+       <resource culture="en-us" name="ex_bigint1" value=" Ex Bigint 1"></resource>
+       <resource culture="en-us" name="ex_bigint2" value=" Ex Bigint 2"></resource>
+       <resource culture="en-us" name="ex_decimal1" value=" Ex Decimal 1"></resource>
+       <resource culture="en-us" name="ex_decimal2" value=" Ex Decimal 2"></resource>
+        <resource culture="en-us" name="userunitList" value="View All"></resource>
+		<resource culture="en-us" name="userunitCreate" value="Create"></resource>
+		<resource culture="en-us" name="userunitUpdate" value="Update"></resource>
+		<resource culture="en-us" name="userunitDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

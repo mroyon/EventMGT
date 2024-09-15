@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="campid" value="AR:  Camp I D"></resource>
+       <resource culture="ar-kw" name="campidRequired" value="AR: Please provide  Camp I D"></resource>
+       <resource culture="ar-kw" name="registereduserid" value="AR:  Registered User I D"></resource>
+       <resource culture="ar-kw" name="registereduseridRequired" value="AR: Please provide  Registered User I D"></resource>
+       <resource culture="ar-kw" name="campbookingid" value="AR:  Camp Booking I D"></resource>
+       <resource culture="ar-kw" name="campbookingidRequired" value="AR: Please provide  Camp Booking I D"></resource>
+       <resource culture="ar-kw" name="reviewpoint" value="AR:  Review Point"></resource>
+       <resource culture="ar-kw" name="reviewpointRequired" value="AR: Please provide  Review Point"></resource>
+       <resource culture="ar-kw" name="reviewnote" value="AR:  Review Note"></resource>
+       <resource culture="ar-kw" name="thumbsup" value="AR:  Thumbs Up"></resource>
+		<resource culture="ar-kw" name="campreviewinfoList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="campreviewinfoCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="campreviewinfoUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="campreviewinfoDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="campid" value=" Camp I D"></resource>
+       <resource culture="en-us" name="campidRequired" value="Please provide  Camp I D"></resource>
+       <resource culture="en-us" name="registereduserid" value=" Registered User I D"></resource>
+       <resource culture="en-us" name="registereduseridRequired" value="Please provide  Registered User I D"></resource>
+       <resource culture="en-us" name="campbookingid" value=" Camp Booking I D"></resource>
+       <resource culture="en-us" name="campbookingidRequired" value="Please provide  Camp Booking I D"></resource>
+       <resource culture="en-us" name="reviewpoint" value=" Review Point"></resource>
+       <resource culture="en-us" name="reviewpointRequired" value="Please provide  Review Point"></resource>
+       <resource culture="en-us" name="reviewnote" value=" Review Note"></resource>
+       <resource culture="en-us" name="thumbsup" value=" Thumbs Up"></resource>
+        <resource culture="en-us" name="campreviewinfoList" value="View All"></resource>
+		<resource culture="en-us" name="campreviewinfoCreate" value="Create"></resource>
+		<resource culture="en-us" name="campreviewinfoUpdate" value="Update"></resource>
+		<resource culture="en-us" name="campreviewinfoDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

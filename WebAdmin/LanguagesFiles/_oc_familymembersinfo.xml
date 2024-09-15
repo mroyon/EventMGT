@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="ocfileid" value="AR:  O C File I D"></resource>
+       <resource culture="ar-kw" name="ocfileidRequired" value="AR: Please provide  O C File I D"></resource>
+       <resource culture="ar-kw" name="familymembercivilid" value="AR:  Family Member Civil I D"></resource>
+       <resource culture="ar-kw" name="familymemberpacijsondata" value="AR:  Family Member Paci Json Data"></resource>
+       <resource culture="ar-kw" name="hrfamilyid" value="AR:  Hr Family I D"></resource>
+       <resource culture="ar-kw" name="hrfamilyidRequired" value="AR: Please provide  Hr Family I D"></resource>
+       <resource culture="ar-kw" name="relationshipid" value="AR:  Relationship I D"></resource>
+       <resource culture="ar-kw" name="relationshipidRequired" value="AR: Please provide  Relationship I D"></resource>
+       <resource culture="ar-kw" name="hasmembership" value="AR:  Has Member Ship"></resource>
+       <resource culture="ar-kw" name="isactive" value="AR:  Is Active"></resource>
+       <resource culture="ar-kw" name="issynced" value="AR:  Is Synced"></resource>
+       <resource culture="ar-kw" name="lastsyncdate" value="AR:  Last Sync Date"></resource>
+		<resource culture="ar-kw" name="familymembersinfoList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="familymembersinfoCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="familymembersinfoUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="familymembersinfoDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="ocfileid" value=" O C File I D"></resource>
+       <resource culture="en-us" name="ocfileidRequired" value="Please provide  O C File I D"></resource>
+       <resource culture="en-us" name="familymembercivilid" value=" Family Member Civil I D"></resource>
+       <resource culture="en-us" name="familymemberpacijsondata" value=" Family Member Paci Json Data"></resource>
+       <resource culture="en-us" name="hrfamilyid" value=" Hr Family I D"></resource>
+       <resource culture="en-us" name="hrfamilyidRequired" value="Please provide  Hr Family I D"></resource>
+       <resource culture="en-us" name="relationshipid" value=" Relationship I D"></resource>
+       <resource culture="en-us" name="relationshipidRequired" value="Please provide  Relationship I D"></resource>
+       <resource culture="en-us" name="hasmembership" value=" Has Member Ship"></resource>
+       <resource culture="en-us" name="isactive" value=" Is Active"></resource>
+       <resource culture="en-us" name="issynced" value=" Is Synced"></resource>
+       <resource culture="en-us" name="lastsyncdate" value=" Last Sync Date"></resource>
+        <resource culture="en-us" name="familymembersinfoList" value="View All"></resource>
+		<resource culture="en-us" name="familymembersinfoCreate" value="Create"></resource>
+		<resource culture="en-us" name="familymembersinfoUpdate" value="Update"></resource>
+		<resource culture="en-us" name="familymembersinfoDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

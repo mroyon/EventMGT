@@ -1,0 +1,69 @@
+﻿@using Microsoft.AspNetCore.Builder
+@using Microsoft.AspNetCore.Localization
+@using Microsoft.AspNetCore.Mvc.Localization
+@using Microsoft.Extensions.Options
+
+@using Microsoft.AspNetCore.Authorization
+@using CLL.Localization
+@inject IAuthorizationService AuthorizationService
+@inject CLL.Localization.LocalizeService SharedLocalizer
+
+@inject IViewLocalizer Localizer
+@inject IOptions<RequestLocalizationOptions> LocOptions
+@{
+
+}
+
+<div class="row dvCivilServiceComm" id="dvCivilServiceComm">
+    <div class="col-md-12 ">
+        <div class="card card-success">
+            <div class="card-header">
+                <h3 class="card-title">ديوان الخدمة المدنية</h3>
+            </div>
+            <div class="card-body">
+                <table id="tblCivilServiceCommStatusContainer" class="table table-striped table-bordered table-hover">
+                    <thead>
+                        <tr>
+                            @*<th style="background-color: #0b7ea1;">
+                                <span>ت</span>
+                            </th>*@
+                            <th style="background-color: #0b7ea1;">
+                                <span>الرقم المدني</span>
+                            </th>
+                            <th style="background-color: #0b7ea1;">
+                                <span>الاسم</span>
+                            </th>
+                            <th style="background-color: #0b7ea1;">
+                                <span>الفئة</span>
+                            </th>
+                            <th style="background-color: #0b7ea1;">
+                                <span>الوظيفة</span>
+                            </th>
+
+                            <th style="background-color: #0b7ea1;">
+                                <span>المجموعة</span>
+                            </th>
+
+                            <th id="finishreason" style="background-color: #0b7ea1;">
+                                <span> أسباب إنهاء الخدمة </span>
+                            </th>
+                            <th style="background-color: #0b7ea1;">
+                                <span> جهة العمل </span>
+                            </th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <th colspan="7"></th>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+
+        </div>
+    </div>
+</div>
+ 

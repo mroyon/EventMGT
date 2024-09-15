@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="publicationheadlinear" value="AR:  Publication Headline A R"></resource>
+       <resource culture="ar-kw" name="publicationheadlinearRequired" value="AR: Please provide  Publication Headline A R"></resource>
+       <resource culture="ar-kw" name="publicationheadline" value="AR:  Publication Headline"></resource>
+       <resource culture="ar-kw" name="publicationdetailar" value="AR:  Publication Detail A R"></resource>
+       <resource culture="ar-kw" name="publicationdetailarRequired" value="AR: Please provide  Publication Detail A R"></resource>
+       <resource culture="ar-kw" name="publicationdetail" value="AR:  Publication Detail"></resource>
+       <resource culture="ar-kw" name="publicationimagepath" value="AR:  Publication Image Path"></resource>
+       <resource culture="ar-kw" name="publicationdocumentpath" value="AR:  Publication Document Path"></resource>
+       <resource culture="ar-kw" name="ispublished" value="AR:  Is Published"></resource>
+       <resource culture="ar-kw" name="publisheddate" value="AR:  Published Date"></resource>
+       <resource culture="ar-kw" name="publishedby" value="AR:  Published By"></resource>
+       <resource culture="ar-kw" name="isreviewed" value="AR:  Is Reviewed"></resource>
+       <resource culture="ar-kw" name="revieweddate" value="AR:  Reviewed Date"></resource>
+       <resource culture="ar-kw" name="reviewedby" value="AR:  Reviewed By"></resource>
+       <resource culture="ar-kw" name="showinhomepage" value="AR:  Show In Home Page"></resource>
+		<resource culture="ar-kw" name="publicationList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="publicationCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="publicationUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="publicationDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="publicationheadlinear" value=" Publication Headline A R"></resource>
+       <resource culture="en-us" name="publicationheadlinearRequired" value="Please provide  Publication Headline A R"></resource>
+       <resource culture="en-us" name="publicationheadline" value=" Publication Headline"></resource>
+       <resource culture="en-us" name="publicationdetailar" value=" Publication Detail A R"></resource>
+       <resource culture="en-us" name="publicationdetailarRequired" value="Please provide  Publication Detail A R"></resource>
+       <resource culture="en-us" name="publicationdetail" value=" Publication Detail"></resource>
+       <resource culture="en-us" name="publicationimagepath" value=" Publication Image Path"></resource>
+       <resource culture="en-us" name="publicationdocumentpath" value=" Publication Document Path"></resource>
+       <resource culture="en-us" name="ispublished" value=" Is Published"></resource>
+       <resource culture="en-us" name="publisheddate" value=" Published Date"></resource>
+       <resource culture="en-us" name="publishedby" value=" Published By"></resource>
+       <resource culture="en-us" name="isreviewed" value=" Is Reviewed"></resource>
+       <resource culture="en-us" name="revieweddate" value=" Reviewed Date"></resource>
+       <resource culture="en-us" name="reviewedby" value=" Reviewed By"></resource>
+       <resource culture="en-us" name="showinhomepage" value=" Show In Home Page"></resource>
+        <resource culture="en-us" name="publicationList" value="View All"></resource>
+		<resource culture="en-us" name="publicationCreate" value="Create"></resource>
+		<resource culture="en-us" name="publicationUpdate" value="Update"></resource>
+		<resource culture="en-us" name="publicationDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

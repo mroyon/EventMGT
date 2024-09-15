@@ -1,0 +1,253 @@
+[
+  {
+    "outputFileName": "wwwroot/dist/js/applicationJS.min.js",
+    "inputFiles": [
+      "wwwroot/AppScripts/**/*.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    }
+  },
+  {
+    "outputFileName": "wwwroot/dist/css/bootstrap.min.css",
+    "inputFiles": [
+      "wwwroot/lib/bootstrap/css/bootstrap.css"
+    ],
+    "minify": { "enabled": false }
+  },
+  {
+    "outputFileName": "wwwroot/dist/css/vendor.min.css",
+    "inputFiles": [
+      "wwwroot/lib/font-awesome/css/all.css",
+      "wwwroot/lib/overlayscrollbars/css/OverlayScrollbars.css",
+      "wwwroot/lib/bootstrap-sweetalert/sweetalert.css",
+      "wwwroot/lib/jquery.ui/jquery-ui.css",
+      "wwwroot/lib/select2/css/select2.css",
+      //"wwwroot/lib/jquery-datetimepicker/jquery.datetimepicker.css"
+      "wwwroot/lib/bootstrap-datepicker/css/bootstrap-datepicker.css",
+      "wwwroot/lib/dropzone/basic.css",
+      "wwwroot/lib/dropzone/dropzone.css"
+    ],
+    "minify": { "enabled": true }
+  },
+
+  //{
+  //  "outputFileName": "wwwroot/dist/css/vendor-datetimepicker.min.css",
+  //  "inputFiles": [
+  //    "wwwroot/lib/jquery.datetimepicker/jquery.datetimepicker.min.css"
+  //  ],
+  //  "minify": { "enabled": true }
+  //},
+
+
+  {
+    "outputFileName": "wwwroot/dist/css/vendor-datatables.min.css",
+    "inputFiles": [
+
+      "wwwroot/lib/datatables.net-bs4/dataTables.bootstrap4.min.css",
+      "wwwroot/lib/datatables.net-responsive-bs4/responsive.bootstrap4.min.css",
+      "wwwroot/lib/datatables.net-buttons-bs4/buttons.bootstrap4.min.css"
+    ],
+    "minify": { "enabled": false }
+  },
+  {
+    "outputFileName": "wwwroot/dist/css/custom-app-lib.min.css",
+    "inputFiles": [
+      "wwwroot/lib/admin-lte/css/adminlte.css",
+      "wwwroot/lib/customcss/customcss.css"
+    ],
+    "minify": { "enabled": true }
+  },
+  {
+    "outputFileName": "wwwroot/dist/css/custom-app-lib.min.rtl.css",
+    "inputFiles": [
+      "wwwroot/lib/admin-lte/css/adminltertl.css",
+      "wwwroot/lib/customcss/customcss.css"
+    ],
+    "minify": { "enabled": true }
+  },
+  {
+    "outputFileName": "wwwroot/dist/css/vendor-footable.min.css",
+    "inputFiles": [
+      //"wwwroot/lib/jquery-footable/footable.bootstrap.css",
+      //"wwwroot/lib/jquery-footable/footable.core.bootstrap.css",
+      //"wwwroot/lib/jquery-footable/footable.core.standalone.css",
+      "wwwroot/lib/jquery-footable/footable.standalone.css"
+    ],
+    "minify": { "enabled": true }
+  },
+  {
+    "outputFileName": "wwwroot/dist/css/vendor.login.min.css",
+    "inputFiles": [
+      "wwwroot/lib/font-awesome/css/all.css",
+      "wwwroot/lib/admin-lte/css/adminlte.css",
+      "wwwroot/lib/bootstrap-sweetalert/sweetalert.css",
+      "wwwroot/css/my-login.css"
+    ],
+    "minify": { "enabled": false }
+  },
+  {
+    "outputFileName": "wwwroot/dist/css/vendor.login.rtl.min.css",
+    "inputFiles": [
+      "wwwroot/lib/font-awesome/css/all.css",
+      "wwwroot/lib/admin-lte/css/adminltertl.css",
+      "wwwroot/lib/bootstrap-sweetalert/sweetalert.css",
+      "wwwroot/css/my-login.css"
+    ],
+    "minify": { "enabled": false }
+  },
+  {
+    "outputFileName": "wwwroot/dist/js/vendor.login.min.js",
+    "inputFiles": [
+      "wwwroot/lib/jquery/jquery.js",
+      "wwwroot/lib/font-awesome/js/all.js",
+      "wwwroot/lib/bootstrap/js/bootstrap.js",
+      "wwwroot/lib/popper.js/umd/popper.js",
+      "wwwroot/lib/bootstrap-sweetalert/sweetalert.js",
+      "wwwroot/lib/jquery-footable/footable.js",
+      "wwwroot/lib/tinymce/tinymce.min.js",
+      "wwwroot/lib/customjs/jqajaxproxy.js",
+      "wwwroot/lib/customjs/utilityfunctions.js",
+      "wwwroot/lib/jquery.countdown/jquery.countdown.js",
+      "wwwroot/js/my-login.js"
+    ],
+    "minify": { "enabled": false }
+  },
+
+  {
+    "outputFileName": "wwwroot/dist/js/jquery.min.js",
+    "inputFiles": [
+      "wwwroot/lib/jquery/jquery.js",
+      "wwwroot/lib/popper.js/umd/popper.js",
+      "wwwroot/lib/jquery/jquery.blockui.js"
+
+    ],
+    "minify": { "enabled": true }
+  },
+  {
+    "outputFileName": "wwwroot/dist/js/bootstrap.min.js",
+    "inputFiles": [
+      "wwwroot/lib/bootstrap/js/bootstrap.js",
+      "wwwroot/lib/moment/moment.js"
+
+    ],
+    "minify": { "enabled": false }
+  },
+  {
+    "outputFileName": "wwwroot/dist/js/vendor.min.js",
+    "inputFiles": [
+      "wwwroot/lib/admin-lte/js/adminlte.js",
+      "wwwroot/lib/font-awesome/js/all.js",
+      "wwwroot/lib/dropzone/dropzone.js",
+      "wwwroot/lib/overlayscrollbars/js/OverlayScrollbars.js",
+      "wwwroot/lib/jquery-mousewheel/jquery.mousewheel.js",
+      "wwwroot/lib/raphael/raphael.js",
+      "wwwroot/lib/jquery-mapael/js/jquery.mapael.js",
+      "wwwroot/lib/jquery-mapael/js/maps/usa_states.js",
+      "wwwroot/lib/bootstrap-sweetalert/sweetalert.js",
+      "wwwroot/lib/jquery.ui/jquery-ui.js",
+      "wwwroot/lib/select2/js/select2.js",
+      "wwwroot/lib/bs-custom-file-input/bs-custom-file-input.min.js",
+      "wwwroot/lib/bootstrap-datepicker/js/bootstrap-datepicker.js"
+
+      //"wwwroot/lib/jquery-datetimepicker/jquery.datetimepicker.full.js"
+
+
+    ],
+    "minify": { "enabled": true }
+  },
+
+  
+  {
+    "outputFileName": "wwwroot/dist/js/custom-app-lib.min.js",
+    "inputFiles": [
+      "wwwroot/lib/autonumeric/autoNumeric.min.js",
+      "wwwroot/lib/tinymce/tinymce.min.js",
+      "wwwroot/lib/customjs/utilityfunctions.js",
+      "wwwroot/lib/customjs/jqajaxproxy.js",
+      "wwwroot/lib/customjs/select2proxy.js",
+      "wwwroot/lib/customjs/profileactivities.js",
+      "wwwroot/lib/customjs/datatableproxy.js"
+    ],
+    "minify": {
+      "enabled": false,
+      "renameLocals": false
+    },
+    "sourceMap": true
+  },
+  {
+    "outputFileName": "wwwroot/dist/js/vendor-validation.min.js",
+    "inputFiles": [
+      "wwwroot/lib/jquery-validate/jquery.validate.js",
+      "wwwroot/lib/jquery-validate/additional-methods.js",
+      "wwwroot/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js",
+      "wwwroot/lib/jquery-ajax-unobtrusive/jquery.unobtrusive-ajax.js"
+    ],
+    "minify": {
+      "enabled": true,
+      "renameLocals": true
+    },
+    "sourceMap": false
+  },
+  {
+    "outputFileName": "wwwroot/dist/js/vendor.usermanagement.min.js",
+    "inputFiles": [
+      "wwwroot/lib/customjs/UserManagement/usermanagement.js"
+
+    ],
+    "minify": { "enabled": true }
+  },
+  {
+    "outputFileName": "wwwroot/dist/js/vendor-datatables.min.js",
+    "inputFiles": [
+
+      "wwwroot/lib/datatables.net/jquery.dataTables.js",
+
+
+      "wwwroot/lib/datatables.net-bs4/dataTables.bootstrap4.js",
+      "wwwroot/lib/datatables-responsive/dataTables.responsive.js",
+      "wwwroot/lib/datatables.net-responsive-bs4/responsive.bootstrap4.js",
+
+
+      "wwwroot/lib/datatables.net-buttons/js/dataTables.buttons.js",
+      "wwwroot/lib/datatables.net-buttons-bs4/buttons.bootstrap4.js",
+      "wwwroot/lib/jszip/jszip.js",
+      "wwwroot/lib/pdfmake/pdfmake.js",
+      "wwwroot/lib/pdfmake/vfs_fonts.js",
+      "wwwroot/lib/datatables.net-buttons/js/buttons.html5.js",
+      "wwwroot/lib/datatables.net-buttons/js/buttons.colVis.js",
+      "wwwroot/lib/datatables.net-buttons/js/buttons.print.js"
+    ],
+    "minify": { "enabled": true }
+  },
+
+  {
+    "outputFileName": "wwwroot/dist/js/vendor-signalr.min.js",
+    "inputFiles": [
+
+      "wwwroot/lib/microsoft-signalr/signalr.js",
+      "wwwroot/lib/customjs/HubContext/HubUserContext.js",
+      "wwwroot/lib/customjs/HubContext/HubUserTrackingContext.js"
+      //"wwwroot/lib/customjs/MessageHub/sendmessage.js"
+    ],
+    "minify": { "enabled": false }
+  },
+  {
+    "outputFileName": "wwwroot/dist/js/vendor-signalr-qr.min.js",
+    "inputFiles": [
+      "wwwroot/lib/microsoft-signalr/signalr.js",
+      "wwwroot/lib/customjs/HubContextQR/HubQRUserContext.js",
+      "wwwroot/lib/customjs/HubContextCivil/HubCivilUserContext.js"
+    ],
+    "minify": { "enabled": false }
+  },
+  {
+    "outputFileName": "wwwroot/dist/js/vendor-footable.min.js",
+    "inputFiles": [
+      "wwwroot/lib/jquery-footable/footable.js"
+    ],
+    "minify": { "enabled": true }
+  }
+
+]

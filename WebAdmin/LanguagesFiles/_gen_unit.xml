@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="unit" value="AR:  Unit"></resource>
+       <resource culture="ar-kw" name="unitRequired" value="AR: Please provide  Unit"></resource>
+       <resource culture="ar-kw" name="unitcode" value="AR:  Unit Code"></resource>
+       <resource culture="ar-kw" name="ex_date1" value="AR:  Ex Date 1"></resource>
+       <resource culture="ar-kw" name="ex_date2" value="AR:  Ex Date 2"></resource>
+       <resource culture="ar-kw" name="ex_nvarchar1" value="AR:  Ex Nvarchar 1"></resource>
+       <resource culture="ar-kw" name="ex_nvarchar2" value="AR:  Ex Nvarchar 2"></resource>
+       <resource culture="ar-kw" name="ex_nvarchar3" value="AR:  Ex Nvarchar 3"></resource>
+       <resource culture="ar-kw" name="ex_bigint1" value="AR:  Ex Bigint 1"></resource>
+       <resource culture="ar-kw" name="ex_bigint2" value="AR:  Ex Bigint 2"></resource>
+       <resource culture="ar-kw" name="ex_decimal1" value="AR:  Ex Decimal 1"></resource>
+       <resource culture="ar-kw" name="ex_decimal2" value="AR:  Ex Decimal 2"></resource>
+		<resource culture="ar-kw" name="unitList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="unitCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="unitUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="unitDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="unit" value=" Unit"></resource>
+       <resource culture="en-us" name="unitRequired" value="Please provide  Unit"></resource>
+       <resource culture="en-us" name="unitcode" value=" Unit Code"></resource>
+       <resource culture="en-us" name="ex_date1" value=" Ex Date 1"></resource>
+       <resource culture="en-us" name="ex_date2" value=" Ex Date 2"></resource>
+       <resource culture="en-us" name="ex_nvarchar1" value=" Ex Nvarchar 1"></resource>
+       <resource culture="en-us" name="ex_nvarchar2" value=" Ex Nvarchar 2"></resource>
+       <resource culture="en-us" name="ex_nvarchar3" value=" Ex Nvarchar 3"></resource>
+       <resource culture="en-us" name="ex_bigint1" value=" Ex Bigint 1"></resource>
+       <resource culture="en-us" name="ex_bigint2" value=" Ex Bigint 2"></resource>
+       <resource culture="en-us" name="ex_decimal1" value=" Ex Decimal 1"></resource>
+       <resource culture="en-us" name="ex_decimal2" value=" Ex Decimal 2"></resource>
+        <resource culture="en-us" name="unitList" value="View All"></resource>
+		<resource culture="en-us" name="unitCreate" value="Create"></resource>
+		<resource culture="en-us" name="unitUpdate" value="Update"></resource>
+		<resource culture="en-us" name="unitDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

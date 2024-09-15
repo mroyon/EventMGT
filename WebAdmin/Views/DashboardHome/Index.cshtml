@@ -1,0 +1,406 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+<style>
+    #clockContainer {
+        margin-top: 5px;
+        position: relative;
+        margin: auto;
+        height: 6vw;
+        width: 6vw;
+        background: url(img/clock.png) no-repeat;
+        background-size: 100%;
+    }
+
+    #hour, #minute, #second {
+        position: absolute;
+        background: black;
+        border-radius: 10px;
+        transform-origin: bottom;
+    }
+
+    #hour {
+        width: 1.8%;
+        height: 25%;
+        top: 25%;
+        left: 48.85%;
+        opacity: 0.8;
+    }
+
+    #minute {
+        width: 1.6%;
+        height: 30%;
+        top: 19%;
+        left: 48.9%;
+        opacity: 0.8;
+    }
+
+    #second {
+        width: 1%;
+        height: 40%;
+        top: 9%;
+        left: 49.25%;
+        opacity: 0.8;
+    }
+
+    .card-title-header {
+        min-height: 30px;
+    }
+</style>
+
+@await Component.InvokeAsync("SelectionType", new { })
+<!-- Main row -->
+<div class="row">
+    <div class="col-sm-12" style="background-color: lightsteelblue;">
+        <h1>البريد الشخصي</h1>
+    </div>
+    <div class="col-sm-12" style="color: orangered;background-color:#ece9e9;">
+        <h4>
+            <marquee width="100%" direction="right">
+                في شريط القائمة تم إضافة شروحات لنظام التراسل الإلكتروني و أهم التحديثات في آخر نسخة
+            </marquee>
+        </h4>
+    </div>
+
+
+</div>
+
+<div class="row" style="margin-top:10px;">
+    <div class="col-xxl-9">
+        <div class="card card-xxl-stretch mb-1 mb-xxl-10">
+            <div class="card-body pb-0">
+                <div class="justify-content-between">
+
+                    <div class="row g-5 g-xl-8">
+                        @*@await Component.InvokeAsync("ShowTimeBox", new { headertag = "headertag" })*@
+                        <div class="col-lg-4">
+                            <div id="dvDratContainer">
+                                @await Component.InvokeAsync("DraftContainer", new { headertag = "headertag" })
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div id="dvOutboxContainer">
+                                @await Component.InvokeAsync("OutboxContainer", new { headertag = "headertag" })
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div id="dvInboxContainer">
+                                @await Component.InvokeAsync("InboxContainer", new { headertag = "headertag" })
+                            </div>
+                        </div>
+                       
+                     
+                       
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-xxl-3">
+        <div class="card card-xxl-stretch mb-1 mb-xxl-10">
+            <div class="card-body">
+                <div class="d-flex align-self-center">
+                    <div id="clockContainer" style="direction: ltr;" class="pt-2 pb-2">
+                        <div id="hour"></div>
+                        <div id="minute"></div>
+                        <div id="second"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-heading" style=" text-align: center; border-top-left-radius: 0px; border-top-right-radius: 0px; background-color: #b7ccd6 !important;">
+                <div id="date-ar" dir="rtl" style="text-align: center; color: black;"></div>
+
+            </div>
+            <div class="panel-heading" style="text-align: center; border-top-left-radius: 0px; border-top-right-radius: 0px; background-color: #d1d3d8 !important;">
+                <div id="date-en" dir="rtl" class="date" style="text-align: center; color: black;"></div>
+            </div>
+        </div>
+    </div>
+</div>
+@*<div class="row" style="margin-left: 0px;color: orangered;background-color:#ece9e9;">
+        <div>
+            <h4>
+                <marquee width="100%" direction="right">
+                    في شريط القائمة تم إضافة شروحات لنظام التراسل الإلكتروني و أهم التحديثات في آخر نسخة
+                </marquee>
+            </h4>
+        </div>
+    </div>*@<div class="row" style="margin-left: 0px;color: orangered;background-color:#ece9e9;">
+    <div>
+        <h4>
+            <marquee width="100%" direction="right">
+            </marquee>
+        </h4>
+    </div>
+</div>
+@*<div class="row" style="margin-left: 0px; background-color: #D7DBDD;">
+        <div>
+            <h3>
+                البريد الشخصي
+            </h3>
+        </div>
+    </div>
+    <div class="row" style="margin-left: 0px;color: orangered;background-color:#ece9e9;">
+        <div>
+            <h4>
+                <marquee width="100%" direction="right">
+                    في شريط القائمة تم إضافة شروحات لنظام التراسل الإلكتروني و أهم التحديثات في آخر نسخة
+                </marquee>
+            </h4>
+        </div>
+    </div>*@<div class="row" style="margin-left: 0px; background-color: #D7DBDD;">
+    <div>
+        <h3>
+        </h3>
+    </div>
+</div>
+<div class="row" style="margin-left: 0px;color: orangered;background-color:#ece9e9;">
+    <div>
+        <h4>
+            <marquee width="100%" direction="right">
+            </marquee>
+        </h4>
+    </div>
+</div>
+@*<div class="separator separator-dashed my-10"></div>*@<div class="separator separator-dashed my-10"></div>
+@*<div class="row g-5 g-xl-8" dir="rtl">
+        @await Component.InvokeAsync("InternalMemoContainer", new { headertag = "headertag" })
+        @await Component.InvokeAsync("KitabContainer", new { headertag = "headertag" })
+    </div>*@<div class="row g-5 g-xl-8" dir="rtl">
+</div>
+
+<div class="row" dir="rtl">
+
+    @await Component.InvokeAsync("InternalMemoContainer", new { headertag = "headertag" })
+    @await Component.InvokeAsync("KitabContainer", new { headertag = "headertag" })
+
+</div>
+<div class="row" style=" margin-top:10px;margin-bottom:10px;">
+    <div class="col-md-4">
+        @await Component.InvokeAsync("BarchatStats", new { DocType = 1 })
+    </div>
+    <div class="col-md-4">
+        @await Component.InvokeAsync("PiechatStats", new { DocType = 2 })
+    </div>
+    <div class="col-md-4">
+        @await Component.InvokeAsync("EmailClassification", new { DocType = 3 })
+    </div>
+</div>
+
+
+@*<div class="row" dir="rtl">
+        <div class="col-xxl-12">
+            <div class="card card-xxl-stretch mb-5 ">
+                <div class="card-body pb-0">
+                    <div class="justify-content-between">
+                        <div class="row">
+                            @await Component.InvokeAsync("InternalMemoContainer", new { headertag = "headertag" })
+                            @await Component.InvokeAsync("KitabContainer", new { headertag = "headertag" })
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>*@<div class="row" dir="rtl">
+    <div class="col-xxl-12">
+        <div class="card card-xxl-stretch mb-5 ">
+            <div class="card-body pb-0">
+                <div class="justify-content-between">
+                    <div class="row">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@*<div class="row">
+        <div class="col-xxl-12">
+            <div class="card card-xxl-stretch mb-5 mb-xxl-10">
+                <div class="card-body pb-0">
+                    <div class="justify-content-between">
+                        <div class="">
+                            <div class="row g-5 g-xl-8">
+                                <div class="col-md-4">
+                                    @await Component.InvokeAsync("BarchatStats", new { DocType = 1 })
+                                </div>
+                                <div class="col-md-4">
+                                    @await Component.InvokeAsync("PiechatStats", new { DocType = 2 })
+                                </div>
+                                <div class="col-md-4">
+                                    @await Component.InvokeAsync("EmailClassification", new { DocType = 3 })
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>*@<div class="row">
+    <div class="col-xxl-12">
+        <div class="card card-xxl-stretch mb-5 mb-xxl-10">
+            <div class="card-body pb-0">
+                <div class="justify-content-between">
+                    <div class="">
+                        <div class="row g-5 g-xl-8">
+                            <div class="col-md-4">
+                            </div>
+                            <div class="col-md-4">
+                            </div>
+                            <div class="col-md-4">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@*<div class="row g-5 g-xl-8" dir="rtl">
+        <div class="col-md-4">
+            @await Component.InvokeAsync("BarchatStats", new { DocType = 1 })
+        </div>
+        <div class="col-md-4">
+
+            @await Component.InvokeAsync("PiechatStats", new { DocType = 2 })
+
+
+        </div>
+        <div class="col-md-4">
+
+            @await Component.InvokeAsync("EmailClassification", new { DocType = 3 })
+
+
+        </div>
+    </div>*@<div class="row g-5 g-xl-8" dir="rtl">
+    <div class="col-md-4">
+    </div>
+    <div class="col-md-4">
+
+
+    </div>
+    <div class="col-md-4">
+
+
+    </div>
+</div>
+@*<div class="col-md-6">
+        <div class="row">
+
+            <div class="col-md-6">
+                @await Component.InvokeAsync("DocumentClasification", new { DocType = 1 })
+            </div>
+            <div class="col-md-6">
+                @await Component.InvokeAsync("DocumentClasification", new { DocType = 2 })
+            </div>
+        </div>
+        <div class="row">
+
+            <div class="col-md-12">
+                @await Component.InvokeAsync("DocumentSummary")
+            </div>
+
+        </div>
+    </div>*@<div class="col-md-6">
+    <div class="row">
+
+        <div class="col-md-6">
+        </div>
+        <div class="col-md-6">
+        </div>
+    </div>
+    <div class="row">
+
+        <div class="col-md-12">
+        </div>
+
+    </div>
+</div>
+@*</div>*@
+<!-- /.row -->
+@*<h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>*@<h1 class="display-4"></h1>
+<p><a href="https://docs.microsoft.com/aspnet/core"></a></p>
+
+<script>
+    setInterval(() => {
+        d = new Date();
+        htime = d.getHours();
+        mtime = d.getMinutes();
+        stime = d.getSeconds();
+        hrotation = 30 * htime + mtime / 2;
+        mrotation = 6 * mtime;
+        srotation = 6 * stime;
+
+        hour.style.transform = `rotate(${hrotation}deg)`;
+        minute.style.transform = `rotate(${mrotation}deg)`;
+        second.style.transform = `rotate(${srotation}deg)`;
+    }, 1000);
+</script>
+
+@section Scripts{
+    <script>
+
+        function loadviewcomponents() {
+            ajaxGetHandler("/DashboardHome/GetInboxContainer", {
+                ShareTypeID: $("#ddlSelectionType").val(),
+                SelectedProfileEmail: $("#ddlProfileSelection").length>0? $("#ddlProfileSelection").val():null
+            }, function (data) { //ListConfigSMSGatewayDetail[index].smsgatewayconfigdetailid
+                // console.log(data);
+                $('#dvInboxContainer').html(data);
+
+            }, false, false);
+
+            ajaxGetHandler("/DashboardHome/GetOutboContainer", {
+                ShareTypeID: $("#ddlSelectionType").val(),
+                SelectedProfileEmail: $("#ddlProfileSelection").length > 0 ? $("#ddlProfileSelection").val() : null
+            }, function (data) { //ListConfigSMSGatewayDetail[index].smsgatewayconfigdetailid
+                // console.log(data);
+                $('#dvOutboxContainer').html(data);
+
+            }, false, false);
+
+
+            ajaxGetHandler("/DashboardHome/GetDraftContainer", {
+                ShareTypeID: $("#ddlSelectionType").val(),
+                SelectedProfileEmail: $("#ddlProfileSelection").length > 0 ? $("#ddlProfileSelection").val() : null
+            }, function (data) { //ListConfigSMSGatewayDetail[index].smsgatewayconfigdetailid
+                // console.log(data);
+                $('#dvDratContainer').html(data);
+
+            }, false, false);
+        }
+
+        function bindShareTypeChangeEvet() {
+
+            $("#ddlProfileSelection").change(function () {
+                loadviewcomponents();
+            });
+        }
+
+        $(function () {
+
+            $("#ddlSelectionType").change(function () {
+
+                if ($("#ddlSelectionType").val() == 1) {
+                    $('#dvProfileList').html("");
+                    loadviewcomponents();
+                }
+                else {
+
+                    ajaxGetHandler("/DashboardHome/GetProfileByShareTypeID", { ShareTypeID: $("#ddlSelectionType").val() }, function (data) { //ListConfigSMSGatewayDetail[index].smsgatewayconfigdetailid
+                        // console.log(data);
+                        $('#dvProfileList').html(data);
+
+                        bindShareTypeChangeEvet();
+
+                    }, false, false);
+                }
+
+            });
+
+
+          
+        });
+    </script>
+}

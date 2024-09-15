@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="memberregistrationid" value="AR:  Member Registration I D"></resource>
+       <resource culture="ar-kw" name="memberregistrationidRequired" value="AR: Please provide  Member Registration I D"></resource>
+       <resource culture="ar-kw" name="parentocfileid" value="AR:  Parent O C File I D"></resource>
+       <resource culture="ar-kw" name="occivilid" value="AR:  O C Civil I D"></resource>
+       <resource culture="ar-kw" name="occivilidRequired" value="AR: Please provide  O C Civil I D"></resource>
+       <resource culture="ar-kw" name="ocmilitaryid" value="AR:  O C Military I D"></resource>
+       <resource culture="ar-kw" name="ocmilitaryidRequired" value="AR: Please provide  O C Military I D"></resource>
+       <resource culture="ar-kw" name="ocemailaddress" value="AR:  O C Email Address"></resource>
+       <resource culture="ar-kw" name="ocemailaddressRequired" value="AR: Please provide  O C Email Address"></resource>
+       <resource culture="ar-kw" name="ocphonenumber" value="AR:  O C Phone Number"></resource>
+       <resource culture="ar-kw" name="ocphonenumberRequired" value="AR: Please provide  O C Phone Number"></resource>
+       <resource culture="ar-kw" name="officerpacijsondata" value="AR:  Officer Paci Json Data"></resource>
+       <resource culture="ar-kw" name="hrbasicid" value="AR:  Hr Basic I D"></resource>
+       <resource culture="ar-kw" name="hrbasicidRequired" value="AR: Please provide  Hr Basic I D"></resource>
+       <resource culture="ar-kw" name="relationshipid" value="AR:  Relationship I D"></resource>
+       <resource culture="ar-kw" name="hrfamilyid" value="AR:  Hr Family I D"></resource>
+       <resource culture="ar-kw" name="isactive" value="AR:  Is Active"></resource>
+       <resource culture="ar-kw" name="registrationdate" value="AR:  Registration Date"></resource>
+       <resource culture="ar-kw" name="issynced" value="AR:  Is Synced"></resource>
+       <resource culture="ar-kw" name="lastsyncdate" value="AR:  Last Sync Date"></resource>
+       <resource culture="ar-kw" name="isreviewed" value="AR:  Is Reviewed"></resource>
+       <resource culture="ar-kw" name="reviewdate" value="AR:  Review Date"></resource>
+       <resource culture="ar-kw" name="reviewednote" value="AR:  Reviewed Note"></resource>
+       <resource culture="ar-kw" name="reviewedby" value="AR:  Reviewed By"></resource>
+       <resource culture="ar-kw" name="reviewedbyuserid" value="AR:  Reviewed By User I D"></resource>
+       <resource culture="ar-kw" name="isblocked" value="AR:  Is Blocked"></resource>
+       <resource culture="ar-kw" name="blockeddate" value="AR:  Blocked Date"></resource>
+       <resource culture="ar-kw" name="blockednote" value="AR:  Blocked Note"></resource>
+       <resource culture="ar-kw" name="blockedby" value="AR:  Blocked By"></resource>
+       <resource culture="ar-kw" name="blockedbyuserid" value="AR:  Blocked By User I D"></resource>
+       <resource culture="ar-kw" name="hr_militarysvcinfojsondata" value="AR:  Hr Military Svc Info Json Data"></resource>
+		<resource culture="ar-kw" name="registrationinfomasterList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="registrationinfomasterCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="registrationinfomasterUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="registrationinfomasterDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="memberregistrationid" value=" Member Registration I D"></resource>
+       <resource culture="en-us" name="memberregistrationidRequired" value="Please provide  Member Registration I D"></resource>
+       <resource culture="en-us" name="parentocfileid" value=" Parent O C File I D"></resource>
+       <resource culture="en-us" name="occivilid" value=" O C Civil I D"></resource>
+       <resource culture="en-us" name="occivilidRequired" value="Please provide  O C Civil I D"></resource>
+       <resource culture="en-us" name="ocmilitaryid" value=" O C Military I D"></resource>
+       <resource culture="en-us" name="ocmilitaryidRequired" value="Please provide  O C Military I D"></resource>
+       <resource culture="en-us" name="ocemailaddress" value=" O C Email Address"></resource>
+       <resource culture="en-us" name="ocemailaddressRequired" value="Please provide  O C Email Address"></resource>
+       <resource culture="en-us" name="ocphonenumber" value=" O C Phone Number"></resource>
+       <resource culture="en-us" name="ocphonenumberRequired" value="Please provide  O C Phone Number"></resource>
+       <resource culture="en-us" name="officerpacijsondata" value=" Officer Paci Json Data"></resource>
+       <resource culture="en-us" name="hrbasicid" value=" Hr Basic I D"></resource>
+       <resource culture="en-us" name="hrbasicidRequired" value="Please provide  Hr Basic I D"></resource>
+       <resource culture="en-us" name="relationshipid" value=" Relationship I D"></resource>
+       <resource culture="en-us" name="hrfamilyid" value=" Hr Family I D"></resource>
+       <resource culture="en-us" name="isactive" value=" Is Active"></resource>
+       <resource culture="en-us" name="registrationdate" value=" Registration Date"></resource>
+       <resource culture="en-us" name="issynced" value=" Is Synced"></resource>
+       <resource culture="en-us" name="lastsyncdate" value=" Last Sync Date"></resource>
+       <resource culture="en-us" name="isreviewed" value=" Is Reviewed"></resource>
+       <resource culture="en-us" name="reviewdate" value=" Review Date"></resource>
+       <resource culture="en-us" name="reviewednote" value=" Reviewed Note"></resource>
+       <resource culture="en-us" name="reviewedby" value=" Reviewed By"></resource>
+       <resource culture="en-us" name="reviewedbyuserid" value=" Reviewed By User I D"></resource>
+       <resource culture="en-us" name="isblocked" value=" Is Blocked"></resource>
+       <resource culture="en-us" name="blockeddate" value=" Blocked Date"></resource>
+       <resource culture="en-us" name="blockednote" value=" Blocked Note"></resource>
+       <resource culture="en-us" name="blockedby" value=" Blocked By"></resource>
+       <resource culture="en-us" name="blockedbyuserid" value=" Blocked By User I D"></resource>
+       <resource culture="en-us" name="hr_militarysvcinfojsondata" value=" Hr Military Svc Info Json Data"></resource>
+        <resource culture="en-us" name="registrationinfomasterList" value="View All"></resource>
+		<resource culture="en-us" name="registrationinfomasterCreate" value="Create"></resource>
+		<resource culture="en-us" name="registrationinfomasterUpdate" value="Update"></resource>
+		<resource culture="en-us" name="registrationinfomasterDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

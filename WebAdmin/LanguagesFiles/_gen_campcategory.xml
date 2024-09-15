@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="campcategory" value="AR:  Camp Category"></resource>
+       <resource culture="ar-kw" name="campcategoryRequired" value="AR: Please provide  Camp Category"></resource>
+       <resource culture="ar-kw" name="categorydescription" value="AR:  Category Description"></resource>
+		<resource culture="ar-kw" name="campcategoryList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="campcategoryCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="campcategoryUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="campcategoryDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="campcategory" value=" Camp Category"></resource>
+       <resource culture="en-us" name="campcategoryRequired" value="Please provide  Camp Category"></resource>
+       <resource culture="en-us" name="categorydescription" value=" Category Description"></resource>
+        <resource culture="en-us" name="campcategoryList" value="View All"></resource>
+		<resource culture="en-us" name="campcategoryCreate" value="Create"></resource>
+		<resource culture="en-us" name="campcategoryUpdate" value="Update"></resource>
+		<resource culture="en-us" name="campcategoryDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

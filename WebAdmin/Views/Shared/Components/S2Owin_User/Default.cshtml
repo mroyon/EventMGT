@@ -1,0 +1,55 @@
+﻿
+
+
+@using CLL
+@*@model BDO.Core.DataAccessObjects.Models.Owin_RoleEntity*@
+@inject CLL.Localization.LocalizeService SharedLocalizer
+@{
+	Layout = "_LayoutViewComponent";
+}
+@{
+	string selectid = ViewBag.selectid;
+	string strisReadOnly = ViewBag.isReadOnly.ToString().ToLower();
+	string strmultiple = ViewBag.multiple.ToString().ToLower();
+	bool isRequired = ViewBag.isRequired;
+	long? pkey = string.IsNullOrEmpty(ViewBag.pkey) == true ? null : long.Parse(ViewBag.pkey);
+	int minimumInputLength = 0;
+	string lang = System.Threading.Thread.CurrentThread.CurrentUICulture.Name.ToLowerInvariant().ToLower();
+	ViewBag.Owin_UserData = ViewBag.Owin_UserData != null ? ViewBag.Owin_UserData : "undefined";
+
+	string rolecontrolparamid = ViewBag.RoleControlParam != null ? ViewBag.RoleControlParam : "undefined";
+
+	//ViewBag.Owin_UserData = ViewBag.Owin_UserData != null ? ViewBag.Owin_UserData : "undefined";
+
+
+	<select name="@selectid" id="@selectid" class="form-control @selectid " data-val="true" data-val-required="Please Select User"></select>
+	<span class="field-validation-valid text-danger" data-valmsg-for="@selectid" data-valmsg-replace="true"></span>
+}
+@section scripts
+{
+	<script type="text/javascript">
+		function s2userparam(params) {
+			return JSON.stringify({ s2PageSize: 10, s2PageNum: params.page || 1, s2SearchTerm: params.term || null, s2Param: '@lang', s2Paramkey: '@pkey', s2ParamParentkey: $('#@rolecontrolparamid').val() });
+		}
+	$(function () {
+		var select2Options = returnSelect2Options();
+		select2Options.placeholder = '@SharedLocalizer.GetLocalizedHtmlString("SELECTITEMFROMDROPDOWN")';
+		select2Options.minimumInputLength = @minimumInputLength;
+		select2Options.multiple = @strmultiple;
+		select2Options.disabled = @strisReadOnly.ToLower();
+			select2Options.ajax.url = '/Owin_User/GetDataForDropDowndOwin_User';
+			select2Options.ajax.data = function (params) {
+				return s2userparam(params);
+			};
+
+		$('#@selectid').select2(
+			select2Options
+		);
+		var dat = @Html.Raw(ViewBag.Owin_UserData);
+		if (dat != undefined){
+			var newOption = new Option(dat.Text, dat.Id, false, false);
+			$('#@selectid').append(newOption).trigger('change');
+		}
+	});
+	</script>
+}

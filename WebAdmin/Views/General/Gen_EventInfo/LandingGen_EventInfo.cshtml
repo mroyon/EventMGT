@@ -1,0 +1,117 @@
+﻿@using CLL
+@model BDO.Core.DataAccessObjects.Models.gen_eventinfoEntity
+@inject CLL.Localization.LocalizeService SharedLocalizer
+
+@using Microsoft.Extensions.Options
+@{
+    ViewData["Title"] = "View Gen  Event Info List";
+}
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-footer">
+                <h5 class="card-title">@SharedLocalizer.GetLocalizedHtmlString("GEN_EVENTINFOY_LIST")</h5>
+            </div>
+            <!-- /.card-header -->
+
+            <div class="card-body">
+                <form method="POST" id="frmDTGen_EventInfolist" class="my-login-validation" novalidate="" autocomplete="off">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <table id="DTGen_EventInfolist" class="table table-striped table-bordered" @*style="width:100%"*@ cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th><label class="labelNormal  " asp-for="eventcode"></label></th>
+                                        <th><label class="labelNormal  " asp-for="eventname"></label></th>
+                                        <th><label class="labelNormal  " asp-for="eventstartdate"></label></th>
+                                        <th>@SharedLocalizer.GetLocalizedHtmlString("ACTIONS_BUTTONS")</th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+            <!-- ./card-body -->
+            <div class="card-footer">
+                <div class="row">
+                    <div class="col-md-12">
+
+                        <!-- /.description-block -->
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.card-footer -->
+        </div>
+        <!-- /.card -->
+    </div>
+    <!-- /.col -->
+</div>
+
+
+@section Scripts {
+    <script>
+        $(function () {
+            var dt = $("#DTGen_EventInfolist").DataTable({
+                "ajax": $.fn.dataTable.json({ url: "/Gen_EventInfo/ListGen_EventInfo" }),
+                "buttons": {
+                    "buttons": [
+                        {
+                            text: '<i class="fas fa-plus-square" aria-hidden="true"></i> @SharedLocalizer.GetLocalizedHtmlString("ADD_NEW_RECORD")',
+                            className: 'btn btn-primary mr-1',
+                            action: function (e, dt, node, config) {
+                                location.href = "/Gen_EventInfo/AddGen_EventInfo";
+                            }
+                        },
+                        {
+                            extend: 'copy',
+                            text: '<i class="fas fa-copy" aria-hidden="true"></i> @SharedLocalizer.GetLocalizedHtmlString("COPY_LIST")',
+                            className: 'btn btn-info mr-1',
+                        },
+                        {
+                            extend: 'excel',
+                            text: '<i class="fas fa-file-excel" aria-hidden="true"></i> @SharedLocalizer.GetLocalizedHtmlString("EXCEL_EXPORT")',
+                            className: 'btn btn-info mr-1',
+                        },
+                        {
+                            extend: 'csv',
+                            text: '<i class="fas fa-file-csv" aria-hidden="true"></i> @SharedLocalizer.GetLocalizedHtmlString("CSV_EXPORT")',
+                            className: 'btn btn-info mr-1',
+                        },
+                        {
+                            extend: 'pdf',
+                            text: '<i class="fa fa-print" aria-hidden="true"></i> @SharedLocalizer.GetLocalizedHtmlString("PRINT")',
+                            className: 'btn btn-info mr-1',
+                        }]
+                },
+
+                "columns": [
+                    { "data": "eventcode", "name": "eventcode", "autoWidth": true },
+                    { "data": "eventname", "name": "eventname", "autoWidth": true },
+                    {
+                        "data": "eventstartdate", "name": "eventstartdate", "autoWidth": true, render: function (data, type, full, row) {
+                            //return moment(data).format("DD-MM-YYYY h:mm a");
+                            return moment(data).format("DD-MM-YYYY");
+                        }
+                    },
+                    {
+                        "data": "datatablebuttonscode", render: function (data, type, full, row) {
+                            return data;
+                        }
+                    }
+                ]
+            });
+
+        });
+
+    </script>
+}
+
+
+
+

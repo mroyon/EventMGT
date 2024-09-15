@@ -1,0 +1,67 @@
+﻿@using CLL
+@using WebAdmin.Providers
+@using Web.Core.Frame.Serialization
+@using Microsoft.AspNetCore.Http
+@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor
+
+@inject CLL.Localization.LocalizeService SharedLocalizer
+
+@using Microsoft.Extensions.Options
+
+
+<aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="~/" class="brand-link">
+        <img src="~/img/saheel.png" alt="Sahel Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
+            @{
+                if (System.Threading.Thread.CurrentThread.CurrentCulture.TextInfo.IsRightToLeft)
+                {
+                <span class="brand-text font-weight-bold">سهل مشرف</span>
+                }
+                else
+                {
+                <span class="brand-text font-weight-bold">Sahel Admin</span>
+                }
+            }
+        
+    </a>
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <!-- Sidebar user panel (optional) -->
+        <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+            <div class="image">
+                <img src="~/img/blankprofile.png" class="img-circle elevation-2" alt="User Image">
+            </div>
+            <div class="info">
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <a href="#" id="UserIdentityName" class="d-block">@User.Identity.Name</a>
+                }
+
+            </div>
+        </div>
+
+        <!-- SidebarSearch Form -->
+        <div class="form-inline">
+            <div class="input-group" data-widget="sidebar-search">
+                <input class="form-control form-control-sidebar" type="search" placeholder="Search" aria-label="Search">
+                <div class="input-group-append">
+                    <button class="btn btn-sidebar">
+                        <i class="fas fa-search fa-fw"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sidebar Menu -->
+        <nav class="mt-2">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+                <!-- Add icons to the links using the .nav-icon class with font-awesome or any other icon font library -->
+                @Html.Raw(HttpContextAccessor.HttpContext.Session.GetRedis<string>("menuitem"))
+            </ul>
+        </nav>
+        <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+</aside>

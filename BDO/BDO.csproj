@@ -1,0 +1,31 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="DataAccessObjects\CommonEntities\FtpSettingsOptions.cs" />
+    <Compile Remove="DataAccessObjects\ExtendedEntities\PaciFileUploadingModel.cs" />
+    <Compile Remove="DataAccessObjects\ExtendedEntities\Root.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Http.Features" Version="5.0.10" />
+    <PackageReference Include="Microsoft.Extensions.Identity.Stores" Version="3.1.7" />
+    <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="6.14.1" />
+    <PackageReference Include="MongoDB.Bson" Version="2.13.2" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+    <PackageReference Include="System.ComponentModel.Annotations" Version="5.0.0" />
+    <PackageReference Include="System.Text.Json" Version="6.0.5" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CLL\CLL.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="DataAccessObjects\SecurityModels\ExtendedPartial\" />
+  </ItemGroup>
+
+</Project>

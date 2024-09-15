@@ -1,0 +1,270 @@
+{
+  "version": "1.0",
+  "defaultProvider": "cdnjs",
+  "libraries": [
+    {
+      "library": "jquery@3.6.0",
+      "destination": "wwwroot/lib/jquery/",
+      "files": [
+        "jquery.min.js",
+        "jquery.js"
+      ]
+    },
+    {
+      "library": "bootstrap@5.2.3",
+      "destination": "wwwroot/lib/bootstrap/"
+    },
+    {
+      "library": "jquery-validation-unobtrusive@3.2.12",
+      "destination": "wwwroot/lib/jquery-validation-unobtrusive/",
+      "files": [
+        "jquery.validate.unobtrusive.min.js",
+        "jquery.validate.unobtrusive.js"
+      ]
+    },
+    {
+      "library": "jquery-validate@1.19.3",
+      "destination": "wwwroot/lib/jquery-validate/"
+    },
+    {
+      "library": "jquery-ajax-unobtrusive@3.2.6",
+      "destination": "wwwroot/lib/jquery-ajax-unobtrusive/",
+      "files": [
+        "jquery.unobtrusive-ajax.min.js",
+        "jquery.unobtrusive-ajax.js"
+      ]
+    },
+    {
+      "library": "overlayscrollbars@1.13.1",
+      "destination": "wwwroot/lib/overlayscrollbars/",
+      "files": [
+        "js/OverlayScrollbars.min.js",
+        "js/OverlayScrollbars.js",
+        "css/OverlayScrollbars.css",
+        "css/OverlayScrollbars.min.css"
+      ]
+    },
+    {
+      "library": "jquery-mousewheel@3.1.13",
+      "destination": "wwwroot/lib/jquery-mousewheel/",
+      "files": [
+        "jquery.mousewheel.min.js",
+        "jquery.mousewheel.js"
+      ]
+    },
+    {
+      "library": "raphael@2.3.0",
+      "destination": "wwwroot/lib/raphael/",
+      "files": [
+        "raphael.min.js",
+        "raphael.js"
+      ]
+    },
+    {
+      "library": "jquery-mapael@2.2.0",
+      "destination": "wwwroot/lib/jquery-mapael/"
+    },
+    {
+      "library": "Chart.js@3.4.0",
+      "destination": "wwwroot/lib/Chartjs/",
+      "files": [
+        "chart.min.js",
+        "chart.js"
+      ]
+    },
+    {
+      "library": "jqueryui@1.12.1",
+      "destination": "wwwroot/lib/jquery.ui/",
+      "files": [
+        "jquery-ui.min.js",
+        "jquery-ui.css",
+        "jquery-ui.js",
+        "jquery-ui.min.css"
+      ]
+    },
+    {
+      "library": "bootstrap-sweetalert@1.0.1",
+      "destination": "wwwroot/lib/bootstrap-sweetalert/",
+      "files": [
+        "sweetalert.min.js",
+        "sweetalert.css",
+        "sweetalert.js",
+        "sweetalert.min.css"
+      ]
+    },
+    {
+      "library": "font-awesome@5.15.3",
+      "destination": "wwwroot/lib/font-awesome/"
+    },
+    {
+      "library": "popper.js@2.9.3",
+      "destination": "wwwroot/lib/popper.js/",
+      "files": [
+        "umd/popper.min.js",
+        "umd/popper.js"
+      ]
+    },
+    {
+      "library": "datatables.net-bs4@3.2.2",
+      "destination": "wwwroot/lib/datatables.net-bs4/"
+    },
+    {
+      "library": "datatables.net-rowgroup-bs4@1.1.3",
+      "destination": "wwwroot/lib/datatables.net-rowgroup-bs4/",
+      "files": [
+        "rowGroup.bootstrap4.min.js",
+        "rowGroup.bootstrap4.css",
+        "rowGroup.bootstrap4.js",
+        "rowGroup.bootstrap4.min.css"
+      ]
+    },
+    {
+      "library": "datatables.net-rowreorder-bs4@1.2.8",
+      "destination": "wwwroot/lib/datatables.net-rowreorder-bs4/",
+      "files": [
+        "rowReorder.bootstrap4.min.js",
+        "rowReorder.bootstrap4.css",
+        "rowReorder.bootstrap4.min.css",
+        "rowReorder.bootstrap4.js"
+      ]
+    },
+    {
+      "library": "datatables.net-scroller-bs4@2.0.4",
+      "destination": "wwwroot/lib/datatables.net-scroller-bs4/",
+      "files": [
+        "scroller.bootstrap4.min.js",
+        "scroller.bootstrap4.css",
+        "scroller.bootstrap4.js",
+        "scroller.bootstrap4.min.css"
+      ]
+    },
+    {
+      "library": "datatables.net-searchpanes-bs4@1.3.0",
+      "destination": "wwwroot/lib/datatables.net-searchpanes-bs4/",
+      "files": [
+        "searchPanes.bootstrap4.min.js",
+        "searchPanes.bootstrap4.css",
+        "searchPanes.bootstrap4.js",
+        "searchPanes.bootstrap4.min.css"
+      ]
+    },
+    {
+      "library": "pdfmake@0.2.2",
+      "destination": "wwwroot/lib/pdfmake/",
+      "files": [
+        "pdfmake.min.js",
+        "pdfmake.js",
+        "fonts/Roboto/Roboto-Italic.ttf",
+        "fonts/Roboto/Roboto-Medium.ttf",
+        "fonts/Roboto/Roboto-MediumItalic.ttf",
+        "fonts/Roboto/Roboto-Regular.ttf",
+        "vfs_fonts.js",
+        "vfs_fonts.min.js"
+      ]
+    },
+    {
+      "library": "datatables.net-buttons-bs4@2.2.0",
+      "destination": "wwwroot/lib/datatables.net-buttons-bs4/",
+      "files": [
+        "buttons.bootstrap4.min.js",
+        "buttons.bootstrap4.css",
+        "buttons.bootstrap4.js",
+        "buttons.bootstrap4.min.css"
+      ]
+    },
+    {
+      "library": "datatables.net-responsive-bs4@2.2.9",
+      "destination": "wwwroot/lib/datatables.net-responsive-bs4/"
+    },
+    {
+      "library": "datatables.net@2.1.1",
+      "destination": "wwwroot/lib/datatables.net/"
+    },
+    {
+      "library": "datatables-responsive@2.2.9",
+      "destination": "wwwroot/lib/datatables-responsive/"
+    },
+    {
+      "library": "jszip@3.7.1",
+      "destination": "wwwroot/lib/jszip/",
+      "files": [
+        "jszip.min.js",
+        "jszip.js"
+      ]
+    },
+    {
+      "library": "datatables.net-buttons@2.2.0",
+      "destination": "wwwroot/lib/datatables.net-buttons/"
+    },
+    {
+      "library": "microsoft-signalr@5.0.11",
+      "destination": "wwwroot/lib/microsoft-signalr/"
+    },
+    {
+      "library": "select2@4.0.13",
+      "destination": "wwwroot/lib/select2/"
+    },
+    {
+      "library": "bootstrap4-duallistbox@4.0.2",
+      "destination": "wwwroot/lib/bootstrap4-duallistbox/"
+    },
+    {
+      "library": "prettify@r298",
+      "destination": "wwwroot/lib/prettify/",
+      "files": [
+        "prettify.min.js",
+        "prettify.min.css",
+        "run_prettify.min.js",
+        "prettify.css",
+        "prettify.js",
+        "run_prettify.js"
+      ]
+    },
+    {
+      "library": "admin-lte@3.2.0",
+      "destination": "wwwroot/lib/admin-lte/"
+    },
+    {
+      "library": "dropzone@5.9.3",
+      "destination": "wwwroot/lib/dropzone/",
+      "files": [
+        "basic.css",
+        "dropzone-amd-module.js",
+        "dropzone.css",
+        "dropzone.js",
+        "min/dropzone.min.js",
+        "min/dropzone.min.css",
+        "min/dropzone-amd-module.min.js",
+        "min/basic.min.css"
+      ]
+    },
+    {
+      "library": "jquery.countdown@2.2.0",
+      "destination": "wwwroot/lib/jquery.countdown/",
+      "files": [
+        "jquery.countdown.min.js",
+        "jquery.countdown.js"
+      ]
+    },
+    {
+      "library": "jquery-footable@3.1.6",
+      "destination": "wwwroot/lib/jquery-footable/"
+    },
+    {
+      "library": "jquery-datetimepicker@2.5.20",
+      "destination": "wwwroot/lib/jquery-datetimepicker/"
+    },
+    {
+      "library": "bs-custom-file-input@1.3.4",
+      "destination": "wwwroot/lib/bs-custom-file-input/"
+    },
+    {
+      "library": "tinymce@5.10.2",
+      "destination": "wwwroot/lib/tinymce/"
+    },
+    {
+      "library": "bootstrap-datepicker@1.9.0",
+      "destination": "wwwroot/lib/bootstrap-datepicker/"
+    }
+  ]
+}

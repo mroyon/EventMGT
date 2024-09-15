@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="campid" value="AR:  Camp I D"></resource>
+       <resource culture="ar-kw" name="campidRequired" value="AR: Please provide  Camp I D"></resource>
+       <resource culture="ar-kw" name="imageurl" value="AR:  Image U R L"></resource>
+		<resource culture="ar-kw" name="campimageinfoList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="campimageinfoCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="campimageinfoUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="campimageinfoDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="campid" value=" Camp I D"></resource>
+       <resource culture="en-us" name="campidRequired" value="Please provide  Camp I D"></resource>
+       <resource culture="en-us" name="imageurl" value=" Image U R L"></resource>
+        <resource culture="en-us" name="campimageinfoList" value="View All"></resource>
+		<resource culture="en-us" name="campimageinfoCreate" value="Create"></resource>
+		<resource culture="en-us" name="campimageinfoUpdate" value="Update"></resource>
+		<resource culture="en-us" name="campimageinfoDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

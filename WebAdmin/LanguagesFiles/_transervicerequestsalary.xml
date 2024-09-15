@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="serviceid" value="AR:  Service I D"></resource>
+       <resource culture="ar-kw" name="serviceidRequired" value="AR: Please provide  Service I D"></resource>
+       <resource culture="ar-kw" name="militaryprofilejson" value="AR:  Military Profile Json"></resource>
+       <resource culture="ar-kw" name="servicemethod" value="AR:  Service Method"></resource>
+       <resource culture="ar-kw" name="servicecontroller" value="AR:  Service Controller"></resource>
+       <resource culture="ar-kw" name="requestercivilid" value="AR:  Requester Civil I D"></resource>
+       <resource culture="ar-kw" name="requestercivilidRequired" value="AR: Please provide  Requester Civil I D"></resource>
+       <resource culture="ar-kw" name="requesterademail" value="AR:  Requester A D Email"></resource>
+       <resource culture="ar-kw" name="requestermilitaryid" value="AR:  Requester Military I D"></resource>
+       <resource culture="ar-kw" name="requestermilitaryidRequired" value="AR: Please provide  Requester Military I D"></resource>
+       <resource culture="ar-kw" name="requesttrackid" value="AR:  Request Track I D"></resource>
+       <resource culture="ar-kw" name="requesttimestamp" value="AR:  Request Time Stamp"></resource>
+       <resource culture="ar-kw" name="amount" value="AR:  Amount"></resource>
+       <resource culture="ar-kw" name="transactiondate" value="AR:  Transaction Date"></resource>
+       <resource culture="ar-kw" name="financedatatablerefkey" value="AR:  Finance Data Table Ref Key"></resource>
+       <resource culture="ar-kw" name="transactionresponsejson" value="AR:  Transaction Response Json"></resource>
+       <resource culture="ar-kw" name="fileurl" value="AR:  File U R L"></resource>
+       <resource culture="ar-kw" name="validtilldays" value="AR:  Valid Till Days"></resource>
+       <resource culture="ar-kw" name="securitytoken" value="AR:  Security Token"></resource>
+       <resource culture="ar-kw" name="securitytokenRequired" value="AR: Please provide  Security Token"></resource>
+       <resource culture="ar-kw" name="consumed" value="AR:  Consumed"></resource>
+       <resource culture="ar-kw" name="consumedRequired" value="AR: Please provide  Consumed"></resource>
+       <resource culture="ar-kw" name="consumeddatetime" value="AR:  Consumed Date Time"></resource>
+       <resource culture="ar-kw" name="codetrycounter" value="AR:  Code Try Counter"></resource>
+		<resource culture="ar-kw" name="transervicerequestsalaryList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="transervicerequestsalaryCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="transervicerequestsalaryUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="transervicerequestsalaryDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="serviceid" value=" Service I D"></resource>
+       <resource culture="en-us" name="serviceidRequired" value="Please provide  Service I D"></resource>
+       <resource culture="en-us" name="militaryprofilejson" value=" Military Profile Json"></resource>
+       <resource culture="en-us" name="servicemethod" value=" Service Method"></resource>
+       <resource culture="en-us" name="servicecontroller" value=" Service Controller"></resource>
+       <resource culture="en-us" name="requestercivilid" value=" Requester Civil I D"></resource>
+       <resource culture="en-us" name="requestercivilidRequired" value="Please provide  Requester Civil I D"></resource>
+       <resource culture="en-us" name="requesterademail" value=" Requester A D Email"></resource>
+       <resource culture="en-us" name="requestermilitaryid" value=" Requester Military I D"></resource>
+       <resource culture="en-us" name="requestermilitaryidRequired" value="Please provide  Requester Military I D"></resource>
+       <resource culture="en-us" name="requesttrackid" value=" Request Track I D"></resource>
+       <resource culture="en-us" name="requesttimestamp" value=" Request Time Stamp"></resource>
+       <resource culture="en-us" name="amount" value=" Amount"></resource>
+       <resource culture="en-us" name="transactiondate" value=" Transaction Date"></resource>
+       <resource culture="en-us" name="financedatatablerefkey" value=" Finance Data Table Ref Key"></resource>
+       <resource culture="en-us" name="transactionresponsejson" value=" Transaction Response Json"></resource>
+       <resource culture="en-us" name="fileurl" value=" File U R L"></resource>
+       <resource culture="en-us" name="validtilldays" value=" Valid Till Days"></resource>
+       <resource culture="en-us" name="securitytoken" value=" Security Token"></resource>
+       <resource culture="en-us" name="securitytokenRequired" value="Please provide  Security Token"></resource>
+       <resource culture="en-us" name="consumed" value=" Consumed"></resource>
+       <resource culture="en-us" name="consumedRequired" value="Please provide  Consumed"></resource>
+       <resource culture="en-us" name="consumeddatetime" value=" Consumed Date Time"></resource>
+       <resource culture="en-us" name="codetrycounter" value=" Code Try Counter"></resource>
+        <resource culture="en-us" name="transervicerequestsalaryList" value="View All"></resource>
+		<resource culture="en-us" name="transervicerequestsalaryCreate" value="Create"></resource>
+		<resource culture="en-us" name="transervicerequestsalaryUpdate" value="Update"></resource>
+		<resource culture="en-us" name="transervicerequestsalaryDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

@@ -1,0 +1,35 @@
+﻿@inject CLL.Localization.LocalizeService SharedLocalizer
+@{
+    Layout = "_LayoutViewComponent";
+}
+@{ string id = ViewBag.ddlId, cssclass = ViewBag.ddlcss; bool enable = ViewBag.enable;string selectedvalue = ViewBag.selectedvalue;bool isRequired=ViewBag.isRequired;
+
+    var attributes = new System.Collections.Generic.Dictionary<string, object>();
+
+    attributes.Add("id", id);
+    attributes.Add("name", id);
+    attributes.Add("class", cssclass);
+
+    if (!enable)
+    {
+        attributes.Add("disabled", "disabled");
+    }
+
+    if (isRequired)
+    {
+        attributes.Add("data-val", "true");
+        attributes.Add("data-val-required", "Please select item from the list.");
+    }
+
+}
+
+@Html.DropDownList(id, (List<SelectListItem>)ViewBag.ddlName, "- اختر واحدة -", attributes)
+
+@{
+    if (isRequired)
+    {
+        <span class="field-validation-valid text-danger" data-valmsg-for="@id" data-valmsg-replace="true"></span>
+        <div class="help-block with-errors"></div>
+    }
+}
+

@@ -1,0 +1,232 @@
+﻿@using CLL
+@model BDO.Core.DataAccessObjects.SecurityModels.owin_rolepermissionEntity
+@inject CLL.Localization.LocalizeService SharedLocalizer
+
+@using Microsoft.Extensions.Options
+@{
+    ViewData["Title"] = @SharedLocalizer.GetLocalizedHtmlString("ADD_OWIN_ROLEPERMISSION");
+}
+<style>
+    /*body {
+                margin: 50px;
+            }*/
+
+    a:hover, a:visited, a:link, a:active {
+        text-decoration: none;
+    }
+
+    .card {
+        margin-bottom: 10px;
+    }
+
+    .permissionCard {
+        padding: 10px;
+        border: 1px solid darkgrey;
+        margin-bottom: 10px;
+    }
+
+
+    /*.cpermission .trigger:before {
+                content: '\f146';
+                font-weight: 500;
+                font-family: 'Font Awesome 5 Free';
+
+            }
+
+            .cpermission .trigger.collapsed:before {
+                display: inline-block;
+                font-style: normal;
+                font-variant: normal;
+                text-rendering: auto;
+                -webkit-font-smoothing: antialiased;
+                content: '\f0fe';
+            }*/
+
+
+    /*.form-horizontal .form-group {
+                margin-right: 10px;
+                margin-left: 10px;
+            }*/
+
+    .root:before {
+        content: '\f146';
+        font-weight: 500;
+        font-family: 'Font Awesome 5 Free';
+    }
+
+    .root.collapsed:before {
+        display: inline-block;
+        font-style: normal;
+        font-variant: normal;
+        text-rendering: auto;
+        -webkit-font-smoothing: antialiased;
+        content: '\f0fe';
+    }
+
+</style>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-footer">
+                <h5 class="card-title">@SharedLocalizer.GetLocalizedHtmlString("ADD_OWIN_ROLEPERMISSION")</h5>
+            </div>
+            <!-- /.card-header -->
+            <form method="POST" id="frmAddOwin_RolePermission" class="my-login-validation" novalidate="" autocomplete="off">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="labelNormal required " asp-for="roleid"></label>
+                                @await Component.InvokeAsync("S2Owin_Role", new { selectid = "roleid", preloaded = ViewBag.preloadedDataowin_role , isReadOnly = false, multiple = false, isRequired = true, pkey = -99 })
+                                <span asp-validation-for="roleid" class="roleiderror text-danger " id="roleiderror"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col-md-12">
+                            <div class="form-group row">
+                                <div class="col-lg-12  container dvActionPanel">
+
+                                    @*dummy starts*@
+                                    @* <div id="accordion" class="">
+                                    <div class="card">
+                                    <div class="card-header" id="mheadingOne">
+                                    <h5 class="mb-0">
+                                    <button class="btn btn-link" data-toggle="collapse" data-target="#mcollapseOne" aria-expanded="true" aria-controls="mcollapseOne">
+                                    Collapsible Parent Group Item #1
+                                    </button>
+                                    </h5>
+                                    </div>
+                                    <div id="mcollapseOne" class="collapse show" aria-labelledby="mheadingOne" data-parent="#mheadingOne">
+                                    <div class="card-body">
+                                    <div class="card">
+                                    <div class="card-header" id="headingOne">
+                                    <h5 class="mb-0">
+                                    <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    Collapsible Group Item #1
+                                    </button>
+                                    </h5>
+                                    </div>
+                                    <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordion">
+                                    <div class="card-body">
+                                    <div class="row">
+                                    <div class="col-md-4">
+                                    <label>
+                                    <input type="checkbox" class="actionid" value="43914">Edu Qualification [List View]
+                                    </label>
+                                    </div>
+                                    <div class="col-md-4">
+                                    <label>
+                                    <input type="checkbox" class="actionid" value="43915">Edu Qualification Table Data [List View Operation]
+                                    </label>
+                                    </div>
+                                    <div class="col-md-4">
+                                    <label>
+                                    <input type="checkbox" class="actionid" value="43916">Edu Qualification New [Create View]
+                                    </label>
+                                    </div>
+                                    <div class="col-md-4">
+                                    <label>
+                                    <input type="checkbox" class="actionid" value="43917">Edu Qualification Insert [Create Operation]
+                                    </label>
+                                    </div>
+                                    <div class="col-md-4">
+                                    <label>
+                                    <input type="checkbox" class="actionid" value="43918">Edu Qualification Edit [Update View]
+                                    </label>
+                                    </div>
+                                    <div class="col-md-4">
+                                    <label>
+                                    <input type="checkbox" class="actionid" value="43919">Edu Qualification Update [Update Operation]
+                                    </label>
+                                    </div>
+                                    <div class="col-md-4">
+                                    <label>
+                                    <input type="checkbox" class="actionid" value="43920">Edu Qualification Delete [Delete Operation]
+                                    </label>
+                                    </div>
+                                    <div class="col-md-4">
+                                    <label>
+                                    <input type="checkbox" class="actionid" value="43921">Edu Qualification Detail [Detail View]
+                                    </label>
+                                    </div>
+                                    </div>
+                                    </div>
+                                    </div>
+                                    </div>
+                                    <div class="card">
+                                    <div class="card-header" id="headingTwo">
+                                    <h5 class="mb-0">
+                                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    Collapsible Group Item #2
+                                    </button>
+                                    </h5>
+                                    </div>
+                                    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                                    <div class="card-body">
+                                    </div>
+                                    </div>
+                                    </div>
+                                    <div class="card">
+                                    <div class="card-header" id="headingThree">
+                                    <h5 class="mb-0">
+                                    <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    Collapsible Group Item #3
+                                    </button>
+                                    </h5>
+                                    </div>
+                                    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordion">
+                                    <div class="card-body">
+                                    </div>
+                                    </div>
+                                    </div>
+                                    </div>
+                                    </div>
+                                    </div>
+
+                                    </div>*@
+                                    @*dummy ends*@
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row btn-toolbar">
+                        <div class="col-md-6 ">
+                            <div class="form-group">
+                                <button type="submit" id="btnAddOwin_RolePermission" class="btn btn-primary btn-md"><i class="fa fa-save"></i> @SharedLocalizer.GetLocalizedHtmlString("SUBMIT_REQUEST")</button>
+                                @*<button id="btnGoBackOwin_RolePermission" class="btn btn-secondary btn-md "><i class="fas fa-arrow-circle-left"></i> @SharedLocalizer.GetLocalizedHtmlString("GO_BACK")</button>*@
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!-- ./card-body -->
+        <div class="card-footer">
+            <div class="row">
+                <div class="col-md-12">
+
+                    <!-- /.description-block -->
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.card-footer -->
+    </div>
+    <!-- /.card -->
+</div>
+<!-- /.col -->
+@section Scripts{
+    <script src="~/lib/customjs/RolePermission/RolePermission.js" asp-append-version="true"></script>
+
+    @*<script>
+                $(function() {
+
+
+                });
+
+            </script>*@
+    }

@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+
+	<!--  ar-kwabic (ar-kw) -->
+
+	<resource culture="ar-kw" name="parentserialloginid" value="معرف تسجيل الدخول التسلسلي للوالدين"></resource>
+	<resource culture="ar-kw" name="samaccount" value="حساب"></resource>
+	<resource culture="ar-kw" name="samaccountRequired" value="يرجى تقديم الحساب"></resource>
+	<resource culture="ar-kw" name="samemail" value="بريد إلكتروني"></resource>
+	<resource culture="ar-kw" name="samemailRequired" value="يرجى تقديم بريد إلكتروني"></resource>
+	<resource culture="ar-kw" name="userid" value="معرف المستخدم"></resource>
+	<resource culture="ar-kw" name="useridRequired" value="يرجى تقديم معرف المستخدم"></resource>
+	<resource culture="ar-kw" name="logindate" value="تاريخ تسجيل الدخول"></resource>
+	<resource culture="ar-kw" name="logindateRequired" value="يرجى تقديم تاريخ تسجيل الدخول"></resource>
+	<resource culture="ar-kw" name="logintoken" value="رمز تسجيل الدخول"></resource>
+	<resource culture="ar-kw" name="logintokenRequired" value="يرجى تقديم رمز تسجيل الدخول"></resource>
+	<resource culture="ar-kw" name="refreshtoken" value="تحديث الرمز"></resource>
+	<resource culture="ar-kw" name="tokenissuedate" value="تاريخ إصدار الرمز"></resource>
+	<resource culture="ar-kw" name="tokenissuedateRequired" value="يرجى تقديم تاريخ إصدار الرمز"></resource>
+	<resource culture="ar-kw" name="expires" value="تنتهي"></resource>
+	<resource culture="ar-kw" name="expiresRequired" value="يرجى تقديم تاريخ انتهاء الصلاحية"></resource>
+	<resource culture="ar-kw" name="remarks" value="ملاحظات"></resource>
+	<resource culture="ar-kw" name="loginList" value="مشاهدة الكل"></resource>
+	<resource culture="ar-kw" name="loginCreate" value="خلق"></resource>
+	<resource culture="ar-kw" name="loginUpdate" value="تحديث"></resource>
+	<resource culture="ar-kw" name="loginDetails" value="التفاصيل"></resource>
+
+	<!--  ar-kwabic (ar-kw) -->
+
+	<!--  English (en-US) -->
+	<resource culture="en-us" name="parentserialloginid" value=" Parent Serial Login ID"></resource>
+	<resource culture="en-us" name="samaccount" value=" SAM Account"></resource>
+	<resource culture="en-us" name="samaccountRequired" value="Please provide  S A M Account"></resource>
+	<resource culture="en-us" name="samemail" value=" S A M Email"></resource>
+	<resource culture="en-us" name="samemailRequired" value="Please provide  S A M Email"></resource>
+	<resource culture="en-us" name="userid" value=" User I D"></resource>
+	<resource culture="en-us" name="useridRequired" value="Please provide  User I D"></resource>
+	<resource culture="en-us" name="logindate" value=" Login Date"></resource>
+	<resource culture="en-us" name="logindateRequired" value="Please provide  Login Date"></resource>
+	<resource culture="en-us" name="logintoken" value=" Login Token"></resource>
+	<resource culture="en-us" name="logintokenRequired" value="Please provide  Login Token"></resource>
+	<resource culture="en-us" name="refreshtoken" value=" Refresh Token"></resource>
+	<resource culture="en-us" name="tokenissuedate" value=" Token Issue Date"></resource>
+	<resource culture="en-us" name="tokenissuedateRequired" value="Please provide  Token Issue Date"></resource>
+	<resource culture="en-us" name="expires" value=" Expires"></resource>
+	<resource culture="en-us" name="expiresRequired" value="Please provide  Expires"></resource>
+	<resource culture="en-us" name="remarks" value=" Remarks"></resource>
+	<resource culture="en-us" name="loginList" value="View All"></resource>
+	<resource culture="en-us" name="loginCreate" value="Create"></resource>
+	<resource culture="en-us" name="loginUpdate" value="Update"></resource>
+	<resource culture="en-us" name="loginDetails" value="Detail"></resource>
+	<!--  English (en-US) -->
+
+
+
+</resources>

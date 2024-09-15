@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="eventid" value="AR:  Event I D"></resource>
+       <resource culture="ar-kw" name="eventidRequired" value="AR: Please provide  Event I D"></resource>
+       <resource culture="ar-kw" name="filename" value="AR:  File Name"></resource>
+       <resource culture="ar-kw" name="filenameRequired" value="AR: Please provide  File Name"></resource>
+       <resource culture="ar-kw" name="filetype" value="AR:  File Type"></resource>
+       <resource culture="ar-kw" name="filetypeRequired" value="AR: Please provide  File Type"></resource>
+       <resource culture="ar-kw" name="extension" value="AR:  Extension"></resource>
+       <resource culture="ar-kw" name="extensionRequired" value="AR: Please provide  Extension"></resource>
+       <resource culture="ar-kw" name="filesize" value="AR:  File Size"></resource>
+       <resource culture="ar-kw" name="filetitle" value="AR:  File Title"></resource>
+       <resource culture="ar-kw" name="iscoverphoto" value="AR:  Is Cover Photo"></resource>
+       <resource culture="ar-kw" name="filedescription" value="AR:  File Description"></resource>
+       <resource culture="ar-kw" name="comment" value="AR:  Comment"></resource>
+       <resource culture="ar-kw" name="ex_date1" value="AR:  Ex Date 1"></resource>
+       <resource culture="ar-kw" name="ex_date2" value="AR:  Ex Date 2"></resource>
+       <resource culture="ar-kw" name="ex_nvarchar1" value="AR:  Ex Nvarchar 1"></resource>
+       <resource culture="ar-kw" name="ex_nvarchar2" value="AR:  Ex Nvarchar 2"></resource>
+       <resource culture="ar-kw" name="ex_nvarchar3" value="AR:  Ex Nvarchar 3"></resource>
+       <resource culture="ar-kw" name="ex_bigint1" value="AR:  Ex Bigint 1"></resource>
+       <resource culture="ar-kw" name="ex_bigint2" value="AR:  Ex Bigint 2"></resource>
+       <resource culture="ar-kw" name="ex_decimal1" value="AR:  Ex Decimal 1"></resource>
+       <resource culture="ar-kw" name="ex_decimal2" value="AR:  Ex Decimal 2"></resource>
+		<resource culture="ar-kw" name="eventfileinfoList" value="AR: View All"></resource>
+		<resource culture="ar-kw" name="eventfileinfoCreate" value="AR: Create"></resource>
+		<resource culture="ar-kw" name="eventfileinfoUpdate" value="AR: Update"></resource>
+		<resource culture="ar-kw" name="eventfileinfoDetails" value="AR: Detail"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="eventid" value=" Event I D"></resource>
+       <resource culture="en-us" name="eventidRequired" value="Please provide  Event I D"></resource>
+       <resource culture="en-us" name="filename" value=" File Name"></resource>
+       <resource culture="en-us" name="filenameRequired" value="Please provide  File Name"></resource>
+       <resource culture="en-us" name="filetype" value=" File Type"></resource>
+       <resource culture="en-us" name="filetypeRequired" value="Please provide  File Type"></resource>
+       <resource culture="en-us" name="extension" value=" Extension"></resource>
+       <resource culture="en-us" name="extensionRequired" value="Please provide  Extension"></resource>
+       <resource culture="en-us" name="filesize" value=" File Size"></resource>
+       <resource culture="en-us" name="filetitle" value=" File Title"></resource>
+       <resource culture="en-us" name="iscoverphoto" value=" Is Cover Photo"></resource>
+       <resource culture="en-us" name="filedescription" value=" File Description"></resource>
+       <resource culture="en-us" name="comment" value=" Comment"></resource>
+       <resource culture="en-us" name="ex_date1" value=" Ex Date 1"></resource>
+       <resource culture="en-us" name="ex_date2" value=" Ex Date 2"></resource>
+       <resource culture="en-us" name="ex_nvarchar1" value=" Ex Nvarchar 1"></resource>
+       <resource culture="en-us" name="ex_nvarchar2" value=" Ex Nvarchar 2"></resource>
+       <resource culture="en-us" name="ex_nvarchar3" value=" Ex Nvarchar 3"></resource>
+       <resource culture="en-us" name="ex_bigint1" value=" Ex Bigint 1"></resource>
+       <resource culture="en-us" name="ex_bigint2" value=" Ex Bigint 2"></resource>
+       <resource culture="en-us" name="ex_decimal1" value=" Ex Decimal 1"></resource>
+       <resource culture="en-us" name="ex_decimal2" value=" Ex Decimal 2"></resource>
+        <resource culture="en-us" name="eventfileinfoList" value="View All"></resource>
+		<resource culture="en-us" name="eventfileinfoCreate" value="Create"></resource>
+		<resource culture="en-us" name="eventfileinfoUpdate" value="Update"></resource>
+		<resource culture="en-us" name="eventfileinfoDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

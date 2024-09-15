@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+    
+        <!--  ar-kwabic (ar-kw) -->
+        
+       <resource culture="ar-kw" name="servicestatusar" value="الخدمة باللغة العربية"></resource>
+       <resource culture="ar-kw" name="servicestatusarRequired" value="يرجى تقديم الخدمة باللغة العربية"></resource>
+       <resource culture="ar-kw" name="servicestatusen" value="حالة الخدمة باللغة الإنجليزية"></resource>
+       <resource culture="ar-kw" name="servicestatusenRequired" value="يرجى تقديم حالة الخدمة باللغة الإنجليزية"></resource>
+       <resource culture="ar-kw" name="descriptionar" value="الوصف باللغة العربية"></resource>
+       <resource culture="ar-kw" name="descriptionen" value="الوصف باللغة الإنجليزية"></resource>
+       <resource culture="ar-kw" name="isactive" value="نشط"></resource>
+		<resource culture="ar-kw" name="servicestatusList" value="مشاهدة الكل"></resource>
+		<resource culture="ar-kw" name="servicestatusCreate" value="خلق"></resource>
+		<resource culture="ar-kw" name="servicestatusUpdate" value="تحديث"></resource>
+		<resource culture="ar-kw" name="servicestatusDetails" value="التفاصيل"></resource>
+
+         <!--  ar-kwabic (ar-kw) -->
+         
+	
+          <!--  English (en-US) -->
+       <resource culture="en-us" name="servicestatusar" value=" Service Status In Arabic"></resource>
+       <resource culture="en-us" name="servicestatusarRequired" value="Please provide  Service Status In Arabic"></resource>
+       <resource culture="en-us" name="servicestatusen" value=" Service Status In English"></resource>
+       <resource culture="en-us" name="servicestatusenRequired" value="Please provide  Service Status In English"></resource>
+       <resource culture="en-us" name="descriptionar" value=" Description In Arabic"></resource>
+       <resource culture="en-us" name="descriptionen" value=" Description In English"></resource>
+       <resource culture="en-us" name="isactive" value=" Is Active"></resource>
+        <resource culture="en-us" name="servicestatusList" value="View All"></resource>
+		<resource culture="en-us" name="servicestatusCreate" value="Create"></resource>
+		<resource culture="en-us" name="servicestatusUpdate" value="Update"></resource>
+		<resource culture="en-us" name="servicestatusDetails" value="Detail"></resource>
+          <!--  English (en-US) -->
+        
+         
+
+</resources>        

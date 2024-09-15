@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<resources>
+
+	<!--  ar-kwabic (ar-kw) -->
+
+	<resource culture="ar-kw" name="militaryunitheadlinear" value="اسم الوحدة العسكرية باللغة العربية"></resource>
+	<resource culture="ar-kw" name="militaryunitheadlinearRequired" value="يرجى ادخال اسم الوحدة العسكرية الصحيح"></resource>
+	<resource culture="ar-kw" name="militaryunitheadline" value="  اسم الوحدة العسكرية باللغة الانجليزية "></resource>
+	<resource culture="ar-kw" name="militaryunitdetailar" value="نبذة عن الوحدة العسكرية باللغة العربية  "></resource>
+	<resource culture="ar-kw" name="militaryunitdetailarRequired" value="يرجى ادخال النبذة بالشكل الصحيح"></resource>
+	<resource culture="ar-kw" name="militaryunitdetail" value="نبذة عن الوحدة العسكرية باللغة الانجليزية"></resource>
+	<resource culture="ar-kw" name="militaryunitslogan" value="شعار الوحدة العسكرية"></resource>
+	<resource culture="ar-kw" name="militaryunitsloganar" value="شعار الوحدة العسكرية"></resource>
+	<resource culture="ar-kw" name="militaryunitlogopath" value="شعار الوحدة العسكرية "></resource>
+	<resource culture="ar-kw" name="militaryunitbannerpath" value="خلفية شعار الوحدة العسكرية"></resource>
+	<resource culture="ar-kw" name="militaryunitthemename" value="أسم مظهر الوحدة العسكرية"></resource>
+	<resource culture="ar-kw" name="militaryunitList" value=" عرض الكل"></resource>
+	<resource culture="ar-kw" name="militaryunitCreate" value=" إدخال"></resource>
+	<resource culture="ar-kw" name="militaryunitUpdate" value=" تعديل"></resource>
+	<resource culture="ar-kw" name="militaryunitDetails" value=" تفاصيل"></resource>
+	<resource culture="ar-kw" name="ispublished" value="يتم نشر"></resource>
+	<resource culture="ar-kw" name="sequence" value="تسلسل"></resource>
+
+	<!--  ar-kwabic (ar-kw) -->
+
+	<!--  English (en-US) -->
+	<resource culture="en-us" name="militaryunitheadlinear" value=" Military Unit Name Arabic"></resource>
+	<resource culture="en-us" name="militaryunitheadlinearRequired" value="Please provide  Military Unit Name A R"></resource>
+	<resource culture="en-us" name="militaryunitheadline" value=" Military Unit Name English"></resource>
+	<resource culture="en-us" name="militaryunitdetailar" value=" About Military Unit Arabic"></resource>
+	<resource culture="en-us" name="militaryunitdetailarRequired" value="Please provide  Military Unit Details "></resource>
+	<resource culture="en-us" name="militaryunitdetail" value=" About Military Unit "></resource>
+	<resource culture="en-us" name="militaryunitslogan" value=" Military Unit Slogan"></resource>
+	<resource culture="en-us" name="militaryunitsloganar" value=" Military Unit Slogan Ar"></resource>
+	<resource culture="en-us" name="militaryunitlogopath" value=" Military Unit Logo "></resource>
+	<resource culture="en-us" name="militaryunitbannerpath" value=" Military Unit Background"></resource>
+	<resource culture="en-us" name="militaryunitthemename" value=" Military Unit Theme Name"></resource>
+	<resource culture="en-us" name="militaryunitList" value="View All"></resource>
+	<resource culture="en-us" name="militaryunitCreate" value="Create"></resource>
+	<resource culture="en-us" name="militaryunitUpdate" value="Update"></resource>
+	<resource culture="en-us" name="militaryunitDetails" value="Details"></resource>
+	<resource culture="en-us" name="ispublished" value=" Is Published"></resource>
+	<resource culture="en-us" name="sequence" value=" Sequence"></resource>
+	<!--  English (en-US) -->
+
+
+
+</resources>

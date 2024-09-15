@@ -1,0 +1,78 @@
+﻿@using CLL
+@model BDO.Core.DataAccessObjects.SecurityModels.owin_roleEntity
+@inject CLL.Localization.LocalizeService SharedLocalizer
+
+@using Microsoft.Extensions.Options
+@{
+    ViewData["Title"] = @SharedLocalizer.GetLocalizedHtmlString("DELETE_OWIN_ROLE");
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-footer">
+                <h5 class="card-title">@SharedLocalizer.GetLocalizedHtmlString("DELETE_OWIN_ROLE")</h5>
+            </div>
+            <form method="POST" id="frmDeleteOwin_Role" class="my-login-validation" novalidate="" autocomplete="off">
+                <div class="card-body">
+                    <div class="row">
+                        <input asp-for="roleid" type="hidden" />
+                    </div>
+                    
+					 <div class="row ">
+							 <input asp-for="roleid" type="hidden" />
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 <label class="labelNormal required " asp-for="rolename"></label>
+								 <input asp-for="rolename" class="form-control" autocomplete="off" readonly="readonly"/> 
+								 <span asp-validation-for="rolename" class="text-danger"></span>
+							</div>
+						</div>
+					</div>
+					 <div class="row ">
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 <label class="labelNormal  " asp-for="description"></label>
+								 <textarea cols="40" rows="5" asp-for="description" class="form-control"></textarea>
+								 <span asp-validation-for="description" class="descriptionerror text-danger " id="descriptionerror" ></span>
+							</div>
+						</div>
+					</div>
+
+                     <div class="row btn-toolbar">
+                        <div class="col-md-6 ">
+                            <div class="form-group">
+                                <button type="submit" id="btnDeleteOwin_Role" data="@Url.Action("LandingOWIN_ROLE", "OWIN_ROLE")" class="btn btn-danger btn-md btnAddUser"><i class="fa fa-trash-alt"></i> @SharedLocalizer.GetLocalizedHtmlString("DELETE_REQUEST")</button>
+                                <button id="btnGoBackOwin_Role" data="@Url.Action("LandingOWIN_ROLE", "OWIN_ROLE")" class="btn btn-secondary btn-md "><i class="fas fa-arrow-circle-left"></i> @SharedLocalizer.GetLocalizedHtmlString("GO_BACK")</button>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </form>
+            <!-- ./card-body -->
+            <div class="card-footer">
+                <div class="row">
+                    <div class="col-md-12">
+
+                        <!-- /.description-block -->
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.card-footer -->
+        </div>
+        <!-- /.card -->
+    </div>
+    <!-- /.col -->
+</div>
+
+@section Scripts {
+    <script src="~/lib/customjs/Owin_Role/Owin_Role.js"></script>
+}
+
+
+
+
+
