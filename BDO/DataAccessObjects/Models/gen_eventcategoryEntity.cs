@@ -44,8 +44,7 @@ namespace BDO.Core.DataAccessObjects.Models
             set { _eventcategory = value; this.OnChnaged(); }
         }
         
-        [DataMember]
-        [MaxLength(-1)]
+        [DataMember]        
         [Display(Name = "description", ResourceType = typeof(CLL.LLClasses.Models._gen_eventcategory))]
         public string description
         {
