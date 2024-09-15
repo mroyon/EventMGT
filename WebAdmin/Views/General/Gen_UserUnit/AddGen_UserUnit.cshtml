@@ -71,7 +71,7 @@
     <script>
         $("#unitid").change(function () {
             var dataobject = {
-                unitid: $("#unitid").val(),
+                //unitid: $("#unitid").val(),
                 userid: $("#userid").val(),
             };
             ajaxPostObjectHandler("/Gen_UserUnit/GetExistingDataByUserUnit", dataobject, function (response) {

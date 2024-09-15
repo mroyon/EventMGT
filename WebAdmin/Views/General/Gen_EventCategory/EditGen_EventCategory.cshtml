@@ -1,0 +1,83 @@
+﻿@using CLL
+@model BDO.Core.DataAccessObjects.Models.gen_eventcategoryEntity
+@inject CLL.Localization.LocalizeService SharedLocalizer
+
+@using Microsoft.Extensions.Options
+@{
+    ViewData["Title"] = "Edit View Gen  Event Category";
+}
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-footer">
+                <h5 class="card-title">@SharedLocalizer.GetLocalizedHtmlString("EDIT_GEN_EVENTCATEGORY")</h5>
+            </div>
+            <!-- /.card-header -->
+            <form method="POST" id="frmEditGen_EventCategory" class="my-login-validation" novalidate="" autocomplete="off">
+                <div class="card-body">
+					 <div class="row ">
+							 <input asp-for="eventcategoryid" type="hidden" />
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 <label class="labelNormal required " asp-for="eventcategory"></label>
+								 <textarea cols="40" rows="5" asp-for="eventcategory" class="form-control"></textarea>
+								 <span asp-validation-for="eventcategory" class="eventcategoryerror text-danger " id="eventcategoryerror" ></span>
+							</div>
+						</div>
+					</div>
+					 <div class="row ">
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 <label class="labelNormal  " asp-for="description"></label>
+								 <input asp-for="description" class="form-control" /> 
+								 <span asp-validation-for="description" class="text-danger"></span>
+							</div>
+						</div>
+						 <div class="col-md-6">
+							 <div class="form-group">
+								 <label class="labelNormal  " asp-for="ex_nvarchar3"></label>
+								 <input asp-for="ex_nvarchar3" class="form-control" /> 
+								 <span asp-validation-for="ex_nvarchar3" class="text-danger"></span>
+							</div>
+						</div>
+					</div>
+                   
+                    <div class="row btn-toolbar">
+                        <div class="col-md-6 ">
+                            <div class="form-group">
+                                <button type="submit" id="btnEditGen_EventCategory" class="btn btn-primary btn-md"><i class="fa fa-save"></i> @SharedLocalizer.GetLocalizedHtmlString("SUBMIT_REQUEST")</button>
+                                <button id="btnGoBackGen_EventCategory" class="btn btn-secondary btn-md "><i class="fas fa-arrow-circle-left"></i> @SharedLocalizer.GetLocalizedHtmlString("GO_BACK")</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!-- ./card-body -->
+        <div class="card-footer">
+            <div class="row">
+                <div class="col-md-12">
+
+                    <!-- /.description-block -->
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.card-footer -->
+    </div>
+    <!-- /.card -->
+</div>
+<!-- /.col -->
+
+
+@section Scripts {
+    <script src="~/lib/customjs/Gen_EventCategory/Gen_EventCategory.js"></script>
+}
+
+
+
+
+
