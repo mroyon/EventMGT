@@ -6,7 +6,7 @@
 /WebAdmin/wwwroot/dist/**
 /WebAdmin/wwwroot/lib/**
 
-!/WebAdmin/wwwroot/lib/customjs/**
+!WebAdmin/wwwroot/lib/customjs/**
 
 # User-specific files
 *.rsuser
