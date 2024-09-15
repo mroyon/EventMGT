@@ -309,10 +309,23 @@ namespace WebAdmin.Controllers
             await _gen_UserUnitUseCase.Delete(new Gen_UserUnitRequest(request), _gen_UserUnitPresenter);
             return _gen_UserUnitPresenter.ContentResult;
         }
-        
-      
-        
-        
-        
+
+
+        [HttpPost]
+        [AutoValidateAntiforgeryToken]
+        public async Task<IActionResult> GetExistingDataByUserUnit([FromBody] gen_userunitEntity request)
+        {
+            if (!User.Identity.IsAuthenticated) { return RedirectToAction("Account", "Login"); }
+            gen_userunitEntity objEntity = new gen_userunitEntity();
+            objEntity.unitid = request.unitid;
+            objEntity.userid = request.userid;
+
+            await _gen_UserUnitUseCase.GetSingle(new Gen_UserUnitRequest(objEntity), _gen_UserUnitPresenter);
+            objEntity = _gen_UserUnitPresenter.Result as gen_userunitEntity;
+
+            return _gen_UserUnitPresenter.ContentResult;
+        }
+
+
     }
 }
