@@ -22,7 +22,7 @@
 						 <div class="col-md-6">
 							 <div class="form-group">
 							<label class="labelNormal required " asp-for="unitid"></label> 
-							@await Component.InvokeAsync("S2None", new { selectid = "unitid", preloaded = ViewBag.preloadedDatanone , isReadOnly = false, multiple = false, isRequired = true, pkey = -99 })
+                                @await Component.InvokeAsync("S2Gen_Unit", new { selectid = "unitid", preloaded = ViewBag.preloadedDatagen_unit, isReadOnly = false, multiple = false, isRequired = true, pkey = -99 })
 							<span asp-validation-for="unitid" class="unitiderror text-danger " id="unitiderror"></span>
 							</div>
 						</div>
@@ -30,16 +30,9 @@
 					 <div class="row ">
 						 <div class="col-md-6">
 							 <div class="form-group">
-							<label class="labelNormal required " asp-for="userid"></label> 
-							@await Component.InvokeAsync("S2None", new { selectid = "userid", preloaded = ViewBag.preloadedDatanone , isReadOnly = false, multiple = false, isRequired = true, pkey = -99 })
-							<span asp-validation-for="userid" class="useriderror text-danger " id="useriderror"></span>
-							</div>
-						</div>
-						 <div class="col-md-6">
-							 <div class="form-group">
-								 <label class="labelNormal  " asp-for="ex_nvarchar3"></label>
-								 <input asp-for="ex_nvarchar3" class="form-control" /> 
-								 <span asp-validation-for="ex_nvarchar3" class="text-danger"></span>
+                                <label class="labelNormal required " asp-for="masteruserid"></label>
+                                @await Component.InvokeAsync("S2Owin_User", new { selectid = "masteruserid", preloaded = ViewBag.preloadedDatagen_user, isReadOnly = false, multiple = false, isRequired = true, pkey = -99 })
+                                <span asp-validation-for="masteruserid" class="useriderror text-danger " id="useriderror"></span>
 							</div>
 						</div>
 					</div>
@@ -74,7 +67,10 @@
 
 
 @section Scripts {
-    <script src="~/lib/customjs/Gen_UserUnit/Gen_UserUnit.js"></script>
+    <script src="~/lib/customjs/Gen_UserUnit/Gen_UserUnit.js" asp-append-version="true"></script>
+    <script>
+
+    </script>
 }
 
 
