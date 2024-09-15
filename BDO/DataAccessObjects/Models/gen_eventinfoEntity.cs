@@ -55,7 +55,7 @@ namespace BDO.Core.DataAccessObjects.Models
         [DataMember]
         [MaxLength(50)]
         [Display(Name = "eventcode", ResourceType = typeof(CLL.LLClasses.Models._gen_eventinfo))]
-        [Required(ErrorMessageResourceType = typeof(CLL.LLClasses.Models._gen_eventinfo), ErrorMessageResourceName = "eventcodeRequired")]
+        //[Required(ErrorMessageResourceType = typeof(CLL.LLClasses.Models._gen_eventinfo), ErrorMessageResourceName = "eventcodeRequired")]
         public string eventcode
         {
             get { return _eventcode; }

@@ -21,9 +21,9 @@ namespace Web.Core.Frame.Interfaces.UseCases
         Task<bool> GetAllPaged(Gen_EventCategoryRequest message, ICRUDRequestHandler<Gen_EventCategoryResponse> outputPort);
 
         Task<bool> GetListView(Gen_EventCategoryRequest message, ICRUDRequestHandler<Gen_EventCategoryResponse> outputPort);
-        
-        
-        		Task<bool> GetDataForDropDown(Gen_EventCategoryRequest message, IDDLRequestHandler<Gen_EventCategoryResponse> outputPort);
-    
+
+
+        Task<bool> GetDataForDropDown(Gen_EventCategoryRequest message, IDDLRequestHandler<Gen_EventCategoryResponse> outputPort);
+
     }
 }

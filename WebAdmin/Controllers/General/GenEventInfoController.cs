@@ -193,40 +193,45 @@ IWebHostEnvironment webHostEnvironment)
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> AddGen_EventInfo([FromForm] gen_eventinfoEntity request)
         {
+            ModelState.Remove("eventcode");
+            ModelState.Remove("eventenddate");
+
             if (!User.Identity.IsAuthenticated) { return RedirectToAction("Account", "Login"); }
             if (!ModelState.IsValid) { return BadRequest(ModelState); }
             // Process each file
             var objGen_EventFileInfo = new List<gen_eventfileinfoEntity>();
             request.EventfileinfoList = new List<gen_eventfileinfoEntity>();
-            var files = Request.Form.Files;
-            foreach (var item in request.postedFiles)
+            if (request.postedFiles != null)
             {
-                var file = item.file;
-
-                var UniqueFileName = Guid.NewGuid().ToString();
-
-                // Save the file (example)
-                var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/uploads", file.FileName);
-                var fileExtension = Path.GetExtension(filePath);
-
-                using (var stream = new FileStream($"{UniqueFileName}{fileExtension}", FileMode.Create))
+                foreach (var item in request.postedFiles)
                 {
-                    await file.CopyToAsync(stream);
-                }
+                    var file = item.file;
 
-                gen_eventfileinfoEntity objFile = new gen_eventfileinfoEntity();
-                objFile.filename = $"{UniqueFileName}{fileExtension}";
-                objFile.filetitle = file.FileName;
-                string contentType = string.Empty;
-                new FileExtensionContentTypeProvider().TryGetContentType(file.FileName, out contentType);
-                objFile.filetype = contentType;
-                objFile.extension = fileExtension;
-                objFile.filesize = file.Length;
-                objFile.BaseSecurityParam = request.BaseSecurityParam;
-                objGen_EventFileInfo.Add(objFile);
+                    var UniqueFileName = Guid.NewGuid().ToString();
+
+                    // Save the file (example)
+                    var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/uploads", file.FileName);
+                    var fileExtension = Path.GetExtension(filePath);
+
+                    using (var stream = new FileStream($"{UniqueFileName}{fileExtension}", FileMode.Create))
+                    {
+                        await file.CopyToAsync(stream);
+                    }
+
+                    gen_eventfileinfoEntity objFile = new gen_eventfileinfoEntity();
+                    objFile.filename = $"{UniqueFileName}{fileExtension}";
+                    objFile.filetitle = file.FileName;
+                    string contentType = string.Empty;
+                    new FileExtensionContentTypeProvider().TryGetContentType(file.FileName, out contentType);
+                    objFile.filetype = contentType;
+                    objFile.extension = fileExtension;
+                    objFile.filesize = file.Length;
+                    objFile.BaseSecurityParam = request.BaseSecurityParam;
+                    objGen_EventFileInfo.Add(objFile);
+                }
             }
             request.EventfileinfoList = objGen_EventFileInfo;
-            await _gen_EventInfoUseCase.Save(new Gen_EventInfoRequest(request), _gen_EventInfoPresenter);
+            await _gen_EventInfoUseCase.SaveExt(new Gen_EventInfoRequest(request), _gen_EventInfoPresenter);
             return _gen_EventInfoPresenter.ContentResult;
         }
 
@@ -306,33 +311,40 @@ IWebHostEnvironment webHostEnvironment)
         public async Task<IActionResult> EditGen_EventInfo([FromForm] gen_eventinfoEntity request)
         {
             if (!User.Identity.IsAuthenticated) { return RedirectToAction("Account", "Login"); }
+
+            ModelState.Remove("eventcode");
+            ModelState.Remove("eventenddate");
+
             if (!ModelState.IsValid) { return BadRequest(ModelState); }
 
             var objGen_EventFileInfo = new List<gen_eventfileinfoEntity>();
             request.EventfileinfoList = new List<gen_eventfileinfoEntity>();
-            
-            foreach (var item in request.postedFiles) { 
-                
-                var file = item.file ;
-                var fileName = $"{Guid.NewGuid()}-{Path.GetFileName(file.FileName)}";
-                var filePath = Path.Combine(_webHostEnvironment.WebRootPath, "uploads", fileName);
-
-                using (var stream = new FileStream(filePath, FileMode.Create))
+            if (request.postedFiles != null)
+            {
+                foreach (var item in request.postedFiles)
                 {
-                    await file.CopyToAsync(stream);
-                }
 
-                gen_eventfileinfoEntity objFile = new gen_eventfileinfoEntity();
-                objFile.filename = fileName;
-                objFile.filetitle = file.FileName;
-                string contentType = string.Empty;
-                new FileExtensionContentTypeProvider().TryGetContentType(file.FileName, out contentType);
-                objFile.filetype = contentType;
-                objFile.extension = Path.GetExtension(filePath); ;
-                objFile.filesize = file.Length;
-                objFile.filedescription=  item.fileDescription;
-                objFile.BaseSecurityParam = request.BaseSecurityParam;
-                objGen_EventFileInfo.Add(objFile);
+                    var file = item.file;
+                    var fileName = $"{Guid.NewGuid()}-{Path.GetFileName(file.FileName)}";
+                    var filePath = Path.Combine(_webHostEnvironment.WebRootPath, "uploads", fileName);
+
+                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    {
+                        await file.CopyToAsync(stream);
+                    }
+
+                    gen_eventfileinfoEntity objFile = new gen_eventfileinfoEntity();
+                    objFile.filename = fileName;
+                    objFile.filetitle = file.FileName;
+                    string contentType = string.Empty;
+                    new FileExtensionContentTypeProvider().TryGetContentType(file.FileName, out contentType);
+                    objFile.filetype = contentType;
+                    objFile.extension = Path.GetExtension(filePath); ;
+                    objFile.filesize = file.Length;
+                    objFile.filedescription = item.fileDescription;
+                    objFile.BaseSecurityParam = request.BaseSecurityParam;
+                    objGen_EventFileInfo.Add(objFile);
+                }
             }
             request.EventfileinfoList = objGen_EventFileInfo;
 
@@ -478,7 +490,7 @@ IWebHostEnvironment webHostEnvironment)
         public async Task<IActionResult> DeleteGen_EventFileInfo([FromBody] gen_eventfileinfoEntity request)
         {
             if (!User.Identity.IsAuthenticated) { return RedirectToAction("Account", "Login"); }
-            
+
             ModelState.Remove("filetype");
             ModelState.Remove("extension");
 
