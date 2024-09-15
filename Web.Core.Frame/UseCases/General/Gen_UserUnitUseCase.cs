@@ -129,7 +129,7 @@ namespace Web.Core.Frame.UseCases
             {
 
                 IList<gen_userunitEntity> oblist = await BFC.Core.FacadeCreatorObjects.General.gen_userunitFCC.GetFacadeCreate(_contextAccessor)
-                .GAPgListView(message.Objgen_userunit, cancellationToken);
+                .GAPgListView_Ext(message.Objgen_userunit, cancellationToken);
                 if (oblist != null && oblist.Count > 0)
                 {
                     List<dataTableButtonModel> btnActionList = new List<dataTableButtonModel>();
@@ -144,6 +144,8 @@ namespace Web.Core.Frame.UseCases
                                 select new
                                 {
 									 t.serial,
+                                     t.unit,
+                                     t.username,
 									 t.unitid,
 									 t.userid,
 									 t.ex_nvarchar3,                                    datatablebuttonscode = objDTBtnPanel.genDTBtnPanel(message.Objgen_userunit.ControllerName, t.serial, "serial", _contextAccessor.HttpContext.User.Identity as ClaimsIdentity, btnActionList,_contextAccessor)
@@ -214,7 +216,7 @@ namespace Web.Core.Frame.UseCases
             try
             {
                 i = await BFC.Core.FacadeCreatorObjects.General.gen_userunitFCC.GetFacadeCreate(_contextAccessor)
-                    .Add(message.Objgen_userunit, cancellationToken);
+                    .Add_Ext(message.Objgen_userunit, cancellationToken);
                     
                 outputPort.Save(new Gen_UserUnitResponse(new AjaxResponse("200", _sharedLocalizer["DATA_SAVE_CONFIRMATION"].Value, CLL.LLClasses._Status._statusSuccess, CLL.LLClasses._Status._titleInformation, "/"
                 ), true, null));
@@ -238,7 +240,7 @@ namespace Web.Core.Frame.UseCases
             try
             {
                 i = await BFC.Core.FacadeCreatorObjects.General.gen_userunitFCC.GetFacadeCreate(_contextAccessor)
-                    .Update(message.Objgen_userunit, cancellationToken);
+                    .Update_Ext(message.Objgen_userunit, cancellationToken);
                 
                 outputPort.Update(new Gen_UserUnitResponse(new AjaxResponse("200", _sharedLocalizer["DATA_UPDATE_CONFIRMATION"].Value, CLL.LLClasses._Status._statusSuccess, CLL.LLClasses._Status._titleInformation, "/"
                         ), true, null));

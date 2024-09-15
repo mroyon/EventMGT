@@ -22,7 +22,7 @@ $(function () {
     
     $('body').on('click', '#btnAddGen_UserUnit', function (e) {
         try {
-            event.preventDefault();
+            e.preventDefault();
             if (_cusFormValidate('frmAddGen_UserUnit')) {
             
                 
@@ -30,8 +30,9 @@ $(function () {
                 var dataobject = {
                     serial: $("#serial").val(),
 					unitid: $("#unitid").val(),
-					userid: $("#userid").val(),
-					ex_nvarchar3: $("#ex_nvarchar3").val()
+					//userid: $("#userid").val(),
+                    masteruserid: $("#masteruserid").val(),
+					//ex_nvarchar3: $("#ex_nvarchar3").val()
                 };
                 ajaxPostObjectHandler("/Gen_UserUnit/AddGen_UserUnit", dataobject, function (response) {
                     if (response._ajaxresponse.responsestatus == "success") {
@@ -47,7 +48,7 @@ $(function () {
 
     $('body').on('click', '#btnEditGen_UserUnit', function (e) {
         try {
-            event.preventDefault();
+            e.preventDefault();
             if (_cusFormValidate('frmEditGen_UserUnit')) {
             
                 
@@ -55,14 +56,15 @@ $(function () {
                 var dataobject = {
                      serial: $("#serial").val(),
 					unitid: $("#unitid").val(),
-					userid: $("#userid").val(),
-					ex_nvarchar3: $("#ex_nvarchar3").val()
+                    //userid: $("#userid").val(),
+                    masteruserid: $("#masteruserid").val(),
+					//ex_nvarchar3: $("#ex_nvarchar3").val()
                 };
 
                 ajaxPostObjectHandler("/Gen_UserUnit/EditGen_UserUnit", dataobject, function (response) {
                     console.log(response);
                     if (response._ajaxresponse.responsestatus == "success") {
-                        showSuccessAlert("Success", response._ajaxresponse.responsetext, "OK");
+                        showSuccessAlert("Success", response._ajaxresponse.responsetext, "OK", RedirectToLanding, LandingGen_UserUnit);
                     }
                 }, true);
             }
