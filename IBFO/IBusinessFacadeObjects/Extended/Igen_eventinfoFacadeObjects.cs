@@ -16,7 +16,8 @@ namespace IBFO.Core.IBusinessFacadeObjects.General
         Task<long> AddWithFiles(gen_eventinfoEntity gen_eventinfo, CancellationToken cancellationToken);
         [OperationContract]
         Task<long> UpdateWithFiles(gen_eventinfoEntity gen_eventinfo, CancellationToken cancellationToken );
-		
-    
+
+        [OperationContract]
+        Task<IList<gen_eventinfoEntity>> SearchEventInfo(gen_eventinfoEntity gen_eventinfo, CancellationToken cancellationToken);
     }
 }

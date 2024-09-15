@@ -16,13 +16,13 @@ namespace IDAC.Core.IDataAccessObjects.General
 		
         Task<long> UpdateWithFiles(gen_eventinfoEntity gen_eventinfo, CancellationToken cancellationToken);
 
-           
-		#endregion Save Update Delete List
-		
-		
-        
-        
-        
-        
+
+        #endregion Save Update Delete List
+
+
+
+
+        Task<IList<gen_eventinfoEntity>> SearchEventInfo(gen_eventinfoEntity gen_eventinfo, CancellationToken cancellationToken);
+
     }
 }

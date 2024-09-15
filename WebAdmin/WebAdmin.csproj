@@ -468,6 +468,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Include="Views\OnlineUser\Components\ShowUserList\Default.cshtml" />
+    <None Include="Views\Shared\Components\S2Gen_Event\Default.cshtml" />
     <None Include="wwwroot\lib\admin-lte\css\adminltertl.css.map" />
     <None Include="wwwroot\lib\admin-lte\css\adminltertl.min.css.map" />
     <None Include="wwwroot\lib\admin-lte\js\adminlte.js" />

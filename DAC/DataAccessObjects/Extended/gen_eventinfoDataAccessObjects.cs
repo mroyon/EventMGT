@@ -145,6 +145,81 @@ namespace DAC.Core.DataAccessObjects.General
 
             return returnCode;
         }
+
+
+        async Task<IList<gen_eventinfoEntity>> Igen_eventinfoDataAccessObjects.SearchEventInfo(gen_eventinfoEntity gen_eventinfo, CancellationToken cancellationToken)
+        {
+            try
+            {
+                const string SP = "gen_eventinfo_GA_Search";
+                using (DbCommand cmd = Database.GetStoredProcCommand(SP))
+                {
+
+                    if (gen_eventinfo.eventid.HasValue)
+                        Database.AddInParameter(cmd, "@EventID", DbType.Int64, gen_eventinfo.eventid);
+                    if (gen_eventinfo.eventcategoryid.HasValue)
+                        Database.AddInParameter(cmd, "@EventCategoryID", DbType.Int64, gen_eventinfo.eventcategoryid);
+                    if (!(string.IsNullOrEmpty(gen_eventinfo.eventcode)))
+                        Database.AddInParameter(cmd, "@EventCode", DbType.String, gen_eventinfo.eventcode);
+                    if (!(string.IsNullOrEmpty(gen_eventinfo.eventname)))
+                        Database.AddInParameter(cmd, "@EventName", DbType.String, gen_eventinfo.eventname);
+                    if ((gen_eventinfo.eventstartdate.HasValue))
+                        Database.AddInParameter(cmd, "@EventStartDate", DbType.DateTime, gen_eventinfo.eventstartdate);
+                    if ((gen_eventinfo.eventenddate.HasValue))
+                        Database.AddInParameter(cmd, "@EventEndDate", DbType.DateTime, gen_eventinfo.eventenddate);
+                    if (!(string.IsNullOrEmpty(gen_eventinfo.eventdescription)))
+                        Database.AddInParameter(cmd, "@EventDescription", DbType.String, gen_eventinfo.eventdescription);
+                    if (!(string.IsNullOrEmpty(gen_eventinfo.eventdescription1)))
+                        Database.AddInParameter(cmd, "@EventDescription1", DbType.String, gen_eventinfo.eventdescription1);
+                    if (!(string.IsNullOrEmpty(gen_eventinfo.eventdescription2)))
+                        Database.AddInParameter(cmd, "@EventDescription2", DbType.String, gen_eventinfo.eventdescription2);
+                    if (!(string.IsNullOrEmpty(gen_eventinfo.eventspecialnote)))
+                        Database.AddInParameter(cmd, "@EventSpecialNote", DbType.String, gen_eventinfo.eventspecialnote);
+                    if ((gen_eventinfo.isdeleted != null))
+                        Database.AddInParameter(cmd, "@IsDeleted", DbType.Boolean, gen_eventinfo.isdeleted);
+                    if (gen_eventinfo.eventorganizedby.HasValue)
+                        Database.AddInParameter(cmd, "@EventOrganizedBy", DbType.Int64, gen_eventinfo.eventorganizedby);
+
+
+                    AddTotalRecordParameter(cmd);
+                    AddSortExpressionParameter(cmd, gen_eventinfo.SortExpression);
+                    AddPageSizeParameter(cmd, gen_eventinfo.PageSize);
+                    AddCurrentPageParameter(cmd, gen_eventinfo.CurrentPage);
+                    FillSequrityParameters(gen_eventinfo.BaseSecurityParam, cmd, Database);
+
+                    //if (!string.IsNullOrEmpty(gen_eventinfo.strCommonSerachParam))
+                    //    Database.AddInParameter(cmd, "@CommonSerachParam", DbType.String, "%" + gen_eventinfo.strCommonSerachParam + "%");
+
+                    IList<gen_eventinfoEntity> itemList = new List<gen_eventinfoEntity>();
+
+                    IAsyncResult result = Database.BeginExecuteReader(cmd, null, null);
+                    while (!result.IsCompleted)
+                    {
+                    }
+                    using (IDataReader reader = Database.EndExecuteReader(result))
+                    {
+                        while (reader.Read())
+                        {
+                            itemList.Add(new gen_eventinfoEntity(reader));
+                        }
+                        reader.Close();
+                    }
+
+                    if (itemList.Count > 0)
+                    {
+                        itemList[0].RETURN_KEY = Convert.ToInt64(cmd.Parameters["@TotalRecord"].Value.ToString());
+                        gen_eventinfo.RETURN_KEY = Convert.ToInt64(cmd.Parameters["@TotalRecord"].Value.ToString());
+                    }
+                    cmd.Dispose();
+                    return itemList;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw GetDataAccessException(ex, SourceOfException("Igen_eventinfoDataAccess.GAPgListViewgen_eventinfo"));
+            }
+        }
+
     }
 }
 
