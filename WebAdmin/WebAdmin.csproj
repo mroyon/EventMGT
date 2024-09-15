@@ -1069,6 +1069,7 @@
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.17.0" />
+    <PackageReference Include="Microsoft.Web.LibraryManager.Build" Version="2.1.175" />
     <PackageReference Include="NWebsec.AspNetCore.Middleware" Version="3.0.0" />
     <PackageReference Include="ReportViewerCore.NETCore" Version="15.1.17" />
     <PackageReference Include="Serilog" Version="2.12.0" />
@@ -1217,19 +1218,19 @@
     <Content Update="Views\General\Gen_ServiceStatus\LandingGen_ServiceStatus.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Update="Views\General\Gen_UserUnit\AddGen_UserUnit.cshtml">
+    <Content Update="Views\General\Gen_Unit\AddGen_Unit.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Update="Views\General\Gen_UserUnit\DeleteGen_UserUnit.cshtml">
+    <Content Update="Views\General\Gen_Unit\DeleteGen_Unit.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Update="Views\General\Gen_UserUnit\EditGen_UserUnit.cshtml">
+    <Content Update="Views\General\Gen_Unit\EditGen_Unit.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Update="Views\General\Gen_UserUnit\GetSingleGen_UserUnit.cshtml">
+    <Content Update="Views\General\Gen_Unit\GetSingleGen_Unit.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Update="Views\General\Gen_UserUnit\LandingGen_UserUnit.cshtml">
+    <Content Update="Views\General\Gen_Unit\LandingGen_Unit.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Update="Views\Home\Index.cshtml">
@@ -1356,6 +1357,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Update="Views\Shared\_ValidationScriptsPartial.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\customjs\Gen_Unit\Gen_Unit.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Update="wwwroot\lib\customjs\HubContextCivil\HubCivilUserContext.js">

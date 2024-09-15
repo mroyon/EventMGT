@@ -14,28 +14,28 @@
 
 
 $(function () {
-    var LandingGen_UserUnit = "/Gen_UserUnit/LandingGen_UserUnit";
+    var LandingGen_Unit = "/Gen_Unit/LandingGen_Unit";
     function RedirectToLanding(params) {
         if (typeof params != 'undefined')
             window.location.href = params;
     }
 
-    $('body').on('click', '#btnAddGen_UserUnit', function (e) {
+    $('body').on('click', '#btnAddGen_Unit', function (e) {
         try {
             event.preventDefault();
-            if (_cusFormValidate('frmAddGen_UserUnit')) {
+            if (_cusFormValidate('frmAddGen_Unit')) {
 
 
 
                 var dataobject = {
-                    serial: $("#serial").val(),
                     unitid: $("#unitid").val(),
-                    userid: $("#userid").val(),
+                    unit: $("#unit").val(),
+                    unitcode: $("#unitcode").val(),
                     ex_nvarchar3: $("#ex_nvarchar3").val()
                 };
-                ajaxPostObjectHandler("/Gen_UserUnit/AddGen_UserUnit", dataobject, function (response) {
+                ajaxPostObjectHandler("/Gen_Unit/AddGen_Unit", dataobject, function (response) {
                     if (response._ajaxresponse.responsestatus == "success") {
-                        showSuccessAlert("Success", response._ajaxresponse.responsetext, "OK", RedirectToLanding, LandingGen_UserUnit);
+                        showSuccessAlert("Success", response._ajaxresponse.responsetext, "OK", RedirectToLanding, LandingGen_Unit);
                     }
                 }, true);
             }
@@ -45,21 +45,21 @@ $(function () {
         }
     });
 
-    $('body').on('click', '#btnEditGen_UserUnit', function (e) {
+    $('body').on('click', '#btnEditGen_Unit', function (e) {
         try {
             event.preventDefault();
-            if (_cusFormValidate('frmEditGen_UserUnit')) {
+            if (_cusFormValidate('frmEditGen_Unit')) {
 
 
 
                 var dataobject = {
-                    serial: $("#serial").val(),
                     unitid: $("#unitid").val(),
-                    userid: $("#userid").val(),
+                    unit: $("#unit").val(),
+                    unitcode: $("#unitcode").val(),
                     ex_nvarchar3: $("#ex_nvarchar3").val()
                 };
 
-                ajaxPostObjectHandler("/Gen_UserUnit/EditGen_UserUnit", dataobject, function (response) {
+                ajaxPostObjectHandler("/Gen_Unit/EditGen_Unit", dataobject, function (response) {
                     console.log(response);
                     if (response._ajaxresponse.responsestatus == "success") {
                         showSuccessAlert("Success", response._ajaxresponse.responsetext, "OK");
@@ -72,19 +72,19 @@ $(function () {
         }
     });
 
-    $('body').on('click', '#btnDeleteGen_UserUnit', function (e) {
+    $('body').on('click', '#btnDeleteGen_Unit', function (e) {
         try {
             event.preventDefault();
-            if (_cusFormValidate('frmDeleteGen_UserUnit')) {
+            if (_cusFormValidate('frmDeleteGen_Unit')) {
                 var dataobject = {
-                    serial: $("#serial").val(),
                     unitid: $("#unitid").val(),
-                    userid: $("#userid").val(),
+                    unit: $("#unit").val(),
+                    unitcode: $("#unitcode").val(),
                     ex_nvarchar3: $("#ex_nvarchar3").val()
                 };
-                ajaxPostObjectHandler("/Gen_UserUnit/DeleteGen_UserUnit", dataobject, function (response) {
+                ajaxPostObjectHandler("/Gen_Unit/DeleteGen_Unit", dataobject, function (response) {
                     if (response._ajaxresponse.responsestatus == "success") {
-                        showSuccessAlert("Success", response._ajaxresponse.responsetext, "OK", RedirectToLanding, LandingGen_UserUnit);
+                        showSuccessAlert("Success", response._ajaxresponse.responsetext, "OK", RedirectToLanding, LandingGen_Unit);
                     }
                 }, true);
             }
@@ -93,10 +93,10 @@ $(function () {
         }
     });
 
-    $('body').on('click', '#btnGoBackGen_UserUnit', function (e) {
+    $('body').on('click', '#btnGoBackGen_Unit', function (e) {
         try {
             event.preventDefault();
-            window.location.href = LandingGen_UserUnit;
+            window.location.href = LandingGen_Unit;
         } catch (e) {
             showErrorAlert("Error", e.message, "OK");
         }
