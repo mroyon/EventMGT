@@ -25,6 +25,7 @@ using Org.BouncyCastle.Asn1.Ocsp;
 using Web.Core.Frame.UseCases;
 using Microsoft.AspNetCore.Hosting;
 using BDO.DataAccessObjects.ExtendedEntities;
+using Microsoft.AspNet.SignalR.Client.Http;
 
 namespace WebAdmin.Controllers
 {
@@ -507,16 +508,24 @@ IWebHostEnvironment webHostEnvironment)
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> SearchEventInfo(EventSearchEntity objrequest)
+        public async Task<IActionResult> SearchEventInfo(EventSearchEntity request)
         {
             try
             {
                 gen_eventinfoEntity genev = new gen_eventinfoEntity();
-                genev.eventcategoryid = objrequest.eventcategoryid;
-                genev.eventid = objrequest.eventid;
-                genev.eventname = objrequest.eventname;
-                genev.eventstartdate = objrequest.eventstartdate;
-                genev.eventenddate = objrequest.eventenddate;
+                genev.eventcategoryid = request.eventcategoryid;
+                genev.eventid = request.eventid;
+                genev.eventname = request.eventname;
+                genev.eventstartdate = request.eventstartdate;
+                genev.eventenddate = request.eventenddate;
+
+                genev.BaseSecurityParam = new BDO.Core.Base.SecurityCapsule();
+                genev.BaseSecurityParam = request.BaseSecurityParam;
+                genev.CurrentPage = request.Start == 0 ? 1 : request.Start / request.Length + 1;
+                genev.PageSize = request.Length;
+                genev.SortExpression = request.SortOrder + " " + request.Order[0].Dir;
+                genev.strCommonSerachParam = request.Search.Value;
+                genev.ControllerName = "Gen_EventInfo";
 
                 await _gen_EventInfoUseCase.SearchEventInfo(new Gen_EventInfoRequest(genev), _gen_EventInfoPresenter);
                 return Json(_gen_EventInfoPresenter.Result);

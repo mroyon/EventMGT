@@ -15,37 +15,29 @@
             </div>
             <form method="POST" id="frmDeleteGen_UserUnit" class="my-login-validation" novalidate="" autocomplete="off">
                 <div class="card-body">
-                    <div class="row">
+                   @*  <div class="row">
                         <input asp-for="serial" type="hidden" />
+                    </div> *@
+
+                    <div class="row ">
+                        <input asp-for="serial" type="hidden" />
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="labelNormal required " asp-for="unitid"></label>
+                                @await Component.InvokeAsync("S2Gen_Unit", new { selectid = "unitid", preloaded = ViewBag.preloadedDatagen_unit, isReadOnly = false, multiple = false, isRequired = true, pkey = -99 })
+                                <span asp-validation-for="unitid" class="unitiderror text-danger " id="unitiderror"></span>
+                            </div>
+                        </div>
                     </div>
-                    
-					 <div class="row ">
-							 <input asp-for="serial" type="hidden" />
-						 <div class="col-md-6">
-							 <div class="form-group">
-							<label class="labelNormal required " asp-for="unitid"></label> 
-							@await Component.InvokeAsync("S2None", new { selectid = "unitid", preloaded = ViewBag.preloadedDatanone , isReadOnly = true, multiple = false, isRequired = true, pkey = -99 })
-							<span asp-validation-for="unitid" class="unitiderror text-danger " id="unitiderror"></span>
-							</div>
-						</div>
-					</div>
-					 <div class="row ">
-						 <div class="col-md-6">
-							 <div class="form-group">
-							<label class="labelNormal required " asp-for="userid"></label> 
-							@await Component.InvokeAsync("S2None", new { selectid = "userid", preloaded = ViewBag.preloadedDatanone , isReadOnly = true, multiple = false, isRequired = true, pkey = -99 })
-							<span asp-validation-for="userid" class="useriderror text-danger " id="useriderror"></span>
-							</div>
-						</div>
-						 <div class="col-md-6">
-							 <div class="form-group">
-								 <label class="labelNormal  " asp-for="ex_nvarchar3"></label>
-								 <input asp-for="ex_nvarchar3" class="form-control" autocomplete="off" readonly="readonly"/> 
-								 <span asp-validation-for="ex_nvarchar3" class="text-danger"></span>
-							</div>
-						</div>
-					</div>
-                    
+                    <div class="row ">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="labelNormal required " asp-for="masteruserid"></label>
+                                @await Component.InvokeAsync("S2Owin_User", new { selectid = "masteruserid", preloaded = ViewBag.preloadedDatagen_user, isReadOnly = false, multiple = false, isRequired = true, pkey = -99 })
+                                <span asp-validation-for="masteruserid" class="useriderror text-danger " id="useriderror"></span>
+                            </div>
+                        </div>
+                    </div>
                     
                      <div class="row btn-toolbar">
                         <div class="col-md-6 ">

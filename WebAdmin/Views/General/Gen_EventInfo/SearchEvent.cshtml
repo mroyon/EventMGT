@@ -28,11 +28,11 @@
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
-                                     <label class="labelNormal" asp-for="eventcategoryid"></label>
+                                    <label class="labelNormal" asp-for="eventid"></label>
                                     @await Component.InvokeAsync("S2Gen_Event", new { selectid = "eventid", preloaded = ViewBag.preloadedDatagen_event, isReadOnly = false, multiple = false, isRequired = true, pkey = -99 })
                                     <span asp-validation-for="eventid" class="eventiderror text-danger " id="eventcategoryiderror"></span>
 
-                                 @*   <label class="labelNormal" asp-for="eventname"></label>
+                                    @*   <label class="labelNormal" asp-for="eventname"></label>
                                     <input asp-for="eventname" class="form-control" required></input>
                                     <span asp-validation-for="eventname" class="eventnameerror text-danger " id="eventnameerror"></span>*@
                                 </div>
@@ -100,6 +100,7 @@
                                         <th><label class="labelNormal  " asp-for="eventcode"></label></th>
                                         <th><label class="labelNormal  " asp-for="eventname"></label></th>
                                         <th><label class="labelNormal  " asp-for="eventstartdate"></label></th>
+                                        <th><label class="labelNormal  ">Files</label></th>
                                     </tr>
                                 </thead>
                             </table>
@@ -129,83 +130,121 @@
 
 @section Scripts {
     <script>
-        $(function () {
-            var dt;
+        $(function() {
+	var table;
 
-            $('body').on('click', '#btnSearchEventInfo', function (e) {
-                try {
-                    event.preventDefault();
-                    loadSearch();
-                }
+	$('body').on('click', '#btnSearchEventInfo', function(e) {
+		try {
+			event.preventDefault();
+			loadSearch();
+		} catch (e) {
+			showErrorAlert("Error", e.message, "OK");
+		}
+	});
 
-                catch (e) {
-                    showErrorAlert("Error", e.message, "OK");
-                }
-            });
-
-            function loadSearch() {
-                try {
-                    dt.destroy();
-                }
-                catch {
-                }
+	function loadSearch() {
+		try {
+			table.destroy();
+		} catch {}
+	
 
 
 
-                var dataobject = {
-                    eventcategoryid: $("#eventcategoryid").val(),
-                    eventcode: $("#eventcode").val(),
-                    eventname: $("#eventname").val(),
-                    eventstartdate: GetDateFromTextBox($("#eventstartdate").val()),
-                    eventenddate: GetDateFromTextBox($("#eventenddate").val()),
-                }
+	var dataobject = {
+		eventcategoryid: $("#eventcategoryid").val(),
+		eventcode: $("#eventcode").val(),
+		eventname: $("#eventname").val(),
+		eventstartdate: GetDateFromTextBox($("#eventstartdate").val()),
+		eventenddate: GetDateFromTextBox($("#eventenddate").val()),
+	}
 
-                dt = $("#DTGen_EventInfolist").DataTable({
-                    "ajax": $.fn.dataTable.json({
-                        url: "/Gen_EventInfo/SearchEventInfo",
-                        data: dataobject
-                    }),
-                    "buttons": {
-                        "buttons": [
-                        ]
-                    },
+	table = $("#DTGen_EventInfolist").DataTable({
+		"ajax": $.fn.dataTable.json({
+			url: "/Gen_EventInfo/SearchEventInfo",
+			data: dataobject
+		}),
+		"buttons": {
+			"buttons": []
+		},
 
-                    "columns": [
-                        { "data": "eventcode", "name": "eventcode", "autoWidth": true },
-                        { "data": "eventname", "name": "eventname", "autoWidth": true },
-                        {
-                            "data": "eventstartdate", "name": "eventstartdate", "autoWidth": true, render: function (data, type, full, row) {
-                                return moment(data).format("DD-MM-YYYY h:mm a");
-                            }
-                        }
-                        //{
-                        //    "data": "datatablebuttonscode", render: function (data, type, full, row) {
-                        //        return data;
-                        //    }
-                        //}
-                    ]
-                });
-            }
+		"columns": [{
+				"data": "eventcode",
+				"name": "eventcode",
+				"autoWidth": true
+			},
+			{
+				"data": "eventname",
+				"name": "eventname",
+				"autoWidth": true
+			},
+			{
+				"data": "eventstartdate",
+				"name": "eventstartdate",
+				"autoWidth": true,
+				render: function(data, type, full, row) {
+					return moment(data).format("DD-MM-YYYY h:mm a");
+				}
+			},
+			{
+				"data": "ex_nvarchar1",
+				"name": "ex_nvarchar1",
+				"autoWidth": true,
+				"render": function(data, type, full, row) {
+                    var nestedTable = "";
+					var baseURL = window.location.origin;
+					var fileinfo = "";
+					if (data != null) {
+						// var fileinfo = "";
+						// //var datainfo = data;
+						const myArray = data.split(",");
+						//console.log(myArray)
 
-            $('.bs-datepicker').datepicker({
-                format: "dd/mm/yyyy",
-                autoclose: true,
-                clearBtn: true,
-                startView: 0,
-                language: "en",
-                todayHighlight: true
-            });
-            //$('.bs-datepicker').datepicker({
-            //    format: "dd/mm/yyyy",
-            //    autoclose: true,
-            //    clearBtn: true,
-            //    startView: 0,
-            //    language: "en",
-            //    todayHighlight: true
-            //});
-        });
+						nestedTable = "<table class='table table-striped table-bordered '>"
 
+						$.each(myArray, function(key, value) {
+							nestedTable += "<tr>";
+							nestedTable += "<td>";
 
+							var strArr = value.split("|");
+							var fileName = strArr[0];
+							var fileDesc = strArr[1];
+
+							//console.log(fileName)
+							fileinfo = "<img width='100' height='100' src='" + baseURL + "/uploads/" + fileName + "'> </img>";
+							nestedTable += fileinfo;
+							nestedTable += "</td>";
+							nestedTable += "<td>" + fileDesc + "</td>";
+							nestedTable += "<td><a href='" + baseURL + "/uploads/" + fileName + "' download>Download</a></td>";
+							nestedTable += "</tr>";
+						});
+                        nestedTable += "</table>";
+					}
+					
+					return nestedTable;
+				}
+			}
+		]
+	});
+
+    }
+
+	$('.bs-datepicker').datepicker({
+		format: "dd/mm/yyyy",
+		autoclose: true,
+		clearBtn: true,
+		startView: 0,
+		language: "en",
+		todayHighlight: true
+	});
+	//$('.bs-datepicker').datepicker({
+	//    format: "dd/mm/yyyy",
+	//    autoclose: true,
+	//    clearBtn: true,
+	//    startView: 0,
+	//    language: "en",
+	//    todayHighlight: true
+	//});
+});
 
     </script>
 }

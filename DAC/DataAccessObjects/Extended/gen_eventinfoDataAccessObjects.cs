@@ -187,8 +187,8 @@ namespace DAC.Core.DataAccessObjects.General
                     AddCurrentPageParameter(cmd, gen_eventinfo.CurrentPage);
                     FillSequrityParameters(gen_eventinfo.BaseSecurityParam, cmd, Database);
 
-                    //if (!string.IsNullOrEmpty(gen_eventinfo.strCommonSerachParam))
-                    //    Database.AddInParameter(cmd, "@CommonSerachParam", DbType.String, "%" + gen_eventinfo.strCommonSerachParam + "%");
+                    if (!string.IsNullOrEmpty(gen_eventinfo.strCommonSerachParam))
+                        Database.AddInParameter(cmd, "@CommonSerachParam", DbType.String, "%" + gen_eventinfo.strCommonSerachParam + "%");
 
                     IList<gen_eventinfoEntity> itemList = new List<gen_eventinfoEntity>();
 

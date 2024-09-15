@@ -348,7 +348,8 @@ namespace Web.Core.Frame.UseCases
                                 t.eventspecialnote,
                                 t.isdeleted,
                                 t.eventorganizedby,
-                                t.ex_nvarchar3
+                                t.ex_nvarchar3,
+                                t.ex_nvarchar1
                                 //datatablebuttonscode = objDTBtnPanel.genDTBtnPanel(message.Objgen_eventinfo.ControllerName, t.eventid, "eventid", _contextAccessor.HttpContext.User.Identity as ClaimsIdentity, btnActionList, _contextAccessor)
                             }).ToList();
 

@@ -275,17 +275,23 @@ namespace WebAdmin.Controllers
             objEntity.serial = long.Parse(objClsPrivate.DecodeUrlParamsWithoutURI("serial", input).ToString());
             await _gen_UserUnitUseCase.GetSingle(new Gen_UserUnitRequest(objEntity), _gen_UserUnitPresenter);
             objEntity = _gen_UserUnitPresenter.Result as gen_userunitEntity;
-            
+
             gen_unitEntity objgen_unitEntity = new gen_unitEntity();
-			objgen_unitEntity.unitid = objEntity.unitid ;
-			await _gen_UnitUseCase.GetSingle(new Gen_UnitRequest(objgen_unitEntity), _gen_UnitPresenter);
-			objgen_unitEntity = ((gen_unitEntity)_gen_UnitPresenter.Result);
-			var datagen_unit = (new { Id = objgen_unitEntity.unitid,Text = objgen_unitEntity.unitid});
-			ViewBag.preloadedDatagen_unit = JsonConvert.SerializeObject(datagen_unit);
+            objgen_unitEntity.unitid = objEntity.unitid;
+            await _gen_UnitUseCase.GetSingle(new Gen_UnitRequest(objgen_unitEntity), _gen_UnitPresenter);
+            objgen_unitEntity = ((gen_unitEntity)_gen_UnitPresenter.Result);
+            var datagen_unit = (new { Id = objgen_unitEntity.unitid, Text = objgen_unitEntity.unit });
+            ViewBag.preloadedDatagen_unit = JsonConvert.SerializeObject(datagen_unit);
+
+            owin_userEntity objUserEntity = new owin_userEntity();
+            objUserEntity.userid = objEntity.userid;
+            await _owin_UserUseCase.GetSingle(new Owin_UserRequest(objUserEntity), _owin_UserPresenter);
+            objUserEntity = _owin_UserPresenter.Result as owin_userEntity;
+            var dataUser = (new { Id = objUserEntity.masteruserid, Text = objUserEntity.username });
+            ViewBag.preloadedDatagen_user = JsonConvert.SerializeObject(dataUser);
 
 
 
-            
             return View("../General/Gen_UserUnit/DeleteGen_UserUnit", _gen_UserUnitPresenter.Result);
         }
 
@@ -318,7 +324,7 @@ namespace WebAdmin.Controllers
             if (!User.Identity.IsAuthenticated) { return RedirectToAction("Account", "Login"); }
             gen_userunitEntity objEntity = new gen_userunitEntity();
             objEntity.unitid = request.unitid;
-            objEntity.userid = request.userid;
+            objEntity.masteruserid = request.masteruserid;
 
             await _gen_UserUnitUseCase.GetSingle(new Gen_UserUnitRequest(objEntity), _gen_UserUnitPresenter);
             objEntity = _gen_UserUnitPresenter.Result as gen_userunitEntity;
