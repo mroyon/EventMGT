@@ -17,33 +17,26 @@
             <!-- /.card-header -->
             <form method="POST" id="frmAddGen_EventCategory" class="my-login-validation" novalidate="" autocomplete="off">
                 <div class="card-body">
-					 <div class="row ">
-							 <input asp-for="eventcategoryid" type="hidden" />
-						 <div class="col-md-6">
-							 <div class="form-group">
-								 <label class="labelNormal required " asp-for="eventcategory"></label>
-								 <textarea cols="40" rows="5" asp-for="eventcategory" class="form-control"></textarea>
-								 <span asp-validation-for="eventcategory" class="eventcategoryerror text-danger " id="eventcategoryerror" ></span>
-							</div>
-						</div>
-					</div>
-					 <div class="row ">
-						 <div class="col-md-6">
-							 <div class="form-group">
-								 <label class="labelNormal  " asp-for="description"></label>
-								 <input asp-for="description" class="form-control" /> 
-								 <span asp-validation-for="description" class="text-danger"></span>
-							</div>
-						</div>
-						 <div class="col-md-6">
-							 <div class="form-group">
-								 <label class="labelNormal  " asp-for="ex_nvarchar3"></label>
-								 <input asp-for="ex_nvarchar3" class="form-control" /> 
-								 <span asp-validation-for="ex_nvarchar3" class="text-danger"></span>
-							</div>
-						</div>
-					</div>
-                   
+                    <div class="row ">
+                        <input asp-for="eventcategoryid" type="hidden" />
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="labelNormal required" asp-for="eventcategory"></label>
+                                <input asp-for="eventcategory" class="form-control" />
+                                <span asp-validation-for="eventcategory" class="eventcategoryerror text-danger " id="eventcategoryerror"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row ">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="labelNormal" asp-for="description"></label>
+                                <textarea cols="40" rows="5" asp-for="description" class="form-control"></textarea>
+                                <span asp-validation-for="description" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+
                     <div class="row btn-toolbar">
                         <div class="col-md-6 ">
                             <div class="form-group">
@@ -71,10 +64,8 @@
     <!-- /.card -->
 </div>
 <!-- /.col -->
-
-
 @section Scripts {
-    <script src="~/lib/customjs/Gen_EventCategory/Gen_EventCategory.js"></script>
+    <script src="~/lib/customjs/Gen_EventCategory/Gen_EventCategory.js" asp-append-version="true"></script>
 }
 
 

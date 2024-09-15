@@ -1,0 +1,79 @@
+﻿@using CLL
+@model BDO.Core.DataAccessObjects.Models.gen_unitEntity
+@inject CLL.Localization.LocalizeService SharedLocalizer
+
+@using Microsoft.Extensions.Options
+@{
+    ViewData["Title"] = "Add View Gen Unit";
+}
+
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-footer">
+                <h5 class="card-title">@SharedLocalizer.GetLocalizedHtmlString("ADD_GEN_UNIT")</h5>
+            </div>
+            <!-- /.card-header -->
+            <form method="POST" id="frmAddGen_Unit" class="my-login-validation" novalidate="" autocomplete="off">
+                <div class="card-body">
+                    <div class="row ">
+                        <input asp-for="unitid" type="hidden" />
+                        @* 						 <div class="col-md-6">
+                        <div class="form-group">
+                        <label class="labelNormal required " asp-for="unit"></label>
+                        @await Component.InvokeAsync("S2None", new { selectid = "userid", preloaded = ViewBag.preloadedDatanone , isReadOnly = false, multiple = false, isRequired = true, pkey = -99 })
+                        <span asp-validation-for="userid" class="useriderror text-danger " id="useriderror"></span>
+                        </div>
+                        </div> *@
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="labelNormal required " asp-for="unit"></label>
+                                <input asp-for="unit" class="form-control" required></input>
+                                <span asp-validation-for="unit" class="uniterror text-danger " id="uniterror"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="labelNormal  " asp-for="unitcode"></label>
+                                <input asp-for="unitcode" class="form-control" />
+                                <span asp-validation-for="unitcode" class="text-danger"></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row btn-toolbar">
+                        <div class="col-md-6 ">
+                            <div class="form-group">
+                                <button type="submit" id="btnAddGen_Unit" class="btn btn-primary btn-md"><i class="fa fa-save"></i> @SharedLocalizer.GetLocalizedHtmlString("SUBMIT_REQUEST")</button>
+                                <button id="btnGoBackGen_Unit" class="btn btn-secondary btn-md "><i class="fas fa-arrow-circle-left"></i> @SharedLocalizer.GetLocalizedHtmlString("GO_BACK")</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <!-- ./card-body -->
+        <div class="card-footer">
+            <div class="row">
+                <div class="col-md-12">
+
+                    <!-- /.description-block -->
+                </div>
+                <!-- /.col -->
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.card-footer -->
+    </div>
+    <!-- /.card -->
+</div>
+<!-- /.col -->
+@section Scripts {
+    <script src="~/lib/customjs/Gen_Unit/Gen_Unit.js"></script>
+}
+
+
+
+
+

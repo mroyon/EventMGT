@@ -96,6 +96,8 @@ namespace WebAdmin.FilterAndAttributes
                         objBase.updateddate = dt;
                         objBase.sessionid = context.HttpContext.Session.Id;
                         objBase.transid = transid;
+                        objBase.userid =Guid.Parse(userid);
+
 
 						((BDO.Core.Base.BaseEntity)context.ActionArguments["request"]).BaseSecurityParam = objBase;
                     }

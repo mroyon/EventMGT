@@ -76,6 +76,9 @@ namespace WebAdmin.IntraServices
             _securityCapsule.email = user.emailaddress;
             _securityCapsule.username = user.username;
             _securityCapsule.isauthenticated = true;
+            _securityCapsule.userid = user.userid;
+
+
             // one time 
             transactioncodeGen objTranIDGen = new transactioncodeGen();
             _securityCapsule.sessionid = _contextAccessor.HttpContext.Session.Id;
@@ -98,6 +101,9 @@ namespace WebAdmin.IntraServices
             claims.Add(new Claim("profileJson", user.profileJson));
             claims.Add(new Claim("apitokenJson", user.apitokenJson));
             claims.Add(new Claim("masteruserid", user.masteruserid.ToString()));
+            
+            claims.Add(new Claim("userid", user.userid.ToString()));
+
 
             claims.Add(new Claim("Approved", user.approved.ToString()));
             claims.Add(new Claim("IsBlocked", user.locked.ToString()));

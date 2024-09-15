@@ -19,5 +19,8 @@ namespace IBFO.Core.IBusinessFacadeObjects.General
 
         [OperationContract]
         Task<IList<gen_eventinfoEntity>> SearchEventInfo(gen_eventinfoEntity gen_eventinfo, CancellationToken cancellationToken);
+
+
+
     }
 }

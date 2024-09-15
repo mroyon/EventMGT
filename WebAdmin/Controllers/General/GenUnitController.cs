@@ -15,6 +15,7 @@ using BDO.Core.DataAccessObjects.Models;
 using BDO.Core.DataAccessObjects.CommonEntities;
 using WebAdmin.Providers;
 using Newtonsoft.Json;
+using Web.Core.Frame.UseCases;
 
 namespace WebAdmin.Controllers
 {
@@ -286,6 +287,31 @@ namespace WebAdmin.Controllers
 					throw ex;
 				}
 			}
+
+
+        
+        [HttpPost]
+        [AutoValidateAntiforgeryToken]
+        public async Task<IActionResult> GetDataForDropDowndGen_Unit_ByUser([FromBody] S2Parameters request)
+        {
+            try
+            {
+                gen_unitEntity objrequest = new gen_unitEntity();
+                objrequest.BaseSecurityParam = new BDO.Core.Base.SecurityCapsule();
+                objrequest.BaseSecurityParam = request.BaseSecurityParam;
+                objrequest.CurrentPage = request.s2PageNum.GetValueOrDefault(1);
+                objrequest.PageSize = request.s2PageSize.GetValueOrDefault(10);
+                objrequest.SortExpression = " unit asc ";
+                objrequest.strCommonSerachParam = request.s2SearchTerm;
+                objrequest.ControllerName = "Gen_Unit";
+                await _gen_UnitUseCase.GetDataForDropDownByUserId(new Gen_UnitRequest(objrequest), _gen_UnitPresenter);
+                return Json(_gen_UnitPresenter.Result);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
 
         
     }
