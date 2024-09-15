@@ -1155,6 +1155,7 @@
     <Folder Include="wwwroot\dist\css\" />
     <Folder Include="wwwroot\dist\js\" />
     <Folder Include="wwwroot\lib\jquery.datetimepicker\" />
+    <Folder Include="wwwroot\uploads\" />
   </ItemGroup>
 
   <ItemGroup>

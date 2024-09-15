@@ -8,6 +8,8 @@
 /WebAdmin/wwwroot/lib/**
 
 
+/WebAdmin/wwwroot/uploads
+
 
 # User-specific files
 *.rsuser
