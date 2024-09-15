@@ -1,0 +1,72 @@
+﻿@using CLL
+@model BDO.Core.DataAccessObjects.Models.gen_unitEntity
+@inject CLL.Localization.LocalizeService SharedLocalizer
+
+@using Microsoft.Extensions.Options
+@{
+    ViewData["Title"] = @SharedLocalizer.GetLocalizedHtmlString("GEN_UNIT");
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-footer">
+                <h5 class="card-title">@SharedLocalizer.GetLocalizedHtmlString("GEN_UNIT")</h5>
+            </div>
+            <form method="POST" id="frmGetSingleGen_Unit" class="my-login-validation" novalidate="" autocomplete="off">
+                <div class="card-body">
+                    <div class="row">
+                        <input asp-for="unitid" type="hidden" />
+                    </div>
+                    <div class="row ">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="labelNormal required " asp-for="unit"></label>
+                                <input asp-for="unit" class="form-control" autocomplete="off" required readonly />
+                                <span asp-validation-for="unit" class="text-danger"></span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="labelNormal required " asp-for="unitcode"></label>
+                                <input asp-for="unitcode" class="form-control" required readonly></input>
+                                <span asp-validation-for="unitcode" class="unitcodeerror text-danger " id="unitcodeerror"></span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="row btn-toolbar">
+                        <div class="col-md-6 ">
+                            <div class="form-group">
+                                <button id="btnGoBacktoLanding" data="@Url.Action("LandingGen_Unit", "Gen_Unit")" class="btn btn-secondary btn-md "><i class="fas fa-arrow-circle-left"></i> @SharedLocalizer.GetLocalizedHtmlString("GO_BACK")</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <!-- ./card-body -->
+            <div class="card-footer">
+                <div class="row">
+                    <div class="col-md-12">
+
+                        <!-- /.description-block -->
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.card-footer -->
+        </div>
+        <!-- /.card -->
+    </div>
+    <!-- /.col -->
+</div>
+
+@section Scripts {
+    <script src="~/lib/customjs/Gen_Unit/Gen_Unit.js"></script>
+}
+
+
+
+
+

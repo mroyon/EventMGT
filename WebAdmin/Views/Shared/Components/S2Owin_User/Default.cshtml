@@ -16,9 +16,9 @@
 	int minimumInputLength = 0;
 	string lang = System.Threading.Thread.CurrentThread.CurrentUICulture.Name.ToLowerInvariant().ToLower();
 	ViewBag.Owin_UserData = ViewBag.Owin_UserData != null ? ViewBag.Owin_UserData : "undefined";
-
-	string rolecontrolparamid = ViewBag.RoleControlParam != null ? ViewBag.RoleControlParam : "undefined";
-
+	
+	string rolecontrolparamid = ViewBag.RoleControlParam != null && ViewBag.RoleControlParam != "" ? ViewBag.RoleControlParam : "undefined";
+	
 	//ViewBag.Owin_UserData = ViewBag.Owin_UserData != null ? ViewBag.Owin_UserData : "undefined";
 
 
@@ -28,8 +28,12 @@
 @section scripts
 {
 	<script type="text/javascript">
+		var rolecontrol = "";
+		if (@rolecontrolparamid != null && @rolecontrolparamid != "" && @rolecontrolparamid != "undefined") rolecontrol = $('#@rolecontrolparamid').val()
+		else rolecontrol = null;
+
 		function s2userparam(params) {
-			return JSON.stringify({ s2PageSize: 10, s2PageNum: params.page || 1, s2SearchTerm: params.term || null, s2Param: '@lang', s2Paramkey: '@pkey', s2ParamParentkey: $('#@rolecontrolparamid').val() });
+			return JSON.stringify({ s2PageSize: 10, s2PageNum: params.page || 1, s2SearchTerm: params.term || null, s2Param: '@lang', s2Paramkey: '@pkey', s2ParamParentkey: rolecontrol });
 		}
 	$(function () {
 		var select2Options = returnSelect2Options();

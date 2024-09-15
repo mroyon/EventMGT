@@ -15,6 +15,8 @@ using BDO.Core.DataAccessObjects.Models;
 using BDO.Core.DataAccessObjects.CommonEntities;
 using WebAdmin.Providers;
 using Newtonsoft.Json;
+using BDO.Core.DataAccessObjects.SecurityModels;
+using Web.Core.Frame.UseCases;
 
 namespace WebAdmin.Controllers
 {
@@ -33,7 +35,9 @@ namespace WebAdmin.Controllers
         private readonly IGen_UnitUseCase _gen_UnitUseCase;
 		private readonly Gen_UnitPresenter _gen_UnitPresenter;
 
-        
+
+        private readonly IOwin_UserUseCase _owin_UserUseCase;
+        private readonly Owin_UserPresenter _owin_UserPresenter;
 
         private readonly ILogger<Gen_UserUnitController> _logger;
         private readonly IStringLocalizer _sharedLocalizer;
@@ -75,6 +79,8 @@ namespace WebAdmin.Controllers
             
              , IGen_UnitUseCase gen_UnitUseCase 
 			,  Gen_UnitPresenter gen_UnitPresenter
+            ,IOwin_UserUseCase owin_UserUseCase,
+            Owin_UserPresenter owin_UserPresenter
 
             )
         {
@@ -87,8 +93,10 @@ namespace WebAdmin.Controllers
              _gen_UnitUseCase = gen_UnitUseCase;
 			_gen_UnitPresenter = gen_UnitPresenter;
 
-             
-             
+            _owin_UserUseCase = owin_UserUseCase;
+            _owin_UserPresenter = owin_UserPresenter;
+
+
             //_hubuserContext = hubuserContext;
             //_userConnectionManager = userConnectionManager;
             _cacheProvider = cacheProvider;
@@ -163,6 +171,8 @@ namespace WebAdmin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> AddGen_UserUnit([FromBody] gen_userunitEntity request)
         {
+            ModelState.Remove("userid");
+
             if (!User.Identity.IsAuthenticated) { return RedirectToAction("Account", "Login"); }
             if (!ModelState.IsValid) { return BadRequest(ModelState); }
             await _gen_UserUnitUseCase.Save(new Gen_UserUnitRequest(request), _gen_UserUnitPresenter);
@@ -184,17 +194,20 @@ namespace WebAdmin.Controllers
             await _gen_UserUnitUseCase.GetSingle(new Gen_UserUnitRequest(objEntity), _gen_UserUnitPresenter);
             objEntity = _gen_UserUnitPresenter.Result as gen_userunitEntity;
             
-            
             gen_unitEntity objgen_unitEntity = new gen_unitEntity();
 			objgen_unitEntity.unitid = objEntity.unitid ;
 			await _gen_UnitUseCase.GetSingle(new Gen_UnitRequest(objgen_unitEntity), _gen_UnitPresenter);
 			objgen_unitEntity = ((gen_unitEntity)_gen_UnitPresenter.Result);
-			var datagen_unit = (new { Id = objgen_unitEntity.unitid,Text = objgen_unitEntity.unitid});
+			var datagen_unit = (new { Id = objgen_unitEntity.unitid,Text = objgen_unitEntity.unit});
 			ViewBag.preloadedDatagen_unit = JsonConvert.SerializeObject(datagen_unit);
 
+            owin_userEntity objUserEntity = new owin_userEntity();
+            objUserEntity.userid = objEntity.userid ;
+            await _owin_UserUseCase.GetSingle(new Owin_UserRequest(objUserEntity), _owin_UserPresenter);
+            objUserEntity = _owin_UserPresenter.Result as owin_userEntity;
+            var dataUser = (new { Id = objUserEntity.masteruserid, Text = objUserEntity.username });
+            ViewBag.preloadedDatagen_user = JsonConvert.SerializeObject(dataUser);
 
-
-            
             return View("../General/Gen_UserUnit/EditGen_UserUnit", _gen_UserUnitPresenter.Result);
         }
 
@@ -207,6 +220,8 @@ namespace WebAdmin.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> EditGen_UserUnit([FromBody] gen_userunitEntity request)
         {
+            ModelState.Remove("userid");
+
             if (!User.Identity.IsAuthenticated) { return RedirectToAction("Account", "Login"); }
             if (!ModelState.IsValid) { return BadRequest(ModelState); }
             await _gen_UserUnitUseCase.Update(new Gen_UserUnitRequest(request), _gen_UserUnitPresenter);
@@ -232,12 +247,17 @@ namespace WebAdmin.Controllers
 			objgen_unitEntity.unitid = objEntity.unitid ;
 			await _gen_UnitUseCase.GetSingle(new Gen_UnitRequest(objgen_unitEntity), _gen_UnitPresenter);
 			objgen_unitEntity = ((gen_unitEntity)_gen_UnitPresenter.Result);
-			var datagen_unit = (new { Id = objgen_unitEntity.unitid,Text = objgen_unitEntity.unitid});
+			var datagen_unit = (new { Id = objgen_unitEntity.unitid,Text = objgen_unitEntity.unit});
 			ViewBag.preloadedDatagen_unit = JsonConvert.SerializeObject(datagen_unit);
 
+            owin_userEntity objUserEntity = new owin_userEntity();
+            objUserEntity.userid = objEntity.userid;
+            await _owin_UserUseCase.GetSingle(new Owin_UserRequest(objUserEntity), _owin_UserPresenter);
+            objUserEntity = _owin_UserPresenter.Result as owin_userEntity;
+            var dataUser = (new { Id = objUserEntity.masteruserid, Text = objUserEntity.username });
+            ViewBag.preloadedDatagen_user = JsonConvert.SerializeObject(dataUser);
 
 
-            
             return View("../General/Gen_UserUnit/GetSingleGen_UserUnit", _gen_UserUnitPresenter.Result);
         }
 
@@ -279,19 +299,33 @@ namespace WebAdmin.Controllers
         public async Task<IActionResult> DeleteGen_UserUnit([FromBody] gen_userunitEntity request)
         {
             if (!User.Identity.IsAuthenticated) { return RedirectToAction("Account", "Login"); }
-           /*				 ModelState.Remove("serial");
-				 ModelState.Remove("unitid");
-				 ModelState.Remove("userid");
-				 ModelState.Remove("ex_nvarchar3");
-*/
+            /*				 ModelState.Remove("serial");
+                  ModelState.Remove("unitid");
+                  ModelState.Remove("userid");
+                  ModelState.Remove("ex_nvarchar3");
+ */
+            ModelState.Remove("userid");
             if (!ModelState.IsValid) { return BadRequest(ModelState); }
             await _gen_UserUnitUseCase.Delete(new Gen_UserUnitRequest(request), _gen_UserUnitPresenter);
             return _gen_UserUnitPresenter.ContentResult;
         }
-        
-      
-        
-        
-        
+
+
+        [HttpPost]
+        [AutoValidateAntiforgeryToken]
+        public async Task<IActionResult> GetExistingDataByUserUnit([FromBody] gen_userunitEntity request)
+        {
+            if (!User.Identity.IsAuthenticated) { return RedirectToAction("Account", "Login"); }
+            gen_userunitEntity objEntity = new gen_userunitEntity();
+            objEntity.unitid = request.unitid;
+            objEntity.userid = request.userid;
+
+            await _gen_UserUnitUseCase.GetSingle(new Gen_UserUnitRequest(objEntity), _gen_UserUnitPresenter);
+            objEntity = _gen_UserUnitPresenter.Result as gen_userunitEntity;
+
+            return _gen_UserUnitPresenter.ContentResult;
+        }
+
+
     }
 }
