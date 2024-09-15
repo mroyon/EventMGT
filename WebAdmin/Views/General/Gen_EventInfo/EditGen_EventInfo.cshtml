@@ -43,19 +43,22 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="labelNormal required " asp-for="eventorganizedby"></label>
-                                @await Component.InvokeAsync("S2Gen_Unit", new { selectid = "eventorganizedby", preloaded = ViewBag.preloadedDatagen_unit, isReadOnly = false, multiple = false, isRequired = true, pkey = -99 })
+                                @await Component.InvokeAsync("S2FilterGen_Unit", new { selectid = "eventorganizedby", preloaded = ViewBag.preloadedDatagen_unit, isReadOnly = false, multiple = false, isRequired = true, pkey = -99 })
                                 <span asp-validation-for="eventorganizedby" class="eventorganizedbyerror text-danger " id="eventorganizedbyerror"></span>
                             </div>
                         </div>
                     </div>
-                    <div class="row ">
+                    <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="labelNormal required " asp-for="eventcode"></label>
-                                <input asp-for="eventcode" class="form-control" autocomplete="off" required />
+                                <input asp-for="eventcode" class="form-control" autocomplete="off" readonly />
                                 <span asp-validation-for="eventcode" class="text-danger"></span>
                             </div>
                         </div>
+                    </div>
+                    <div class="row ">
+                        
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="labelNormal required " asp-for="eventname"></label>
@@ -81,53 +84,19 @@
 
 
                         </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label class="labelNormal " asp-for="eventenddate"></label>
-                                <div class="input-group date bs-datepicker">
-                                    <input asp-for="eventenddate" class="form-control " type="text" placeholder="dd/mm/yyyy" />
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text">
-                                            <i class="far fa-calendar-alt"></i>
-                                        </span>
-                                    </div>
-                                </div>
-                                <span asp-validation-for="eventenddate" class="text-danger"></span>
-                            </div>
-                        </div>
+                      
                     </div>
                     <div class="row ">
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <div class="form-group">
                                 <label class="labelNormal  " asp-for="eventdescription"></label>
                                 <textarea cols="40" rows="5" asp-for="eventdescription" class="form-control" autocomplete="off"></textarea>
                                 <span asp-validation-for="eventdescription" class="text-danger"></span>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label class="labelNormal  " asp-for="eventdescription1"></label>
-                                <textarea cols="40" rows="5" asp-for="eventdescription1" class="form-control" autocomplete="off"></textarea>
-                                <span asp-validation-for="eventdescription1" class="text-danger"></span>
-                            </div>
-                        </div>
+                        
                     </div>
-                    <div class="row ">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label class="labelNormal  " asp-for="eventdescription2"></label>
-                                <textarea cols="40" rows="5" asp-for="eventdescription2" class="form-control" autocomplete="off"></textarea>
-                                <span asp-validation-for="eventdescription2" class="text-danger"></span>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label class="labelNormal  " asp-for="eventspecialnote"></label>
-                                <textarea cols="40" rows="5" asp-for="eventspecialnote" class="form-control" autocomplete="off"></textarea>
-                                <span asp-validation-for="eventspecialnote" class="text-danger"></span>
-                            </div>
-                        </div>
-                    </div>
+                    
                     <div class="row">
                         <div class="col-6 ">
                             <div class="form-group">
@@ -282,13 +251,12 @@
                         formData.append("eventorganizedby", $("#eventorganizedby").val());
                         formData.append("eventcode", $("#eventcode").val());
                         formData.append("eventname", $("#eventname").val());
-                        formData.append("eventstartdate", $("#eventstartdate").val());
-                        formData.append("eventenddate", $("#eventenddate").val());
-                        formData.append("eventenddate", $("#eventenddate").val());
+                        formData.append("eventstartdate", GetDateFromTextBox($("#eventstartdate").val()));
+                        // formData.append("eventenddate", $("#eventenddate").val());                        
                         formData.append("eventdescription", tinymce.get("eventdescription").getContent());
-                        formData.append("eventdescription1", tinymce.get("eventdescription1").getContent());
-                        formData.append("eventdescription2", tinymce.get("eventdescription2").getContent());
-                        formData.append("eventspecialnote", tinymce.get("eventspecialnote").getContent());
+                        // formData.append("eventdescription1", tinymce.get("eventdescription1").getContent());
+                        // formData.append("eventdescription2", tinymce.get("eventdescription2").getContent());
+                        // formData.append("eventspecialnote", tinymce.get("eventspecialnote").getContent());
 
                         if (dz.getQueuedFiles().length > 0) {
                             dz.processQueue();

@@ -27,7 +27,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="labelNormal required " asp-for="eventorganizedby"></label>
-                                @await Component.InvokeAsync("S2Gen_Unit", new { selectid = "eventorganizedby", preloaded = ViewBag.preloadedDatagen_unit, isReadOnly = false, multiple = false, isRequired = true, pkey = -99 })
+                                @await Component.InvokeAsync("S2FilterGen_Unit", new { selectid = "eventorganizedby", preloaded = ViewBag.preloadedDatagen_unit, isReadOnly = false, multiple = false, isRequired = true, pkey = -99 })
                                 <span asp-validation-for="eventorganizedby" class="eventorganizedbyerror text-danger " id="eventorganizedbyerror"></span>
                             </div>
                         </div>
@@ -218,15 +218,9 @@
                     formData.append("eventid", $("#eventid").val());
                     formData.append("eventcategoryid", $("#eventcategoryid").val());
                     formData.append("eventorganizedby", $("#eventorganizedby").val());
-                    formData.append("eventcode", $("#eventcode").val());
                     formData.append("eventname", $("#eventname").val());
-                    formData.append("eventstartdate", $("#eventstartdate").val());
-                    formData.append("eventenddate", $("#eventenddate").val());
-                    formData.append("eventenddate", $("#eventenddate").val());
+                    formData.append("eventstartdate",GetDateFromTextBox( $("#eventstartdate").val()));
                     formData.append("eventdescription", tinymce.get("eventdescription").getContent());
-                    formData.append("eventdescription1", tinymce.get("eventdescription1").getContent());
-                    formData.append("eventdescription2", tinymce.get("eventdescription2").getContent());
-                    formData.append("eventspecialnote", tinymce.get("eventspecialnote").getContent());
 
                      if (dz.getQueuedFiles().length > 0) 
                      {

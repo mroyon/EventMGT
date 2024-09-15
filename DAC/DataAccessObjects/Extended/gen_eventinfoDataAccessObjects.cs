@@ -26,7 +26,7 @@ namespace DAC.Core.DataAccessObjects.General
         async Task<long> Igen_eventinfoDataAccessObjects.AddWithFiles(gen_eventinfoEntity gen_eventinfo, CancellationToken cancellationToken)
         {
             long returnCode = -99;
-            const string SP = "gen_eventinfo_Ins";
+            const string SP = "gen_eventinfo_Ins_Ext";
 
             DbConnection connection = Database.CreateConnection();
             connection.Open();
@@ -88,7 +88,7 @@ namespace DAC.Core.DataAccessObjects.General
          async Task<long> Igen_eventinfoDataAccessObjects.UpdateWithFiles(gen_eventinfoEntity gen_eventinfo, CancellationToken cancellationToken)
         {
             long returnCode = -99;
-            const string SP = "gen_eventinfo_Upd";
+            const string SP = "gen_eventinfo_Upd_EXT";
 
             DbConnection connection = Database.CreateConnection();
             connection.Open();
