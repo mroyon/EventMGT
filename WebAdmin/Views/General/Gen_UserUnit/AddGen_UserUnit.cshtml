@@ -69,7 +69,17 @@
 @section Scripts {
     <script src="~/lib/customjs/Gen_UserUnit/Gen_UserUnit.js" asp-append-version="true"></script>
     <script>
-
+        $("#unitid").change(function () {
+            var dataobject = {
+                //unitid: $("#unitid").val(),
+                userid: $("#userid").val(),
+            };
+            ajaxPostObjectHandler("/Gen_UserUnit/GetExistingDataByUserUnit", dataobject, function (response) {
+                if (response._ajaxresponse.responsestatus == "success") {
+                    showSuccessAlert("Success", response._ajaxresponse.responsetext, "OK", RedirectToLanding, LandingGen_UserUnit);
+                }
+            }, true);
+        })
     </script>
 }
 
