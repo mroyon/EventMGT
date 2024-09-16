@@ -185,7 +185,7 @@
                     }
                     else
                     {
-                        <span class="dropdown-item active" href="#" id="@(culture.Text)_item">@culture.Text</span>
+                        <span class="dropdown-item active" href="#" onclick="updateLanguage('@culture.Value', '/')" id="@(culture.Text)_item">@culture.Text</span>
 
                     }
                     <div class="dropdown-divider"></div>

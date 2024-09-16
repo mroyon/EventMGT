@@ -302,7 +302,7 @@ namespace WebAdmin.Services
                     var supportedCultures = new List<CultureInfo>
                         {
                             new CultureInfo("en-US"),
-                            new CultureInfo("ar-KW")
+                            new CultureInfo("bn-BD")
                         };
 
                     options.DefaultRequestCulture = new RequestCulture(culture: "en-US", uiCulture: "en-US");

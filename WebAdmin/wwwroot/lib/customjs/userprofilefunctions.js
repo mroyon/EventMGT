@@ -13,11 +13,21 @@
 function updateLanguage(culture, returnUrl) {
 
     var dataobject = { culture: culture, returnUrl: returnUrl };
-    ajaxPostObjectHandler("/Home/SetLanguage", dataobject, function (data) {
-        if (data !== "INVALID_PARAMETERS") {
-            window.location.reload();
-        }
-    }, true);
+
+    if (culture == 'bn-BD') {
+        $('input').css("font-family", "'SutonnyMJ','AdarshaLipiNormal','Helvetica Neue', Helvetica, Arial, sans-serif");
+        $('.banglafont').css("font-family", "'SutonnyMJ','AdarshaLipiNormal','Helvetica Neue', Helvetica, Arial, sans-serif");
+
+    } else {
+        $('input').css("font-family", "'Helvetica Neue', Helvetica, Arial, sans-serif");
+        $('.banglafont').css("font-family", "'Helvetica Neue', Helvetica, Arial, sans-serif");
+    }
+
+    //ajaxPostObjectHandler("/Home/SetLanguage", dataobject, function (data) {
+    //    if (data !== "INVALID_PARAMETERS") {
+    //        window.location.reload();
+    //    }
+    //}, true);
 }
 
 function signOut() {
