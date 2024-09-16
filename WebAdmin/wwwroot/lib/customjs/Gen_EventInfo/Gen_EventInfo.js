@@ -104,14 +104,12 @@ $(function () {
                     eventcode: $("#eventcode").val(),
                     eventname: $("#eventname").val(),
                     eventstartdate:GetDateFromTextBox( $("#eventstartdate").val()),
-                    eventenddate:GetDateFromTextBox( $("#eventenddate").val()),
                     eventdescription: tinymce.get("eventdescription").getContent(),
-                    eventdescription1: tinymce.get("eventdescription1").getContent(),
-                    eventdescription2: tinymce.get("eventdescription2").getContent(),
-                    eventspecialnote: tinymce.get("eventspecialnote").getContent(),
                     eventorganizedby: $("#eventorganizedby").val(),
                 };
+                console.log(dataobject)
                 ajaxPostObjectHandler("/Gen_EventInfo/DeleteGen_EventInfo", dataobject, function (response) {
+                    console.log(response);
                     if (response._ajaxresponse.responsestatus == "success") {
                         showSuccessAlert("Success", response._ajaxresponse.responsetext, "OK", RedirectToLanding, LandingGen_EventInfo);
                     }

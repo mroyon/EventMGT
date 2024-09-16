@@ -46,7 +46,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="labelNormal required " asp-for="eventname"></label>
-                                <input asp-for="eventname" class="form-control" required readonly></input>
+                                <input asp-for="eventname" class="form-control" required readonly />
                                 <span asp-validation-for="eventname" class="eventnameerror text-danger " id="eventnameerror"></span>
                             </div>
                         </div>
@@ -134,7 +134,7 @@
 </div>
 
 @section Scripts {
-    <script src="~/lib/customjs/Gen_EventInfo/Gen_EventInfo.js"></script>
+    <script src="~/lib/customjs/Gen_EventInfo/Gen_EventInfo.js" asp-append-version="true"></script>
     <script>
         $(function () {
             tinymce.get('eventdescription').setMode('readonly');
