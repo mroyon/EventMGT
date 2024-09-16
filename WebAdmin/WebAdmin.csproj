@@ -1156,7 +1156,6 @@
     <Folder Include="wwwroot\dist\js\" />
     <Folder Include="wwwroot\lib\jquery.datetimepicker\" />
     <Folder Include="wwwroot\uploads\" />
-    <Folder Include="wwwroot\uploads\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -1375,6 +1374,9 @@
     </Content>
     <Content Update="wwwroot\lib\customjs\HubContextQR\HubQRUserContext.js">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\Reports\rptDigestOfService.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
 

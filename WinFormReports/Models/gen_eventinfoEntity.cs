@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Collections.Generic;
 
 
-namespace BDO.Core.DataAccessObjects.Models
+namespace WinFormReports.Models
 {
     [Serializable]
     [DataContract(Name = "gen_eventinfoEntity", Namespace = "http://www.KAF.com/types")]

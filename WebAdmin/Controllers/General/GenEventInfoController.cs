@@ -31,6 +31,10 @@ using SharpCompress.Common;
 using Microsoft.AspNetCore.Http;
 using System.Security.Claims;
 using BDO.Core.DataAccessObjects.ExtendedEntities;
+using AppConfig.EncryptionHandler;
+using Microsoft.AspNetCore;
+using Microsoft.Reporting.NETCore;
+using System.Text;
 
 namespace WebAdmin.Controllers
 {
@@ -49,7 +53,7 @@ namespace WebAdmin.Controllers
         private readonly Gen_EventFileInfoPresenter _gen_EventFileInfoPresenter;
 
         private readonly ICacheProvider _cacheProvider;
-
+        private IWebHostEnvironment _webhost;
 
         private readonly IGen_EventCategoryUseCase _gen_EventCategoryUseCase;
         private readonly Gen_EventCategoryPresenter _gen_EventCategoryPresenter;
@@ -101,6 +105,7 @@ namespace WebAdmin.Controllers
             //,IHubContext<HubUserContext> hubuserContext
             //,IUserConnectionManager userConnectionManager
             , ICacheProvider cacheProvider
+             ,IWebHostEnvironment webhost
 
              , IGen_EventCategoryUseCase gen_EventCategoryUseCase
             , Gen_EventCategoryPresenter gen_EventCategoryPresenter
@@ -124,7 +129,7 @@ IHttpContextAccessor contextAccessor)
             _gen_UnitUseCase = gen_UnitUseCase;
             _gen_UnitPresenter = gen_UnitPresenter;
 
-
+            _webhost = webhost;
 
             //_hubuserContext = hubuserContext;
             //_userConnectionManager = userConnectionManager;
@@ -592,6 +597,9 @@ IHttpContextAccessor contextAccessor)
             }
         }
 
+        
+
+
         [HttpPost]
         [AutoValidateAntiforgeryToken]
         public async Task<IActionResult> GetEventFileInfoByEvent([FromBody] gen_eventfileinfoEntity request)
@@ -621,6 +629,107 @@ IHttpContextAccessor contextAccessor)
 
             if (_objEventFiles.Count > 0) return Json(new { status = "success", data = _objEventFiles });
             else return Json(new { status = "failed", data = new List<gen_eventfileinfoEntity>() });
+        }
+
+
+        [HttpPost]
+        [AutoValidateAntiforgeryToken]
+        public async Task<IActionResult> GetReport_DigestOfService([FromBody] gen_eventinfoEntity request)
+        {
+            if (!User.Identity.IsAuthenticated) { return RedirectToAction("Account", "Login"); }
+            ModelState.Remove("filetype");
+            ModelState.Remove("extension");
+            ModelState.Remove("filename");
+            if (!ModelState.IsValid) { return BadRequest(ModelState); }
+
+
+            gen_eventinfoEntity genev = new gen_eventinfoEntity();
+            genev.eventcategoryid = request.eventcategoryid;
+            genev.eventid = request.eventid;
+            genev.eventname = request.eventname;
+            genev.eventstartdate = request.eventstartdate;
+            genev.eventenddate = request.eventenddate;
+            genev.unitid = request.unitid;
+            genev.eventdescription = request.eventdescription;
+
+            await _gen_EventInfoUseCase.GetAll(new Gen_EventInfoRequest(genev), _gen_EventInfoPresenter);
+            //return Json(_gen_EventInfoPresenter.Result);
+            List<gen_eventinfoEntity> _objEventList = new List<gen_eventinfoEntity>();
+            _objEventList = _gen_EventFileInfoPresenter.Result as List<gen_eventinfoEntity>;
+
+            gen_eventfileinfoEntity objEventFile = new gen_eventfileinfoEntity();
+            objEventFile.eventid = genev.eventid;
+            await _gen_EventFileInfoUseCase.GetAll(new Gen_EventFileInfoRequest(objEventFile), _gen_EventFileInfoPresenter);
+            List<gen_eventfileinfoEntity> _objEventFiles = new List<gen_eventfileinfoEntity>();
+            _objEventFiles = _gen_EventFileInfoPresenter.Result as List<gen_eventfileinfoEntity>;
+
+            var bytearrReport = await GenerateReport(
+                                _objEventList,
+                                _objEventFiles.ToList()
+                                );
+            var reportBase64 = Convert.ToBase64String(bytearrReport);
+
+            return Ok();
+        }
+
+
+        private async Task<byte[]> GenerateReport(
+          List<gen_eventinfoEntity> gen_eventinfoList,
+          List<gen_eventfileinfoEntity> gen_eventfileinfoList)
+        {
+            string fileDirPath = _webhost.WebRootPath;
+            string rdlcFilePath = string.Format("{0}\\Reports\\RDLC\\rptDigestOfService.rdlc", fileDirPath);
+
+            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+            Encoding.GetEncoding("windows-1252");
+
+            string FileName = "DigestOfService_" + System.DateTime.Now.ToString("ddMMyyyyhhmmss");
+            string extension;
+            string encoding;
+            string mimeType;
+            string[] streams;
+            Warning[] warnings;
+
+
+            //string bs64 = string.Empty;
+            //string encString = string.Empty;
+            //EncryptionHelper objEnc = new EncryptionHelper();
+            //encString = employeefinancialdata[0].employeename + "|" + employeefinancialdata[0].employeeno + "|" + employeefinancialdata[0].rank + "|" + employeefinancialdata[0].year + "|" + employeefinancialdata[0].month + "|" + totalVal.GetValueOrDefault().ToString();
+            //encString = System.Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(objEnc.encryptSimple(encString)));
+
+            //bs64 = await GenerateQRCode(_kAFSalaryCertificateSettins.PaySlipReviewURL + encString);
+
+
+            var reportparameter = new[] {
+                            //new ReportParameter("QRCode", bs64),
+                            new ReportParameter("GeneratedDate", System.DateTime.Now.ToLongDateString())
+                            //new ReportParameter("ReportLogoMimeType", "image/png"),
+                            //new ReportParameter("CivilID", employeefinancialdata[0].civilid)
+                        };
+
+
+            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+            Encoding.GetEncoding("windows-1252");
+
+            LocalReport report = new LocalReport();
+            report.ReportPath = rdlcFilePath;
+
+            ReportDataSource rds = new ReportDataSource();
+            rds.Name = "DataSet1";
+            rds.Value = gen_eventinfoList;
+
+            //ReportDataSource rds1 = new ReportDataSource();
+            //rds1.Name = "DataSet2";
+            //rds1.Value = gen_eventfileinfoList;
+
+            report.DataSources.Add(rds);
+            //report.DataSources.Add(rds1);
+            report.SetParameters(reportparameter);
+
+            var result = report.Render("pdf", null,
+                            out extension, out encoding,
+                            out mimeType, out streams, out warnings);
+            return result;
         }
     }
 }

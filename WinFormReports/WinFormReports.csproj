@@ -80,10 +80,15 @@
     <Content Include="Reports\KAFPayInvoice.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Reports\rptDigestOfService.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <EmbeddedResource Include="Reports\KAFPayInvoice2.rdlc" />
     <EmbeddedResource Include="Reports\Sahel_ReenlistedRecruitmentService.rdlc" />
     <EmbeddedResource Include="Reports\Sahel_ReenlistedService.rdlc" />
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\WinFormReports.Models.gen_eventfileinfoEntity.datasource" />
+    <None Include="Properties\DataSources\WinFormReports.Models.gen_eventinfoEntity.datasource" />
     <None Include="Properties\DataSources\WinFormReports.Models.kafPaymentInvoiceEntity.datasource" />
     <None Include="Properties\DataSources\WinFormReports.Models.kaf_hr_militarysvcinfoEntity.datasource" />
     <None Include="Properties\DataSources\WinFormReports.Models.sahelNotificationEntity.datasource" />
