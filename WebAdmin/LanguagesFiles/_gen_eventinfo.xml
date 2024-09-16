@@ -7,7 +7,7 @@
        <resource culture="ar-kw" name="eventcategoryidRequired" value="AR: Please provide  Event Category I D"></resource>
        <resource culture="ar-kw" name="eventcode" value="AR:  Event Code"></resource>
        <resource culture="ar-kw" name="eventcodeRequired" value="AR: Please provide  Event Code"></resource>
-       <resource culture="ar-kw" name="eventname" value="AR:  Event Name"></resource>
+       <resource culture="ar-kw" name="eventname" value="AR:  Event Title"></resource>
        <resource culture="ar-kw" name="eventnameRequired" value="AR: Please provide  Event Name"></resource>
        <resource culture="ar-kw" name="eventstartdate" value="AR:  Event Start Date"></resource>
        <resource culture="ar-kw" name="eventstartdateRequired" value="AR: Please provide  Event Start Date"></resource>
@@ -17,7 +17,7 @@
        <resource culture="ar-kw" name="eventdescription2" value="AR:  Event Description 2"></resource>
        <resource culture="ar-kw" name="eventspecialnote" value="AR:  Event Special Note"></resource>
        <resource culture="ar-kw" name="isdeleted" value="AR:  Is Deleted"></resource>
-       <resource culture="ar-kw" name="eventorganizedby" value="AR:  Event Organized By"></resource>
+       <resource culture="ar-kw" name="eventorganizedby" value="Unit "></resource>
        <resource culture="ar-kw" name="eventorganizedbyRequired" value="AR: Please provide  Event Organized By"></resource>
        <resource culture="ar-kw" name="ex_date1" value="AR:  Ex Date 1"></resource>
        <resource culture="ar-kw" name="ex_date2" value="AR:  Ex Date 2"></resource>
@@ -40,7 +40,7 @@
        <resource culture="en-us" name="eventcategoryidRequired" value="Please provide  Event Category"></resource>
        <resource culture="en-us" name="eventcode" value=" Event Code"></resource>
        <resource culture="en-us" name="eventcodeRequired" value="Please provide  Event Code"></resource>
-       <resource culture="en-us" name="eventname" value=" Event Name"></resource>
+       <resource culture="en-us" name="eventname" value=" Event Title"></resource>
        <resource culture="en-us" name="eventnameRequired" value="Please provide  Event Name"></resource>
        <resource culture="en-us" name="eventstartdate" value=" Event Start Date"></resource>
        <resource culture="en-us" name="eventstartdateRequired" value="Please provide  Event Start Date"></resource>
@@ -50,7 +50,7 @@
        <resource culture="en-us" name="eventdescription2" value=" Event Description 2"></resource>
        <resource culture="en-us" name="eventspecialnote" value=" Event Special Note"></resource>
        <resource culture="en-us" name="isdeleted" value=" Is Deleted"></resource>
-       <resource culture="en-us" name="eventorganizedby" value=" Event Unit"></resource>
+       <resource culture="en-us" name="eventorganizedby" value=" Unit "></resource>
        <resource culture="en-us" name="eventorganizedbyRequired" value="Please provide  Event Unit"></resource>
        <resource culture="en-us" name="ex_date1" value=" Ex Date 1"></resource>
        <resource culture="en-us" name="ex_date2" value=" Ex Date 2"></resource>

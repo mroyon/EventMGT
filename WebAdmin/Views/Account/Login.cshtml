@@ -15,13 +15,13 @@
         <div class="row justify-content-center">
             <div class="col-md-6 col-lg-4">
                 <div class="login-wrap p-0">
-                    <h3 class="mb-4 text-center">@SharedLocalizer.GetLocalizedHtmlString("LOGIN")</h3>
+                    <h3 class="mb-4 text-center">Digest of Service</h3>
 
                     <div id="accordion">
                         <div class="card accordion-item">
                             <div class="card-header accordion-header" id="headingOne">
                                 <h5 class="mb-0">
-                                    <button class="accordion-button btn btn-link btn-accordion-head" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    <button class="btn-accordion-head" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" style="color:black">
                                         Login with Credentials
                                     </button>
                                 </h5>
@@ -36,7 +36,7 @@
                                         <input type="hidden" id="KeyParam" name="KeyParam"  />
 
                                         <div class="form-group">
-                                            <input asp-for="emailaddress" class="form-control" placeholder="Email Address" required />
+                                            <input asp-for="emailaddress" class="form-control" placeholder="User Name/Email Address" required />
                                             <span asp-validation-for="emailaddress" class="text-danger"></span>
                                         </div>
                                         <div class="form-group">
