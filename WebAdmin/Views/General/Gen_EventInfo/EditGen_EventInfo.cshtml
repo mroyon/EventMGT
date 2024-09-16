@@ -274,18 +274,9 @@
                     thumbnailHeight: 60,
                     previewTemplate: previewTemplate,
                     previewsContainer: "#previews",
-                    clickable: ".fileinput-button", // Define the element that should be used as click trigger to select files.
+                    clickable: ".fileinput-button",
                     init: function () {
                         var dz = this;
-
-                        // dz.on("addedfile", function(file) {
-                        //       var descriptionInput = document.createElement("input");
-                        //       descriptionInput.setAttribute("type", "text");
-                        //       descriptionInput.setAttribute("name", "fileDescription");
-                        //       descriptionInput.setAttribute("class", "file-description");
-                        //       descriptionInput.setAttribute("placeholder", "Enter file description");
-                        //       file.previewElement.appendChild(descriptionInput);
-                        //     });
 
                         var dataobject = {
                             eventid: $("#eventid").val(),
@@ -303,13 +294,13 @@
 
                                     const $actionsCell = $('<td></td>');
 
-                                    const $downloadLink = $('<a class="btn btn-primary btn-sm""></a>').attr({
+                                    const $downloadLink = $('<a class="btn btn-primary btn-sm""><i class="fa fa-download" aria-hidden="true"></i></a>').attr({
                                         href: file.FileUrl,
-                                        text: 'Download',
-                                        download: file.FileUrl
-                                    }).text('Download');
+                                        //text: 'Download',
+                                        download: file.filetitle
+                                    });
 
-                                    const $editButton = $('<button type="button" class="btn btn-danger btn-sm""></button>').text('Delete').on('click', function () {
+                                    const $editButton = $('<button type="button" class="btn btn-danger btn-sm""><i class="fa fa-trash" aria-hidden="true"></i></button>').on('click', function () {
                                         deleteFile(file);
                                     });
 
