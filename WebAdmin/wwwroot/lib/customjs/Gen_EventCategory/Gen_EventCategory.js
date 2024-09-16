@@ -9,19 +9,6 @@
  
 'use strict';
 
- function validateRequiredfldeventcategory() { 
-	 $('#eventcategoryerror').hide(); 
-	 $('#eventcategoryerror').html(''); 
-	 if (tinymce.get("eventcategory").getContent() == '') { 
-		 var eventcategoryMsg = $('#eventcategory').attr('data-val-required'); 
-		 $('#eventcategoryerror').show(); 
-		 $('#eventcategoryerror').html(eventcategoryMsg); 
-		 return false; 
- } 
-  
-
-
-
 
 $(function () {
     var LandingGen_EventCategory = "/Gen_EventCategory/LandingGen_EventCategory";
@@ -32,19 +19,12 @@ $(function () {
     
     $('body').on('click', '#btnAddGen_EventCategory', function (e) {
         try {
-            event.preventDefault();
+            e.preventDefault();
             if (_cusFormValidate('frmAddGen_EventCategory')) {
-            
-                 if (!validateRequiredfldeventcategory()) 
-					 return false; 
-				 } 
-
-            
                 var dataobject = {
                     eventcategoryid: $("#eventcategoryid").val(),
-					eventcategory: tinymce.get("eventcategory").getContent(),
-					description: $("#description").val(),
-					ex_nvarchar3: $("#ex_nvarchar3").val()
+                    eventcategory: $("#eventcategory").val(),
+                    description: tinymce.get("description").getContent()
                 };
                 ajaxPostObjectHandler("/Gen_EventCategory/AddGen_EventCategory", dataobject, function (response) {
                     if (response._ajaxresponse.responsestatus == "success") {
@@ -60,19 +40,12 @@ $(function () {
 
     $('body').on('click', '#btnEditGen_EventCategory', function (e) {
         try {
-            event.preventDefault();
+            e.preventDefault();
             if (_cusFormValidate('frmEditGen_EventCategory')) {
-            
-                 if (!validateRequiredfldeventcategory()) 
-					 return false; 
-				 } 
-
-                
                 var dataobject = {
-                     eventcategoryid: $("#eventcategoryid").val(),
-					eventcategory: tinymce.get("eventcategory").getContent(),
-					description: $("#description").val(),
-					ex_nvarchar3: $("#ex_nvarchar3").val()
+                    eventcategoryid: $("#eventcategoryid").val(),
+                    eventcategory: $("#eventcategory").val(),
+                    description: tinymce.get("description").getContent()
                 };
 
                 ajaxPostObjectHandler("/Gen_EventCategory/EditGen_EventCategory", dataobject, function (response) {
@@ -90,13 +63,12 @@ $(function () {
 
     $('body').on('click', '#btnDeleteGen_EventCategory', function (e) {
         try {
-            event.preventDefault();
+            e.preventDefault();
             if (_cusFormValidate('frmDeleteGen_EventCategory')) {
                 var dataobject = {
-                   eventcategoryid: $("#eventcategoryid").val(),
-					eventcategory: tinymce.get("eventcategory").getContent(),
-					description: $("#description").val(),
-					ex_nvarchar3: $("#ex_nvarchar3").val()
+                    eventcategoryid: $("#eventcategoryid").val(),
+                    eventcategory: $("#eventcategory").val(),
+                    description: tinymce.get("description").getContent()
                 };
                 ajaxPostObjectHandler("/Gen_EventCategory/DeleteGen_EventCategory", dataobject, function (response) {
                     if (response._ajaxresponse.responsestatus == "success") {                        
@@ -111,7 +83,7 @@ $(function () {
 
     $('body').on('click', '#btnGoBackGen_EventCategory', function (e) {
         try {
-            event.preventDefault();
+            e.preventDefault();
             window.location.href = LandingGen_EventCategory;
         } catch (e) {
             showErrorAlert("Error", e.message, "OK");
