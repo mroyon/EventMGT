@@ -59,6 +59,8 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\Class1.cs" />
+    <Compile Include="Models\gen_eventfileinfoEntity.cs" />
+    <Compile Include="Models\gen_eventinfoEntity.cs" />
     <Compile Include="Models\kaf_hr_militarysvcinfoEntity.cs" />
     <Compile Include="Models\kafPaymentInvoiceEntity.cs" />
     <Compile Include="Models\sahelRequestDictionaryEntity.cs" />
