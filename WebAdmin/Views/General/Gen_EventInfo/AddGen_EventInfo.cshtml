@@ -92,14 +92,14 @@
                             <div class="form-group">
                                 <label class="labelNormal required " asp-for="eventcategoryid"></label>
                                 @await Component.InvokeAsync("S2Gen_EventCategory", new { selectid = "eventcategoryid", preloaded = ViewBag.preloadedDatagen_eventcategory, isReadOnly = false, multiple = false, isRequired = true, pkey = -99 })
-                                <span asp-validation-for="eventcategoryid" class="eventcategoryiderror text-danger " id="eventcategoryiderror"></span>
+                                @* <span asp-validation-for="eventcategoryid" class="eventcategoryiderror text-danger " id="eventcategoryiderror"></span> *@
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="labelNormal required " asp-for="eventorganizedby"></label>
                                 @await Component.InvokeAsync("S2FilterGen_Unit", new { selectid = "eventorganizedby", preloaded = ViewBag.preloadedDatagen_unit, isReadOnly = false, multiple = false, isRequired = true, pkey = -99 })
-                                <span asp-validation-for="eventorganizedby" class="eventorganizedbyerror text-danger " id="eventorganizedbyerror"></span>
+                                @* <span asp-validation-for="eventorganizedby" class="eventorganizedbyerror text-danger " id="eventorganizedbyerror"></span> *@
                             </div>
                         </div>
                     </div>

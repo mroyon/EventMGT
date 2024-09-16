@@ -972,7 +972,7 @@
     <value>Enter your recovery email address</value>
   </data>
   <data name="SUBMIT_REQUEST" xml:space="preserve">
-    <value>Submit Request</value>
+    <value>Submit</value>
   </data>
   <data name="FORGETPASSWORDEMAIL" xml:space="preserve">
     <value>Please check your email for reset password link.</value>

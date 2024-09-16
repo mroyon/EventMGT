@@ -16,7 +16,7 @@
 	int minimumInputLength = 0;
 	string lang = System.Threading.Thread.CurrentThread.CurrentUICulture.Name.ToLowerInvariant().ToLower();
 	ViewBag.Gen_UnitData = ViewBag.Gen_UnitData != null ? ViewBag.Gen_UnitData : "undefined";
-	<select name="@selectid" id="@selectid" class="form-control @selectid " data-val="true" data-val-required="Please Select Sales Rep."></select>
+	<select name="@selectid" id="@selectid" class="form-control @selectid " data-val="true" data-val-required="Please Select"></select>
 	<span class="field-validation-valid text-danger" data-valmsg-for="@selectid" data-valmsg-replace="true"></span>
 }
 @section scripts
