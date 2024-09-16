@@ -32,14 +32,17 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row ">
+                    <div class="row">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="labelNormal required " asp-for="eventcode"></label>
-                                <input asp-for="eventcode" class="form-control" autocomplete="off" required readonly/>
+                                <input asp-for="eventcode" class="form-control" autocomplete="off" readonly />
                                 <span asp-validation-for="eventcode" class="text-danger"></span>
                             </div>
                         </div>
+                    </div>
+                    <div class="row ">
+
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="labelNormal required " asp-for="eventname"></label>
@@ -52,7 +55,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="labelNormal required " asp-for="eventstartdate"></label>
-                                <div class="input-group date bs-datepicker">
+                                <div class="input-group">
                                     <input asp-for="eventstartdate" class="form-control " type="text" placeholder="dd/mm/yyyy" required readonly/>
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">
@@ -62,56 +65,44 @@
                                 </div>
                                 <span asp-validation-for="eventstartdate" class="text-danger"></span>
                             </div>
-
-
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label class="labelNormal  " asp-for="eventenddate"></label>
-                                <div class="input-group date bs-datepicker">
-                                    <input asp-for="eventenddate" class="form-control " type="text" placeholder="dd/mm/yyyy"  readonly/>
-                                    <div class="input-group-prepend">
-                                        <span class="input-group-text">
-                                            <i class="far fa-calendar-alt"></i>
-                                        </span>
-                                    </div>
-                                </div>
-                                <span asp-validation-for="eventenddate" class="text-danger"></span>
-                            </div>
                         </div>
                     </div>
                     <div class="row ">
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <div class="form-group">
                                 <label class="labelNormal  " asp-for="eventdescription"></label>
                                 <textarea cols="40" rows="5" asp-for="eventdescription" class="form-control" autocomplete="off"></textarea>
                                 <span asp-validation-for="eventdescription" class="text-danger"></span>
                             </div>
                         </div>
-                        <div class="col-md-6">
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col-8 ">
                             <div class="form-group">
-                                <label class="labelNormal  " asp-for="eventdescription1"></label>
-                                <textarea cols="40" rows="5" asp-for="eventdescription1" class="form-control" autocomplete="off"></textarea>
-                                <span asp-validation-for="eventdescription1" class="text-danger"></span>
+                                <div class="table table-striped files" id="previews">
+                                    <div id="template" class="file-row row">
+                                        <!-- This is used as the file preview template -->
+                                        <div class="col-1">
+                                            <span class="preview "><img height="80px" data-dz-thumbnail /></span>
+                                        </div>
+                                        <div class="col-3">
+                                            <p class="name" data-dz-name></p>
+                                            <strong class="error text-danger" data-dz-errormessage></strong>
+                                        </div>
+                                        <div class="col-7">
+                                            <input type="text" class="file-description form-control" name="fileDescription" placeholder="Enter file description" readonly />
+                                        </div>
+                                    </div>
+                                    <!-- This hidden input will store the file in the form submission -->
+                                    <input type="hidden" name="files" />
+                                </div>
                             </div>
+
                         </div>
                     </div>
-                    <div class="row ">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label class="labelNormal  " asp-for="eventdescription2"></label>
-                                <textarea cols="40" rows="5" asp-for="eventdescription2" class="form-control" autocomplete="off"></textarea>
-                                <span asp-validation-for="eventdescription2" class="text-danger"></span>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label class="labelNormal  " asp-for="eventspecialnote"></label>
-                                <textarea cols="40" rows="5" asp-for="eventspecialnote" class="form-control" autocomplete="off"></textarea>
-                                <span asp-validation-for="eventspecialnote" class="text-danger"></span>
-                            </div>
-                        </div>
-                    </div>
+
 
                     <div class="row btn-toolbar">
                         <div class="col-md-6 ">
@@ -147,11 +138,89 @@
     <script>
         $(function () {
             tinymce.get('eventdescription').setMode('readonly');
-            tinymce.get('eventdescription1').setMode('readonly');
-            tinymce.get('eventdescription2').setMode('readonly');
-            tinymce.get('eventspecialnote').setMode('readonly');
 
         })
+    </script>
+
+    <script>
+
+        // Get the template HTML and remove it from the doument
+        var previewNode = document.querySelector("#template");
+        previewNode.id = "";
+        var previewTemplate = previewNode.parentNode.innerHTML;
+        previewNode.parentNode.removeChild(previewNode);
+
+        // Initialize Dropzone but prevent automatic upload
+        Dropzone.autoDiscover = false;
+
+        var myDropzone = new Dropzone(document.body,
+            {
+                url: "/Gen_EventInfo/EditGen_EventInfo",  // API endpoint
+                method: "post",
+                paramName: "files",  // The name for the files being uploaded
+                uploadMultiple: true,  // Allow multiple file uploads
+                //maxFilesize: 5,  // Max file size in MB
+                parallelUploads: 5,  // Number of files to upload in parallel
+                autoProcessQueue: false,  // Don't upload files immediately
+                addRemoveLinks: false,
+                acceptedFiles: ".jpeg,.jpg,.png,.gif,.pdf",
+                thumbnailWidth: 60,
+                thumbnailHeight: 60,
+                previewTemplate: previewTemplate,
+                previewsContainer: "#previews",
+                //clickable: ".fileinput-button",
+                init: function () {
+                    var dropzoneInstance = this;
+                    // The Dropzone instance is fully initialized here
+                    console.log("Dropzone initialized.");
+                    console.log(dropzoneInstance.files); // Should not be null here
+
+                    var dataobject = {
+                        eventid: $("#eventid").val(),
+                    };
+
+                    function LoadFiles() {
+                        ajaxPostObjectHandler("/Gen_EventInfo/GetAllFileByEventId", dataobject, function (files) {
+                            files.forEach(file => {
+                                // Mock the file structure for Dropzone
+                                var mockFile = { name: file.filetitle, size: file.filesize };
+
+                                // Manually add the file to Dropzone
+                                dropzoneInstance.emit("addedfile", mockFile);
+                                dropzoneInstance.emit("thumbnail", mockFile, file.FileUrl); // Thumbnail if available
+
+                                // Make the file marked as uploaded
+                                dropzoneInstance.emit("complete", mockFile);
+                                dropzoneInstance.files.push(mockFile);
+
+
+                                // Set a custom attribute or flag to identify it as an old file
+                                mockFile.isOld = true;
+                                mockFile.eventfileid = file.eventfileid;
+                                mockFile.eventid = file.eventid;
+                                mockFile.FileUrl = file.FileUrl;
+                                mockFile.filename = file.filename;
+
+                                // Set the file description if available (assuming you store this info on the server)
+                                var descriptionInput = $(mockFile.previewElement).find(".file-description");
+                                descriptionInput.val(file.filedescription || ""); // Load saved description
+
+
+
+                            });
+
+                        }, true);
+                    }
+
+                    LoadFiles();
+                }
+
+            });
+
+
+
+
+
     </script>
 
 }
