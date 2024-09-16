@@ -9,84 +9,6 @@
 
 <style>
 
-    .heading {
-        text-align: center;
-        font-size: 2.0em;
-        letter-spacing: 1px;
-        padding: 40px;
-        color: white;
-    }
-
-    .gallery-image {
-        padding: 20px;
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-        .gallery-image a img {
-            height: 250px;
-            width: 350px;
-            transform: scale(1.0);
-            transition: transform 0.4s ease;
-        }
-
-    .img-box {
-        box-sizing: content-box;
-        margin: 10px;
-        height: 250px;
-        width: 350px;
-        overflow: hidden;
-        display: inline-block;
-        color: white;
-        position: relative;
-        background-color: white;
-    }
-
-    .caption {
-        position: absolute;
-        bottom: 5px;
-        left: 20px;
-        opacity: 0.0;
-        transition: transform 0.3s ease, opacity 0.3s ease;
-    }
-
-    .transparent-box {
-        height: 250px;
-        width: 350px;
-        background-color: rgba(0, 0, 0, 0);
-        position: absolute;
-        top: 0;
-        left: 0;
-        transition: background-color 0.3s ease;
-    }
-
-    .img-box:hover img {
-        transform: scale(1.1);
-    }
-
-    .img-box:hover .transparent-box {
-        background-color: rgba(0, 0, 0, 0.5);
-    }
-
-    .img-box:hover .caption {
-        transform: translateY(-20px);
-        opacity: 1.0;
-    }
-
-    .img-box:hover {
-        cursor: pointer;
-    }
-
-    .caption > p:nth-child(2) {
-        font-size: 0.8em;
-    }
-
-    .opacity-low {
-        opacity: 0.5;
-    }
-    
-    
 </style>
 <div class="row">
     <div class="col-md-12">
@@ -213,11 +135,12 @@
                              tabindex="-1"
                              role="dialog"
                              aria-labelledby="exampleModalLabel"
-                             aria-hidden="true">
+                             aria-hidden="true"
+                             data-bs-backdrop="static">
                             <div class="modal-dialog modal-xl">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                        <h5 class="modal-title" id="exampleModalLabel"></h5>
                                         <button type="button"
                                                 class="close"
                                                 data-bs-dismiss="modal"
@@ -229,26 +152,9 @@
                                         <div class="photo-gallery">
                                             <div class="container">
                                                 <div class="row photos">
-                                                    @* <div class="col-sm-6 col-md-4 col-lg-3 item"><a href="https://image.freepik.com/free-photo/stylish-young-woman-with-bags-taking-selfie_23-2147962203.jpg" data-lightbox="photos"><img class="img-fluid" src="https://image.freepik.com/free-photo/stylish-young-woman-with-bags-taking-selfie_23-2147962203.jpg"></a></div>
-                                                    <div class="col-sm-6 col-md-4 col-lg-3 item"><a href="assets/img/building.jpg" data-lightbox="photos"><img class="img-fluid" src="assets/img/building.jpg"></a></div>
-                                                    <div class="col-sm-6 col-md-4 col-lg-3 item"><a href="assets/img/loft.jpg" data-lightbox="photos"><img class="img-fluid" src="assets/img/loft.jpg"></a></div>
-                                                    <div class="col-sm-6 col-md-4 col-lg-3 item"><a href="assets/img/building.jpg" data-lightbox="photos"><img class="img-fluid" src="assets/img/building.jpg"></a></div>
-                                                    <div class="col-sm-6 col-md-4 col-lg-3 item"><a href="assets/img/loft.jpg" data-lightbox="photos"><img class="img-fluid" src="assets/img/loft.jpg"></a></div>
-                                                    <div class="col-sm-6 col-md-4 col-lg-3 item"><a href="assets/img/desk.jpg" data-lightbox="photos"><img class="img-fluid" src="assets/img/desk.jpg"></a></div> *@
+
                                                 </div>
                                             </div>
-                                        </div>
-
-                                        <div class="gallery-image">
-                                            @* <div class="img-box">
-                                                <img src="https://picsum.photos/350/250?image=444" alt="" />
-                                                <div class="transparent-box">
-                                                    <div class="caption">
-                                                        <p>Library</p>
-                                                        <p class="opacity-low">Architect Design</p>
-                                                    </div>
-                                                </div>
-                                            </div> *@
                                         </div>
                                     </div>
                                     <div class="modal-footer">
@@ -275,7 +181,6 @@
 
 
 @section Scripts {
-    <script src="~/lib/magnific-popup.js/jquery.magnific-popup.min.js"></script>
     <script>
         $(function () {
             var table;
@@ -293,9 +198,6 @@
                 try {
                     table.destroy();
                 } catch { }
-
-
-
 
                 var dataobject = {
                     eventcategoryid: $("#eventcategoryid").val(),
@@ -396,7 +298,7 @@
 
                         {
                             "data": "eventid", render: function (data, type, full, row) {
-                                var button = "<button type='button' class='btn btn-info btn-md mr-1' onclick='ViewEventFiles(this)' data-eventid='" + data + "'><i class='fas fa-eye'></i> View Files</button>";
+                                var button = "<button type='button' class='btn btn-info btn-md mr-1' onclick='ViewEventFiles(this)' data-eventname='" + full.eventname + "' data-eventid='" + data + "'><i class='fas fa-eye'></i> View Files</button>";
                                 return button;
 
                             }
@@ -415,14 +317,6 @@
                 language: "en",
                 todayHighlight: true
             });
-            //$('.bs-datepicker').datepicker({
-            //    format: "dd/mm/yyyy",
-            //    autoclose: true,
-            //    clearBtn: true,
-            //    startView: 0,
-            //    language: "en",
-            //    todayHighlight: true
-            //});
         });
 
 
@@ -443,7 +337,8 @@
                     var myModal = new bootstrap.Modal(document.getElementById("exampleModal"), {});
                     //myModal.show();
                     var modalBody = "";
-
+                    $(".photos").empty();
+                    $("#exampleModalLabel").text($(cntrl).attr('data-eventname'));
                     $.each(response.data, function (key, value) {
                         // modalBody += "<div class='img-box'>";
                         // modalBody += "<a href='" + baseURL + "/uploads/" + value.filename + "' target='_blank'><img src='" + baseURL + "/uploads/" + value.filename + "' alt='' /></a>";
@@ -453,7 +348,10 @@
                         // modalBody += "</div>";
                         // modalBody += "</div>";
                         var filepath = baseURL + "/uploads/" + value.filename;
-                        modalBody += "<div class='col-sm-6 col-md-4 col-lg-3 item'><a href='" + filepath + "' data-lightbox='photos'><img class='img-fluid' src='" + filepath + "'></a></div>";
+                        modalBody += "<div class='col-sm-6 col-md-4 col-lg-3 item'><a href='" + filepath + "' data-lightbox='photos'><img class='img-fluid' src='" + filepath + "'><span class='caption'>" + value.filedescription + "</span></a></div>";
+
+                        
+
                     });
                     $(".photos").append(modalBody);
                     //$(".gallery-image").append(modalBody);
@@ -476,29 +374,12 @@
             }, true);
         }
 
-        // $('.portfolio-menu ul li').click(function () {
-        //     $('.portfolio-menu ul li').removeClass('active');
-        //     $(this).addClass('active');
-
-        //     var selector = $(this).attr('data-filter');
-        //     $('.portfolio-item').isotope({
-        //         filter: selector
-        //     });
-        //     return false;
-        // });
-        // $(document).ready(function () {
-        //     var myModal = new bootstrap.Modal(document.getElementById("exampleModal"), {});
-        //     myModal.hide();
-        //     var popup_btn = $('.popup-btn');
-        //     popup_btn.magnificPopup({
-        //         type: 'image',
-        //         gallery: {
-        //             enabled: true
-        //         }
-        //     });
-        // });
-
-
+        lightbox.option({
+            'resizeDuration': 200,
+            'wrapAround': true,
+            //'albumLabel': ""
+        })
+        
     </script>
 }
 
