@@ -158,7 +158,7 @@ namespace Web.Core.Frame.UseCases
 
                 if (state)
                 {
-                    outputPort.Login(new Auth_Response(new AjaxResponse("200", _sharedLocalizer["VERIFY"].Value, CLL.LLClasses._Status._statusSuccess, CLL.LLClasses._Status._titleInformation, "/"
+                    outputPort.Login(new Auth_Response(new AjaxResponse("200", _sharedLocalizer["VERIFY"].Value, CLL.LLClasses._Status._statusSuccess, CLL.LLClasses._Status._titleInformation, "Gen_EventInfo/AddGen_EventInfo"
                         ), true, null));
                     return state;
                 }

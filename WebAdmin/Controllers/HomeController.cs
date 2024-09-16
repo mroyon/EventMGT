@@ -110,6 +110,7 @@ namespace WebAdmin.Controllers
                 //await _cacheProvider.Set<object>("Test", menus);
                 //var str3 = await _cacheProvider.Get<object>("Test");
 
+
             }
             catch (Exception ex)
             {

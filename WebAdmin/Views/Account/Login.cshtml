@@ -9,7 +9,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-6 text-center mb-1">
-                <img src="~/img/kaf_logo.png" alt="logo" class="login-page-logo">
+                <img src="~/img/OK-10_Logo.png" alt="logo" class="login-page-logo">
             </div>
         </div>
         <div class="row justify-content-center">
@@ -20,7 +20,7 @@
                     <div id="accordion">
                         <div class="card accordion-item">
                             <div class="card-header accordion-header" id="headingOne">
-                                <h5 class="mb-0">
+                                <h5 class="mb-0" style="text-align: center;">
                                     <button class="btn-accordion-head" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne" style="color:black">
                                         Login with Credentials
                                     </button>
@@ -58,7 +58,7 @@
                                                     </label>
                                                 </div>
                                             </div>
-                                            <div class="w-50 text-md-right">
+                                            <div class="w-50 text-md-right hidden">
                                                 @Html.ActionLink(@SharedLocalizer.GetLocalizedHtmlString("FORGOT_YOUR_PASSWORD"), "ForgetPassword", "Account", null, null)
                                             </div>
                                         </div>
