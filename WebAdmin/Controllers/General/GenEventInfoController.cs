@@ -37,6 +37,11 @@ namespace WebAdmin.Controllers
     /// <summary>
     /// Gen_EventInfoController
     /// </summary>
+    /// 
+
+
+    [RequestFormLimits(MultipartBodyLengthLimit = 2000000000)]
+    [RequestSizeLimit(2000000000)]
     [Authorize(Policy = "KAFSecurityPolicy")]
     [AutoValidateAntiforgeryToken]
     public class Gen_EventInfoController : BaseController

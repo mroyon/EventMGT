@@ -21,8 +21,11 @@ function updateLanguage(culture, returnUrl) {
 
     if (culture == 'bn-BD') {
         $('input').css("font-family", "'SutonnyMJ','AdarshaLipiNormal','Helvetica Neue', Helvetica, Arial, sans-serif");
+        $('.banglafont').css("font-family", "'SutonnyMJ','AdarshaLipiNormal','Helvetica Neue', Helvetica, Arial, sans-serif");
+
     } else {
         $('input').css("font-family", "'Helvetica Neue', Helvetica, Arial, sans-serif");
+        $('.banglafont').css("font-family", "'Helvetica Neue', Helvetica, Arial, sans-serif");
     }
     //ajaxPostObjectHandler("/Home/SetLanguage", dataobject, function (response) {
     //    if (response !== "INVALID_PARAMETERS") {
