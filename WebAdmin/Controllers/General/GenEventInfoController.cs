@@ -41,6 +41,11 @@ namespace WebAdmin.Controllers
     /// <summary>
     /// Gen_EventInfoController
     /// </summary>
+    /// 
+
+
+    [RequestFormLimits(MultipartBodyLengthLimit = 2000000000)]
+    [RequestSizeLimit(2000000000)]
     [Authorize(Policy = "KAFSecurityPolicy")]
     [AutoValidateAntiforgeryToken]
     public class Gen_EventInfoController : BaseController
@@ -234,6 +239,8 @@ IHttpContextAccessor contextAccessor)
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
+        [DisableRequestSizeLimit]
+
         public async Task<IActionResult> AddGen_EventInfo([FromForm] gen_eventinfoEntity request)
         {
             ModelState.Remove("eventcode");
@@ -348,6 +355,7 @@ IHttpContextAccessor contextAccessor)
         /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [DisableRequestSizeLimit]
         public async Task<IActionResult> EditGen_EventInfo([FromForm] gen_eventinfoEntity request)
         {
             if (!User.Identity.IsAuthenticated) { return RedirectToAction("Account", "Login"); }

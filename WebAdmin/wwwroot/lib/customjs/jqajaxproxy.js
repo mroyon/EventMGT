@@ -41,6 +41,7 @@ var ajaxPostObjectHandlerWithFiles = function (url, parameters, func, isStringif
     try {
         PostObjectProxyWithFiles(url, parameters, onSuccess, isStringify);
     } catch (e) {
+        $.unblockUI()
         showErrorAlert("Error", e.message, "OK");
     }
 };
@@ -79,10 +80,13 @@ function PostObjectProxyWithFiles(url, params, successCallback, isStringify = fa
             },
             success: successCallback,
             error: function (xhr, textStatus, errorThrown) {
+                $.unblockUI();
                 $('#divprogress').hide();
                 showErrorAlert("Error", errorThrown, "OK");
             },
             failure: function (response) {
+                $.unblockUI();
+
                 showErrorAlert("Error", response, "OK");
             },
             complete: function () {

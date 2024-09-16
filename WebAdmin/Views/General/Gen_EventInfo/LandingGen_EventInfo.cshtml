@@ -102,14 +102,19 @@
 
                 "columns": [
                     // { "data": "eventcode", "name": "eventcode", "autoWidth": true },
-                    { "data": "eventname", "name": "eventname", "autoWidth": true },
+                    // { "data": "eventname", "name": "eventname", "autoWidth": true},
+                     {
+                        "data": "eventname", render: function (data, type, full, row) {
+                            return `<span class='banglafont'>`+data+`</span>`;
+                        }
+                    },
                     {
                         "data": "eventstartdate", "name": "eventstartdate", "autoWidth": true, render: function (data, type, full, row) {
                             //return moment(data).format("DD-MM-YYYY h:mm a");
                             return moment(data).format("DD-MM-YYYY");
                         }
                     },
-                    { "data": "eventdescription", "name": "eventdescription", "autoWidth": true },
+                    { "data": "eventdescription", "name": "eventdescription", "autoWidth": true  },
                     {
                         "data": "datatablebuttonscode", render: function (data, type, full, row) {
                             return data;

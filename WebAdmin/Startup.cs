@@ -48,10 +48,13 @@ namespace WebAdmin
         /// <param name="services"></param>
         public IServiceProvider  ConfigureServices(IServiceCollection services)
         {
+            
             services.InstallServicesInAssembly(_configuration);
 
             services.AddAutoMapper(typeof(Startup));
             var builder = new ContainerBuilder();
+
+
             builder.Populate(services);
             builder.RegisterModule(new CoreModule());
             builder.RegisterModule(new CoreModuleExtended());
@@ -117,6 +120,9 @@ namespace WebAdmin
             app.UseXXssProtection(options => options.EnabledWithBlockMode());
             app.UseXfo(options => options.SameOrigin());
             app.UseReferrerPolicy(opts => opts.NoReferrer());
+
+
+            
 
             var locOptions = app.ApplicationServices.GetService<IOptions<RequestLocalizationOptions>>();
             app.UseRequestLocalization(locOptions.Value);
