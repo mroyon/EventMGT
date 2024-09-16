@@ -26,6 +26,11 @@ using Web.Core.Frame.UseCases;
 using Microsoft.AspNetCore.Hosting;
 using BDO.DataAccessObjects.ExtendedEntities;
 using Microsoft.AspNet.SignalR.Client.Http;
+using System.Linq;
+using SharpCompress.Common;
+using Microsoft.AspNetCore.Http;
+using System.Security.Claims;
+using BDO.Core.DataAccessObjects.ExtendedEntities;
 
 namespace WebAdmin.Controllers
 {
@@ -36,6 +41,7 @@ namespace WebAdmin.Controllers
     [AutoValidateAntiforgeryToken]
     public class Gen_EventInfoController : BaseController
     {
+
         private readonly IGen_EventInfoUseCase _gen_EventInfoUseCase;
         private readonly Gen_EventInfoPresenter _gen_EventInfoPresenter;
 
@@ -58,6 +64,8 @@ namespace WebAdmin.Controllers
 
         private readonly IWebHostEnvironment _webHostEnvironment;
 
+
+        private readonly IHttpContextAccessor _contextAccessor;
 
         //to Enable SignalR Inj
         //private readonly IHubContext<HubUserContext> _hubuserContext;
@@ -102,7 +110,8 @@ namespace WebAdmin.Controllers
 IGen_EventFileInfoUseCase gen_EventFileInfoUseCase
 ,
 Gen_EventFileInfoPresenter gen_EventFileInfoPresenter,
-IWebHostEnvironment webHostEnvironment)
+IWebHostEnvironment webHostEnvironment,
+IHttpContextAccessor contextAccessor)
         {
             _gen_EventInfoUseCase = gen_EventInfoUseCase;
             _gen_EventInfoPresenter = gen_EventInfoPresenter;
@@ -127,6 +136,7 @@ IWebHostEnvironment webHostEnvironment)
             _gen_EventFileInfoUseCase = gen_EventFileInfoUseCase;
             _gen_EventFileInfoPresenter = gen_EventFileInfoPresenter;
             _webHostEnvironment = webHostEnvironment;
+            _contextAccessor = contextAccessor;
         }
 
 
@@ -181,6 +191,33 @@ IWebHostEnvironment webHostEnvironment)
         public async Task<IActionResult> AddGen_EventInfo(string returnUrl)
         {
             if (!User.Identity.IsAuthenticated) { return RedirectToAction("Account", "Login"); }
+
+            var claimsIdentity = (ClaimsIdentity)User.Identity;
+            var userid = claimsIdentity.Claims.Where(p => p.Type == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier").FirstOrDefault().Value;
+
+            gen_unitEntity objrequest = new gen_unitEntity();
+            objrequest.BaseSecurityParam = new BDO.Core.Base.SecurityCapsule();
+            objrequest.BaseSecurityParam.userid = Guid.Parse(userid);
+            objrequest.CurrentPage = 1;
+            objrequest.PageSize = 10;
+            objrequest.SortExpression = " unit asc ";
+            objrequest.ControllerName = "Gen_Unit";
+
+            await _gen_UnitUseCase.GetDataForDropDownByUserId(new Gen_UnitRequest(objrequest), _gen_UnitPresenter);
+            try
+            {
+                List<gen_dropdownEntity> Data = (List<gen_dropdownEntity>)(((AjaxResponse)_gen_UnitPresenter.Result).data);
+                if (Data.Count == 1)
+                {
+                    var datagen_unit = (new { Id = Data.FirstOrDefault().Id, Text = Data.FirstOrDefault().Text });
+                    ViewBag.preloadedDatagen_unit = JsonConvert.SerializeObject(datagen_unit);
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+
             return View("../General/Gen_EventInfo/AddGen_EventInfo", new gen_eventinfoEntity());
         }
 
@@ -319,7 +356,7 @@ IWebHostEnvironment webHostEnvironment)
             request.EventfileinfoList = new List<gen_eventfileinfoEntity>();
             if (request.postedFiles != null)
             {
-                foreach (var item in request.postedFiles)
+                foreach (var item in request.postedFiles.Where(q => q.eventfileid.HasValue == false).ToList())
                 {
                     var file = item.file;
                     var fileName = $"{Guid.NewGuid()}-{Path.GetFileName(file.FileName)}";
@@ -338,6 +375,15 @@ IWebHostEnvironment webHostEnvironment)
                     objFile.filetype = contentType;
                     objFile.extension = Path.GetExtension(filePath); ;
                     objFile.filesize = file.Length;
+                    objFile.filedescription = item.fileDescription;
+                    objFile.BaseSecurityParam = request.BaseSecurityParam;
+                    objGen_EventFileInfo.Add(objFile);
+                }
+                foreach (var item in request.postedFiles.Where(q => q.eventfileid.HasValue == true).ToList())
+                {
+                    gen_eventfileinfoEntity objFile = new gen_eventfileinfoEntity();
+                    objFile.eventfileid = item.eventfileid;
+                    objFile.eventid = item.eventid;
                     objFile.filedescription = item.fileDescription;
                     objFile.BaseSecurityParam = request.BaseSecurityParam;
                     objGen_EventFileInfo.Add(objFile);

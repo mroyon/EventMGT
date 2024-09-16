@@ -153,7 +153,7 @@
                                     <div id="template" class="file-row row">
                                         <!-- This is used as the file preview template -->
                                         <div class="col-1">
-                                            <span class="preview "><img data-dz-thumbnail /></span>
+                                            <span class="preview "><img height="80px" data-dz-thumbnail /></span>
                                         </div>
                                         <div class="col-3">
                                             <p class="name" data-dz-name></p>
@@ -256,7 +256,7 @@
                     previewsContainer: "#previews",
                     clickable: ".fileinput-button", // Define the element that should be used as click trigger to select files.
                     init: function () {
-                        var dz = this;
+                        var dropzoneInstance = this;
                         
 
                         var dataobject = {
@@ -275,11 +275,11 @@
                                 formData.append("eventstartdate", GetDateFromTextBox($("#eventstartdate").val()));
                                 formData.append("eventdescription", tinymce.get("eventdescription").getContent());
 
-                                if (dz.getQueuedFiles().length > 0) {
-                                    dz.processQueue();
-                                    dz.on("queuecomplete", function () {
+                                if (dropzoneInstance.getQueuedFiles().length > 0) {
+                                    dropzoneInstance.processQueue();
+                                    dropzoneInstance.on("queuecomplete", function () {
                                         let index = 0;
-                                        dz.getAcceptedFiles().forEach(file => {
+                                        dropzoneInstance.getAcceptedFiles().forEach(file => {
                                             var descriptionInput = file.previewElement.querySelector(".file-description");
                                             console.log(descriptionInput.value)
                                             if (descriptionInput.value)

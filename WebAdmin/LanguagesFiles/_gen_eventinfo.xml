@@ -36,8 +36,8 @@
          <!--  ar-kwabic (ar-kw) -->
          
           <!--  English (en-US) -->
-       <resource culture="en-us" name="eventcategoryid" value=" Event Category I D"></resource>
-       <resource culture="en-us" name="eventcategoryidRequired" value="Please provide  Event Category I D"></resource>
+       <resource culture="en-us" name="eventcategoryid" value=" Event Category"></resource>
+       <resource culture="en-us" name="eventcategoryidRequired" value="Please provide  Event Category"></resource>
        <resource culture="en-us" name="eventcode" value=" Event Code"></resource>
        <resource culture="en-us" name="eventcodeRequired" value="Please provide  Event Code"></resource>
        <resource culture="en-us" name="eventname" value=" Event Name"></resource>
@@ -50,8 +50,8 @@
        <resource culture="en-us" name="eventdescription2" value=" Event Description 2"></resource>
        <resource culture="en-us" name="eventspecialnote" value=" Event Special Note"></resource>
        <resource culture="en-us" name="isdeleted" value=" Is Deleted"></resource>
-       <resource culture="en-us" name="eventorganizedby" value=" Event Organized By"></resource>
-       <resource culture="en-us" name="eventorganizedbyRequired" value="Please provide  Event Organized By"></resource>
+       <resource culture="en-us" name="eventorganizedby" value=" Event Unit"></resource>
+       <resource culture="en-us" name="eventorganizedbyRequired" value="Please provide  Event Unit"></resource>
        <resource culture="en-us" name="ex_date1" value=" Ex Date 1"></resource>
        <resource culture="en-us" name="ex_date2" value=" Ex Date 2"></resource>
        <resource culture="en-us" name="ex_nvarchar1" value=" Ex Nvarchar 1"></resource>

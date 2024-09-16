@@ -118,12 +118,12 @@ namespace DAC.Core.DataAccessObjects.General
 
                 gen_eventfileinfoDataAccessObjects gen_EventfileinfoDataAccessObjects = new gen_eventfileinfoDataAccessObjects(this.Context);
                
-                IList<gen_eventfileinfoEntity> listAdded = gen_eventinfo.EventfileinfoList.FindAll(Item => Item.CurrentState == BaseEntity.EntityState.Added);
+                IList<gen_eventfileinfoEntity> listAdded = gen_eventinfo.EventfileinfoList.FindAll(Item => Item.eventfileid.HasValue==false);
                 foreach (var item in listAdded)
                 {
                         item.eventid=  returnCode;
                 }
-                IList<gen_eventfileinfoEntity> listUpdated = gen_eventinfo.EventfileinfoList.FindAll(Item => Item.CurrentState == BaseEntity.EntityState.Changed);
+                IList<gen_eventfileinfoEntity> listUpdated = gen_eventinfo.EventfileinfoList.FindAll(Item => Item.eventfileid.HasValue==true);
                 IList<gen_eventfileinfoEntity> listDeleted = gen_eventinfo.EventfileinfoList.FindAll(Item => Item.CurrentState == BaseEntity.EntityState.Deleted);
 
                 await gen_EventfileinfoDataAccessObjects.SaveList(Database, transaction, listAdded, listUpdated, listDeleted, cancellationToken);

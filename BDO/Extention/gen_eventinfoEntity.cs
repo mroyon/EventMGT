@@ -12,15 +12,17 @@ namespace BDO.Core.DataAccessObjects.Models
         [DataMember]
         public List<gen_eventfileinfoEntity> EventfileinfoList { get; set; } // Files from form-data
 
-        public List<EventInfoTestFile> postedFiles{ get;set;}
+        public List<EventInfoTestFile> postedFiles { get; set; }
 
     }
 }
 
-
+[DataContract]
 public class EventInfoTestFile
 {
-    public IFormFile file { get; set; }
-    public string fileDescription { get; set; }
+    [DataMember] public long? eventfileid { get; set; }
+    [DataMember] public long? eventid { get; set; }
+    [DataMember] public IFormFile file { get; set; }
+    [DataMember] public string fileDescription { get; set; }
 
 }

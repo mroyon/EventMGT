@@ -40,20 +40,10 @@ namespace Web.Core.Frame.UseCases
 			try
 			{
 				IList<gen_dropdownEntity> oblist = await BFC.Core.FacadeCreatorObjects.General.gen_unitFCC.GetFacadeCreate(_contextAccessor).GetDataForDropDownByUserId(message.Objgen_unit, cancellationToken);
-				if (oblist != null && oblist.Count > 0)
-				{
-					outputPort.GetDropDown(new Gen_UnitResponse(new AjaxResponse(oblist[0].RETURN_KEY, oblist), true, null));
-					return true;
-				}
-				else
-				{
-					Gen_UnitResponse objResponse = new Gen_UnitResponse(false, _sharedLocalizer["NO_DATA_FOUND"], new Error(
-					"404",
-					_sharedLocalizer["NO_DATA_FOUND"]));
-					_logger.LogInformation(JsonConvert.SerializeObject(objResponse));
-					outputPort.GetDropDown(objResponse);
-					return false;
-				}
+				
+				outputPort.GetDropDown(new Gen_UnitResponse(new AjaxResponse(oblist.Count>0?oblist[0].RETURN_KEY:0, oblist), true, null));
+				return true;
+				
 			}
 			catch (Exception ex)
 			{

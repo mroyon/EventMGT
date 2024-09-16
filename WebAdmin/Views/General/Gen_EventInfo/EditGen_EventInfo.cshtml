@@ -26,8 +26,8 @@
             }
 
     /* div.table .file-row:nth-child(odd) {
-                            background: #f9f9f9;
-                        } */
+                                            background: #f9f9f9;
+                                        } */
 
     /* The total progress gets shown by event listeners */
 
@@ -46,8 +46,8 @@
     /* Hide the delete button initially */
 
     /* #previews .file-row .delete {
-                    display: none;
-                } */
+                                    display: none;
+                                } */
 
     /* Hide the start and cancel buttons and show the delete button */
 
@@ -146,7 +146,7 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-6 ">
+                        <div class="col-8 ">
                             <div class="form-group">
                                 <div id="actions" class="row">
                                     <div class="col-lg-7">
@@ -162,7 +162,7 @@
                                     <div id="template" class="file-row row">
                                         <!-- This is used as the file preview template -->
                                         <div class="col-1">
-                                            <span class="preview "><img data-dz-thumbnail /></span>
+                                            <span class="preview "><img height="80px" data-dz-thumbnail /></span>
                                         </div>
                                         <div class="col-3">
                                             <p class="name" data-dz-name></p>
@@ -177,25 +177,26 @@
                                             </button>
                                         </div>
                                     </div>
+                                    <!-- This hidden input will store the file in the form submission -->
+                                    <input type="hidden" name="files" />
                                 </div>
                             </div>
-                            <!-- This hidden input will store the file in the form submission -->
-                            <input type="hidden" id="uploadedFiles" name="files" />
+                            
                         </div>
 
-                        <div class="col-6 ">
-                            <table id="fileTable" class="table table-striped table-bordered">
-                                <thead>
-                                    <tr>
-                                        <th>File Name</th>
-                                        <th>File Description</th>
-                                        <th>Actions</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                </tbody>
-                            </table>
-                        </div>
+                        @*  <div class="col-6 ">
+                        <table id="fileTable" class="table table-striped table-bordered">
+                        <thead>
+                        <tr>
+                        <th>File Name</th>
+                        <th>File Description</th>
+                        <th>Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                        </table>
+                        </div> *@
                     </div>
 
                     <div class="row btn-toolbar">
@@ -242,122 +243,87 @@
         })
     </script>
     <script>
-        $(function () {
-            var LandingGen_EventInfo = "/Gen_EventInfo/LandingGen_EventInfo";
 
-            function RedirectToLanding(params) {
-                if (typeof params != 'undefined')
-                    window.location.href = params;
-            }
+        var LandingGen_EventInfo = "/Gen_EventInfo/LandingGen_EventInfo";
 
-            // Get the template HTML and remove it from the doument
-            var previewNode = document.querySelector("#template");
-            previewNode.id = "";
-            var previewTemplate = previewNode.parentNode.innerHTML;
-            previewNode.parentNode.removeChild(previewNode);
+        function RedirectToLanding(params) {
+            if (typeof params != 'undefined')
+                window.location.href = params;
+        }
 
-            // Initialize Dropzone but prevent automatic upload
-            Dropzone.autoDiscover = false;
+        // Get the template HTML and remove it from the doument
+        var previewNode = document.querySelector("#template");
+        previewNode.id = "";
+        var previewTemplate = previewNode.parentNode.innerHTML;
+        previewNode.parentNode.removeChild(previewNode);
 
-            var myDropzone = new Dropzone(document.body,
-                {
-                    url: "/Gen_EventInfo/EditGen_EventInfo",  // API endpoint
-                    method: "post",
-                    paramName: "files",  // The name for the files being uploaded
-                    uploadMultiple: true,  // Allow multiple file uploads
-                    //maxFilesize: 5,  // Max file size in MB
-                    parallelUploads: 5,  // Number of files to upload in parallel
-                    autoProcessQueue: false,  // Don't upload files immediately
-                    addRemoveLinks: true,
-                    acceptedFiles: ".jpeg,.jpg,.png,.gif,.pdf",
-                    thumbnailWidth: 60,
-                    thumbnailHeight: 60,
-                    previewTemplate: previewTemplate,
-                    previewsContainer: "#previews",
-                    clickable: ".fileinput-button",
-                    init: function () {
-                        var dz = this;
+        // Initialize Dropzone but prevent automatic upload
+        Dropzone.autoDiscover = false;
 
-                        var dataobject = {
-                            eventid: $("#eventid").val(),
-                        };
+        var myDropzone = new Dropzone(document.body,
+            {
+                url: "/Gen_EventInfo/EditGen_EventInfo",  // API endpoint
+                method: "post",
+                paramName: "files",  // The name for the files being uploaded
+                uploadMultiple: true,  // Allow multiple file uploads
+                //maxFilesize: 5,  // Max file size in MB
+                parallelUploads: 5,  // Number of files to upload in parallel
+                autoProcessQueue: false,  // Don't upload files immediately
+                addRemoveLinks: false,
+                acceptedFiles: ".jpeg,.jpg,.png,.gif,.pdf",
+                thumbnailWidth: 60,
+                thumbnailHeight: 60,
+                previewTemplate: previewTemplate,
+                previewsContainer: "#previews",
+                clickable: ".fileinput-button",
+                init: function () {
+                    var dropzoneInstance = this;
+                    // The Dropzone instance is fully initialized here
+                    console.log("Dropzone initialized.");
+                    console.log(dropzoneInstance.files); // Should not be null here
 
-                        function LoadFiles() {
-                            ajaxPostObjectHandler("/Gen_EventInfo/GetAllFileByEventId", dataobject, function (files) {
-                                const $tableBody = $('#fileTable tbody');
-                                $tableBody.empty(); // Clear existing rows
+                    var dataobject = {
+                        eventid: $("#eventid").val(),
+                    };
 
-                                files.forEach(file => {
-                                    const $row = $('<tr></tr>');
+                    function LoadFiles() {
+                        ajaxPostObjectHandler("/Gen_EventInfo/GetAllFileByEventId", dataobject, function (files) {                            
+                            files.forEach(file => {
+                                // Mock the file structure for Dropzone
+                                var mockFile = { name: file.filetitle, size: file.filesize };
 
+                                // Manually add the file to Dropzone
+                                dropzoneInstance.emit("addedfile", mockFile);
+                                dropzoneInstance.emit("thumbnail", mockFile, file.FileUrl); // Thumbnail if available
 
-                                    const $fileNameCell = $('<td></td>').text(file.filetitle);
-                                    const $fileNameDescription = $('<td></td>').text(file.filedescription);
-
-                                    const $actionsCell = $('<td></td>');
-
-                                    const $downloadLink = $('<a class="btn btn-primary btn-sm""><i class="fa fa-download" aria-hidden="true"></i></a>').attr({
-                                        href: file.FileUrl,
-                                        //text: 'Download',
-                                        download: file.filetitle
-                                    });
-
-                                    const $editButton = $('<button type="button" class="btn btn-danger btn-sm""><i class="fa fa-trash" aria-hidden="true"></i></button>').on('click', function () {
-                                        deleteFile(file);
-                                    });
-
-                                    $actionsCell.append($downloadLink).append(' ').append($editButton);
+                                // Make the file marked as uploaded
+                                dropzoneInstance.emit("complete", mockFile);
+                                dropzoneInstance.files.push(mockFile);
 
 
-                                    $row.append($fileNameCell).append($fileNameDescription).append($actionsCell);
-                                    $tableBody.append($row);
-                                });
+                                // Set a custom attribute or flag to identify it as an old file
+                                mockFile.isOld = true;
+                                mockFile.eventfileid = file.eventfileid;
+                                mockFile.eventid = file.eventid;
+                                mockFile.FileUrl = file.FileUrl;
+                                mockFile.filename = file.filename;
 
-                            }, true);
-                        }
+                                // Set the file description if available (assuming you store this info on the server)
+                                var descriptionInput = $(mockFile.previewElement).find(".file-description");
+                                descriptionInput.val(file.filedescription || ""); // Load saved description
 
-                        LoadFiles();
+                               
 
-                        // On form submission
-                        document.querySelector("#btnEditGen_EventInfo").addEventListener("click", function (e) {
-                            e.preventDefault();
-                            if (_cusFormValidate('frmEditGen_EventInfo')) {
+                            });
 
-                                var formData = new FormData();
-                                formData.append("eventid", $("#eventid").val());
-                                formData.append("eventcategoryid", $("#eventcategoryid").val());
-                                formData.append("eventorganizedby", $("#eventorganizedby").val());
-                                formData.append("eventcode", $("#eventcode").val());
-                                formData.append("eventname", $("#eventname").val());
-                                formData.append("eventstartdate", GetDateFromTextBox($("#eventstartdate").val()));
-                                formData.append("eventdescription", tinymce.get("eventdescription").getContent());
+                        }, true);
+                    }
 
-                                if (dz.getQueuedFiles().length > 0) {
-                                    dz.processQueue();
-                                    dz.on("queuecomplete", function () {
-                                        let index = 0;
-                                        dz.getAcceptedFiles().forEach(file => {
-                                            var descriptionInput = file.previewElement.querySelector(".file-description");
-                                            console.log(descriptionInput.value)
-                                            if (descriptionInput.value)
-                                                formData.append("postedFiles[" + index + "].fileDescription", descriptionInput.value);
-                                            else
-                                                formData.append("postedFiles[" + index + "].fileDescription", "");
-                                            formData.append("postedFiles[" + index + "].file", file);
-                                            index++;
-                                        });
+                    LoadFiles();
 
-                                        SubmitFormData(formData);
-                                    });
-                                }
-                                else {
-                                    SubmitFormData(formData);
-                                }
-                            }
-
-                        });
-
-                        function deleteFile(file) {
+                    dropzoneInstance.on("removedfile", function (file) {
+                        if (file.isOld) {
+                            // Handle old file deletion on the server
                             console.log(file);
                             var dataobject = {
                                 eventfileid: file.eventfileid,
@@ -366,24 +332,83 @@
                                 filename: file.filename
                             };
                             ajaxPostObjectHandler("/Gen_EventInfo/DeleteGen_EventFileInfo", dataobject, function (response) {
-                                LoadFiles();
+                                //LoadFiles();
                             }, true);
-                        }
 
-                        function SubmitFormData(formData) {
-                            console.log(formData);
-                            ajaxPostObjectHandlerWithFiles("/Gen_EventInfo/EditGen_EventInfo", formData, function (response) {
-                                if (response._ajaxresponse.responsestatus == "success") {
-                                    showSuccessAlert("Success", response._ajaxresponse.responsetext, "OK", RedirectToLanding, LandingGen_EventInfo);
+                        }
+                    });
+
+                    // On form submission
+                    document.querySelector("#btnEditGen_EventInfo").addEventListener("click", function (e) {
+                        e.preventDefault();
+                        if (_cusFormValidate('frmEditGen_EventInfo')) {
+                            
+
+                            var formData = new FormData();
+                            formData.append("eventid", $("#eventid").val());
+                            formData.append("eventcategoryid", $("#eventcategoryid").val());
+                            formData.append("eventorganizedby", $("#eventorganizedby").val());
+                            formData.append("eventcode", $("#eventcode").val());
+                            formData.append("eventname", $("#eventname").val());
+                            formData.append("eventstartdate", GetDateFromTextBox($("#eventstartdate").val()));
+                            formData.append("eventdescription", tinymce.get("eventdescription").getContent());
+
+                            // Get all files (new and old)
+                            var allFiles = dropzoneInstance.files;  // This contains all files (new + old)
+                           
+                            let index = 0;
+                            allFiles.forEach(file => {
+                                if (file.eventfileid) //Handle Old Files
+                                {
+                                    var descriptionInput = file.previewElement.querySelector(".file-description");
+                                    if (descriptionInput.value)
+                                        formData.append("postedFiles[" + index + "].fileDescription", descriptionInput.value);
+                                    else
+                                        formData.append("postedFiles[" + index + "].fileDescription", "");
+
+                                    formData.append("postedFiles[" + index + "].eventfileid", file.eventfileid);
+                                    formData.append("postedFiles[" + index + "].eventfileid", file.eventid);
+                                    index++;
                                 }
-                            }, false);
+                            })
+
+                            if (dropzoneInstance.getQueuedFiles().length > 0) {
+                                dropzoneInstance.processQueue();
+                                dropzoneInstance.on("queuecomplete", function () {
+                                    dropzoneInstance.getAcceptedFiles().forEach(file => {
+                                        var descriptionInput = file.previewElement.querySelector(".file-description");
+                                        if (descriptionInput.value)
+                                            formData.append("postedFiles[" + index + "].fileDescription", descriptionInput.value);
+                                        else
+                                            formData.append("postedFiles[" + index + "].fileDescription", "");
+                                        formData.append("postedFiles[" + index + "].file", file);
+                                        index++;
+                                    });
+                                   SubmitFormData(formData);
+                                });
+                            }
+                            else {
+                                  SubmitFormData(formData);
+                            }
                         }
 
+                    });
+                    function SubmitFormData(formData) {
+                        console.log(formData);
+                        ajaxPostObjectHandlerWithFiles("/Gen_EventInfo/EditGen_EventInfo", formData, function (response) {
+                            if (response._ajaxresponse.responsestatus == "success") {
+                                showSuccessAlert("Success", response._ajaxresponse.responsetext, "OK", RedirectToLanding, LandingGen_EventInfo);
+                            }
+                        }, false);
                     }
 
-                });
 
-        });
+                }
+
+            });
+
+        
+
 
 
     </script>
