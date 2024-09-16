@@ -7,12 +7,20 @@
     ViewData["Title"] = "View Gen  Event Info List";
 }
 
+<style>
+    .customcardheader{
+        font-size: xx-large !important;
+        font-weight: 700 !important;
+    }
+</style>
 
 <div class="row">
     <div class="col-md-12">
         <div class="card">
-            <div class="card-footer">
-                <h5 class="card-title">@SharedLocalizer.GetLocalizedHtmlString("GEN_EVENTINFOY_LIST")</h5>
+           <div class="card-header ">
+                <div class="col d-flex justify-content-center ">
+                    <h6 class="card-title customcardheader">Event Information List</h6>
+                </div>
             </div>
             <!-- /.card-header -->
 

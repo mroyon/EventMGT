@@ -67,14 +67,24 @@
     .error.text-danger {
         display: none;
     }
+
+    
+    .customcardheader {
+        font-size: xx-large !important;
+        font-weight: 700 !important;
+    }
+
+
 </style>
 
 
 <div class="row">
     <div class="col-md-12">
         <div class="card">
-            <div class="card-footer">
-                <h5 class="card-title">@SharedLocalizer.GetLocalizedHtmlString("EDIT_GEN_EVENTINFO")</h5>
+            <div class="card-header ">
+                <div class="col d-flex justify-content-center ">
+                    <h6 class="card-title customcardheader">Event Information Edit Form</h6>
+                </div>
             </div>
             <!-- /.card-header -->
             <form method="POST" id="frmEditGen_EventInfo" class="my-login-validation" novalidate="" autocomplete="off" enctype="multipart/form-data">
@@ -96,7 +106,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="row">
+                    <div class="row" hidden>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="labelNormal required " asp-for="eventcode"></label>
