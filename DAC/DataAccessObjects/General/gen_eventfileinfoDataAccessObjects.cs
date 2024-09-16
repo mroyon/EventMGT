@@ -291,7 +291,7 @@ namespace DAC.Core.DataAccessObjects.General
             long returnCode = -99;
 
             const string SPInsert = "gen_eventfileinfo_Ins";
-            const string SPUpdate = "gen_eventfileinfo_Upd";
+            const string SPUpdate = "gen_eventfileinfo_Upd_ext";
             const string SPDelete = "gen_eventfileinfo_Del";
 
             

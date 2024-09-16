@@ -26,6 +26,8 @@ using Web.Core.Frame.UseCases;
 using Microsoft.AspNetCore.Hosting;
 using BDO.DataAccessObjects.ExtendedEntities;
 using Microsoft.AspNet.SignalR.Client.Http;
+using System.Linq;
+using SharpCompress.Common;
 
 namespace WebAdmin.Controllers
 {
@@ -319,7 +321,7 @@ IWebHostEnvironment webHostEnvironment)
             request.EventfileinfoList = new List<gen_eventfileinfoEntity>();
             if (request.postedFiles != null)
             {
-                foreach (var item in request.postedFiles)
+                foreach (var item in request.postedFiles.Where(q => q.eventfileid.HasValue == false).ToList())
                 {
                     var file = item.file;
                     var fileName = $"{Guid.NewGuid()}-{Path.GetFileName(file.FileName)}";
@@ -338,6 +340,15 @@ IWebHostEnvironment webHostEnvironment)
                     objFile.filetype = contentType;
                     objFile.extension = Path.GetExtension(filePath); ;
                     objFile.filesize = file.Length;
+                    objFile.filedescription = item.fileDescription;
+                    objFile.BaseSecurityParam = request.BaseSecurityParam;
+                    objGen_EventFileInfo.Add(objFile);
+                }
+                foreach (var item in request.postedFiles.Where(q => q.eventfileid.HasValue == true).ToList())
+                {
+                    gen_eventfileinfoEntity objFile = new gen_eventfileinfoEntity();
+                    objFile.eventfileid = item.eventfileid;
+                    objFile.eventid = item.eventid;
                     objFile.filedescription = item.fileDescription;
                     objFile.BaseSecurityParam = request.BaseSecurityParam;
                     objGen_EventFileInfo.Add(objFile);

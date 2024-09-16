@@ -20,6 +20,8 @@ namespace BDO.Core.DataAccessObjects.Models
 
 public class EventInfoTestFile
 {
+    public long? eventfileid { get; set; }
+    public long? eventid { get; set; }
     public IFormFile file { get; set; }
     public string fileDescription { get; set; }
 
