@@ -7,19 +7,67 @@
     ViewData["Title"] = "Edit View Gen  Event Info";
 }
 
- <style>
-        
+<style>
+    /* Mimic table appearance */
 
-        /* Styling for remove button */
-        .dz-remove {
-            background-color: red;
-            color: white;
-            padding: 5px;
-            cursor: pointer;
-            border: none;
-            border-radius: 3px;
+    div.table {
+        display: table;
+    }
+
+        div.table .file-row {
+            display: table-row;
         }
-    </style>
+
+            div.table .file-row > div {
+                display: table-cell;
+                vertical-align: top;
+                border-top: 1px solid #ddd;
+                padding: 8px;
+            }
+
+    /* div.table .file-row:nth-child(odd) {
+                            background: #f9f9f9;
+                        } */
+
+    /* The total progress gets shown by event listeners */
+
+    #total-progress {
+        opacity: 0;
+        transition: opacity 0.3s linear;
+    }
+
+    /* Hide the progress bar when finished */
+
+    #previews .file-row.dz-success .progress {
+        opacity: 0;
+        transition: opacity 0.3s linear;
+    }
+
+    /* Hide the delete button initially */
+
+    /* #previews .file-row .delete {
+                    display: none;
+                } */
+
+    /* Hide the start and cancel buttons and show the delete button */
+
+    #previews .file-row.dz-success .start,
+    #previews .file-row.dz-success .cancel {
+        display: none;
+    }
+
+    #previews .file-row .dz-success .delete {
+        display: block;
+    }
+
+    .dz-remove {
+        display: none;
+    }
+
+    .error.text-danger {
+        display: none;
+    }
+</style>
 
 
 <div class="row">
@@ -58,7 +106,7 @@
                         </div>
                     </div>
                     <div class="row ">
-                        
+
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="labelNormal required " asp-for="eventname"></label>
@@ -84,7 +132,7 @@
 
 
                         </div>
-                      
+
                     </div>
                     <div class="row ">
                         <div class="col-md-12">
@@ -94,18 +142,41 @@
                                 <span asp-validation-for="eventdescription" class="text-danger"></span>
                             </div>
                         </div>
-                        
+
                     </div>
-                    
+
                     <div class="row">
                         <div class="col-6 ">
                             <div class="form-group">
-                                <label class="labelNormal  ">Files</label>
-                                <div id="myDropzone" class="dropzone">
-                                    <div class="dz-message">
-                                        <h3>Drag and drop files here or click to upload</h3>
+                                <div id="actions" class="row">
+                                    <div class="col-lg-7">
+                                        <!-- The fileinput-button span is used to style the file input field as button -->
+                                        <span class="btn btn-success fileinput-button">
+                                            <i class="glyphicon glyphicon-plus"></i>
+                                            <span>Add files...</span>
+                                        </span>
                                     </div>
+                                </div>
 
+                                <div class="table table-striped files" id="previews">
+                                    <div id="template" class="file-row">
+                                        <!-- This is used as the file preview template -->
+                                        <div>
+                                            <span class="preview"><img data-dz-thumbnail /></span>
+                                        </div>
+                                        <div>
+                                            <p class="name" data-dz-name></p>
+                                            <strong class="error text-danger" data-dz-errormessage></strong>
+                                        </div>
+                                        <div>
+                                            <input type="text" class="file-description form-control" name="fileDescription" placeholder="Enter file description" />
+                                        </div>
+                                        <div>
+                                            <button data-dz-remove class="btn btn-danger btn-sm delete">
+                                                <i class="fa fa-trash" aria-hidden="true"></i>
+                                            </button>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                             <!-- This hidden input will store the file in the form submission -->
@@ -126,7 +197,7 @@
                             </table>
                         </div>
                     </div>
-                   
+
                     <div class="row btn-toolbar">
                         <div class="col-md-6 ">
                             <div class="form-group">
@@ -154,8 +225,6 @@
     <!-- /.card -->
 </div>
 <!-- /.col -->
-
-
 @section Scripts {
     <script src="~/lib/customjs/Gen_EventInfo/Gen_EventInfo.js"></script>
     <script>
@@ -173,140 +242,153 @@
         })
     </script>
     <script>
-        var LandingGen_EventInfo = "/Gen_EventInfo/LandingGen_EventInfo";
+        $(function () {
+            var LandingGen_EventInfo = "/Gen_EventInfo/LandingGen_EventInfo";
 
-        function RedirectToLanding(params) {
-            if (typeof params != 'undefined')
-                window.location.href = params;
-        }
-        // Initialize Dropzone but prevent automatic upload
-        Dropzone.autoDiscover = false;
- 
-        var myDropzone = new Dropzone("#myDropzone",
-            {
-                url: "/Gen_EventInfo/EditGen_EventInfo",  // API endpoint
-                method: "post",
-                paramName: "files",  // The name for the files being uploaded
-                uploadMultiple: true,  // Allow multiple file uploads
-                //maxFilesize: 5,  // Max file size in MB
-                parallelUploads: 5,  // Number of files to upload in parallel
-                autoProcessQueue: false,  // Don't upload files immediately
-                addRemoveLinks: true,
-                acceptedFiles: ".jpeg,.jpg,.png,.gif,.pdf",             
-                init: function () {
-                    var dz = this;
+            function RedirectToLanding(params) {
+                if (typeof params != 'undefined')
+                    window.location.href = params;
+            }
 
-                    dz.on("addedfile", function(file) {
-                          var descriptionInput = document.createElement("input");
-                          descriptionInput.setAttribute("type", "text");
-                          descriptionInput.setAttribute("name", "fileDescription");
-                          descriptionInput.setAttribute("class", "file-description");
-                          descriptionInput.setAttribute("placeholder", "Enter file description");
-                          file.previewElement.appendChild(descriptionInput);
+            // Get the template HTML and remove it from the doument
+            var previewNode = document.querySelector("#template");
+            previewNode.id = "";
+            var previewTemplate = previewNode.parentNode.innerHTML;
+            previewNode.parentNode.removeChild(previewNode);
+
+            // Initialize Dropzone but prevent automatic upload
+            Dropzone.autoDiscover = false;
+
+            var myDropzone = new Dropzone(document.body,
+                {
+                    url: "/Gen_EventInfo/EditGen_EventInfo",  // API endpoint
+                    method: "post",
+                    paramName: "files",  // The name for the files being uploaded
+                    uploadMultiple: true,  // Allow multiple file uploads
+                    //maxFilesize: 5,  // Max file size in MB
+                    parallelUploads: 5,  // Number of files to upload in parallel
+                    autoProcessQueue: false,  // Don't upload files immediately
+                    addRemoveLinks: true,
+                    acceptedFiles: ".jpeg,.jpg,.png,.gif,.pdf",
+                    thumbnailWidth: 60,
+                    thumbnailHeight: 60,
+                    previewTemplate: previewTemplate,
+                    previewsContainer: "#previews",
+                    clickable: ".fileinput-button", // Define the element that should be used as click trigger to select files.
+                    init: function () {
+                        var dz = this;
+
+                        // dz.on("addedfile", function(file) {
+                        //       var descriptionInput = document.createElement("input");
+                        //       descriptionInput.setAttribute("type", "text");
+                        //       descriptionInput.setAttribute("name", "fileDescription");
+                        //       descriptionInput.setAttribute("class", "file-description");
+                        //       descriptionInput.setAttribute("placeholder", "Enter file description");
+                        //       file.previewElement.appendChild(descriptionInput);
+                        //     });
+
+                        var dataobject = {
+                            eventid: $("#eventid").val(),
+                        };
+
+                        function LoadFiles() {
+                            ajaxPostObjectHandler("/Gen_EventInfo/GetAllFileByEventId", dataobject, function (files) {
+                                const $tableBody = $('#fileTable tbody');
+                                $tableBody.empty(); // Clear existing rows
+
+                                files.forEach(file => {
+                                    const $row = $('<tr></tr>');
+                                    const $fileNameCell = $('<td></td>').text(file.filetitle);
+                                    const $fileNameDescription = $('<td></td>').text(file.filedescription);
+
+                                    const $actionsCell = $('<td></td>');
+
+                                    const $downloadLink = $('<a class="btn btn-primary btn-sm""></a>').attr({
+                                        href: file.FileUrl,
+                                        text: 'Download',
+                                        download: file.FileUrl
+                                    }).text('Download');
+
+                                    const $editButton = $('<button type="button" class="btn btn-danger btn-sm""></button>').text('Delete').on('click', function () {
+                                        deleteFile(file);
+                                    });
+
+                                    $actionsCell.append($downloadLink).append(' ').append($editButton);
+                                    $row.append($fileNameCell).append($fileNameDescription).append($actionsCell);
+                                    $tableBody.append($row);
+                                });
+
+                            }, true);
+                        }
+
+                        LoadFiles();
+
+                        // On form submission
+                        document.querySelector("#btnEditGen_EventInfo").addEventListener("click", function (e) {
+                            e.preventDefault();
+                            if (_cusFormValidate('frmEditGen_EventInfo')) {
+
+                                var formData = new FormData();
+                                formData.append("eventid", $("#eventid").val());
+                                formData.append("eventcategoryid", $("#eventcategoryid").val());
+                                formData.append("eventorganizedby", $("#eventorganizedby").val());
+                                formData.append("eventcode", $("#eventcode").val());
+                                formData.append("eventname", $("#eventname").val());
+                                formData.append("eventstartdate", GetDateFromTextBox($("#eventstartdate").val()));
+                                formData.append("eventdescription", tinymce.get("eventdescription").getContent());
+
+                                if (dz.getQueuedFiles().length > 0) {
+                                    dz.processQueue();
+                                    dz.on("queuecomplete", function () {
+                                        let index = 0;
+                                        dz.getAcceptedFiles().forEach(file => {
+                                            var descriptionInput = file.previewElement.querySelector(".file-description");
+                                            console.log(descriptionInput.value)
+                                            if (descriptionInput.value)
+                                                formData.append("postedFiles[" + index + "].fileDescription", descriptionInput.value);
+                                            else
+                                                formData.append("postedFiles[" + index + "].fileDescription", "");
+                                            formData.append("postedFiles[" + index + "].file", file);
+                                            index++;
+                                        });
+
+                                        SubmitFormData(formData);
+                                    });
+                                }
+                                else {
+                                    SubmitFormData(formData);
+                                }
+                            }
+
                         });
 
-                    var dataobject = {
-                        eventid: $("#eventid").val(),
-                    };
-
-                    function LoadFiles(){
-                        ajaxPostObjectHandler("/Gen_EventInfo/GetAllFileByEventId", dataobject, function (files) {
-                            const $tableBody = $('#fileTable tbody');
-                            $tableBody.empty(); // Clear existing rows
-
-                            files.forEach(file => {
-                                const $row = $('<tr></tr>');
-                                const $fileNameCell = $('<td></td>').text(file.filetitle);
-                                const $fileNameDescription = $('<td></td>').text(file.filedescription);
-
-                                const $actionsCell = $('<td></td>');
-
-                                const $downloadLink = $('<a class="btn btn-primary btn-sm""></a>').attr({
-                                    href: file.FileUrl,
-                                    text: 'Download',
-                                    download: file.FileUrl
-                                }).text('Download');
-                        
-                                const $editButton = $('<button type="button" class="btn btn-danger btn-sm""></button>').text('Delete').on('click', function() {
-                                    deleteFile(file);
-                                });
-
-                                $actionsCell.append($downloadLink).append(' ').append($editButton);
-                                $row.append($fileNameCell).append($fileNameDescription).append($actionsCell);
-                                $tableBody.append($row);
-                            });
-                        
-                        }, true);
-                    }
-                   
-                    LoadFiles();
-                   
-                    // On form submission
-                    document.querySelector("#btnEditGen_EventInfo").addEventListener("click", function (e) {
-                        e.preventDefault();
-
-                        var formData = new FormData();
-                        formData.append("eventid", $("#eventid").val());
-                        formData.append("eventcategoryid", $("#eventcategoryid").val());
-                        formData.append("eventorganizedby", $("#eventorganizedby").val());
-                        formData.append("eventcode", $("#eventcode").val());
-                        formData.append("eventname", $("#eventname").val());
-                        formData.append("eventstartdate", GetDateFromTextBox($("#eventstartdate").val()));
-                        // formData.append("eventenddate", $("#eventenddate").val());                        
-                        formData.append("eventdescription", tinymce.get("eventdescription").getContent());
-                        // formData.append("eventdescription1", tinymce.get("eventdescription1").getContent());
-                        // formData.append("eventdescription2", tinymce.get("eventdescription2").getContent());
-                        // formData.append("eventspecialnote", tinymce.get("eventspecialnote").getContent());
-
-                        if (dz.getQueuedFiles().length > 0) {
-                            dz.processQueue();
-                            dz.on("queuecomplete", function () {
-                                let index=0;
-                                dz.getAcceptedFiles().forEach(file => {
-                                    var descriptionInput = file.previewElement.querySelector(".file-description");
-                                    console.log(descriptionInput.value)
-                                    if(descriptionInput.value)
-                                        formData.append("postedFiles["+index+"].fileDescription", descriptionInput.value);
-                                    else
-                                           formData.append("postedFiles["+index+"].fileDescription", "");
-                                    formData.append("postedFiles["+index+"].file", file);
-                                    index++;
-                                });
-
-                                SubmitFormData(formData);
-                            });
-                        }
-                        else {
-                            SubmitFormData(formData);
+                        function deleteFile(file) {
+                            console.log(file);
+                            var dataobject = {
+                                eventfileid: file.eventfileid,
+                                eventid: file.eventid,
+                                FileUrl: file.FileUrl,
+                                filename: file.filename
+                            };
+                            ajaxPostObjectHandler("/Gen_EventInfo/DeleteGen_EventFileInfo", dataobject, function (response) {
+                                LoadFiles();
+                            }, true);
                         }
 
-                    });
+                        function SubmitFormData(formData) {
+                            console.log(formData);
+                            ajaxPostObjectHandlerWithFiles("/Gen_EventInfo/EditGen_EventInfo", formData, function (response) {
+                                if (response._ajaxresponse.responsestatus == "success") {
+                                    showSuccessAlert("Success", response._ajaxresponse.responsetext, "OK", RedirectToLanding, LandingGen_EventInfo);
+                                }
+                            }, false);
+                        }
 
-                    function  deleteFile(file) {
-                        console.log(file);
-                        var dataobject = {
-                            eventfileid:file.eventfileid,
-                            eventid: file.eventid,
-                            FileUrl:file.FileUrl ,
-                            filename:file.filename
-                        };
-                        ajaxPostObjectHandler("/Gen_EventInfo/DeleteGen_EventFileInfo", dataobject, function (response) {
-                                 LoadFiles();
-                        }, true);
                     }
 
-                    function SubmitFormData(formData) {
-                        console.log(formData);
-                        ajaxPostObjectHandlerWithFiles("/Gen_EventInfo/EditGen_EventInfo", formData, function (response) {
-                            if (response._ajaxresponse.responsestatus == "success") {
-                                showSuccessAlert("Success", response._ajaxresponse.responsetext, "OK", RedirectToLanding, LandingGen_EventInfo);
-                            }
-                        }, false);
-                    }
+                });
 
-                }
-
-            });
+        });
 
 
     </script>

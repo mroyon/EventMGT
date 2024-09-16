@@ -206,26 +206,23 @@ IWebHostEnvironment webHostEnvironment)
                 foreach (var item in request.postedFiles)
                 {
                     var file = item.file;
+                    var fileName = $"{Guid.NewGuid()}-{Path.GetFileName(file.FileName)}";
+                    var filePath = Path.Combine(_webHostEnvironment.WebRootPath, "uploads", fileName);
 
-                    var UniqueFileName = Guid.NewGuid().ToString();
-
-                    // Save the file (example)
-                    var filePath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/uploads", file.FileName);
-                    var fileExtension = Path.GetExtension(filePath);
-
-                    using (var stream = new FileStream($"{UniqueFileName}{fileExtension}", FileMode.Create))
+                    using (var stream = new FileStream(filePath, FileMode.Create))
                     {
                         await file.CopyToAsync(stream);
                     }
 
                     gen_eventfileinfoEntity objFile = new gen_eventfileinfoEntity();
-                    objFile.filename = $"{UniqueFileName}{fileExtension}";
+                    objFile.filename = fileName;
                     objFile.filetitle = file.FileName;
                     string contentType = string.Empty;
                     new FileExtensionContentTypeProvider().TryGetContentType(file.FileName, out contentType);
                     objFile.filetype = contentType;
-                    objFile.extension = fileExtension;
+                    objFile.extension = Path.GetExtension(filePath); ;
                     objFile.filesize = file.Length;
+                    objFile.filedescription = item.fileDescription;
                     objFile.BaseSecurityParam = request.BaseSecurityParam;
                     objGen_EventFileInfo.Add(objFile);
                 }
@@ -323,7 +320,6 @@ IWebHostEnvironment webHostEnvironment)
             {
                 foreach (var item in request.postedFiles)
                 {
-
                     var file = item.file;
                     var fileName = $"{Guid.NewGuid()}-{Path.GetFileName(file.FileName)}";
                     var filePath = Path.Combine(_webHostEnvironment.WebRootPath, "uploads", fileName);

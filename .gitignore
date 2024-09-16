@@ -8,7 +8,7 @@
 /WebAdmin/wwwroot/lib/**
 
 
-/WebAdmin/wwwroot/uploads
+/WebAdmin/wwwroot/uploads/**
 
 
 # User-specific files
