@@ -349,6 +349,7 @@
                     document.querySelector("#btnEditGen_EventInfo").addEventListener("click", function (e) {
                         e.preventDefault();
                         if (_cusFormValidate('frmEditGen_EventInfo')) {
+                        $.blockUI();
                             
 
                             var formData = new FormData();
@@ -381,7 +382,7 @@
 
                             if (dropzoneInstance.getQueuedFiles().length > 0) {
                                 dropzoneInstance.processQueue();
-                                dropzoneInstance.on("queuecomplete", function () {
+                                //dropzoneInstance.on("queuecomplete", function () {
                                     dropzoneInstance.getAcceptedFiles().forEach(file => {
                                         var descriptionInput = file.previewElement.querySelector(".file-description");
                                         if (descriptionInput.value)
@@ -392,7 +393,7 @@
                                         index++;
                                     });
                                    SubmitFormData(formData);
-                                });
+                                //});
                             }
                             else {
                                   SubmitFormData(formData);
@@ -401,8 +402,9 @@
 
                     });
                     function SubmitFormData(formData) {
-                        console.log(formData);
+                        
                         ajaxPostObjectHandlerWithFiles("/Gen_EventInfo/EditGen_EventInfo", formData, function (response) {
+                            $.unblockUI();
                             if (response._ajaxresponse.responsestatus == "success") {
                                 showSuccessAlert("Success", response._ajaxresponse.responsetext, "OK", RedirectToLanding, LandingGen_EventInfo);
                             }

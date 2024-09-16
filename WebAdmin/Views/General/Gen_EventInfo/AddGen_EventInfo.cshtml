@@ -273,6 +273,7 @@
                         document.querySelector("#btnAddGen_EventInfo").addEventListener("click", function (e) {
                             e.preventDefault();
                             if (_cusFormValidate('frmAddGen_EventInfo')) {
+                                $.blockUI();
                                 var formData = new FormData();
                                 formData.append("eventid", $("#eventid").val());
                                 formData.append("eventcategoryid", $("#eventcategoryid").val());
@@ -283,7 +284,7 @@
 
                                 if (dropzoneInstance.getQueuedFiles().length > 0) {
                                     dropzoneInstance.processQueue();
-                                    dropzoneInstance.on("queuecomplete", function () {
+                                  //  dropzoneInstance.on("queuecomplete", function () {
                                         let index = 0;
                                         dropzoneInstance.getAcceptedFiles().forEach(file => {
                                             var descriptionInput = file.previewElement.querySelector(".file-description");
@@ -297,7 +298,7 @@
                                         });
 
                                         SubmitFormData(formData);
-                                    });
+                                 //   });
                                 }
                                 else {
                                     SubmitFormData(formData);
@@ -307,7 +308,9 @@
                         });
 
                         function SubmitFormData(formData) {
+                            
                             ajaxPostObjectHandlerWithFiles("/Gen_EventInfo/AddGen_EventInfo", formData, function (response) {
+                                $.unblockUI();
                                 if (response._ajaxresponse.responsestatus == "success") {
                                     showSuccessAlert("Success", response._ajaxresponse.responsetext, "OK", RedirectToLanding, LandingGen_EventInfo);
                                 }

@@ -234,6 +234,8 @@ IHttpContextAccessor contextAccessor)
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
+        [DisableRequestSizeLimit]
+
         public async Task<IActionResult> AddGen_EventInfo([FromForm] gen_eventinfoEntity request)
         {
             ModelState.Remove("eventcode");
@@ -348,6 +350,7 @@ IHttpContextAccessor contextAccessor)
         /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [DisableRequestSizeLimit]
         public async Task<IActionResult> EditGen_EventInfo([FromForm] gen_eventinfoEntity request)
         {
             if (!User.Identity.IsAuthenticated) { return RedirectToAction("Account", "Login"); }
