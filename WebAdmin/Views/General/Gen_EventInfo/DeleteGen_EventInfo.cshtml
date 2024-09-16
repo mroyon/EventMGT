@@ -20,14 +20,14 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="labelNormal required " asp-for="eventcategoryid"></label>
-                                @await Component.InvokeAsync("S2Gen_EventCategory", new { selectid = "eventcategoryid", preloaded = ViewBag.preloadedDatagen_eventcategory, isReadOnly = false, multiple = false, isRequired = true, pkey = -99 })
+                                @await Component.InvokeAsync("S2Gen_EventCategory", new { selectid = "eventcategoryid", preloaded = ViewBag.preloadedDatagen_eventcategory, isReadOnly = true, multiple = false, isRequired = true, pkey = -99 })
                                 <span asp-validation-for="eventcategoryid" class="eventcategoryiderror text-danger " id="eventcategoryiderror"></span>
                             </div>
                         </div>
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="labelNormal required " asp-for="eventorganizedby"></label>
-                                @await Component.InvokeAsync("S2FilterGen_Unit", new { selectid = "eventorganizedby", preloaded = ViewBag.preloadedDatagen_unit, isReadOnly = false, multiple = false, isRequired = true, pkey = -99 })
+                                @await Component.InvokeAsync("S2FilterGen_Unit", new { selectid = "eventorganizedby", preloaded = ViewBag.preloadedDatagen_unit, isReadOnly = true, multiple = false, isRequired = true, pkey = -99 })
                                 <span asp-validation-for="eventorganizedby" class="eventorganizedbyerror text-danger " id="eventorganizedbyerror"></span>
                             </div>
                         </div>
@@ -46,7 +46,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="labelNormal required " asp-for="eventname"></label>
-                                <input asp-for="eventname" class="form-control" required></input>
+                                <input asp-for="eventname" class="form-control" required readonly></input>
                                 <span asp-validation-for="eventname" class="eventnameerror text-danger " id="eventnameerror"></span>
                             </div>
                         </div>
@@ -55,8 +55,8 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="labelNormal required " asp-for="eventstartdate"></label>
-                                <div class="input-group date bs-datepicker">
-                                    <input asp-for="eventstartdate" class="form-control " type="text" placeholder="dd/mm/yyyy" required />
+                                <div class="input-group">
+                                    <input asp-for="eventstartdate" class="form-control " type="text" placeholder="dd/mm/yyyy" required readonly/>
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">
                                             <i class="far fa-calendar-alt"></i>
@@ -102,7 +102,7 @@
                                             <strong class="error text-danger" data-dz-errormessage></strong>
                                         </div>
                                         <div class="col-7">
-                                            <input type="text" class="file-description form-control" name="fileDescription" placeholder="Enter file description" />
+                                            <input type="text" class="file-description form-control" name="fileDescription" placeholder="Enter file description" readonly />
                                         </div>
                                        @*  <div class="col-1">
                                             <button data-dz-remove class="btn btn-danger btn-sm delete">
