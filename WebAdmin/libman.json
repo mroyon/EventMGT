@@ -265,6 +265,14 @@
     {
       "library": "bootstrap-datepicker@1.9.0",
       "destination": "wwwroot/lib/bootstrap-datepicker/"
+    },
+    {
+      "library": "magnific-popup.js@1.2.0",
+      "destination": "wwwroot/lib/magnific-popup.js/"
+    },
+    {
+      "library": "lightbox2@2.11.4",
+      "destination": "wwwroot/lib/lightbox2/"
     }
   ]
 }

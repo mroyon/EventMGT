@@ -325,11 +325,11 @@ namespace Web.Core.Frame.UseCases
                 IList<gen_eventinfoEntity> oblist = await BFC.Core.FacadeCreatorObjects.General.gen_eventinfoFCC.GetFacadeCreate(_contextAccessor)
                 .SearchEventInfo(message.Objgen_eventinfo, cancellationToken);
 
-                //List<dataTableButtonModel> btnActionList = new List<dataTableButtonModel>();
+                List<dataTableButtonModel> btnActionList = new List<dataTableButtonModel>();
                 //btnActionList.Add(new dataTableButtonModel(basicCRUDButtons.New_GET));
                 //btnActionList.Add(new dataTableButtonModel(basicCRUDButtons.Edit_GET));
                 //btnActionList.Add(new dataTableButtonModel(basicCRUDButtons.Delete_GET));
-                //btnActionList.Add(new dataTableButtonModel(basicCRUDButtons.GetSingle_GET));
+                btnActionList.Add(new dataTableButtonModel(basicCRUDButtons.GetSingle_GET));
                 //btnActionList.Add(new dataTableButtonModel(basicCRUDButtons.CUSTOM, _sharedLocalizer["PROCESS"], "StpOrganizationEntity/userprocess"));
                 //btnActionList.Add(new dataTableButtonModel(basicCRUDButtons.CUSTOM, _sharedLocalizer["SEARCH"], "StpOrganizationEntity/usersearch"));
 
@@ -349,8 +349,8 @@ namespace Web.Core.Frame.UseCases
                                 t.isdeleted,
                                 t.eventorganizedby,
                                 t.ex_nvarchar3,
-                                t.ex_nvarchar1
-                                //datatablebuttonscode = objDTBtnPanel.genDTBtnPanel(message.Objgen_eventinfo.ControllerName, t.eventid, "eventid", _contextAccessor.HttpContext.User.Identity as ClaimsIdentity, btnActionList, _contextAccessor)
+                                t.ex_nvarchar1,
+                                datatablebuttonscode = objDTBtnPanel.genDTBtnPanel(message.Objgen_eventinfo.ControllerName, t.eventid, "eventid", _contextAccessor.HttpContext.User.Identity as ClaimsIdentity, btnActionList, _contextAccessor)
                             }).ToList();
 
                 outputPort.GetListView(new Gen_EventInfoResponse(new AjaxResponse(oblist.Count > 0 ? oblist[0].RETURN_KEY : 0, data), true, null));

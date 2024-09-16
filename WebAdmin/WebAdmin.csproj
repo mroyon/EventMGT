@@ -1205,6 +1205,9 @@
     <Content Update="Views\DashboardHome\Privacy.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Update="Views\General\Gen_EventInfo\EventFiles.cshtml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Update="Views\General\Gen_EventInfo\SearchEvent.cshtml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
