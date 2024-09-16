@@ -3,6 +3,7 @@ using System.Runtime.Serialization;
 using System.Data;
 using BDO.Core.Base;
 using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
 
 
 namespace BDO.Core.DataAccessObjects.Models
@@ -34,8 +35,16 @@ namespace BDO.Core.DataAccessObjects.Models
         protected long ? _ex_bigint2;
         protected decimal ? _ex_decimal1;
         protected decimal ? _ex_decimal2;
-                
-        
+
+
+        protected long? _unitid;
+        [DataMember]
+        public long? unitid
+        {
+            get { return _unitid; }
+            set { _unitid = value; this.OnChnaged(); }
+        }
+
         [DataMember]
         public long ? eventid
         {
@@ -219,11 +228,12 @@ namespace BDO.Core.DataAccessObjects.Models
             set { _ex_decimal2 = value; this.OnChnaged(); }
         }
         
-        
+        public List<gen_eventfileinfoEntity> gen_eventfileinfoList { get; set; }
+
         #endregion
-    
+
         #region Constructor
-    
+
         public gen_eventinfoEntity():base()
         {
         }

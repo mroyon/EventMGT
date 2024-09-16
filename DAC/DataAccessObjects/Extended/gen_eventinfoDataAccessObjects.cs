@@ -180,6 +180,8 @@ namespace DAC.Core.DataAccessObjects.General
                     if (gen_eventinfo.eventorganizedby.HasValue)
                         Database.AddInParameter(cmd, "@EventOrganizedBy", DbType.Int64, gen_eventinfo.eventorganizedby);
 
+                    if (gen_eventinfo.unitid.HasValue)
+                        Database.AddInParameter(cmd, "@UnitID", DbType.Int64, gen_eventinfo.unitid);
 
                     AddTotalRecordParameter(cmd);
                     AddSortExpressionParameter(cmd, gen_eventinfo.SortExpression);

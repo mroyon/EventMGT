@@ -572,6 +572,8 @@ IHttpContextAccessor contextAccessor)
                 genev.eventname = request.eventname;
                 genev.eventstartdate = request.eventstartdate;
                 genev.eventenddate = request.eventenddate;
+                genev.unitid = request.unitid;
+                genev.eventdescription = request.eventdescription;
 
                 genev.BaseSecurityParam = new BDO.Core.Base.SecurityCapsule();
                 genev.BaseSecurityParam = request.BaseSecurityParam;
@@ -590,6 +592,35 @@ IHttpContextAccessor contextAccessor)
             }
         }
 
+        [HttpPost]
+        [AutoValidateAntiforgeryToken]
+        public async Task<IActionResult> GetEventFileInfoByEvent([FromBody] gen_eventfileinfoEntity request)
+        {
+            if (!User.Identity.IsAuthenticated) { return RedirectToAction("Account", "Login"); }
+            ModelState.Remove("filetype");
+            ModelState.Remove("extension");
+            ModelState.Remove("filename");
+            if (!ModelState.IsValid) { return BadRequest(ModelState); }
+            
+            await _gen_EventFileInfoUseCase.GetAll(new Gen_EventFileInfoRequest(request), _gen_EventFileInfoPresenter);
+            List<gen_eventfileinfoEntity> _objEventFiles = new List< gen_eventfileinfoEntity>();
+            _objEventFiles = _gen_EventFileInfoPresenter.Result as List<gen_eventfileinfoEntity>;
 
+            gen_eventinfoEntity genev = new gen_eventinfoEntity();
+            if (_objEventFiles.Count > 0)
+            {
+                foreach (var file in _objEventFiles)
+                {
+                    file.FileUrl = Path.Combine(_webHostEnvironment.WebRootPath, "uploads", file.filename);
+                }
+
+                //genev.gen_eventfileinfoList = _objEventFiles;
+            }
+
+            //return View("../General/Gen_EventInfo/EventFiles", genev);
+
+            if (_objEventFiles.Count > 0) return Json(new { status = "success", data = _objEventFiles });
+            else return Json(new { status = "failed", data = new List<gen_eventfileinfoEntity>() });
+        }
     }
 }

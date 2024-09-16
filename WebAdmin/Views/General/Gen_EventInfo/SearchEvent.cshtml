@@ -7,7 +7,87 @@
     ViewData["Title"] = "Search Event";
 }
 
+<style>
 
+    .heading {
+        text-align: center;
+        font-size: 2.0em;
+        letter-spacing: 1px;
+        padding: 40px;
+        color: white;
+    }
+
+    .gallery-image {
+        padding: 20px;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+        .gallery-image a img {
+            height: 250px;
+            width: 350px;
+            transform: scale(1.0);
+            transition: transform 0.4s ease;
+        }
+
+    .img-box {
+        box-sizing: content-box;
+        margin: 10px;
+        height: 250px;
+        width: 350px;
+        overflow: hidden;
+        display: inline-block;
+        color: white;
+        position: relative;
+        background-color: white;
+    }
+
+    .caption {
+        position: absolute;
+        bottom: 5px;
+        left: 20px;
+        opacity: 0.0;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+    }
+
+    .transparent-box {
+        height: 250px;
+        width: 350px;
+        background-color: rgba(0, 0, 0, 0);
+        position: absolute;
+        top: 0;
+        left: 0;
+        transition: background-color 0.3s ease;
+    }
+
+    .img-box:hover img {
+        transform: scale(1.1);
+    }
+
+    .img-box:hover .transparent-box {
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+
+    .img-box:hover .caption {
+        transform: translateY(-20px);
+        opacity: 1.0;
+    }
+
+    .img-box:hover {
+        cursor: pointer;
+    }
+
+    .caption > p:nth-child(2) {
+        font-size: 0.8em;
+    }
+
+    .opacity-low {
+        opacity: 0.5;
+    }
+    
+    
+</style>
 <div class="row">
     <div class="col-md-12">
         <div class="card">
@@ -21,29 +101,41 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
+                                    <label class="labelNormal required " asp-for="unitid"></label>
+                                    @await Component.InvokeAsync("S2Gen_Unit", new { selectid = "unitid", preloaded = ViewBag.preloadedDatagen_unit, isReadOnly = false, multiple = false, isRequired = true, pkey = -99 })
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
                                     <label class="labelNormal" asp-for="eventcategoryid"></label>
                                     @await Component.InvokeAsync("S2Gen_EventCategory", new { selectid = "eventcategoryid", preloaded = ViewBag.preloadedDatagen_eventcategory, isReadOnly = false, multiple = false, isRequired = true, pkey = -99 })
                                     <span asp-validation-for="eventcategoryid" class="eventcategoryiderror text-danger " id="eventcategoryiderror"></span>
                                 </div>
                             </div>
+                            
+                        </div>
+                        <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="labelNormal" asp-for="eventid"></label>
                                     @await Component.InvokeAsync("S2Gen_Event", new { selectid = "eventid", preloaded = ViewBag.preloadedDatagen_event, isReadOnly = false, multiple = false, isRequired = true, pkey = -99 })
                                     <span asp-validation-for="eventid" class="eventiderror text-danger " id="eventcategoryiderror"></span>
-
-                                    @*   <label class="labelNormal" asp-for="eventname"></label>
-                                    <input asp-for="eventname" class="form-control" required></input>
-                                    <span asp-validation-for="eventname" class="eventnameerror text-danger " id="eventnameerror"></span>*@
                                 </div>
                             </div>
-                        </div>
-                        <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label class="labelNormal" asp-for="eventcode"></label>
                                     <input asp-for="eventcode" class="form-control" autocomplete="off" required />
                                     <span asp-validation-for="eventcode" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="labelNormal" asp-for="eventdescription"></label>
+                                    <input asp-for="eventdescription" class="form-control" autocomplete="off" required />
+                                    <span asp-validation-for="eventdescription" class="text-danger"></span>
                                 </div>
                             </div>
                         </div>
@@ -97,11 +189,13 @@
                             <table id="DTGen_EventInfolist" class="table table-striped table-bordered" @*style="width:100%"*@ cellspacing="0">
                                 <thead>
                                     <tr>
-                                        <th><label class="labelNormal  ">Serial No</label></th>
+                                        <th class="d-none"><label class="labelNormal  ">eventid</label></th>
+                                        <th width="50px"><label class="labelNormal  ">Sl</label></th>
                                         <th><label class="labelNormal  " asp-for="eventcode"></label></th>
                                         <th><label class="labelNormal  " asp-for="eventname"></label></th>
                                         <th><label class="labelNormal  " asp-for="eventstartdate"></label></th>
-                                        <th><label class="labelNormal  ">Files</label></th>
+                                        @* <th><label class="labelNormal  ">Files</label></th> *@
+                                        <th width="150px"><label class="labelNormal  ">Actions</label></th>
                                     </tr>
                                 </thead>
                             </table>
@@ -114,8 +208,59 @@
             <div class="card-footer">
                 <div class="row">
                     <div class="col-md-12">
+                        <div class="modal fade"
+                             id="exampleModal"
+                             tabindex="-1"
+                             role="dialog"
+                             aria-labelledby="exampleModalLabel"
+                             aria-hidden="true">
+                            <div class="modal-dialog modal-xl">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                                        <button type="button"
+                                                class="close"
+                                                data-bs-dismiss="modal"
+                                                aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="photo-gallery">
+                                            <div class="container">
+                                                <div class="row photos">
+                                                    @* <div class="col-sm-6 col-md-4 col-lg-3 item"><a href="https://image.freepik.com/free-photo/stylish-young-woman-with-bags-taking-selfie_23-2147962203.jpg" data-lightbox="photos"><img class="img-fluid" src="https://image.freepik.com/free-photo/stylish-young-woman-with-bags-taking-selfie_23-2147962203.jpg"></a></div>
+                                                    <div class="col-sm-6 col-md-4 col-lg-3 item"><a href="assets/img/building.jpg" data-lightbox="photos"><img class="img-fluid" src="assets/img/building.jpg"></a></div>
+                                                    <div class="col-sm-6 col-md-4 col-lg-3 item"><a href="assets/img/loft.jpg" data-lightbox="photos"><img class="img-fluid" src="assets/img/loft.jpg"></a></div>
+                                                    <div class="col-sm-6 col-md-4 col-lg-3 item"><a href="assets/img/building.jpg" data-lightbox="photos"><img class="img-fluid" src="assets/img/building.jpg"></a></div>
+                                                    <div class="col-sm-6 col-md-4 col-lg-3 item"><a href="assets/img/loft.jpg" data-lightbox="photos"><img class="img-fluid" src="assets/img/loft.jpg"></a></div>
+                                                    <div class="col-sm-6 col-md-4 col-lg-3 item"><a href="assets/img/desk.jpg" data-lightbox="photos"><img class="img-fluid" src="assets/img/desk.jpg"></a></div> *@
+                                                </div>
+                                            </div>
+                                        </div>
 
-                        <!-- /.description-block -->
+                                        <div class="gallery-image">
+                                            @* <div class="img-box">
+                                                <img src="https://picsum.photos/350/250?image=444" alt="" />
+                                                <div class="transparent-box">
+                                                    <div class="caption">
+                                                        <p>Library</p>
+                                                        <p class="opacity-low">Architect Design</p>
+                                                    </div>
+                                                </div>
+                                            </div> *@
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button"
+                                                class="btn btn-secondary"
+                                                data-bs-dismiss="modal">
+                                            Close
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                     <!-- /.col -->
                 </div>
@@ -130,45 +275,60 @@
 
 
 @section Scripts {
+    <script src="~/lib/magnific-popup.js/jquery.magnific-popup.min.js"></script>
     <script>
-        $(function() {
-	var table;
+        $(function () {
+            var table;
 
-	$('body').on('click', '#btnSearchEventInfo', function(e) {
-		try {
-			event.preventDefault();
-			loadSearch();
-		} catch (e) {
-			showErrorAlert("Error", e.message, "OK");
-		}
-	});
+            $('body').on('click', '#btnSearchEventInfo', function (e) {
+                try {
+                    event.preventDefault();
+                    loadSearch();
+                } catch (e) {
+                    showErrorAlert("Error", e.message, "OK");
+                }
+            });
 
-	function loadSearch() {
-		try {
-			table.destroy();
-		} catch {}
-	
-
+            function loadSearch() {
+                try {
+                    table.destroy();
+                } catch { }
 
 
-	var dataobject = {
-		eventcategoryid: $("#eventcategoryid").val(),
-		eventcode: $("#eventcode").val(),
-		eventname: $("#eventname").val(),
-		eventstartdate: GetDateFromTextBox($("#eventstartdate").val()),
-		eventenddate: GetDateFromTextBox($("#eventenddate").val()),
-	}
 
-	table = $("#DTGen_EventInfolist").DataTable({
-		"ajax": $.fn.dataTable.json({
-			url: "/Gen_EventInfo/SearchEventInfo",
-			data: dataobject
-		}),
-		"buttons": {
-			"buttons": []
-		},
 
-		"columns": [
+                var dataobject = {
+                    eventcategoryid: $("#eventcategoryid").val(),
+                    eventcode: $("#eventcode").val(),
+                    eventname: $("#eventname").val(),
+                    unitid: $("#unitid").val(),
+                    eventdescription: $("#eventdescription").val(),
+                    eventstartdate: GetDateFromTextBox($("#eventstartdate").val()),
+                    eventenddate: GetDateFromTextBox($("#eventenddate").val()),
+                }
+
+                table = $("#DTGen_EventInfolist").DataTable({
+                    "ajax": $.fn.dataTable.json({
+                        url: "/Gen_EventInfo/SearchEventInfo",
+                        data: dataobject
+                    }),
+                    "buttons": {
+                        "buttons": []
+                    },
+                    columnDefs: [
+                        { targets: 0, "visible": false, searchable: false },
+                        { targets: 1, "visible": true, "sortable": true },
+                        { targets: 2, "visible": true, "sortable": true },
+                        { targets: 3, "visible": true, "sortable": true },
+                        { targets: 4, "visible": true, "sortable": true },
+                        { targets: 5, "visible": true, "sortable": false, "className": "text-center" }
+                    ],
+                    "columns": [
+                        {
+                            "data": "eventid",
+                            "name": "eventid",
+                            "autoWidth": true
+                        },
                         {
                             "data": "eventcode",
                             "name": "eventcode",
@@ -177,84 +337,167 @@
                                 return meta.row + 1; // Row numbers start from 1
                             }
                         },
-            {
-				"data": "eventcode",
-				"name": "eventcode",
-				"autoWidth": true
-			},
-			{
-				"data": "eventname",
-				"name": "eventname",
-				"autoWidth": true
-			},
-			{
-				"data": "eventstartdate",
-				"name": "eventstartdate",
-				"autoWidth": true,
-				render: function(data, type, full, row) {
-					return moment(data).format("DD-MM-YYYY h:mm a");
-				}
-			},
-			{
-				"data": "ex_nvarchar1",
-				"name": "ex_nvarchar1",
-				"autoWidth": true,
-				"render": function(data, type, full, row) {
-                    var nestedTable = "";
-					var baseURL = window.location.origin;
-					var fileinfo = "";
-					if (data != null) {
-						// var fileinfo = "";
-						// //var datainfo = data;
-						const myArray = data.split(",");
-						//console.log(myArray)
+                        {
+                            "data": "eventcode",
+                            "name": "eventcode",
+                            "autoWidth": true
+                        },
+                        {
+                            "data": "eventname",
+                            "name": "eventname",
+                            "autoWidth": true
+                        },
+                        {
+                            "data": "eventstartdate",
+                            "name": "eventstartdate",
+                            "autoWidth": true,
+                            render: function (data, type, full, row) {
+                                return moment(data).format("DD-MM-YYYY h:mm a");
+                            }
+                        },
+                        // {
+                        // 	"data": "ex_nvarchar1",
+                        // 	"name": "ex_nvarchar1",
+                        // 	"autoWidth": true,
+                        // 	"render": function(data, type, full, row) {
+                        //                  var nestedTable = "";
+                        // 		var baseURL = window.location.origin;
+                        // 		var fileinfo = "";
+                        // 		if (data != null) {
+                        // 			// var fileinfo = "";
+                        // 			// //var datainfo = data;
+                        // 			const myArray = data.split(",");
+                        // 			//console.log(myArray)
 
-						nestedTable = "<table class='table table-striped table-bordered '>"
+                        // 			nestedTable = "<table class='table table-striped table-bordered '>"
 
-						$.each(myArray, function(key, value) {
-							nestedTable += "<tr>";
-							nestedTable += "<td>";
+                        // 			$.each(myArray, function(key, value) {
+                        // 				nestedTable += "<tr>";
+                        // 				nestedTable += "<td>";
 
-							var strArr = value.split("|");
-							var fileName = strArr[0];
-							var fileDesc = strArr[1];
+                        // 				var strArr = value.split("|");
+                        // 				var fileName = strArr[0];
+                        // 				var fileDesc = strArr[1];
 
-							//console.log(fileName)
-							fileinfo = "<img width='100' height='100' src='" + baseURL + "/uploads/" + fileName + "'> </img>";
-							nestedTable += fileinfo;
-							nestedTable += "</td>";
-							nestedTable += "<td>" + fileDesc + "</td>";
-							nestedTable += "<td><a href='" + baseURL + "/uploads/" + fileName + "' download>Download</a></td>";
-							nestedTable += "</tr>";
-						});
-                        nestedTable += "</table>";
-					}
-					
-					return nestedTable;
-				}
-			}
-		]
-	});
+                        // 				//console.log(fileName)
+                        // 				fileinfo = "<img width='100' height='100' src='" + baseURL + "/uploads/" + fileName + "'> </img>";
+                        // 				nestedTable += fileinfo;
+                        // 				nestedTable += "</td>";
+                        // 				nestedTable += "<td>" + fileDesc + "</td>";
+                        // 				nestedTable += "<td><a href='" + baseURL + "/uploads/" + fileName + "' download>Download</a></td>";
+                        // 				nestedTable += "</tr>";
+                        // 			});
+                        //                      nestedTable += "</table>";
+                        // 		}
 
-    }
+                        // 		return nestedTable;
+                        // 	}
+                        // },
 
-	$('.bs-datepicker').datepicker({
-		format: "dd/mm/yyyy",
-		autoclose: true,
-		clearBtn: true,
-		startView: 0,
-		language: "en",
-		todayHighlight: true
-	});
-	//$('.bs-datepicker').datepicker({
-	//    format: "dd/mm/yyyy",
-	//    autoclose: true,
-	//    clearBtn: true,
-	//    startView: 0,
-	//    language: "en",
-	//    todayHighlight: true
-	//});
-});
+                        {
+                            "data": "eventid", render: function (data, type, full, row) {
+                                var button = "<button type='button' class='btn btn-info btn-md mr-1' onclick='ViewEventFiles(this)' data-eventid='" + data + "'><i class='fas fa-eye'></i> View Files</button>";
+                                return button;
+
+                            }
+                        }
+                    ]
+
+                });
+
+            }
+
+            $('.bs-datepicker').datepicker({
+                format: "dd/mm/yyyy",
+                autoclose: true,
+                clearBtn: true,
+                startView: 0,
+                language: "en",
+                todayHighlight: true
+            });
+            //$('.bs-datepicker').datepicker({
+            //    format: "dd/mm/yyyy",
+            //    autoclose: true,
+            //    clearBtn: true,
+            //    startView: 0,
+            //    language: "en",
+            //    todayHighlight: true
+            //});
+        });
+
+
+        function ViewEventFiles(cntrl) {
+            var eventid = $(cntrl).attr('data-eventid')
+
+            var dataobject = {
+                eventid: $(cntrl).attr('data-eventid')
+            };
+            ajaxPostObjectHandler("/Gen_EventInfo/GetEventFileInfoByEvent", dataobject, function (response) {
+                console.log(response.data)
+                console.log(response.status)
+                if (response.status == "success") {
+
+                    var baseURL = window.location.origin;
+
+                    //console.log(response.data[0].filename)
+                    var myModal = new bootstrap.Modal(document.getElementById("exampleModal"), {});
+                    //myModal.show();
+                    var modalBody = "";
+
+                    $.each(response.data, function (key, value) {
+                        // modalBody += "<div class='img-box'>";
+                        // modalBody += "<a href='" + baseURL + "/uploads/" + value.filename + "' target='_blank'><img src='" + baseURL + "/uploads/" + value.filename + "' alt='' /></a>";
+                        // modalBody += "<div class='transparent-box'><div class='captio'>";
+                        // modalBody += "<p>" + value.filedescription + "</p>";
+                        // modalBody += "</div>";
+                        // modalBody += "</div>";
+                        // modalBody += "</div>";
+                        var filepath = baseURL + "/uploads/" + value.filename;
+                        modalBody += "<div class='col-sm-6 col-md-4 col-lg-3 item'><a href='" + filepath + "' data-lightbox='photos'><img class='img-fluid' src='" + filepath + "'></a></div>";
+                    });
+                    $(".photos").append(modalBody);
+                    //$(".gallery-image").append(modalBody);
+                    myModal.show();
+                    //var modalBody = "<div class='img-box'>
+
+
+
+                                            //     <img src='https://picsum.photos/350/250?image=444' alt='' />
+                                            //     <div class='transparent-box'>
+                                            //         <div class='captio'>
+                                            //             <p>Library</p>
+                                            //         </div>
+                                            //     </div>
+                                            // </div>";
+                }
+                else {
+                    console.log("No File Found")
+                }
+            }, true);
+        }
+
+        // $('.portfolio-menu ul li').click(function () {
+        //     $('.portfolio-menu ul li').removeClass('active');
+        //     $(this).addClass('active');
+
+        //     var selector = $(this).attr('data-filter');
+        //     $('.portfolio-item').isotope({
+        //         filter: selector
+        //     });
+        //     return false;
+        // });
+        // $(document).ready(function () {
+        //     var myModal = new bootstrap.Modal(document.getElementById("exampleModal"), {});
+        //     myModal.hide();
+        //     var popup_btn = $('.popup-btn');
+        //     popup_btn.magnificPopup({
+        //         type: 'image',
+        //         gallery: {
+        //             enabled: true
+        //         }
+        //     });
+        // });
+
 
     </script>
 }
