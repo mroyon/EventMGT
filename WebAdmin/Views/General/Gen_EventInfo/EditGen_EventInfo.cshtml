@@ -355,11 +355,10 @@
 
                             // Get all files (new and old)
                             var allFiles = dropzoneInstance.files;  // This contains all files (new + old)
-                            console.log("All Files:", allFiles);  // You now have access to all files
                            
                             let index = 0;
                             allFiles.forEach(file => {
-                                if (file.eventfileid) //Handel Old Files
+                                if (file.eventfileid) //Handle Old Files
                                 {
                                     var descriptionInput = file.previewElement.querySelector(".file-description");
                                     if (descriptionInput.value)
