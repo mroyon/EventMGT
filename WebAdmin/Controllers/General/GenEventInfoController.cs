@@ -745,29 +745,39 @@ IHttpContextAccessor contextAccessor)
             LocalReport report = new LocalReport();
             report.ReportPath = rdlcFilePath;
 
+
+            report.EnableExternalImages = true;
+            //BindingFlags flags = BindingFlags.Public | BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Static;
+            //FieldInfo filed = report.GetType().GetField("localReport", flags);
+            //object reportobj = filed.GetValue(report);
+            //Type type = reportobj.GetType();
+            //PropertyInfo pi = type.GetProperty("EnableExternalImages");
+            //pi.SetValue(reportobj, true, null);
+
+
             ReportDataSource rds = new ReportDataSource();
             rds.Name = "DataSet1";
             rds.Value = gen_eventinfoList;
 
-            
 
-            DataTable dt = new DataTable();
-            int index = 1;
-            foreach (var img in gen_eventfileinfoList)
-            {
-                dt.Columns.Add($"Image{index}", typeof(byte[]));
-                index++;
-                //dt.Rows.Add(GetImageBytes(img.FileUrl), GetImageBytes("image2.jpg"), GetImageBytes("image3.jpg"));
-            }
 
-            DataRow row = dt.NewRow();
-            for (int i = 0; i < gen_eventfileinfoList.Count; i++)
-            {
-                byte[] imageBytes = GetImageBytes(gen_eventfileinfoList[i].FileUrl); // Convert image to byte array
-                row["Image" + (i + 1)] = imageBytes;
-            }
-            dt.Rows.Add(row);
-            dt.AcceptChanges();
+            //DataTable dt = new DataTable();
+            //int index = 1;
+            //foreach (var img in gen_eventfileinfoList)
+            //{
+            //    dt.Columns.Add($"Image{index}", typeof(byte[]));
+            //    index++;
+            //    //dt.Rows.Add(GetImageBytes(img.FileUrl), GetImageBytes("image2.jpg"), GetImageBytes("image3.jpg"));
+            //}
+
+            //DataRow row = dt.NewRow();
+            //for (int i = 0; i < gen_eventfileinfoList.Count; i++)
+            //{
+            //    byte[] imageBytes = GetImageBytes(gen_eventfileinfoList[i].FileUrl); // Convert image to byte array
+            //    row["Image" + (i + 1)] = imageBytes;
+            //}
+            //dt.Rows.Add(row);
+            //dt.AcceptChanges();
 
             //dt.Columns.Add($"Image{index}", typeof(byte[]));
             //dt.Columns.Add("Image2", typeof(byte[]));
@@ -775,10 +785,40 @@ IHttpContextAccessor contextAccessor)
 
             // Add a single row with multiple image columns
 
-            report.EnableExternalImages = true;
-            ReportDataSource rds1 = new ReportDataSource();
-            rds1.Name = "DataSet1";
-            rds1.Value = gen_eventfileinfoList;
+
+            List<gen_eventfileinfoReportEntity> objFiles = new List<gen_eventfileinfoReportEntity>();
+            gen_eventfileinfoReportEntity objFile = new gen_eventfileinfoReportEntity();
+            //foreach (var file in this._objEventFilesReport)
+            //{
+            //    objFile.image1 = 
+            //}
+
+            for (int i = 0; i < this._objEventFilesReport.Count; i++)
+            {
+                try
+                {
+                    //try { objFile.image1 = ConvertImageToBase64String(this._objEventFilesReport[i].FileUrl); } catch { }
+                    //try { objFile.image2 = ConvertImageToBase64String(this._objEventFilesReport[i++].FileUrl); } catch { }
+                    //try { objFile.image3 = ConvertImageToBase64String(this._objEventFilesReport[i++].FileUrl); } catch { }
+                    //try { objFile.image4 = ConvertImageToBase64String(this._objEventFilesReport[i++].FileUrl); } catch { }
+
+                    try { objFile.ImageData1 = ConvertImageToByteArray(this._objEventFilesReport[i].FileUrl); } catch { }
+                    try { objFile.ImageData2 = ConvertImageToByteArray(this._objEventFilesReport[i++].FileUrl); } catch { }
+                    try { objFile.ImageData3 = ConvertImageToByteArray(this._objEventFilesReport[i++].FileUrl); } catch { }
+                    try { objFile.ImageData4 = ConvertImageToByteArray(this._objEventFilesReport[i++].FileUrl); } catch { }
+                    //try { objFile.image2 = this._objEventFilesReport[i++].FileUrl; } catch { }
+                    //try { objFile.image3 = this._objEventFilesReport[i++].FileUrl; } catch { }
+                    //try { objFile.image4 = this._objEventFilesReport[i++].FileUrl; } catch { }
+                    objFiles.Add(objFile);
+                }
+                catch { }
+            }
+
+
+
+            //ReportDataSource rds1 = new ReportDataSource();
+            //rds1.Name = "DataSet2";
+            //rds1.Value = objFiles;
 
             report.DataSources.Add(rds);
             //report.DataSources.Add(rds1);
@@ -790,13 +830,39 @@ IHttpContextAccessor contextAccessor)
                             out mimeType, out streams, out warnings);
             return result;
         }
+        public static byte[] ConvertImageToByteArray(string imagePath)
+        {
+            //using (Image img = Image.FromFile(imagePath))
+            //{
+            //    using (MemoryStream ms = new MemoryStream())
+            //    {
+            //        // Save image to memory stream as BMP
+            //        img.Save(ms, ImageFormat.Bmp);
+            //        img.Dispose();
+            //        GC.Collect();
 
+            //        byte[] data = ms.ToArray();
+            //        ms.Dispose();
+            //        GC.Collect();
+
+            //        return data;
+            //    }
+            //}
+
+            // Use FileStream to read the image in a memory-efficient way
+            using (FileStream fs = new FileStream(imagePath, FileMode.Open, FileAccess.Read))
+            {
+                byte[] imageBytes = new byte[fs.Length]; // Initialize byte array to file length
+                fs.Read(imageBytes, 0, (int)fs.Length);  // Read file into byte array
+                return imageBytes;
+            }
+        }
         private void LocalReport_SubreportProcessing(object sender, SubreportProcessingEventArgs e)
         {
             if (e.ReportPath == "rptEventFilesSubreport")
             {
                 List<gen_eventfileinfoReportEntity> objFiles = new List<gen_eventfileinfoReportEntity>();
-                gen_eventfileinfoReportEntity objFile = new gen_eventfileinfoReportEntity();
+                
                 //foreach (var file in this._objEventFilesReport)
                 //{
                 //    objFile.image1 = 
@@ -806,10 +872,23 @@ IHttpContextAccessor contextAccessor)
                 {
                     try
                     {
-                        try { objFile.image1 = ConvertImageToBase64String(this._objEventFilesReport[i].FileUrl); } catch { }
-                        try { objFile.image2 = ConvertImageToBase64String(this._objEventFilesReport[i++].FileUrl); } catch { }
-                        try { objFile.image3 = ConvertImageToBase64String(this._objEventFilesReport[i++].FileUrl); } catch { }
-                        try { objFile.image4 = ConvertImageToBase64String(this._objEventFilesReport[i++].FileUrl); } catch { }
+                        gen_eventfileinfoReportEntity objFile = new gen_eventfileinfoReportEntity();
+                        //try { objFile.image1 = ConvertImageToBase64String(this._objEventFilesReport[i].FileUrl); } catch { }
+                        //try { objFile.image2 = ConvertImageToBase64String(this._objEventFilesReport[i++].FileUrl); } catch { }
+                        //try { objFile.image3 = ConvertImageToBase64String(this._objEventFilesReport[i++].FileUrl); } catch { }
+                        //try { objFile.image4 = ConvertImageToBase64String(this._objEventFilesReport[i++].FileUrl); } catch { }
+
+                        //try { objFile.image1 = this._objEventFilesReport[i].FileUrl; } catch { }
+                        //try { objFile.image2 = this._objEventFilesReport[i++].FileUrl; } catch { }
+                        //try { objFile.image3 = this._objEventFilesReport[i++].FileUrl; } catch { }
+                        //try { objFile.image4 = this._objEventFilesReport[i++].FileUrl; } catch { }
+
+                        try { objFile.ImageData1 = ConvertImageToByteArray(this._objEventFilesReport[i + 0].FileUrl); } catch { }
+                        try { objFile.ImageData2 = ConvertImageToByteArray(this._objEventFilesReport[i + 1].FileUrl); } catch { }
+                        try { objFile.ImageData3 = ConvertImageToByteArray(this._objEventFilesReport[i + 2].FileUrl); } catch { }
+                        try { objFile.ImageData4 = ConvertImageToByteArray(this._objEventFilesReport[i + 3].FileUrl); } catch { }
+                        i = i + 3;
+
                         objFiles.Add(objFile);
                     }
                     catch { }

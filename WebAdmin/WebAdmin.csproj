@@ -1378,6 +1378,9 @@
     <Content Update="wwwroot\Reports\rptDigestOfService.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Update="wwwroot\Reports\rptDigestOfService2.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Update="wwwroot\Reports\rptEventFilesSubreport.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
