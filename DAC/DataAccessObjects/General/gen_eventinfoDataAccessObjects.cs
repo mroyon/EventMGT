@@ -409,7 +409,9 @@ namespace DAC.Core.DataAccessObjects.General
                     {
                         while (reader.Read())
                         {
-                            itemList.Add(new gen_eventinfoEntity(reader));
+                            gen_eventinfoEntity obj = new gen_eventinfoEntity(reader);
+                            if (!reader.IsDBNull(reader.GetOrdinal("Unit"))) obj.unitname = reader.GetString(reader.GetOrdinal("Unit"));
+                            itemList.Add(obj);
                         }
                         reader.Close();
                     }                    

@@ -296,4 +296,13 @@ namespace BDO.Core.DataAccessObjects.Models
         
             
     }
+    [Serializable]
+    [DataContract(Name = "gen_eventfileinfoReportEntity", Namespace = "http://www.KAF.com/types")]
+    public partial class gen_eventfileinfoReportEntity
+    {
+        [DataMember] public string image1 { get; set; }
+        [DataMember] public string image2 { get; set; }
+        [DataMember] public string image3 { get; set; }
+        [DataMember] public string image4 { get; set; }
+    }
 }

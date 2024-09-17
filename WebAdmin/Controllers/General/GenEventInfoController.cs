@@ -35,6 +35,9 @@ using AppConfig.EncryptionHandler;
 using Microsoft.AspNetCore;
 using Microsoft.Reporting.NETCore;
 using System.Text;
+using System.Data;
+using System.Drawing;
+using System.Drawing.Imaging;
 
 namespace WebAdmin.Controllers
 {
@@ -50,6 +53,7 @@ namespace WebAdmin.Controllers
     [AutoValidateAntiforgeryToken]
     public class Gen_EventInfoController : BaseController
     {
+        private List<gen_eventfileinfoEntity> _objEventFilesReport = new List<gen_eventfileinfoEntity>();
 
         private readonly IGen_EventInfoUseCase _gen_EventInfoUseCase;
         private readonly Gen_EventInfoPresenter _gen_EventInfoPresenter;
@@ -680,7 +684,15 @@ IHttpContextAccessor contextAccessor)
             await _gen_EventFileInfoUseCase.GetAll(new Gen_EventFileInfoRequest(objEventFile), _gen_EventFileInfoPresenter);
             List<gen_eventfileinfoEntity> _objEventFiles = new List<gen_eventfileinfoEntity>();
             _objEventFiles = _gen_EventFileInfoPresenter.Result as List<gen_eventfileinfoEntity>;
+            this._objEventFilesReport = _gen_EventFileInfoPresenter.Result as List<gen_eventfileinfoEntity>;
 
+            if (_objEventFiles.Count > 0)
+            {
+                foreach (var file in _objEventFiles)
+                {
+                    file.FileUrl = Path.Combine(_webHostEnvironment.WebRootPath, "uploads", file.filename);
+                }
+            }
             var bytearrReport = await GenerateReport(
                                 _objEventList,
                                 _objEventFiles.ToList()
@@ -718,12 +730,13 @@ IHttpContextAccessor contextAccessor)
             //bs64 = await GenerateQRCode(_kAFSalaryCertificateSettins.PaySlipReviewURL + encString);
 
 
-            //var reportparameter = new[] {
-            //                //new ReportParameter("QRCode", bs64),
-            //                new ReportParameter("GeneratedDate", System.DateTime.Now.ToLongDateString())
-            //                //new ReportParameter("ReportLogoMimeType", "image/png"),
-            //                //new ReportParameter("CivilID", employeefinancialdata[0].civilid)
-            //            };
+            var reportparameter = new[] {
+                            //new ReportParameter("QRCode", bs64),
+                            //new ReportParameter("GeneratedDate", System.DateTime.Now.ToLongDateString()),
+                            new ReportParameter("eventid", gen_eventinfoList[0].eventid.ToString())
+                            //new ReportParameter("ReportLogoMimeType", "image/png"),
+                            //new ReportParameter("CivilID", employeefinancialdata[0].civilid)
+                        };
 
 
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
@@ -736,18 +749,102 @@ IHttpContextAccessor contextAccessor)
             rds.Name = "DataSet1";
             rds.Value = gen_eventinfoList;
 
-            //ReportDataSource rds1 = new ReportDataSource();
-            //rds1.Name = "DataSet2";
-            //rds1.Value = gen_eventfileinfoList;
+            
+
+            DataTable dt = new DataTable();
+            int index = 1;
+            foreach (var img in gen_eventfileinfoList)
+            {
+                dt.Columns.Add($"Image{index}", typeof(byte[]));
+                index++;
+                //dt.Rows.Add(GetImageBytes(img.FileUrl), GetImageBytes("image2.jpg"), GetImageBytes("image3.jpg"));
+            }
+
+            DataRow row = dt.NewRow();
+            for (int i = 0; i < gen_eventfileinfoList.Count; i++)
+            {
+                byte[] imageBytes = GetImageBytes(gen_eventfileinfoList[i].FileUrl); // Convert image to byte array
+                row["Image" + (i + 1)] = imageBytes;
+            }
+            dt.Rows.Add(row);
+            dt.AcceptChanges();
+
+            //dt.Columns.Add($"Image{index}", typeof(byte[]));
+            //dt.Columns.Add("Image2", typeof(byte[]));
+            //dt.Columns.Add("Image3", typeof(byte[]));
+
+            // Add a single row with multiple image columns
+
+            report.EnableExternalImages = true;
+            ReportDataSource rds1 = new ReportDataSource();
+            rds1.Name = "DataSet1";
+            rds1.Value = gen_eventfileinfoList;
 
             report.DataSources.Add(rds);
             //report.DataSources.Add(rds1);
-           // report.SetParameters(reportparameter);
-
+            report.SetParameters(reportparameter);
+            //report.SubreportProcessing += LocalReport_SubreportProcessing;
+            report.SubreportProcessing += new SubreportProcessingEventHandler(LocalReport_SubreportProcessing); ;
             var result = report.Render("pdf", null,
                             out extension, out encoding,
                             out mimeType, out streams, out warnings);
             return result;
+        }
+
+        private void LocalReport_SubreportProcessing(object sender, SubreportProcessingEventArgs e)
+        {
+            if (e.ReportPath == "rptEventFilesSubreport")
+            {
+                List<gen_eventfileinfoReportEntity> objFiles = new List<gen_eventfileinfoReportEntity>();
+                gen_eventfileinfoReportEntity objFile = new gen_eventfileinfoReportEntity();
+                //foreach (var file in this._objEventFilesReport)
+                //{
+                //    objFile.image1 = 
+                //}
+
+                for (int i = 0; i < this._objEventFilesReport.Count; i++)
+                {
+                    try
+                    {
+                        try { objFile.image1 = ConvertImageToBase64String(this._objEventFilesReport[i].FileUrl); } catch { }
+                        try { objFile.image2 = ConvertImageToBase64String(this._objEventFilesReport[i++].FileUrl); } catch { }
+                        try { objFile.image3 = ConvertImageToBase64String(this._objEventFilesReport[i++].FileUrl); } catch { }
+                        try { objFile.image4 = ConvertImageToBase64String(this._objEventFilesReport[i++].FileUrl); } catch { }
+                        objFiles.Add(objFile);
+                    }
+                    catch { }
+                }
+                var _objEventFiles = new ReportDataSource() { Name = "DataSet1", Value = objFiles };
+                e.DataSources.Add(_objEventFiles);
+            }
+        }
+        public static string ConvertImageToBase64String(string imagePath)
+        {
+            string result = null;
+            if (!string.IsNullOrEmpty(imagePath))
+            {
+                using (var b = new Bitmap(imagePath))
+                {
+                    using (var ms = new MemoryStream())
+                    {
+                        b.Save(ms, ImageFormat.Bmp);
+                        result = Convert.ToBase64String(ms.ToArray());
+                    }
+                }
+            }
+            return result;
+        }
+
+        private byte[] GetImageBytes(string imagePath)
+        {
+            using (Image image = Image.FromFile(imagePath))
+            {
+                using (MemoryStream ms = new MemoryStream())
+                {
+                    image.Save(ms, image.RawFormat);
+                    return ms.ToArray();
+                }
+            }
         }
     }
 }

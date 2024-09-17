@@ -14,6 +14,9 @@ namespace BDO.Core.DataAccessObjects.Models
 
         public List<EventInfoTestFile> postedFiles { get; set; }
 
+        [DataMember]
+        public string unitname { get; set; }
+
     }
 }
 

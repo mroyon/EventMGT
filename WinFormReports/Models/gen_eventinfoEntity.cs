@@ -40,8 +40,11 @@ namespace WinFormReports.Models
         protected long ? _ex_bigint2;
         protected decimal ? _ex_decimal1;
         protected decimal ? _ex_decimal2;
-                
-        
+
+
+        [DataMember]
+        public string unitname { get; set; }
+
         [DataMember]
         public long ? eventid
         {

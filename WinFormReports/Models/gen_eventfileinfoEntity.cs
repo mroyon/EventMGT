@@ -259,4 +259,14 @@ namespace WinFormReports.Models
         
             
     }
+
+    public partial class gen_eventfileinfoReportEntity 
+    {
+        [DataMember]
+        protected long? id { get; set; }
+        [DataMember] public string image1 { get; set; }
+        [DataMember] public string image2 { get; set; }
+        [DataMember] public string image3 { get; set; }
+        [DataMember] public string image4 { get; set; }
+    }
 }
