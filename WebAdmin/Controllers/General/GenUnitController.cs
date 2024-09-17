@@ -16,6 +16,10 @@ using BDO.Core.DataAccessObjects.CommonEntities;
 using WebAdmin.Providers;
 using Newtonsoft.Json;
 using Web.Core.Frame.UseCases;
+using Microsoft.AspNetCore.Hosting;
+using System.Collections.Generic;
+using Microsoft.AspNetCore.StaticFiles;
+using System.IO;
 
 namespace WebAdmin.Controllers
 {
@@ -37,8 +41,8 @@ namespace WebAdmin.Controllers
         private readonly ILogger<Gen_UnitController> _logger;
         private readonly IStringLocalizer _sharedLocalizer;
         private readonly IAuthenticationSchemeProvider _schemeProvider;
-        
-        
+        private readonly IWebHostEnvironment _webHostEnvironment;
+
         //to Enable SignalR Inj
         //private readonly IHubContext<HubUserContext> _hubuserContext;
         //private readonly IUserConnectionManager _userConnectionManager;
@@ -59,7 +63,8 @@ namespace WebAdmin.Controllers
         /// <param name="hubuserContext"></param>
         /// <param name="userConnectionManager"></param>
         /// <param name="cacheProvider"></param>
-       
+        /// <param name="webHostEnvironment"></param>
+
         public Gen_UnitController(
             IGen_UnitUseCase gen_UnitUseCase,
             Gen_UnitPresenter gen_UnitPresenter,
@@ -69,8 +74,8 @@ namespace WebAdmin.Controllers
             //,IHubContext<HubUserContext> hubuserContext
             //,IUserConnectionManager userConnectionManager
             ,ICacheProvider cacheProvider
-            
-             
+            ,IWebHostEnvironment webHostEnvironment
+
             )
         {
             _gen_UnitUseCase = gen_UnitUseCase;
@@ -85,7 +90,8 @@ namespace WebAdmin.Controllers
             //_hubuserContext = hubuserContext;
             //_userConnectionManager = userConnectionManager;
             _cacheProvider = cacheProvider;
-            
+            _webHostEnvironment = webHostEnvironment;
+
             var type = typeof(SharedResource);
             var assemblyName = new AssemblyName(type.GetTypeInfo().Assembly.FullName);
             _sharedLocalizer = factory.Create("SharedResource", assemblyName.Name);
@@ -154,10 +160,39 @@ namespace WebAdmin.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> AddGen_Unit([FromBody] gen_unitEntity request)
+        public async Task<IActionResult> AddGen_Unit([FromForm] gen_unitEntity request)
         {
             if (!User.Identity.IsAuthenticated) { return RedirectToAction("Account", "Login"); }
             if (!ModelState.IsValid) { return BadRequest(ModelState); }
+
+            var objGen_UnitFileInfo = new List<gen_eventfileinfoEntity>();
+            request.UnitfileinfoList = new List<gen_eventfileinfoEntity>();
+
+            if (request.file != null)
+            {
+
+                var fileName = $"{Guid.NewGuid()}-{Path.GetFileName(request.file.FileName)}";
+                var filePath = Path.Combine(_webHostEnvironment.WebRootPath, "uploads", fileName);
+                request.ex_nvarchar1= "../uploads/"+ fileName;
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    await request.file.CopyToAsync(stream);
+                }
+                //foreach (var item in request.postedFiles)
+                //{
+
+
+                //    var file = item.file;
+                //    var fileName = $"{Guid.NewGuid()}-{Path.GetFileName(file.FileName)}";
+                //    var filePath = Path.Combine(_webHostEnvironment.WebRootPath, "uploads", fileName);
+
+                //    using (var stream = new FileStream(filePath, FileMode.Create))
+                //    {
+                //        await file.CopyToAsync(stream);
+                //    }                    
+                //}
+            }
+
             await _gen_UnitUseCase.Save(new Gen_UnitRequest(request), _gen_UnitPresenter);
             return _gen_UnitPresenter.ContentResult;
         }

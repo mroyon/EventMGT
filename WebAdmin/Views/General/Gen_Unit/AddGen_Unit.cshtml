@@ -29,7 +29,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="labelNormal required " asp-for="unit"></label>
-                                <input asp-for="unit" class="form-control" required></input>
+                                <input asp-for="unit" class="form-control" required/>
                                 <span asp-validation-for="unit" class="uniterror text-danger " id="uniterror"></span>
                             </div>
                         </div>
@@ -41,7 +41,46 @@
                             </div>
                         </div>
                     </div>
+                    <div class="row">
+                        <div class="col-8 ">
+                            <div class="form-group">
+                                <div id="actions" class="row">
+                                    <div class="col-lg-7">
+                                        <!-- The fileinput-button span is used to style the file input field as button -->
+                                        <span class="btn btn-success fileinput-button">
+                                            <i class="glyphicon glyphicon-plus"></i>
+                                            <span>Add files...</span>
+                                        </span>
+                                    </div>
+                                </div>
 
+                                <div class="table table-striped files" id="previews">
+                                    <div id="template" class="file-row row">
+                                        <!-- This is used as the file preview template -->
+                                        <div class="col-1">
+                                            <span class="preview "><img height="80px" data-dz-thumbnail /></span>
+                                        </div>
+                                        <div class="col-3">
+                                            <p class="name" data-dz-name></p>
+                                            <strong class="error text-danger" data-dz-errormessage></strong>
+                                        </div>
+                                        <div class="col-7">
+                                            <input type="text" class="file-description form-control" name="fileDescription" placeholder="Enter file description" />
+                                        </div>
+                                        <div class="col-1">
+                                            <button data-dz-remove class="btn btn-danger btn-sm delete">
+                                                <i class="fa fa-trash" aria-hidden="true"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <!-- This hidden input will store the file in the form submission -->
+                            <input type="hidden" id="uploadedFiles" name="files" />
+                        </div>
+                    </div>
                     <div class="row btn-toolbar">
                         <div class="col-md-6 ">
                             <div class="form-group">
@@ -70,6 +109,106 @@
 </div>
 <!-- /.col -->
 @section Scripts {
+    <script>
+        $(function () {
+            var LandingGen_UnitInfo = "/Gen_Unit/LandingGen_Unit";
+
+            function RedirectToLanding(params) {
+                if (typeof params != 'undefined')
+                    window.location.href = params;
+            }
+
+            // Get the template HTML and remove it from the doument
+            var previewNode = document.querySelector("#template");
+            previewNode.id = "";
+            var previewTemplate = previewNode.parentNode.innerHTML;
+            previewNode.parentNode.removeChild(previewNode);
+
+            // Initialize Dropzone but prevent automatic upload
+            Dropzone.autoDiscover = false;
+            var myDropzone = new Dropzone(document.body,
+                {
+                    url: "/Gen_Unit/AddGen_Unit",  // API endpoint
+                    method: "post",
+                    paramName: "files",  // The name for the files being uploaded
+                    uploadMultiple: true,  // Allow multiple file uploads
+                    //maxFilesize: 5,  // Max file size in MB
+                    parallelUploads: 5,  // Number of files to upload in parallel
+                    autoProcessQueue: false,  // Don't upload files immediately
+                    addRemoveLinks: true,
+                    acceptedFiles: ".jpeg,.jpg,.png,.gif",
+                    thumbnailWidth: 60,
+                    thumbnailHeight: 60,
+                    previewTemplate: previewTemplate,
+                    previewsContainer: "#previews",
+                    clickable: ".fileinput-button", // Define the element that should be used as click trigger to select files.
+                    init: function () {
+                        var dropzoneInstance = this;
+
+
+                        var dataobject = {
+                            unitid: $("#unitid").val(),
+                        };
+
+                        // On form submission
+                        document.querySelector("#btnAddGen_Unit").addEventListener("click", function (e) {
+                            e.preventDefault();
+                            if (_cusFormValidate('frmAddGen_Unit')) {
+                                $.blockUI();
+                                var formData = new FormData();
+                                formData.append("unitid", $("#unitid").val());
+                                formData.append("unit", $("#unit").val());
+                                formData.append("unitcode", $("#unitcode").val());
+                                formData.append("ex_nvarchar3", $("#ex_nvarchar3").val());
+
+                                console.log("length");
+                                console.log(dropzoneInstance.getQueuedFiles().length);
+
+                                if (dropzoneInstance.getQueuedFiles().length = 1) {
+                                    dropzoneInstance.processQueue();
+                                    //  dropzoneInstance.on("queuecomplete", function () {
+
+                                    let index = 0;
+                                    dropzoneInstance.getAcceptedFiles().forEach(file => {
+                                        // var descriptionInput = file.previewElement.querySelector(".file-description");
+                                        // console.log(descriptionInput.value)
+                                        // if (descriptionInput.value)
+                                        //     formData.append("postedFiles[" + index + "].fileDescription", descriptionInput.value);
+                                        // else
+                                        //     formData.append("postedFiles[" + index + "].fileDescription", "");
+                                        formData.append("postedFiles[" + index + "].file", file);
+                                        formData.append("file", file);
+                                        index++;
+                                    });
+
+                                    SubmitFormData(formData);
+                                    //   });
+                                }
+                                else {
+                                    SubmitFormData(formData);
+                                }
+                            }
+
+                        });
+
+                        function SubmitFormData(formData) {
+
+                            ajaxPostObjectHandlerWithFiles("/Gen_Unit/AddGen_Unit", formData, function (response) {
+                                $.unblockUI();
+                                if (response._ajaxresponse.responsestatus == "success") {
+                                    showSuccessAlert("Success", response._ajaxresponse.responsetext, "OK", RedirectToLanding, LandingGen_UnitInfo);
+                                }
+                            }, false);
+                        }
+
+                    }
+
+                });
+        })
+
+
+
+    </script>
     <script src="~/lib/customjs/Gen_Unit/Gen_Unit.js"></script>
 }
 
