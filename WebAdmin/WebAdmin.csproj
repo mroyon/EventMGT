@@ -441,9 +441,6 @@
     <Content Include="LanguagesFiles\_tran_userservicemapped.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="WebAdmin.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
 
   <ItemGroup>
@@ -452,23 +449,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="Views\General\Gen_EventInfo\AddGen_EventInfo.cshtml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Views\General\Gen_EventInfo\DeleteGen_EventInfo.cshtml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Views\General\Gen_EventInfo\EditGen_EventInfo.cshtml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Views\General\Gen_EventInfo\GetSingleGen_EventInfo.cshtml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Views\General\Gen_EventInfo\LandingGen_EventInfo.cshtml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
     <None Include="Views\OnlineUser\Components\ShowUserList\Default.cshtml" />
-    <None Include="Views\Shared\Components\S2Gen_Event\Default.cshtml" />
     <None Include="wwwroot\lib\admin-lte\css\adminltertl.css.map" />
     <None Include="wwwroot\lib\admin-lte\css\adminltertl.min.css.map" />
     <None Include="wwwroot\lib\admin-lte\js\adminlte.js" />
@@ -1204,11 +1185,26 @@
     <Content Update="Views\DashboardHome\Privacy.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Update="Views\General\Gen_EventInfo\AddGen_EventInfo.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\General\Gen_EventInfo\DeleteGen_EventInfo.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\General\Gen_EventInfo\EditGen_EventInfo.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Update="Views\General\Gen_EventInfo\EventFiles.cshtml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\General\Gen_EventInfo\GetSingleGen_EventInfo.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\General\Gen_EventInfo\LandingGen_EventInfo.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Update="Views\General\Gen_EventInfo\SearchEvent.cshtml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Update="Views\General\Gen_ServiceStatus\AddGen_ServiceStatus.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -1324,6 +1320,18 @@
     <Content Update="Views\Shared\Components\MINServices\PUCService\PUCService.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Update="Views\Shared\Components\S2FilterGen_Unit\Default.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\Shared\Components\S2Gen_EventCategory\Default.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\Shared\Components\S2Gen_Event\Default.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\Shared\Components\S2Gen_Unit\Default.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Update="Views\Shared\Components\S2Owin_FormAction\Default.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -1364,6 +1372,12 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Update="Views\Shared\_ValidationScriptsPartial.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\_ViewImports.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\_ViewStart.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Update="wwwroot\lib\customjs\Gen_Unit\Gen_Unit.js">
