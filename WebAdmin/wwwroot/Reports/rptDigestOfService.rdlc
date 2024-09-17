@@ -177,7 +177,7 @@
               </TablixColumns>
               <TablixRows>
                 <TablixRow>
-                  <Height>0.28125in</Height>
+                  <Height>0.26803in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -191,7 +191,6 @@
                                   <Value>ক্র/নং</Value>
                                   <Style>
                                     <FontFamily>solaimanLipi</FontFamily>
-                                    <FontSize>12pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -226,7 +225,6 @@
                                   <Value>তারিখ/ মাস</Value>
                                   <Style>
                                     <FontFamily>solaimanLipi</FontFamily>
-                                    <FontSize>12pt</FontSize>
                                     <FontWeight>Normal</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -262,7 +260,6 @@
                                   <Value>ইভেন্ট</Value>
                                   <Style>
                                     <FontFamily>solaimanLipi</FontFamily>
-                                    <FontSize>12pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -297,7 +294,6 @@
                                   <Value>মন্তব্য</Value>
                                   <Style>
                                     <FontFamily>solaimanLipi</FontFamily>
-                                    <FontSize>12pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -323,7 +319,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.85417in</Height>
+                  <Height>0.69097in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -432,7 +428,7 @@
                                   <Value>=Fields!eventid.Value</Value>
                                 </Parameter>
                               </Parameters>
-                              <Top>0.43056in</Top>
+                              <Top>0.28056in</Top>
                               <Height>0.38542in</Height>
                               <Width>7.5932in</Width>
                               <ZIndex>1</ZIndex>
@@ -448,6 +444,9 @@
                             <Border>
                               <Style>None</Style>
                             </Border>
+                            <BottomBorder>
+                              <Style>Solid</Style>
+                            </BottomBorder>
                           </Style>
                         </Rectangle>
                       </CellContents>
@@ -504,13 +503,13 @@
                 </TablixMember>
               </TablixMembers>
             </TablixRowHierarchy>
-            <RepeatColumnHeaders>true</RepeatColumnHeaders>
-            <RepeatRowHeaders>true</RepeatRowHeaders>
-            <FixedColumnHeaders>true</FixedColumnHeaders>
-            <FixedRowHeaders>true</FixedRowHeaders>
             <DataSetName>DataSet1</DataSetName>
-            <Top>0.3033in</Top>
-            <Height>1.13542in</Height>
+            <PageBreak>
+              <BreakLocation>End</BreakLocation>
+            </PageBreak>
+            <Top>1.4283in</Top>
+            <Left>0in</Left>
+            <Height>0.95901in</Height>
             <Width>10.61908in</Width>
             <Style>
               <Border>
@@ -519,207 +518,199 @@
               <VerticalAlign>Middle</VerticalAlign>
             </Style>
           </Tablix>
+          <Textbox Name="Textbox5">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>ডাইজেষ্ট অব সার্ভিস</Value>
+                    <Style>
+                      <FontStyle>Normal</FontStyle>
+                      <FontFamily>solaimanLipi</FontFamily>
+                      <FontWeight>Normal</FontWeight>
+                      <TextDecoration>Underline</TextDecoration>
+                      <Color>#000000</Color>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox5</rd:DefaultName>
+            <Top>0.69855in</Top>
+            <Height>0.23194in</Height>
+            <Width>10.61236in</Width>
+            <ZIndex>1</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox62">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>ক্রোড়পত্র ক</Value>
+                    <Style>
+                      <FontStyle>Normal</FontStyle>
+                      <FontFamily>SolaimanLipi</FontFamily>
+                      <TextDecoration>Underline</TextDecoration>
+                      <Color>#000000</Color>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Left</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox62</rd:DefaultName>
+            <Top>0.01389in</Top>
+            <Left>6.99479in</Left>
+            <Height>0.2in</Height>
+            <Width>3.56757in</Width>
+            <ZIndex>2</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox64">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>পত্র নং ওকেপি-১০/৩৪/কিউ তারিখ ১১ সেপ্টেম্বর ২০২৪</Value>
+                    <Style>
+                      <FontStyle>Normal</FontStyle>
+                      <TextDecoration>Underline</TextDecoration>
+                      <Color>#000000</Color>
+                    </Style>
+                  </TextRun>
+                  <TextRun>
+                    <Value xml:space="preserve"> </Value>
+                    <Style>
+                      <FontStyle>Normal</FontStyle>
+                      <TextDecoration>None</TextDecoration>
+                      <Color>#000000</Color>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Left</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox62</rd:DefaultName>
+            <Top>0.5264in</Top>
+            <Left>6.99479in</Left>
+            <Height>0.2in</Height>
+            <Width>3.56757in</Width>
+            <ZIndex>3</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox65">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=Fields!unitname.Value</Value>
+                    <Style>
+                      <FontStyle>Normal</FontStyle>
+                      <TextDecoration>Underline</TextDecoration>
+                      <Color>#000000</Color>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Left</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox62</rd:DefaultName>
+            <Top>0.24583in</Top>
+            <Left>6.99479in</Left>
+            <Height>0.25in</Height>
+            <Width>3.56757in</Width>
+            <ZIndex>4</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
+          <Textbox Name="Textbox66">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>=Fields!unitname.Value</Value>
+                    <Style>
+                      <FontStyle>Normal</FontStyle>
+                      <TextDecoration>Underline</TextDecoration>
+                      <Color>#000000</Color>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox62</rd:DefaultName>
+            <Top>0.92354in</Top>
+            <Height>0.2625in</Height>
+            <Width>10.61236in</Width>
+            <ZIndex>5</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
         </ReportItems>
-        <Height>1.43871in</Height>
+        <Height>2.3873in</Height>
         <Style />
       </Body>
-      <Width>10.61908in</Width>
+      <Width>10.6207in</Width>
       <Page>
-        <PageHeader>
-          <Height>1.61212in</Height>
-          <PrintOnFirstPage>true</PrintOnFirstPage>
-          <ReportItems>
-            <Textbox Name="Textbox5">
-              <CanGrow>true</CanGrow>
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>ডাইজেষ্ট অব সার্ভিস</Value>
-                      <Style>
-                        <FontStyle>Normal</FontStyle>
-                        <FontFamily>solaimanLipi</FontFamily>
-                        <FontSize>12pt</FontSize>
-                        <FontWeight>Normal</FontWeight>
-                        <TextDecoration>Underline</TextDecoration>
-                        <Color>#000000</Color>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style>
-                    <TextAlign>Center</TextAlign>
-                  </Style>
-                </Paragraph>
-              </Paragraphs>
-              <rd:DefaultName>Textbox5</rd:DefaultName>
-              <Top>0.83851in</Top>
-              <Height>0.23194in</Height>
-              <Width>10.61236in</Width>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
-                <PaddingLeft>2pt</PaddingLeft>
-                <PaddingRight>2pt</PaddingRight>
-              </Style>
-            </Textbox>
-            <Textbox Name="Textbox62">
-              <CanGrow>true</CanGrow>
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>ক্রোড়পত্র ক</Value>
-                      <Style>
-                        <FontStyle>Normal</FontStyle>
-                        <FontFamily>SolaimanLipi</FontFamily>
-                        <FontSize>12pt</FontSize>
-                        <TextDecoration>None</TextDecoration>
-                        <Color>#000000</Color>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style>
-                    <TextAlign>Left</TextAlign>
-                  </Style>
-                </Paragraph>
-              </Paragraphs>
-              <rd:DefaultName>Textbox62</rd:DefaultName>
-              <Top>0.15385in</Top>
-              <Left>8.11979in</Left>
-              <Height>0.25in</Height>
-              <Width>2.49257in</Width>
-              <ZIndex>1</ZIndex>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
-                <PaddingLeft>2pt</PaddingLeft>
-                <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
-              </Style>
-            </Textbox>
-            <Textbox Name="Textbox64">
-              <CanGrow>true</CanGrow>
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value />
-                      <Style>
-                        <FontStyle>Normal</FontStyle>
-                        <FontSize>12pt</FontSize>
-                        <FontWeight>Bold</FontWeight>
-                        <TextDecoration>None</TextDecoration>
-                        <Color>#000000</Color>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style>
-                    <TextAlign>Left</TextAlign>
-                  </Style>
-                </Paragraph>
-              </Paragraphs>
-              <rd:DefaultName>Textbox62</rd:DefaultName>
-              <Top>0.77886in</Top>
-              <Left>8.11979in</Left>
-              <Height>0.25in</Height>
-              <Width>2.49257in</Width>
-              <ZIndex>2</ZIndex>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
-                <PaddingLeft>2pt</PaddingLeft>
-                <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
-              </Style>
-            </Textbox>
-            <Textbox Name="Textbox65">
-              <CanGrow>true</CanGrow>
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>=Fields!unitname.Value</Value>
-                      <Style>
-                        <FontStyle>Normal</FontStyle>
-                        <FontSize>12pt</FontSize>
-                        <TextDecoration>None</TextDecoration>
-                        <Color>#000000</Color>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style>
-                    <TextAlign>Left</TextAlign>
-                  </Style>
-                </Paragraph>
-              </Paragraphs>
-              <rd:DefaultName>Textbox62</rd:DefaultName>
-              <Top>0.46079in</Top>
-              <Left>8.11979in</Left>
-              <Height>0.2625in</Height>
-              <Width>2.49257in</Width>
-              <ZIndex>3</ZIndex>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
-                <PaddingLeft>2pt</PaddingLeft>
-                <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
-              </Style>
-            </Textbox>
-            <Textbox Name="Textbox66">
-              <CanGrow>true</CanGrow>
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>=Fields!unitname.Value</Value>
-                      <Style>
-                        <FontStyle>Normal</FontStyle>
-                        <FontSize>12pt</FontSize>
-                        <TextDecoration>Underline</TextDecoration>
-                        <Color>#000000</Color>
-                      </Style>
-                    </TextRun>
-                  </TextRuns>
-                  <Style>
-                    <TextAlign>Center</TextAlign>
-                  </Style>
-                </Paragraph>
-              </Paragraphs>
-              <rd:DefaultName>Textbox62</rd:DefaultName>
-              <Top>1.12601in</Top>
-              <Height>0.2625in</Height>
-              <Width>10.61236in</Width>
-              <ZIndex>4</ZIndex>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
-                <PaddingLeft>2pt</PaddingLeft>
-                <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
-              </Style>
-            </Textbox>
-          </ReportItems>
-          <Style>
-            <Border>
-              <Style>None</Style>
-            </Border>
-          </Style>
-        </PageHeader>
         <PageFooter>
           <Height>0.35417in</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
@@ -735,7 +726,6 @@
                       <Value>সীমিত</Value>
                       <Style>
                         <FontFamily>solaimanLipi</FontFamily>
-                        <FontSize>12pt</FontSize>
                       </Style>
                     </TextRun>
                   </TextRuns>
@@ -745,7 +735,7 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox9</rd:DefaultName>
-              <Top>0.10417in</Top>
+              <Top>0.05in</Top>
               <Left>5.03in</Left>
               <Height>0.25in</Height>
               <Width>1in</Width>
@@ -770,8 +760,8 @@
         <PageWidth>11.69in</PageWidth>
         <LeftMargin>0.5in</LeftMargin>
         <RightMargin>0.5in</RightMargin>
-        <TopMargin>1in</TopMargin>
-        <BottomMargin>1in</BottomMargin>
+        <TopMargin>0.25in</TopMargin>
+        <BottomMargin>0.25in</BottomMargin>
         <Style />
       </Page>
     </ReportSection>

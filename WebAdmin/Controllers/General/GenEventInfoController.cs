@@ -862,13 +862,17 @@ IHttpContextAccessor contextAccessor)
             if (e.ReportPath == "rptEventFilesSubreport")
             {
                 List<gen_eventfileinfoReportEntity> objFiles = new List<gen_eventfileinfoReportEntity>();
-                
+
+                var eventid = Convert.ToInt64(e.Parameters["eventid"].Values.FirstOrDefault().ToString());
+
                 //foreach (var file in this._objEventFilesReport)
                 //{
                 //    objFile.image1 = 
                 //}
 
-                for (int i = 0; i < this._objEventFilesReport.Count; i++)
+                var ObjEventFiles = this._objEventFilesReport.Where(p=> p.eventid == eventid).ToList();
+
+                for (int i = 0; i < ObjEventFiles.Count; i++)
                 {
                     try
                     {
@@ -883,10 +887,10 @@ IHttpContextAccessor contextAccessor)
                         //try { objFile.image3 = this._objEventFilesReport[i++].FileUrl; } catch { }
                         //try { objFile.image4 = this._objEventFilesReport[i++].FileUrl; } catch { }
 
-                        try { objFile.ImageData1 = ConvertImageToByteArray(this._objEventFilesReport[i + 0].FileUrl); } catch { }
-                        try { objFile.ImageData2 = ConvertImageToByteArray(this._objEventFilesReport[i + 1].FileUrl); } catch { }
-                        try { objFile.ImageData3 = ConvertImageToByteArray(this._objEventFilesReport[i + 2].FileUrl); } catch { }
-                        try { objFile.ImageData4 = ConvertImageToByteArray(this._objEventFilesReport[i + 3].FileUrl); } catch { }
+                        try { objFile.ImageData1 = ConvertImageToByteArray(ObjEventFiles[i + 0].FileUrl); } catch { }
+                        try { objFile.ImageData2 = ConvertImageToByteArray(ObjEventFiles[i + 1].FileUrl); } catch { }
+                        try { objFile.ImageData3 = ConvertImageToByteArray(ObjEventFiles[i + 2].FileUrl); } catch { }
+                        try { objFile.ImageData4 = ConvertImageToByteArray(ObjEventFiles[i + 3].FileUrl); } catch { }
                         i = i + 3;
 
                         objFiles.Add(objFile);

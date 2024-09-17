@@ -198,7 +198,6 @@
   <ReportParameters>
     <ReportParameter Name="eventid">
       <DataType>Integer</DataType>
-      <Nullable>true</Nullable>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
   </ReportParameters>
