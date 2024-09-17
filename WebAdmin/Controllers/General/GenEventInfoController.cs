@@ -633,12 +633,7 @@ IHttpContextAccessor contextAccessor)
                 {
                     file.FileUrl = Path.Combine(_webHostEnvironment.WebRootPath, "uploads", file.filename);
                 }
-
-                //genev.gen_eventfileinfoList = _objEventFiles;
             }
-
-            //return View("../General/Gen_EventInfo/EventFiles", genev);
-
             if (_objEventFiles.Count > 0) return Json(new { status = "success", data = _objEventFiles });
             else return Json(new { status = "failed", data = new List<gen_eventfileinfoEntity>() });
         }
@@ -675,7 +670,6 @@ IHttpContextAccessor contextAccessor)
             genev.eventdescription = request.eventdescription;
 
             await _gen_EventInfoUseCase.GetAll(new Gen_EventInfoRequest(genev), _gen_EventInfoPresenter);
-            //return Json(_gen_EventInfoPresenter.Result);
             List<gen_eventinfoEntity> _objEventList = new List<gen_eventinfoEntity>();
             _objEventList = _gen_EventInfoPresenter.Result as List<gen_eventinfoEntity>;
 
@@ -720,110 +714,26 @@ IHttpContextAccessor contextAccessor)
             string[] streams;
             Warning[] warnings;
 
-
-            //string bs64 = string.Empty;
-            //string encString = string.Empty;
-            //EncryptionHelper objEnc = new EncryptionHelper();
-            //encString = employeefinancialdata[0].employeename + "|" + employeefinancialdata[0].employeeno + "|" + employeefinancialdata[0].rank + "|" + employeefinancialdata[0].year + "|" + employeefinancialdata[0].month + "|" + totalVal.GetValueOrDefault().ToString();
-            //encString = System.Convert.ToBase64String(System.Text.Encoding.UTF8.GetBytes(objEnc.encryptSimple(encString)));
-
-            //bs64 = await GenerateQRCode(_kAFSalaryCertificateSettins.PaySlipReviewURL + encString);
-
-
             var reportparameter = new[] {
-                            //new ReportParameter("QRCode", bs64),
-                            //new ReportParameter("GeneratedDate", System.DateTime.Now.ToLongDateString()),
                             new ReportParameter("eventid", gen_eventinfoList[0].eventid.ToString())
-                            //new ReportParameter("ReportLogoMimeType", "image/png"),
-                            //new ReportParameter("CivilID", employeefinancialdata[0].civilid)
                         };
-
 
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
             Encoding.GetEncoding("windows-1252");
 
             LocalReport report = new LocalReport();
             report.ReportPath = rdlcFilePath;
-
-
             report.EnableExternalImages = true;
-            //BindingFlags flags = BindingFlags.Public | BindingFlags.Instance | BindingFlags.NonPublic | BindingFlags.Static;
-            //FieldInfo filed = report.GetType().GetField("localReport", flags);
-            //object reportobj = filed.GetValue(report);
-            //Type type = reportobj.GetType();
-            //PropertyInfo pi = type.GetProperty("EnableExternalImages");
-            //pi.SetValue(reportobj, true, null);
-
 
             ReportDataSource rds = new ReportDataSource();
             rds.Name = "DataSet1";
             rds.Value = gen_eventinfoList;
 
-
-
-            //DataTable dt = new DataTable();
-            //int index = 1;
-            //foreach (var img in gen_eventfileinfoList)
-            //{
-            //    dt.Columns.Add($"Image{index}", typeof(byte[]));
-            //    index++;
-            //    //dt.Rows.Add(GetImageBytes(img.FileUrl), GetImageBytes("image2.jpg"), GetImageBytes("image3.jpg"));
-            //}
-
-            //DataRow row = dt.NewRow();
-            //for (int i = 0; i < gen_eventfileinfoList.Count; i++)
-            //{
-            //    byte[] imageBytes = GetImageBytes(gen_eventfileinfoList[i].FileUrl); // Convert image to byte array
-            //    row["Image" + (i + 1)] = imageBytes;
-            //}
-            //dt.Rows.Add(row);
-            //dt.AcceptChanges();
-
-            //dt.Columns.Add($"Image{index}", typeof(byte[]));
-            //dt.Columns.Add("Image2", typeof(byte[]));
-            //dt.Columns.Add("Image3", typeof(byte[]));
-
-            // Add a single row with multiple image columns
-
-
             List<gen_eventfileinfoReportEntity> objFiles = new List<gen_eventfileinfoReportEntity>();
             gen_eventfileinfoReportEntity objFile = new gen_eventfileinfoReportEntity();
-            //foreach (var file in this._objEventFilesReport)
-            //{
-            //    objFile.image1 = 
-            //}
-
-            for (int i = 0; i < this._objEventFilesReport.Count; i++)
-            {
-                try
-                {
-                    //try { objFile.image1 = ConvertImageToBase64String(this._objEventFilesReport[i].FileUrl); } catch { }
-                    //try { objFile.image2 = ConvertImageToBase64String(this._objEventFilesReport[i++].FileUrl); } catch { }
-                    //try { objFile.image3 = ConvertImageToBase64String(this._objEventFilesReport[i++].FileUrl); } catch { }
-                    //try { objFile.image4 = ConvertImageToBase64String(this._objEventFilesReport[i++].FileUrl); } catch { }
-
-                    try { objFile.ImageData1 = ConvertImageToByteArray(this._objEventFilesReport[i].FileUrl); } catch { }
-                    try { objFile.ImageData2 = ConvertImageToByteArray(this._objEventFilesReport[i++].FileUrl); } catch { }
-                    try { objFile.ImageData3 = ConvertImageToByteArray(this._objEventFilesReport[i++].FileUrl); } catch { }
-                    try { objFile.ImageData4 = ConvertImageToByteArray(this._objEventFilesReport[i++].FileUrl); } catch { }
-                    //try { objFile.image2 = this._objEventFilesReport[i++].FileUrl; } catch { }
-                    //try { objFile.image3 = this._objEventFilesReport[i++].FileUrl; } catch { }
-                    //try { objFile.image4 = this._objEventFilesReport[i++].FileUrl; } catch { }
-                    objFiles.Add(objFile);
-                }
-                catch { }
-            }
-
-
-
-            //ReportDataSource rds1 = new ReportDataSource();
-            //rds1.Name = "DataSet2";
-            //rds1.Value = objFiles;
 
             report.DataSources.Add(rds);
-            //report.DataSources.Add(rds1);
             report.SetParameters(reportparameter);
-            //report.SubreportProcessing += LocalReport_SubreportProcessing;
             report.SubreportProcessing += new SubreportProcessingEventHandler(LocalReport_SubreportProcessing); ;
             var result = report.Render("pdf", null,
                             out extension, out encoding,
@@ -832,23 +742,6 @@ IHttpContextAccessor contextAccessor)
         }
         public static byte[] ConvertImageToByteArray(string imagePath)
         {
-            //using (Image img = Image.FromFile(imagePath))
-            //{
-            //    using (MemoryStream ms = new MemoryStream())
-            //    {
-            //        // Save image to memory stream as BMP
-            //        img.Save(ms, ImageFormat.Bmp);
-            //        img.Dispose();
-            //        GC.Collect();
-
-            //        byte[] data = ms.ToArray();
-            //        ms.Dispose();
-            //        GC.Collect();
-
-            //        return data;
-            //    }
-            //}
-
             // Use FileStream to read the image in a memory-efficient way
             using (FileStream fs = new FileStream(imagePath, FileMode.Open, FileAccess.Read))
             {
@@ -862,14 +755,7 @@ IHttpContextAccessor contextAccessor)
             if (e.ReportPath == "rptEventFilesSubreport")
             {
                 List<gen_eventfileinfoReportEntity> objFiles = new List<gen_eventfileinfoReportEntity>();
-
                 var eventid = Convert.ToInt64(e.Parameters["eventid"].Values.FirstOrDefault().ToString());
-
-                //foreach (var file in this._objEventFilesReport)
-                //{
-                //    objFile.image1 = 
-                //}
-
                 var ObjEventFiles = this._objEventFilesReport.Where(p=> p.eventid == eventid).ToList();
 
                 for (int i = 0; i < ObjEventFiles.Count; i++)
@@ -877,16 +763,6 @@ IHttpContextAccessor contextAccessor)
                     try
                     {
                         gen_eventfileinfoReportEntity objFile = new gen_eventfileinfoReportEntity();
-                        //try { objFile.image1 = ConvertImageToBase64String(this._objEventFilesReport[i].FileUrl); } catch { }
-                        //try { objFile.image2 = ConvertImageToBase64String(this._objEventFilesReport[i++].FileUrl); } catch { }
-                        //try { objFile.image3 = ConvertImageToBase64String(this._objEventFilesReport[i++].FileUrl); } catch { }
-                        //try { objFile.image4 = ConvertImageToBase64String(this._objEventFilesReport[i++].FileUrl); } catch { }
-
-                        //try { objFile.image1 = this._objEventFilesReport[i].FileUrl; } catch { }
-                        //try { objFile.image2 = this._objEventFilesReport[i++].FileUrl; } catch { }
-                        //try { objFile.image3 = this._objEventFilesReport[i++].FileUrl; } catch { }
-                        //try { objFile.image4 = this._objEventFilesReport[i++].FileUrl; } catch { }
-
                         try { objFile.ImageData1 = ConvertImageToByteArray(ObjEventFiles[i + 0].FileUrl); } catch { }
                         try { objFile.ImageData2 = ConvertImageToByteArray(ObjEventFiles[i + 1].FileUrl); } catch { }
                         try { objFile.ImageData3 = ConvertImageToByteArray(ObjEventFiles[i + 2].FileUrl); } catch { }

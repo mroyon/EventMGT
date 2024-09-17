@@ -130,15 +130,15 @@
             <div class="card-body">
                 <form method="POST" id="frmDTGen_EventInfolist" class="my-login-validation" novalidate="" autocomplete="off">
                     <div class="row btn-toolbar">
-                                <div class="col-md-6 ">
-                                    <div class="form-group">
-                                        <button type="button" id="btnDownloadReport" onclick='ViewReport(this)' class="btn btn-success btn-md"><i class="fa fa-download"></i> Download Report</button>
-                                    </div>
-                                </div>
+                        <div class="col-md-6 ">
+                            <div class="form-group">
+                                <button type="button" id="btnDownloadReport" onclick='ViewReport(this)' class="btn btn-success btn-md"><i class="fa fa-download"></i> Download Report</button>
                             </div>
+                        </div>
+                    </div>
                     <div class="row">
                         <div class="col-md-12">
-                            
+
                             <table id="DTGen_EventInfolist" class="table table-striped table-bordered" @*style="width:100%"*@ cellspacing="0">
                                 <thead>
                                     <tr>
@@ -290,52 +290,11 @@
                                 return moment(data).format("DD-MM-YYYY");
                             }
                         },
-                        // {
-                        // 	"data": "ex_nvarchar1",
-                        // 	"name": "ex_nvarchar1",
-                        // 	"autoWidth": true,
-                        // 	"render": function(data, type, full, row) {
-                        //                  var nestedTable = "";
-                        // 		var baseURL = window.location.origin;
-                        // 		var fileinfo = "";
-                        // 		if (data != null) {
-                        // 			// var fileinfo = "";
-                        // 			// //var datainfo = data;
-                        // 			const myArray = data.split(",");
-                        // 			//console.log(myArray)
-
-                        // 			nestedTable = "<table class='table table-striped table-bordered '>"
-
-                        // 			$.each(myArray, function(key, value) {
-                        // 				nestedTable += "<tr>";
-                        // 				nestedTable += "<td>";
-
-                        // 				var strArr = value.split("|");
-                        // 				var fileName = strArr[0];
-                        // 				var fileDesc = strArr[1];
-
-                        // 				//console.log(fileName)
-                        // 				fileinfo = "<img width='100' height='100' src='" + baseURL + "/uploads/" + fileName + "'> </img>";
-                        // 				nestedTable += fileinfo;
-                        // 				nestedTable += "</td>";
-                        // 				nestedTable += "<td>" + fileDesc + "</td>";
-                        // 				nestedTable += "<td><a href='" + baseURL + "/uploads/" + fileName + "' download>Download</a></td>";
-                        // 				nestedTable += "</tr>";
-                        // 			});
-                        //                      nestedTable += "</table>";
-                        // 		}
-
-                        // 		return nestedTable;
-                        // 	}
-                        // },
-
                         {
                             "data": "eventid", render: function (data, type, full, row) {
                                 $("#btnDownloadReport").show();
                                 var button = "<button type='button' class='btn btn-info btn-md mr-1' onclick='ViewEventFiles(this)' data-eventname='" + full.eventname + "' data-eventid='" + data + "'><i class='fas fa-eye'></i> View Files</button>";
-                                //button += "<button type='button' class='btn btn-success btn-md mr-1' onclick='ViewReport(this)' data-eventname='" + full.eventname + "' data-eventid='" + data + "'><i class='fas fa-download'></i> Download Report</button>";
                                 return button;
-
                             }
                         }
                     ]
@@ -362,46 +321,18 @@
                 eventid: $(cntrl).attr('data-eventid')
             };
             ajaxPostObjectHandler("/Gen_EventInfo/GetEventFileInfoByEvent", dataobject, function (response) {
-                console.log(response.data)
-                console.log(response.status)
                 if (response.status == "success") {
-
                     var baseURL = window.location.origin;
-
-                    //console.log(response.data[0].filename)
                     var myModal = new bootstrap.Modal(document.getElementById("exampleModal"), {});
-                    //myModal.show();
                     var modalBody = "";
                     $(".photos").empty();
                     $("#exampleModalLabel").text($(cntrl).attr('data-eventname'));
                     $.each(response.data, function (key, value) {
-                        // modalBody += "<div class='img-box'>";
-                        // modalBody += "<a href='" + baseURL + "/uploads/" + value.filename + "' target='_blank'><img src='" + baseURL + "/uploads/" + value.filename + "' alt='' /></a>";
-                        // modalBody += "<div class='transparent-box'><div class='captio'>";
-                        // modalBody += "<p>" + value.filedescription + "</p>";
-                        // modalBody += "</div>";
-                        // modalBody += "</div>";
-                        // modalBody += "</div>";
                         var filepath = baseURL + "/uploads/" + value.filename;
                         modalBody += "<div class='col-sm-6 col-md-4 col-lg-3 item'><a href='" + filepath + "' data-lightbox='photos'><img class='img-fluid' src='" + filepath + "'><span class='caption'>" + "" + "</span></a></div>";
-
-
-
                     });
                     $(".photos").append(modalBody);
-                    //$(".gallery-image").append(modalBody);
                     myModal.show();
-                    //var modalBody = "<div class='img-box'>
-
-
-
-                    //     <img src='https://picsum.photos/350/250?image=444' alt='' />
-                    //     <div class='transparent-box'>
-                    //         <div class='captio'>
-                    //             <p>Library</p>
-                    //         </div>
-                    //     </div>
-                    // </div>";
                 }
                 else {
                     console.log("No File Found")
@@ -412,15 +343,15 @@
         function ViewReport(cntrl) {
             var eventid = $(cntrl).attr('data-eventid')
 
-           var dataobject = {
-                    eventcategoryid: $("#eventcategoryid").val(),
-                    eventcode: $("#eventcode").val(),
-                    eventname: $("#eventname").val(),
-                    unitid: $("#unitid").val(),
-                    eventdescription: $("#eventdescription").val(),
-                    eventstartdate: GetDateFromTextBox($("#eventstartdate").val()),
-                    eventenddate: GetDateFromTextBox($("#eventenddate").val()),
-                }
+            var dataobject = {
+                eventcategoryid: $("#eventcategoryid").val(),
+                eventcode: $("#eventcode").val(),
+                eventname: $("#eventname").val(),
+                unitid: $("#unitid").val(),
+                eventdescription: $("#eventdescription").val(),
+                eventstartdate: GetDateFromTextBox($("#eventstartdate").val()),
+                eventenddate: GetDateFromTextBox($("#eventenddate").val()),
+            }
 
             ajaxPostObjectHandler("/Gen_EventInfo/GetReport_DigestOfService", dataobject, function (response) {
                 console.log("I am Happy")
