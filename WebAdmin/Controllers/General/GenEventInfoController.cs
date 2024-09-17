@@ -645,9 +645,19 @@ IHttpContextAccessor contextAccessor)
         public async Task<IActionResult> GetReport_DigestOfService([FromBody] gen_eventinfoEntity request)
         {
             if (!User.Identity.IsAuthenticated) { return RedirectToAction("Account", "Login"); }
-            ModelState.Remove("filetype");
-            ModelState.Remove("extension");
-            ModelState.Remove("filename");
+            ModelState.Remove("eventid");
+            ModelState.Remove("eventcategoryid");
+            ModelState.Remove("eventcode");
+            ModelState.Remove("eventname");
+            ModelState.Remove("eventstartdate");
+            ModelState.Remove("eventenddate");
+            ModelState.Remove("eventdescription");
+            ModelState.Remove("eventdescription1");
+            ModelState.Remove("eventdescription2");
+            ModelState.Remove("eventspecialnote");
+            ModelState.Remove("isdeleted");
+            ModelState.Remove("eventorganizedby");
+            ModelState.Remove("ex_nvarchar3");
             if (!ModelState.IsValid) { return BadRequest(ModelState); }
 
 
@@ -663,7 +673,7 @@ IHttpContextAccessor contextAccessor)
             await _gen_EventInfoUseCase.GetAll(new Gen_EventInfoRequest(genev), _gen_EventInfoPresenter);
             //return Json(_gen_EventInfoPresenter.Result);
             List<gen_eventinfoEntity> _objEventList = new List<gen_eventinfoEntity>();
-            _objEventList = _gen_EventFileInfoPresenter.Result as List<gen_eventinfoEntity>;
+            _objEventList = _gen_EventInfoPresenter.Result as List<gen_eventinfoEntity>;
 
             gen_eventfileinfoEntity objEventFile = new gen_eventfileinfoEntity();
             objEventFile.eventid = genev.eventid;
@@ -677,7 +687,7 @@ IHttpContextAccessor contextAccessor)
                                 );
             var reportBase64 = Convert.ToBase64String(bytearrReport);
 
-            return Ok();
+            return Json(new { status = "success", data = reportBase64 });
         }
 
 
@@ -686,7 +696,7 @@ IHttpContextAccessor contextAccessor)
           List<gen_eventfileinfoEntity> gen_eventfileinfoList)
         {
             string fileDirPath = _webhost.WebRootPath;
-            string rdlcFilePath = string.Format("{0}\\Reports\\RDLC\\rptDigestOfService.rdlc", fileDirPath);
+            string rdlcFilePath = string.Format("{0}\\Reports\\rptDigestOfService.rdlc", fileDirPath);
 
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
             Encoding.GetEncoding("windows-1252");
@@ -708,12 +718,12 @@ IHttpContextAccessor contextAccessor)
             //bs64 = await GenerateQRCode(_kAFSalaryCertificateSettins.PaySlipReviewURL + encString);
 
 
-            var reportparameter = new[] {
-                            //new ReportParameter("QRCode", bs64),
-                            new ReportParameter("GeneratedDate", System.DateTime.Now.ToLongDateString())
-                            //new ReportParameter("ReportLogoMimeType", "image/png"),
-                            //new ReportParameter("CivilID", employeefinancialdata[0].civilid)
-                        };
+            //var reportparameter = new[] {
+            //                //new ReportParameter("QRCode", bs64),
+            //                new ReportParameter("GeneratedDate", System.DateTime.Now.ToLongDateString())
+            //                //new ReportParameter("ReportLogoMimeType", "image/png"),
+            //                //new ReportParameter("CivilID", employeefinancialdata[0].civilid)
+            //            };
 
 
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
@@ -732,7 +742,7 @@ IHttpContextAccessor contextAccessor)
 
             report.DataSources.Add(rds);
             //report.DataSources.Add(rds1);
-            report.SetParameters(reportparameter);
+           // report.SetParameters(reportparameter);
 
             var result = report.Render("pdf", null,
                             out extension, out encoding,

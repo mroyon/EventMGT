@@ -299,6 +299,7 @@
                         {
                             "data": "eventid", render: function (data, type, full, row) {
                                 var button = "<button type='button' class='btn btn-info btn-md mr-1' onclick='ViewEventFiles(this)' data-eventname='" + full.eventname + "' data-eventid='" + data + "'><i class='fas fa-eye'></i> View Files</button>";
+                                button += "<button type='button' class='btn btn-success btn-md mr-1' onclick='ViewReport(this)' data-eventname='" + full.eventname + "' data-eventid='" + data + "'><i class='fas fa-download'></i> Download Report</button>";
                                 return button;
 
                             }
@@ -371,6 +372,25 @@
                 else {
                     console.log("No File Found")
                 }
+            }, true);
+        }
+
+        function ViewReport(cntrl) {
+            var eventid = $(cntrl).attr('data-eventid')
+
+            var dataobject = {
+                eventid: $(cntrl).attr('data-eventid')
+            };
+            ajaxPostObjectHandler("/Gen_EventInfo/GetReport_DigestOfService", dataobject, function (response) {
+                console.log("I am Happy")
+                var base64 = response.data;
+                const linkSource = `data:application/pdf;base64,${base64}`;
+                const downloadLink = document.createElement("a");
+                const fileName = "abc.pdf";
+                downloadLink.href = linkSource;
+                downloadLink.download = fileName;
+                downloadLink.click();
+
             }, true);
         }
 
