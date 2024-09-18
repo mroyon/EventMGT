@@ -1,72 +1,72 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <resources>
-    
-        <!--  ar-kwabic (ar-kw) -->
-        
-       <resource culture="ar-kw" name="eventcategoryid" value="AR:  Event Category I D"></resource>
-       <resource culture="ar-kw" name="eventcategoryidRequired" value="AR: Please provide  Event Category I D"></resource>
-       <resource culture="ar-kw" name="eventcode" value="AR:  Event Code"></resource>
-       <resource culture="ar-kw" name="eventcodeRequired" value="AR: Please provide  Event Code"></resource>
-       <resource culture="ar-kw" name="eventname" value="AR:  Event Title"></resource>
-       <resource culture="ar-kw" name="eventnameRequired" value="AR: Please provide  Event Name"></resource>
-       <resource culture="ar-kw" name="eventstartdate" value="AR:  Event Start Date"></resource>
-       <resource culture="ar-kw" name="eventstartdateRequired" value="AR: Please provide  Event Start Date"></resource>
-       <resource culture="ar-kw" name="eventenddate" value="AR:  Event End Date"></resource>
-       <resource culture="ar-kw" name="eventdescription" value="AR:  Event Description"></resource>
-       <resource culture="ar-kw" name="eventdescription1" value="AR:  Event Description 1"></resource>
-       <resource culture="ar-kw" name="eventdescription2" value="AR:  Event Description 2"></resource>
-       <resource culture="ar-kw" name="eventspecialnote" value="AR:  Event Special Note"></resource>
-       <resource culture="ar-kw" name="isdeleted" value="AR:  Is Deleted"></resource>
-       <resource culture="ar-kw" name="eventorganizedby" value="Unit "></resource>
-       <resource culture="ar-kw" name="eventorganizedbyRequired" value="AR: Please provide  Event Organized By"></resource>
-       <resource culture="ar-kw" name="ex_date1" value="AR:  Ex Date 1"></resource>
-       <resource culture="ar-kw" name="ex_date2" value="AR:  Ex Date 2"></resource>
-       <resource culture="ar-kw" name="ex_nvarchar1" value="AR:  Ex Nvarchar 1"></resource>
-       <resource culture="ar-kw" name="ex_nvarchar2" value="AR:  Ex Nvarchar 2"></resource>
-       <resource culture="ar-kw" name="ex_nvarchar3" value="AR:  Ex Nvarchar 3"></resource>
-       <resource culture="ar-kw" name="ex_bigint1" value="AR:  Ex Bigint 1"></resource>
-       <resource culture="ar-kw" name="ex_bigint2" value="AR:  Ex Bigint 2"></resource>
-       <resource culture="ar-kw" name="ex_decimal1" value="AR:  Ex Decimal 1"></resource>
-       <resource culture="ar-kw" name="ex_decimal2" value="AR:  Ex Decimal 2"></resource>
-		<resource culture="ar-kw" name="eventinfoList" value="AR: View All"></resource>
-		<resource culture="ar-kw" name="eventinfoCreate" value="AR: Create"></resource>
-		<resource culture="ar-kw" name="eventinfoUpdate" value="AR: Update"></resource>
-		<resource culture="ar-kw" name="eventinfoDetails" value="AR: Detail"></resource>
 
-         <!--  ar-kwabic (ar-kw) -->
-         
-          <!--  English (en-US) -->
-       <resource culture="en-us" name="eventcategoryid" value=" Event Category"></resource>
-       <resource culture="en-us" name="eventcategoryidRequired" value="Please provide  Event Category"></resource>
-       <resource culture="en-us" name="eventcode" value=" Event Code"></resource>
-       <resource culture="en-us" name="eventcodeRequired" value="Please provide  Event Code"></resource>
-       <resource culture="en-us" name="eventname" value=" Event Title"></resource>
-       <resource culture="en-us" name="eventnameRequired" value="Please provide  Event Name"></resource>
-       <resource culture="en-us" name="eventstartdate" value=" Event Start Date"></resource>
-       <resource culture="en-us" name="eventstartdateRequired" value="Please provide  Event Start Date"></resource>
-       <resource culture="en-us" name="eventenddate" value=" Event End Date"></resource>
-       <resource culture="en-us" name="eventdescription" value=" Event Description"></resource>
-       <resource culture="en-us" name="eventdescription1" value=" Event Description 1"></resource>
-       <resource culture="en-us" name="eventdescription2" value=" Event Description 2"></resource>
-       <resource culture="en-us" name="eventspecialnote" value=" Event Special Note"></resource>
-       <resource culture="en-us" name="isdeleted" value=" Is Deleted"></resource>
-       <resource culture="en-us" name="eventorganizedby" value=" Unit "></resource>
-       <resource culture="en-us" name="eventorganizedbyRequired" value="Please provide  Event Unit"></resource>
-       <resource culture="en-us" name="ex_date1" value=" Ex Date 1"></resource>
-       <resource culture="en-us" name="ex_date2" value=" Ex Date 2"></resource>
-       <resource culture="en-us" name="ex_nvarchar1" value=" Ex Nvarchar 1"></resource>
-       <resource culture="en-us" name="ex_nvarchar2" value=" Ex Nvarchar 2"></resource>
-       <resource culture="en-us" name="ex_nvarchar3" value=" Ex Nvarchar 3"></resource>
-       <resource culture="en-us" name="ex_bigint1" value=" Ex Bigint 1"></resource>
-       <resource culture="en-us" name="ex_bigint2" value=" Ex Bigint 2"></resource>
-       <resource culture="en-us" name="ex_decimal1" value=" Ex Decimal 1"></resource>
-       <resource culture="en-us" name="ex_decimal2" value=" Ex Decimal 2"></resource>
-        <resource culture="en-us" name="eventinfoList" value="View All"></resource>
-		<resource culture="en-us" name="eventinfoCreate" value="Create"></resource>
-		<resource culture="en-us" name="eventinfoUpdate" value="Update"></resource>
-		<resource culture="en-us" name="eventinfoDetails" value="Detail"></resource>
-          <!--  English (en-US) -->
-        
-         
+	<!--  ar-kwabic (ar-kw) -->
 
-</resources>        
+	<resource culture="ar-kw" name="eventcategoryid" value="AR:  Event Category I D"></resource>
+	<resource culture="ar-kw" name="eventcategoryidRequired" value="AR: Please provide  Event Category I D"></resource>
+	<resource culture="ar-kw" name="eventcode" value="AR:  Event Code"></resource>
+	<resource culture="ar-kw" name="eventcodeRequired" value="AR: Please provide  Event Code"></resource>
+	<resource culture="ar-kw" name="eventname" value="AR:  Event Title"></resource>
+	<resource culture="ar-kw" name="eventnameRequired" value="AR: Please provide  Event Name"></resource>
+	<resource culture="ar-kw" name="eventstartdate" value="AR:  Event Start Date"></resource>
+	<resource culture="ar-kw" name="eventstartdateRequired" value="AR: Please provide  Event Start Date"></resource>
+	<resource culture="ar-kw" name="eventenddate" value="AR:  Event End Date"></resource>
+	<resource culture="ar-kw" name="eventdescription" value="AR:  Event's Detail Description"></resource>
+	<resource culture="ar-kw" name="eventdescription1" value="AR:  Event's Detail Description 1"></resource>
+	<resource culture="ar-kw" name="eventdescription2" value="AR:  Event's Detail Description 2"></resource>
+	<resource culture="ar-kw" name="eventspecialnote" value="AR:  Event Special Note"></resource>
+	<resource culture="ar-kw" name="isdeleted" value="AR:  Is Deleted"></resource>
+	<resource culture="ar-kw" name="eventorganizedby" value="Unit "></resource>
+	<resource culture="ar-kw" name="eventorganizedbyRequired" value="AR: Please provide  Event Organized By"></resource>
+	<resource culture="ar-kw" name="ex_date1" value="AR:  Ex Date 1"></resource>
+	<resource culture="ar-kw" name="ex_date2" value="AR:  Ex Date 2"></resource>
+	<resource culture="ar-kw" name="ex_nvarchar1" value="AR:  Ex Nvarchar 1"></resource>
+	<resource culture="ar-kw" name="ex_nvarchar2" value="AR:  Ex Nvarchar 2"></resource>
+	<resource culture="ar-kw" name="ex_nvarchar3" value="AR:  Ex Nvarchar 3"></resource>
+	<resource culture="ar-kw" name="ex_bigint1" value="AR:  Ex Bigint 1"></resource>
+	<resource culture="ar-kw" name="ex_bigint2" value="AR:  Ex Bigint 2"></resource>
+	<resource culture="ar-kw" name="ex_decimal1" value="AR:  Ex Decimal 1"></resource>
+	<resource culture="ar-kw" name="ex_decimal2" value="AR:  Ex Decimal 2"></resource>
+	<resource culture="ar-kw" name="eventinfoList" value="AR: View All"></resource>
+	<resource culture="ar-kw" name="eventinfoCreate" value="AR: Create"></resource>
+	<resource culture="ar-kw" name="eventinfoUpdate" value="AR: Update"></resource>
+	<resource culture="ar-kw" name="eventinfoDetails" value="AR: Detail"></resource>
+
+	<!--  ar-kwabic (ar-kw) -->
+
+	<!--  English (en-US) -->
+	<resource culture="en-us" name="eventcategoryid" value=" Event Category"></resource>
+	<resource culture="en-us" name="eventcategoryidRequired" value="Please provide  Event Category"></resource>
+	<resource culture="en-us" name="eventcode" value=" Event Code"></resource>
+	<resource culture="en-us" name="eventcodeRequired" value="Please provide  Event Code"></resource>
+	<resource culture="en-us" name="eventname" value=" Event Title"></resource>
+	<resource culture="en-us" name="eventnameRequired" value="Please provide  Event Name"></resource>
+	<resource culture="en-us" name="eventstartdate" value=" Event Start Date"></resource>
+	<resource culture="en-us" name="eventstartdateRequired" value="Please provide  Event Start Date"></resource>
+	<resource culture="en-us" name="eventenddate" value=" Event End Date"></resource>
+	<resource culture="en-us" name="eventdescription" value=" Event's Detail Description"></resource>
+	<resource culture="en-us" name="eventdescription1" value=" Event's Detail Description 1"></resource>
+	<resource culture="en-us" name="eventdescription2" value=" Event's Detail Description 2"></resource>
+	<resource culture="en-us" name="eventspecialnote" value=" Event Special Note"></resource>
+	<resource culture="en-us" name="isdeleted" value=" Is Deleted"></resource>
+	<resource culture="en-us" name="eventorganizedby" value=" Unit "></resource>
+	<resource culture="en-us" name="eventorganizedbyRequired" value="Please provide  Event Unit"></resource>
+	<resource culture="en-us" name="ex_date1" value=" Ex Date 1"></resource>
+	<resource culture="en-us" name="ex_date2" value=" Ex Date 2"></resource>
+	<resource culture="en-us" name="ex_nvarchar1" value=" Ex Nvarchar 1"></resource>
+	<resource culture="en-us" name="ex_nvarchar2" value=" Ex Nvarchar 2"></resource>
+	<resource culture="en-us" name="ex_nvarchar3" value=" Ex Nvarchar 3"></resource>
+	<resource culture="en-us" name="ex_bigint1" value=" Ex Bigint 1"></resource>
+	<resource culture="en-us" name="ex_bigint2" value=" Ex Bigint 2"></resource>
+	<resource culture="en-us" name="ex_decimal1" value=" Ex Decimal 1"></resource>
+	<resource culture="en-us" name="ex_decimal2" value=" Ex Decimal 2"></resource>
+	<resource culture="en-us" name="eventinfoList" value="View All"></resource>
+	<resource culture="en-us" name="eventinfoCreate" value="Create"></resource>
+	<resource culture="en-us" name="eventinfoUpdate" value="Update"></resource>
+	<resource culture="en-us" name="eventinfoDetails" value="Detail"></resource>
+	<!--  English (en-US) -->
+
+
+
+</resources>
