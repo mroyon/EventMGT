@@ -31,7 +31,7 @@
 	<resource culture="ar-kw" name="eventinfoList" value="AR: View All"></resource>
 	<resource culture="ar-kw" name="eventinfoCreate" value="AR: Create"></resource>
 	<resource culture="ar-kw" name="eventinfoUpdate" value="AR: Update"></resource>
-	<resource culture="ar-kw" name="eventinfoDetails" value="AR: Detail"></resource>
+	<resource culture="ar-kw" name="eventinfoDetails" value="AR: Detail"></resource> 
 
 	<!--  ar-kwabic (ar-kw) -->
 
