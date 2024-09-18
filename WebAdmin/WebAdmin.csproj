@@ -125,6 +125,7 @@
     <Content Remove="wwwroot\lib\customjs\Gen_EventInfo\Gen_EventInfo.js" />    
     <Content Remove="wwwroot\lib\customjs\UserManagement\usermanagement.js" />
     <Content Remove="wwwroot\Reports\KAFGetMilitaryInfo.rdlc" />
+    <Content Remove="wwwroot\Reports\rptUnitDigest.rdlc" />
     <Content Remove="wwwroot\Reports\Sahel_ReenlistedRecruitmentService.rdlc" />
   </ItemGroup>
 
@@ -448,6 +449,7 @@
 
   <ItemGroup>
     <EmbeddedResource Include="wwwroot\Reports\KAFGetMilitaryInfo.rdlc" />
+    <EmbeddedResource Include="wwwroot\Reports\rptUnitDigest.rdlc" />
     <EmbeddedResource Include="wwwroot\Reports\Sahel_ReenlistedRecruitmentService.rdlc" />
   </ItemGroup>
 
@@ -1379,6 +1381,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Update="wwwroot\Reports\rptDigestOfService2.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\Reports\rptUnitDigestEventFilesSubreport.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Update="wwwroot\Reports\rptEventFilesSubreport.rdlc">

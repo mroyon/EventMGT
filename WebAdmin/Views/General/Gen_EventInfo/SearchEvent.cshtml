@@ -133,6 +133,7 @@
                         <div class="col-md-6 ">
                             <div class="form-group">
                                 <button type="button" id="btnDownloadReport" onclick='ViewReport(this)' class="btn btn-success btn-md"><i class="fa fa-download"></i> Download Report</button>
+                                <button type="button" id="btnDownloadReport_UnitDigest" onclick='ViewReport_UnitDigest(this)' class="btn btn-success btn-md"><i class="fa fa-download"></i> Download Unit Digest Report</button>
                             </div>
                         </div>
                     </div>
@@ -149,7 +150,7 @@
                                         <th><label class="labelNormal  " asp-for="eventdescription"></label></th>
                                         <th><label class="labelNormal  " asp-for="eventstartdate"></label></th>
                                         @* <th><label class="labelNormal  ">Files</label></th> *@
-                                        <th width="320px"><label class="labelNormal  ">Actions</label></th>
+                                        <th width="100px"><label class="labelNormal  ">Actions</label></th>
                                     </tr>
                                 </thead>
                             </table>
@@ -216,6 +217,7 @@
         $(function () {
 
             $("#btnDownloadReport").hide();
+            $("#btnDownloadReport_UnitDigest").hide();
             var table;
 
             $('body').on('click', '#btnSearchEventInfo', function (e) {
@@ -293,6 +295,7 @@
                         {
                             "data": "eventid", render: function (data, type, full, row) {
                                 $("#btnDownloadReport").show();
+                                $("#btnDownloadReport_UnitDigest").show();
                                 var button = "<button type='button' class='btn btn-info btn-md mr-1' onclick='ViewEventFiles(this)' data-eventname='" + full.eventname + "' data-eventid='" + data + "'><i class='fas fa-eye'></i> View Files</button>";
                                 return button;
                             }
@@ -354,6 +357,32 @@
             }
 
             ajaxPostObjectHandler("/Gen_EventInfo/GetReport_DigestOfService", dataobject, function (response) {
+                console.log("I am Happy")
+                var base64 = response.data;
+                const linkSource = `data:application/pdf;base64,${base64}`;
+                const downloadLink = document.createElement("a");
+                const fileName = "abc.pdf";
+                downloadLink.href = linkSource;
+                downloadLink.download = fileName;
+                downloadLink.click();
+
+            }, true);
+        }
+
+        function ViewReport_UnitDigest(cntrl) {
+            var eventid = $(cntrl).attr('data-eventid')
+
+            var dataobject = {
+                eventcategoryid: $("#eventcategoryid").val(),
+                eventcode: $("#eventcode").val(),
+                eventname: $("#eventname").val(),
+                unitid: $("#unitid").val(),
+                eventdescription: $("#eventdescription").val(),
+                eventstartdate: GetDateFromTextBox($("#eventstartdate").val()),
+                eventenddate: GetDateFromTextBox($("#eventenddate").val()),
+            }
+
+            ajaxPostObjectHandler("/Gen_EventInfo/GetReport_UnitDigest", dataobject, function (response) {
                 console.log("I am Happy")
                 var base64 = response.data;
                 const linkSource = `data:application/pdf;base64,${base64}`;

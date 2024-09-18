@@ -805,5 +805,141 @@ IHttpContextAccessor contextAccessor)
                 }
             }
         }
+
+        [HttpPost]
+        [AutoValidateAntiforgeryToken]
+        public async Task<IActionResult> GetReport_UnitDigest([FromBody] gen_eventinfoEntity request)
+        {
+            if (!User.Identity.IsAuthenticated) { return RedirectToAction("Account", "Login"); }
+            ModelState.Remove("eventid");
+            ModelState.Remove("eventcategoryid");
+            ModelState.Remove("eventcode");
+            ModelState.Remove("eventname");
+            ModelState.Remove("eventstartdate");
+            ModelState.Remove("eventenddate");
+            ModelState.Remove("eventdescription");
+            ModelState.Remove("eventdescription1");
+            ModelState.Remove("eventdescription2");
+            ModelState.Remove("eventspecialnote");
+            ModelState.Remove("isdeleted");
+            ModelState.Remove("eventorganizedby");
+            ModelState.Remove("ex_nvarchar3");
+            if (!ModelState.IsValid) { return BadRequest(ModelState); }
+
+
+            gen_eventinfoEntity genev = new gen_eventinfoEntity();
+            genev.eventcategoryid = request.eventcategoryid;
+            genev.eventid = request.eventid;
+            genev.eventname = request.eventname;
+            genev.eventstartdate = request.eventstartdate;
+            genev.eventenddate = request.eventenddate;
+            genev.unitid = request.unitid;
+            genev.eventdescription = request.eventdescription;
+
+            await _gen_EventInfoUseCase.GetAll(new Gen_EventInfoRequest(genev), _gen_EventInfoPresenter);
+            List<gen_eventinfoEntity> _objEventList = new List<gen_eventinfoEntity>();
+            _objEventList = _gen_EventInfoPresenter.Result as List<gen_eventinfoEntity>;
+
+            gen_eventfileinfoEntity objEventFile = new gen_eventfileinfoEntity();
+            objEventFile.eventid = genev.eventid;
+            await _gen_EventFileInfoUseCase.GetAll(new Gen_EventFileInfoRequest(objEventFile), _gen_EventFileInfoPresenter);
+            List<gen_eventfileinfoEntity> _objEventFiles = new List<gen_eventfileinfoEntity>();
+            _objEventFiles = _gen_EventFileInfoPresenter.Result as List<gen_eventfileinfoEntity>;
+            this._objEventFilesReport = _gen_EventFileInfoPresenter.Result as List<gen_eventfileinfoEntity>;
+
+            if (_objEventFiles.Count > 0)
+            {
+                foreach (var file in _objEventFiles)
+                {
+                    file.FileUrl = Path.Combine(_webHostEnvironment.WebRootPath, "uploads", file.filename);
+                }
+            }
+            var bytearrReport = await GenerateReport_UnitDigest(
+                                _objEventList,
+                                _objEventFiles.ToList()
+                                );
+            var reportBase64 = Convert.ToBase64String(bytearrReport);
+
+            return Json(new { status = "success", data = reportBase64 });
+        }
+
+
+        private async Task<byte[]> GenerateReport_UnitDigest(
+          List<gen_eventinfoEntity> gen_eventinfoList,
+          List<gen_eventfileinfoEntity> gen_eventfileinfoList)
+        {
+            string fileDirPath = _webhost.WebRootPath;
+            string rdlcFilePath = string.Format("{0}\\Reports\\rptUnitDigest.rdlc", fileDirPath);
+
+            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+            Encoding.GetEncoding("windows-1252");
+
+            string FileName = "Digest_" + System.DateTime.Now.ToString("ddMMyyyyhhmmss");
+            string extension;
+            string encoding;
+            string mimeType;
+            string[] streams;
+            Warning[] warnings;
+
+            DateTime? minDate = gen_eventinfoList.Min(e => e.eventstartdate);
+            DateTime? maxDate = gen_eventinfoList.Max(e => e.eventstartdate);
+
+            var reportparameter = new[] {
+                            new ReportParameter("eventid", gen_eventinfoList[0].eventid.ToString()),
+                            new ReportParameter("HeadingOne", $"UNIT-DIGEST-{gen_eventinfoList[0].unitcode}"),
+                            new ReportParameter("HeadingTwo", $"PERIOD COVERING: {Convert.ToDateTime(minDate).ToString("dd-MM-yyyy")} to {Convert.ToDateTime(maxDate).ToString("dd-MM-yyyy")}")
+                        };
+
+            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
+            Encoding.GetEncoding("windows-1252");
+
+            LocalReport report = new LocalReport();
+            report.ReportPath = rdlcFilePath;
+            report.EnableExternalImages = true;
+
+            ReportDataSource rds = new ReportDataSource();
+            rds.Name = "DataSet1";
+            rds.Value = gen_eventinfoList;
+
+            List<gen_eventfileinfoReportEntity> objFiles = new List<gen_eventfileinfoReportEntity>();
+            gen_eventfileinfoReportEntity objFile = new gen_eventfileinfoReportEntity();
+
+            report.DataSources.Add(rds);
+            report.SetParameters(reportparameter);
+            report.SubreportProcessing += new SubreportProcessingEventHandler(LocalReport_SubreportProcessing_UnitDigest); ;
+            var result = report.Render("pdf", null,
+                            out extension, out encoding,
+                            out mimeType, out streams, out warnings);
+            return result;
+        }
+
+        private void LocalReport_SubreportProcessing_UnitDigest(object sender, SubreportProcessingEventArgs e)
+        {
+            if (e.ReportPath == "rptUnitDigestEventFilesSubreport")
+            {
+                List<gen_eventfileinfoReportEntity> objFiles = new List<gen_eventfileinfoReportEntity>();
+                var eventid = Convert.ToInt64(e.Parameters["eventid"].Values.FirstOrDefault().ToString());
+                var ObjEventFiles = this._objEventFilesReport.Where(p => p.eventid == eventid).ToList();
+
+                for (int i = 0; i < ObjEventFiles.Count; i++)
+                {
+                    try
+                    {
+                        gen_eventfileinfoReportEntity objFile = new gen_eventfileinfoReportEntity();
+                        try { objFile.ImageData1 = ConvertImageToByteArray(ObjEventFiles[i + 0].FileUrl); } catch { }
+                        try { objFile.ImageData2 = ConvertImageToByteArray(ObjEventFiles[i + 1].FileUrl); } catch { }
+                        //try { objFile.ImageData3 = ConvertImageToByteArray(ObjEventFiles[i + 2].FileUrl); } catch { }
+                        //try { objFile.ImageData4 = ConvertImageToByteArray(ObjEventFiles[i + 3].FileUrl); } catch { }
+                        i = i + 1;
+
+                        objFiles.Add(objFile);
+                    }
+                    catch { }
+                }
+                var _objEventFiles = new ReportDataSource() { Name = "DataSet1", Value = objFiles };
+                e.DataSources.Add(_objEventFiles);
+            }
+        }
+
     }
 }

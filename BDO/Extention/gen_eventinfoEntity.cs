@@ -17,6 +17,11 @@ namespace BDO.Core.DataAccessObjects.Models
         [DataMember]
         public string unitname { get; set; }
 
+        [DataMember]
+        public string unitcode { get; set; }
+        [DataMember]
+        public string eventcategory { get; set; }
+
     }
 }
 
