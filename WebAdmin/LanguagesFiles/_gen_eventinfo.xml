@@ -45,9 +45,9 @@
        <resource culture="en-us" name="eventstartdate" value=" Event Start Date"></resource>
        <resource culture="en-us" name="eventstartdateRequired" value="Please provide  Event Start Date"></resource>
        <resource culture="en-us" name="eventenddate" value=" Event End Date"></resource>
-       <resource culture="en-us" name="eventdescription" value=" Event Description"></resource>
-       <resource culture="en-us" name="eventdescription1" value=" Event Description 1"></resource>
-       <resource culture="en-us" name="eventdescription2" value=" Event Description 2"></resource>
+       <resource culture="en-us" name="eventdescription" value=" Event's Detail Description"></resource>
+       <resource culture="en-us" name="eventdescription1" value=" Event's Detail Description 1"></resource>
+       <resource culture="en-us" name="eventdescription2" value=" Event's Detail Description 2"></resource>
        <resource culture="en-us" name="eventspecialnote" value=" Event Special Note"></resource>
        <resource culture="en-us" name="isdeleted" value=" Is Deleted"></resource>
        <resource culture="en-us" name="eventorganizedby" value=" Unit "></resource>
