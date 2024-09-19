@@ -62,7 +62,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Content Remove="Views\Account\AddUser.cshtml" />
-    <Content Remove="Views\OnlineUser\Components\ShowUserList\Default.cshtml" />
     <Content Remove="wwwroot\lib\customjs\cusfileuploadpropic.js" />
     <Content Remove="wwwroot\lib\customjs\General\genFaq.js" />
   </ItemGroup>
@@ -125,7 +124,6 @@
     <Content Remove="wwwroot\lib\customjs\Gen_EventInfo\Gen_EventInfo.js" />    
     <Content Remove="wwwroot\lib\customjs\UserManagement\usermanagement.js" />
     <Content Remove="wwwroot\Reports\KAFGetMilitaryInfo.rdlc" />
-    <Content Remove="wwwroot\Reports\rptUnitDigest.rdlc" />
     <Content Remove="wwwroot\Reports\Sahel_ReenlistedRecruitmentService.rdlc" />
   </ItemGroup>
 
@@ -442,35 +440,14 @@
     <Content Include="LanguagesFiles\_tran_userservicemapped.xml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="WebAdmin.xml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
   </ItemGroup>
 
   <ItemGroup>
     <EmbeddedResource Include="wwwroot\Reports\KAFGetMilitaryInfo.rdlc" />
-    <EmbeddedResource Include="wwwroot\Reports\rptUnitDigest.rdlc" />
     <EmbeddedResource Include="wwwroot\Reports\Sahel_ReenlistedRecruitmentService.rdlc" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="Views\General\Gen_EventInfo\AddGen_EventInfo.cshtml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Views\General\Gen_EventInfo\DeleteGen_EventInfo.cshtml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Views\General\Gen_EventInfo\EditGen_EventInfo.cshtml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Views\General\Gen_EventInfo\GetSingleGen_EventInfo.cshtml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Views\General\Gen_EventInfo\LandingGen_EventInfo.cshtml">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </None>
-    <None Include="Views\OnlineUser\Components\ShowUserList\Default.cshtml" />
-    <None Include="Views\Shared\Components\S2Gen_Event\Default.cshtml" />
     <None Include="wwwroot\lib\admin-lte\css\adminltertl.css.map" />
     <None Include="wwwroot\lib\admin-lte\css\adminltertl.min.css.map" />
     <None Include="wwwroot\lib\admin-lte\js\adminlte.js" />
@@ -1206,11 +1183,41 @@
     <Content Update="Views\DashboardHome\Privacy.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Update="Views\General\Gen_EventCategory\AddGen_EventCategory.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\General\Gen_EventCategory\DeleteGen_EventCategory.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\General\Gen_EventCategory\EditGen_EventCategory.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\General\Gen_EventCategory\GetSingleGen_EventCategory.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\General\Gen_EventCategory\LandingGen_EventCategory.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\General\Gen_EventInfo\AddGen_EventInfo.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\General\Gen_EventInfo\DeleteGen_EventInfo.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\General\Gen_EventInfo\EditGen_EventInfo.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Update="Views\General\Gen_EventInfo\EventFiles.cshtml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\General\Gen_EventInfo\GetSingleGen_EventInfo.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\General\Gen_EventInfo\LandingGen_EventInfo.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Update="Views\General\Gen_EventInfo\SearchEvent.cshtml">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Update="Views\General\Gen_ServiceStatus\AddGen_ServiceStatus.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -1242,10 +1249,67 @@
     <Content Update="Views\General\Gen_Unit\LandingGen_Unit.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Update="Views\General\Gen_UserUnit\AddGen_UserUnit.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\General\Gen_UserUnit\DeleteGen_UserUnit.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\General\Gen_UserUnit\EditGen_UserUnit.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\General\Gen_UserUnit\GetSingleGen_UserUnit.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\General\Gen_UserUnit\LandingGen_UserUnit.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\Home\Error.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Update="Views\Home\Index.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Update="Views\Home\Privacy.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\OnlineUser\Components\ShowUserList\Default.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\OnlineUser\Index.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\Security\Owin_Role\AddOwin_Role.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\Security\Owin_Role\DeleteOwin_Role.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\Security\Owin_Role\EditOwin_Role.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\Security\Owin_Role\GetSingleOwin_Role.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\Security\Owin_Role\LandingOwin_Role.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\Security\Owin_User\AddOwin_User.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\Security\Owin_User\DeleteOwin_User.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\Security\Owin_User\EditOwin_User.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Update="Views\Security\Owin_User\EmailResetOwin_User.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\Security\Owin_User\GetSingleOwin_User.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\Security\Owin_User\LandingOwin_User.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Update="Views\Security\Owin_User\LockOwin_User.cshtml">
@@ -1273,6 +1337,12 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Update="Views\Shared\Components\FooterPublic\Default.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\Shared\Components\Footer\Default.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\Shared\Components\Header\Default.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Update="Views\Shared\Components\MINServices\CivilServiceComm\CivilServiceComm.cshtml">
@@ -1326,6 +1396,15 @@
     <Content Update="Views\Shared\Components\MINServices\PUCService\PUCService.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Update="Views\Shared\Components\S2FilterGen_Unit\Default.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\Shared\Components\S2Gen_EventCategory\Default.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\Shared\Components\S2Gen_Unit\Default.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Update="Views\Shared\Components\S2Owin_FormAction\Default.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -1345,6 +1424,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Update="Views\Shared\Components\ServiceStatusCheckboxList\Default.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\Shared\Components\SideBarMenu\Default.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Update="Views\Shared\Error.cshtml">
@@ -1368,6 +1450,12 @@
     <Content Update="Views\Shared\_ValidationScriptsPartial.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Update="Views\_ViewImports.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="Views\_ViewStart.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Update="wwwroot\lib\customjs\Gen_Unit\Gen_Unit.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -1381,6 +1469,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Update="wwwroot\Reports\rptDigestOfService2.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\Reports\rptUnitDigest.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Update="wwwroot\Reports\rptUnitDigestEventFilesSubreport.rdlc">

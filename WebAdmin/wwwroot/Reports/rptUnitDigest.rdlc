@@ -202,8 +202,11 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Ser No</Value>
-                                  <Style />
+                                  <Value>ক্র/নং</Value>
+                                  <Style>
+                                    <FontFamily>Kalpurush</FontFamily>
+                                    <FontSize>12pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
@@ -234,9 +237,11 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Event Category</Value>
+                                  <Value>ইভেন্টের ধরণ</Value>
                                   <Style>
                                     <FontStyle>Normal</FontStyle>
+                                    <FontFamily>Kalpurush</FontFamily>
+                                    <FontSize>12pt</FontSize>
                                     <TextDecoration>None</TextDecoration>
                                     <Color>#000000</Color>
                                   </Style>
@@ -270,9 +275,11 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Event Title</Value>
+                                  <Value>ইভেন্ট</Value>
                                   <Style>
                                     <FontStyle>Normal</FontStyle>
+                                    <FontFamily>Kalpurush</FontFamily>
+                                    <FontSize>12pt</FontSize>
                                     <TextDecoration>None</TextDecoration>
                                     <Color>#000000</Color>
                                   </Style>
@@ -306,9 +313,11 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Event Date</Value>
+                                  <Value>তারিখ</Value>
                                   <Style>
                                     <FontStyle>Normal</FontStyle>
+                                    <FontFamily>Kalpurush</FontFamily>
+                                    <FontSize>12pt</FontSize>
                                     <TextDecoration>None</TextDecoration>
                                     <Color>#000000</Color>
                                   </Style>
@@ -342,9 +351,11 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Event Description</Value>
+                                  <Value>বর্ণনা</Value>
                                   <Style>
                                     <FontStyle>Normal</FontStyle>
+                                    <FontFamily>Kalpurush</FontFamily>
+                                    <FontSize>12pt</FontSize>
                                     <TextDecoration>None</TextDecoration>
                                     <Color>#000000</Color>
                                   </Style>
@@ -378,9 +389,11 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Event Photos</Value>
+                                  <Value>ছবি</Value>
                                   <Style>
                                     <FontStyle>Normal</FontStyle>
+                                    <FontFamily>Kalpurush</FontFamily>
+                                    <FontSize>12pt</FontSize>
                                     <TextDecoration>None</TextDecoration>
                                     <Color>#000000</Color>
                                   </Style>
@@ -420,7 +433,10 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=RowNumber(nothing)</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontFamily>Kalpurush</FontFamily>
+                                    <FontSize>12pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
@@ -452,7 +468,10 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=Fields!eventcategory.Value</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontFamily>Kalpurush</FontFamily>
+                                    <FontSize>12pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
@@ -487,6 +506,7 @@
                                   <MarkupType>HTML</MarkupType>
                                   <Style>
                                     <FontFamily>SutonnyMJ</FontFamily>
+                                    <FontSize>12pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -518,6 +538,8 @@
                                 <TextRun>
                                   <Value>=Fields!eventstartdate.Value</Value>
                                   <Style>
+                                    <FontFamily>Kalpurush</FontFamily>
+                                    <FontSize>12pt</FontSize>
                                     <Format>dd-MM-yyyy</Format>
                                   </Style>
                                 </TextRun>
@@ -552,7 +574,10 @@
                                 <TextRun>
                                   <Value>=Fields!eventdescription.Value</Value>
                                   <MarkupType>HTML</MarkupType>
-                                  <Style />
+                                  <Style>
+                                    <FontFamily>Kalpurush</FontFamily>
+                                    <FontSize>12pt</FontSize>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -635,6 +660,7 @@
                   <TextRun>
                     <Value>=Parameters!HeadingOne.Value</Value>
                     <Style>
+                      <FontFamily>Kalpurush</FontFamily>
                       <FontSize>12pt</FontSize>
                       <FontWeight>Bold</FontWeight>
                       <TextDecoration>Underline</TextDecoration>
@@ -650,6 +676,7 @@
                   <TextRun>
                     <Value>=Parameters!HeadingTwo.Value</Value>
                     <Style>
+                      <FontFamily>Kalpurush</FontFamily>
                       <FontSize>12pt</FontSize>
                       <FontWeight>Bold</FontWeight>
                       <TextDecoration>Underline</TextDecoration>

@@ -146,6 +146,7 @@ namespace Web.Core.Frame.UseCases
 									 t.unitid,
 									 t.unit,
 									 t.unitcode,
+									 t.ex_nvarchar1,
 									 t.ex_nvarchar3,
                                     datatablebuttonscode = objDTBtnPanel.genDTBtnPanel(message.Objgen_unit.ControllerName, t.unitid, "unitid", _contextAccessor.HttpContext.User.Identity as ClaimsIdentity, btnActionList, _contextAccessor)
                                 }).ToList();

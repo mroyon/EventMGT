@@ -25,6 +25,7 @@
                                     <tr>
                                         <th><label class="labelNormal  " asp-for="unit"></label></th>
                                         <th><label class="labelNormal  " asp-for="unitcode"></label></th>
+                                        <th><label class="labelNormal" >Logo</label></th>
                                         <th>@SharedLocalizer.GetLocalizedHtmlString("ACTIONS_BUTTONS")</th>
                                     </tr>
                                 </thead>
@@ -89,12 +90,24 @@
                         }]
                 },
                 columnDefs: [
-                    { targets: 0, "visible": true, searchable: true, "className": "text-center" },
-                    { targets: 1, "visible": true, "sortable": true, "className": "text-center" }
+                    { targets: 0, "visible": true, searchable: true },
+                    { targets: 1, "visible": true, searchable: true, "className": "text-center" },
+                    { targets: 2, "visible": true, "sortable": false, "className": "text-center" }
                 ],
                 "columns": [
                     { "data": "unit", "name": "unit", "autoWidth": true },
                     { "data": "unitcode", "name": "unit code", "autoWidth": true },
+                    {
+                        "data": "ex_nvarchar1",  // Image column
+                        "render": function (data, type, row) {                          
+                            // Use the data (ImagePath) to construct the img tag
+
+                            if (data != null) {
+                                return '<img src="' + data + '"  width="50" height="50" />';
+                            }
+                            return "";
+                        }
+                    },
                     {
                         "data": "datatablebuttonscode", render: function (data, type, full, row) {
                             return data;

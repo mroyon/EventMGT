@@ -22,22 +22,19 @@ $(function () {
 
     $('body').on('click', '#btnAddGen_Unit', function (e) {
         try {
-            event.preventDefault();
-            if (_cusFormValidate('frmAddGen_Unit')) {
-
-
-
-                var dataobject = {
-                    unitid: $("#unitid").val(),
-                    unit: $("#unit").val(),
-                    unitcode: $("#unitcode").val(),
-                    ex_nvarchar3: $("#ex_nvarchar3").val()
-                };
-                ajaxPostObjectHandler("/Gen_Unit/AddGen_Unit", dataobject, function (response) {
+            e.preventDefault();
+            if (_cusFormValidate('frmAddGen_Unit')) {               
+                var formData = new FormData();
+                formData.append('unitid', $('#unitid').val());
+                formData.append('unit', $('#unit').val());
+                formData.append('unitcode', $('#unitcode').val());
+                formData.append('file', $('#file')[0].files[0]);
+                
+                ajaxPostObjectHandlerWithFiles("/Gen_Unit/AddGen_Unit", formData, function (response) {
                     if (response._ajaxresponse.responsestatus == "success") {
                         showSuccessAlert("Success", response._ajaxresponse.responsetext, "OK", RedirectToLanding, LandingGen_Unit);
                     }
-                }, true);
+                }, false);
             }
 
         } catch (e) {
@@ -47,24 +44,23 @@ $(function () {
 
     $('body').on('click', '#btnEditGen_Unit', function (e) {
         try {
-            event.preventDefault();
+            e.preventDefault();
             if (_cusFormValidate('frmEditGen_Unit')) {
 
 
+                var formData = new FormData();
+                formData.append('unitid', $('#unitid').val());
+                formData.append('unit', $('#unit').val());
+                formData.append('unitcode', $('#unitcode').val());
+                formData.append('ex_nvarchar3', $('#ex_nvarchar3').val());
+                formData.append('file', $('#file')[0].files[0]);
 
-                var dataobject = {
-                    unitid: $("#unitid").val(),
-                    unit: $("#unit").val(),
-                    unitcode: $("#unitcode").val(),
-                    ex_nvarchar3: $("#ex_nvarchar3").val()
-                };
-
-                ajaxPostObjectHandler("/Gen_Unit/EditGen_Unit", dataobject, function (response) {
+                ajaxPostObjectHandlerWithFiles("/Gen_Unit/EditGen_Unit", formData, function (response) {
                     console.log(response);
                     if (response._ajaxresponse.responsestatus == "success") {
-                        showSuccessAlert("Success", response._ajaxresponse.responsetext, "OK");
+                        showSuccessAlert("Success", response._ajaxresponse.responsetext, "OK", RedirectToLanding, LandingGen_Unit);
                     }
-                }, true);
+                }, false);
             }
 
         } catch (e) {
@@ -74,12 +70,13 @@ $(function () {
 
     $('body').on('click', '#btnDeleteGen_Unit', function (e) {
         try {
-            event.preventDefault();
+            e.preventDefault();
             if (_cusFormValidate('frmDeleteGen_Unit')) {
                 var dataobject = {
                     unitid: $("#unitid").val(),
                     unit: $("#unit").val(),
                     unitcode: $("#unitcode").val(),
+                    ex_nvarchar1: $('#myImage').attr('src'),
                     ex_nvarchar3: $("#ex_nvarchar3").val()
                 };
                 ajaxPostObjectHandler("/Gen_Unit/DeleteGen_Unit", dataobject, function (response) {
@@ -95,7 +92,7 @@ $(function () {
 
     $('body').on('click', '#btnGoBackGen_Unit', function (e) {
         try {
-            event.preventDefault();
+            e.preventDefault();
             window.location.href = LandingGen_Unit;
         } catch (e) {
             showErrorAlert("Error", e.message, "OK");
