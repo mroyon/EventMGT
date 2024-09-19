@@ -615,10 +615,11 @@
                 </TablixMember>
               </TablixMembers>
             </TablixRowHierarchy>
+            <KeepTogether>true</KeepTogether>
             <DataSetName>DataSet1</DataSetName>
             <Top>0.88833in</Top>
             <Height>0.5in</Height>
-            <Width>10.6207in</Width>
+            <Width>10.62071in</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -634,6 +635,8 @@
                   <TextRun>
                     <Value>=Parameters!HeadingOne.Value</Value>
                     <Style>
+                      <FontSize>12pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
                       <TextDecoration>Underline</TextDecoration>
                     </Style>
                   </TextRun>
@@ -647,6 +650,8 @@
                   <TextRun>
                     <Value>=Parameters!HeadingTwo.Value</Value>
                     <Style>
+                      <FontSize>12pt</FontSize>
+                      <FontWeight>Bold</FontWeight>
                       <TextDecoration>Underline</TextDecoration>
                     </Style>
                   </TextRun>
@@ -658,7 +663,7 @@
             </Paragraphs>
             <rd:DefaultName>Textbox18</rd:DefaultName>
             <Top>0.13in</Top>
-            <Height>0.40833in</Height>
+            <Height>0.47083in</Height>
             <Width>10.6207in</Width>
             <ZIndex>1</ZIndex>
             <Style>
@@ -675,7 +680,7 @@
         <Height>1.38833in</Height>
         <Style />
       </Body>
-      <Width>10.6207in</Width>
+      <Width>10.62071in</Width>
       <Page>
         <PageFooter>
           <Height>0.31944in</Height>

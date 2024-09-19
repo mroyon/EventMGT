@@ -191,6 +191,7 @@
                                   <Value>ক্র/নং</Value>
                                   <Style>
                                     <FontFamily>Kalpurush</FontFamily>
+                                    <FontSize>12pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -225,6 +226,7 @@
                                   <Value>তারিখ/ মাস</Value>
                                   <Style>
                                     <FontFamily>Kalpurush</FontFamily>
+                                    <FontSize>12pt</FontSize>
                                     <FontWeight>Normal</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -260,6 +262,7 @@
                                   <Value>ইভেন্ট</Value>
                                   <Style>
                                     <FontFamily>Kalpurush</FontFamily>
+                                    <FontSize>12pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -294,6 +297,7 @@
                                   <Value>মন্তব্য</Value>
                                   <Style>
                                     <FontFamily>Kalpurush</FontFamily>
+                                    <FontSize>12pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -333,6 +337,7 @@
                                   <Value>=RowNumber(Nothing)</Value>
                                   <Style>
                                     <FontFamily>Kalpurush</FontFamily>
+                                    <FontSize>12pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -353,6 +358,7 @@
                             <PaddingBottom>10pt</PaddingBottom>
                           </Style>
                         </Textbox>
+                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell>
@@ -367,6 +373,7 @@
                                   <Value>=Fields!eventstartdate.Value</Value>
                                   <Style>
                                     <FontFamily>Kalpurush</FontFamily>
+                                    <FontSize>12pt</FontSize>
                                     <FontWeight>Normal</FontWeight>
                                     <Format>dd-MM-yyyy</Format>
                                   </Style>
@@ -406,6 +413,7 @@
                                       <MarkupType>HTML</MarkupType>
                                       <Style>
                                         <FontFamily>Kalpurush</FontFamily>
+                                        <FontSize>12pt</FontSize>
                                       </Style>
                                     </TextRun>
                                   </TextRuns>
@@ -466,6 +474,7 @@
                                   <Value />
                                   <Style>
                                     <FontFamily>Kalpurush</FontFamily>
+                                    <FontSize>12pt</FontSize>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -513,6 +522,7 @@
                 </TablixMember>
               </TablixMembers>
             </TablixRowHierarchy>
+            <KeepTogether>true</KeepTogether>
             <DataSetName>DataSet1</DataSetName>
             <PageBreak>
               <BreakLocation>End</BreakLocation>
@@ -538,6 +548,7 @@
                     <Style>
                       <FontStyle>Normal</FontStyle>
                       <FontFamily>Kalpurush</FontFamily>
+                      <FontSize>12pt</FontSize>
                       <FontWeight>Normal</FontWeight>
                       <TextDecoration>Underline</TextDecoration>
                       <Color>#000000</Color>
@@ -573,6 +584,7 @@
                     <Style>
                       <FontStyle>Normal</FontStyle>
                       <FontFamily>Kalpurush</FontFamily>
+                      <FontSize>12pt</FontSize>
                       <TextDecoration>Underline</TextDecoration>
                       <Color>#000000</Color>
                     </Style>
@@ -586,7 +598,7 @@
             <rd:DefaultName>Textbox62</rd:DefaultName>
             <Top>0.01389in</Top>
             <Left>6.99479in</Left>
-            <Height>0.2in</Height>
+            <Height>0.23611in</Height>
             <Width>3.56757in</Width>
             <ZIndex>2</ZIndex>
             <Style>
@@ -610,6 +622,7 @@
                     <Style>
                       <FontStyle>Normal</FontStyle>
                       <FontFamily>Kalpurush</FontFamily>
+                      <FontSize>12pt</FontSize>
                       <TextDecoration>Underline</TextDecoration>
                       <Color>#000000</Color>
                     </Style>
@@ -619,6 +632,7 @@
                     <Style>
                       <FontStyle>Normal</FontStyle>
                       <FontFamily>Kalpurush</FontFamily>
+                      <FontSize>12pt</FontSize>
                       <TextDecoration>None</TextDecoration>
                       <Color>#000000</Color>
                     </Style>
@@ -632,7 +646,7 @@
             <rd:DefaultName>Textbox62</rd:DefaultName>
             <Top>0.5264in</Top>
             <Left>6.99479in</Left>
-            <Height>0.2in</Height>
+            <Height>0.25208in</Height>
             <Width>3.56757in</Width>
             <ZIndex>3</ZIndex>
             <Style>
@@ -656,6 +670,7 @@
                     <Style>
                       <FontStyle>Normal</FontStyle>
                       <FontFamily>Kalpurush</FontFamily>
+                      <FontSize>12pt</FontSize>
                       <TextDecoration>Underline</TextDecoration>
                       <Color>#000000</Color>
                     </Style>
@@ -692,6 +707,8 @@
                     <Value>=Fields!unitname.Value</Value>
                     <Style>
                       <FontStyle>Normal</FontStyle>
+                      <FontFamily>Kalpurush</FontFamily>
+                      <FontSize>12pt</FontSize>
                       <TextDecoration>Underline</TextDecoration>
                       <Color>#000000</Color>
                     </Style>
@@ -727,6 +744,7 @@
                     <Value>সীমিত</Value>
                     <Style>
                       <FontFamily>Kalpurush</FontFamily>
+                      <FontSize>12pt</FontSize>
                       <Color>Silver</Color>
                     </Style>
                   </TextRun>
@@ -739,7 +757,7 @@
             <rd:DefaultName>Textbox9</rd:DefaultName>
             <Left>0.00417in</Left>
             <Height>0.25in</Height>
-            <Width>10.61236in</Width>
+            <Width>10.60819in</Width>
             <ZIndex>6</ZIndex>
             <Style>
               <Border>
@@ -772,6 +790,7 @@
                       <Value>সীমিত</Value>
                       <Style>
                         <FontFamily>Kalpurush</FontFamily>
+                        <FontSize>12pt</FontSize>
                       </Style>
                     </TextRun>
                   </TextRuns>
