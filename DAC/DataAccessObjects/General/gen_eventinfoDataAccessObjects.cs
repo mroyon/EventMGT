@@ -411,6 +411,8 @@ namespace DAC.Core.DataAccessObjects.General
                         {
                             gen_eventinfoEntity obj = new gen_eventinfoEntity(reader);
                             if (!reader.IsDBNull(reader.GetOrdinal("Unit"))) obj.unitname = reader.GetString(reader.GetOrdinal("Unit"));
+                            if (!reader.IsDBNull(reader.GetOrdinal("UnitCode"))) obj.unitcode = reader.GetString(reader.GetOrdinal("UnitCode"));
+                            if (!reader.IsDBNull(reader.GetOrdinal("EventCategory"))) obj.eventcategory = reader.GetString(reader.GetOrdinal("EventCategory"));
                             itemList.Add(obj);
                         }
                         reader.Close();

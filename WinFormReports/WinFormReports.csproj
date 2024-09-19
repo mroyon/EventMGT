@@ -87,6 +87,7 @@
     <Content Include="Reports\rptEventFilesSubreport.rdlc">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <EmbeddedResource Include="Reports\rptUnitDigest.rdlc" />
     <EmbeddedResource Include="Reports\Sahel_ReenlistedRecruitmentService.rdlc" />
     <EmbeddedResource Include="Reports\Sahel_ReenlistedService.rdlc" />
     <None Include="packages.config" />

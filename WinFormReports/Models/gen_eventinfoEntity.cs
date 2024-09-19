@@ -200,12 +200,15 @@ namespace WinFormReports.Models
             get { return _ex_decimal2; }
             set { _ex_decimal2 = value;  }
         }
-        
-        
+
+        [DataMember]
+        public string unitcode { get; set; }
+        [DataMember]
+        public string eventcategory { get; set; }
         #endregion
-    
+
         #region Constructor
-    
+
         public gen_eventinfoEntity():base()
         {
         }
