@@ -132,7 +132,7 @@
                     <div class="row btn-toolbar">
                         <div class="col-md-6 ">
                             <div class="form-group">
-                                <button type="button" id="btnDownloadReport" onclick='ViewReport(this)' class="btn btn-success btn-md"><i class="fa fa-download"></i> Download Report</button>
+                                <button type="button" id="btnDownloadReport" class="btn btn-success btn-md"><i class="fa fa-download"></i> Download Report</button>
                                 <button type="button" id="btnDownloadReport_UnitDigest"  class="btn btn-success btn-md"><i class="fa fa-download"></i> Download Unit Digest Report</button>
                             </div>
                         </div>
@@ -414,7 +414,52 @@
             //'albumLabel': ""
         })
 
+        $("#btnDownloadReport").click(function () {
+            $.blockUI();
+            var dataobject = {
+                eventcategoryid: $("#eventcategoryid").val(),
+                eventcode: $("#eventcode").val(),
+                eventname: $("#eventname").val(),
+                unitid: $("#unitid").val(),
+                eventdescription: $("#eventdescription").val(),
+                eventstartdate: GetDateFromTextBox($("#eventstartdate").val()),
+                eventenddate: GetDateFromTextBox($("#eventenddate").val()),
+            }
+
+            $.ajax({
+                type: "POST",
+                url: "/Gen_EventInfo/GetReport_DigestOfService",
+                data: JSON.stringify(dataobject),
+                contentType: "application/json",
+                headers: {
+                    'X-CSRF-TOKEN-WEBADMINHEADER': $('#X-CSRF-TOKEN-WEBADMINHEADER').val()
+                },
+                xhrFields: {
+                    responseType: 'blob'  // Important to specify for binary data (PDF)
+                },
+                success: function (data) {
+                    console.log(data)
+                    var blob = new Blob([data], { type: "application/pdf" });
+                    var link = document.createElement('a');
+                    link.href = window.URL.createObjectURL(blob);
+                    link.download = "Digest-of-Service_" + $('#unitid').select2('data')[0].text + ".pdf";
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                    $.unblockUI();
+                },
+                error: function (xhr, status, error) {
+                    console.log(xhr)
+                    console.log(status)
+                    console.log(error)
+                    alert("An error occurred while downloading the report.");
+                }
+            });
+
+
+        });
         $("#btnDownloadReport_UnitDigest").click(function () {
+            $.blockUI();
             var dataobject = {
                 eventcategoryid: $("#eventcategoryid").val(),
                 eventcode: $("#eventcode").val(),
@@ -441,10 +486,11 @@
                     var blob = new Blob([data], { type: "application/pdf" });
                     var link = document.createElement('a');
                     link.href = window.URL.createObjectURL(blob);
-                    link.download = "Report.pdf";
+                    link.download = "Digest_" + $('#unitid').select2('data')[0].text + ".pdf";
                     document.body.appendChild(link);
                     link.click();
                     document.body.removeChild(link);
+                    $.unblockUI();
                 },
                 error: function (xhr, status, error) {
                     console.log(xhr)
@@ -453,6 +499,8 @@
                     alert("An error occurred while downloading the report.");
                 }
             });
+
+            
         });
     </script>
 }

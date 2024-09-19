@@ -691,9 +691,10 @@ IHttpContextAccessor contextAccessor)
                                 _objEventList,
                                 _objEventFiles.ToList()
                                 );
-            var reportBase64 = Convert.ToBase64String(bytearrReport);
+            //var reportBase64 = Convert.ToBase64String(bytearrReport);
 
-            return Json(new { status = "success", data = reportBase64 });
+            //return Json(new { status = "success", data = reportBase64 });
+            return File(bytearrReport, "application/pdf", "Report.pdf");
         }
 
 
