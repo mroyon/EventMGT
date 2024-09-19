@@ -150,7 +150,7 @@
                                         <th><label class="labelNormal  " asp-for="eventdescription"></label></th>
                                         <th><label class="labelNormal  " asp-for="eventstartdate"></label></th>
                                         @* <th><label class="labelNormal  ">Files</label></th> *@
-                                        <th width="100px"><label class="labelNormal  ">Actions</label></th>
+                                        <th width="150px"><label class="labelNormal  ">Actions</label></th>
                                     </tr>
                                 </thead>
                             </table>
@@ -233,6 +233,11 @@
                 try {
                     table.destroy();
                 } catch { }
+                $('span[data-valmsg-for]').text('');
+                if (!$("#unitid").val()) {
+                    $('span[data-valmsg-for="unitid"]').text('Please select Unit.');
+                    return;
+                }
 
                 var dataobject = {
                     eventcategoryid: $("#eventcategoryid").val(),
@@ -345,7 +350,11 @@
 
         function ViewReport(cntrl) {
             var eventid = $(cntrl).attr('data-eventid')
-
+            $('span[data-valmsg-for]').text('');
+            if (!$("#unitid").val()) {
+                $('span[data-valmsg-for="unitid"]').text('Please select Unit.');
+                return;
+            }
             var dataobject = {
                 eventcategoryid: $("#eventcategoryid").val(),
                 eventcode: $("#eventcode").val(),
@@ -371,7 +380,11 @@
 
         function ViewReport_UnitDigest(cntrl) {
             var eventid = $(cntrl).attr('data-eventid')
-
+            $('span[data-valmsg-for]').text('');
+            if (!$("#unitid").val()) {
+                $('span[data-valmsg-for="unitid"]').text('Please select Unit.');
+                return;
+            }
             var dataobject = {
                 eventcategoryid: $("#eventcategoryid").val(),
                 eventcode: $("#eventcode").val(),
