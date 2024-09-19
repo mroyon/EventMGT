@@ -38,6 +38,7 @@ using System.Text;
 using System.Data;
 using System.Drawing;
 using System.Drawing.Imaging;
+using DocumentFormat.OpenXml.Spreadsheet;
 
 namespace WebAdmin.Controllers
 {
@@ -899,6 +900,8 @@ IHttpContextAccessor contextAccessor)
             report.ReportPath = rdlcFilePath;
             report.EnableExternalImages = true;
 
+            //gen_eventinfoList.ToList().ForEach(e => e.eventstartdate);
+
             ReportDataSource rds = new ReportDataSource();
             rds.Name = "DataSet1";
             rds.Value = gen_eventinfoList;
@@ -953,5 +956,30 @@ IHttpContextAccessor contextAccessor)
             }
         }
 
+        static string ConvertEnglishToBanglaNumber(string englishNumber)
+        {
+            // Array mapping English digits to Bengali digits
+            char[] banglaDigits = new char[] { '০', '১', '২', '৩', '৪', '৫', '৬', '৭', '৮', '৯' };
+
+            // Replace each English digit with the corresponding Bengali digit
+            char[] result = new char[englishNumber.Length];
+            for (int i = 0; i < englishNumber.Length; i++)
+            {
+                char englishDigit = englishNumber[i];
+
+                // Convert only if the character is a digit (0-9)
+                if (char.IsDigit(englishDigit))
+                {
+                    result[i] = banglaDigits[englishDigit - '0'];
+                }
+                else
+                {
+                    // If it's not a digit, keep it unchanged
+                    result[i] = englishDigit;
+                }
+            }
+
+            return new string(result);
+        }
     }
 }
