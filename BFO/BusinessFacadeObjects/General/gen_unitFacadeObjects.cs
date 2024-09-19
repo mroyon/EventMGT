@@ -282,11 +282,21 @@ namespace BFO.Core.BusinessFacadeObjects.General
 				throw GetFacadeException(ex, SourceOfException("IList<gen_unitEntity> Igen_unitFacade.GetDataForDropDown")); 
 			}
 		}
-		#endregion
-    
-        
-    
-    
         #endregion
-	}
+
+        async Task<gen_unitEntity> Igen_unitFacadeObjects.GetUnitByUserId(string userId, CancellationToken cancellationToken)
+        {
+            try
+            {
+                return await DataAccessFactory.Creategen_unitDataAccess().GetUnitByUserId(userId, cancellationToken);
+            }
+
+            catch (Exception ex)
+            {
+                throw GetFacadeException(ex, SourceOfException("gen_unitEntity Igen_unitFacade.GetUnitLogoByUserId"));
+            }
+        }
+
+        #endregion
+    }
 }

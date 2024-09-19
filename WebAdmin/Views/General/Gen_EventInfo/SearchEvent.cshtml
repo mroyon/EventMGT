@@ -17,7 +17,8 @@
     <div class="col-md-12">
         <div class="card">
             <div class="card-header ">
-                <div class="col d-flex justify-content-center ">
+                <div class="col d-flex">
+                    <img src="@Url.Action("GetUnitLogo", "Gen_Unit")" style="max-width: 70px;" />
                     <h6 class="card-title customcardheader">Event Information Search</h6>
                 </div>
             </div>
@@ -30,7 +31,7 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label class="labelNormal required " asp-for="unitid">Unit</label>
-                                    @await Component.InvokeAsync("S2Gen_Unit", new { selectid = "unitid", preloaded = ViewBag.preloadedDatagen_unit, isReadOnly = false, multiple = false, isRequired = true, pkey = -99 })
+                                    @await Component.InvokeAsync("S2Gen_Unit", new { selectid = ViewBag.preloadedunit, preloaded = ViewBag.preloadedDatagen_unit, isReadOnly = false, multiple = false, isRequired = true, pkey = -99 })
                                 </div>
                             </div>
                         </div>

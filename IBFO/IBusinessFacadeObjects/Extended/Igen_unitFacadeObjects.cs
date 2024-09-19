@@ -14,7 +14,6 @@ namespace IBFO.Core.IBusinessFacadeObjects.General
     { 
 		
 		[OperationContract]
-		Task<IList<gen_dropdownEntity>> GetDataForDropDownByUserId(gen_unitEntity gen_eventcategory, CancellationToken cancellationToken); 
-    
+		Task<IList<gen_dropdownEntity>> GetDataForDropDownByUserId(gen_unitEntity gen_eventcategory, CancellationToken cancellationToken);
     }
 }

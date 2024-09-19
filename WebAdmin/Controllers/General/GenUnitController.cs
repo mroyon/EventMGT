@@ -16,6 +16,10 @@ using BDO.Core.DataAccessObjects.CommonEntities;
 using WebAdmin.Providers;
 using Newtonsoft.Json;
 using Web.Core.Frame.UseCases;
+using System.Security.Claims;
+using Org.BouncyCastle.Asn1.Ocsp;
+using System.IO;
+using Microsoft.AspNetCore.Hosting;
 
 namespace WebAdmin.Controllers
 {
@@ -37,8 +41,8 @@ namespace WebAdmin.Controllers
         private readonly ILogger<Gen_UnitController> _logger;
         private readonly IStringLocalizer _sharedLocalizer;
         private readonly IAuthenticationSchemeProvider _schemeProvider;
-        
-        
+        private readonly IWebHostEnvironment _webHostEnvironment;
+
         //to Enable SignalR Inj
         //private readonly IHubContext<HubUserContext> _hubuserContext;
         //private readonly IUserConnectionManager _userConnectionManager;
@@ -65,10 +69,11 @@ namespace WebAdmin.Controllers
             Gen_UnitPresenter gen_UnitPresenter,
             ILoggerFactory loggerFactory,
             IStringLocalizerFactory factory,
-            IAuthenticationSchemeProvider schemeProvider
+            IAuthenticationSchemeProvider schemeProvider,
+            IWebHostEnvironment webHostEnvironment
             //,IHubContext<HubUserContext> hubuserContext
             //,IUserConnectionManager userConnectionManager
-            ,ICacheProvider cacheProvider
+            , ICacheProvider cacheProvider
             
              
             )
@@ -77,11 +82,11 @@ namespace WebAdmin.Controllers
             _gen_UnitPresenter = gen_UnitPresenter;
             _logger = loggerFactory.CreateLogger<Gen_UnitController>();
             _schemeProvider = schemeProvider;
-            
-            
-             
-             
-             
+
+            _webHostEnvironment = webHostEnvironment;
+
+
+
             //_hubuserContext = hubuserContext;
             //_userConnectionManager = userConnectionManager;
             _cacheProvider = cacheProvider;
@@ -313,6 +318,21 @@ namespace WebAdmin.Controllers
             }
         }
 
-        
+        [HttpGet]
+        [AutoValidateAntiforgeryToken]
+        public async Task<IActionResult> GetUnitLogo()
+        {
+            if (!User.Identity.IsAuthenticated) { return RedirectToAction("Account", "Login"); }
+
+            var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+            await _gen_UnitUseCase.GetUnitByUserId(userId, _gen_UnitPresenter);
+
+            var unit = _gen_UnitPresenter.Result as gen_unitEntity;
+            var path = Path.Combine(_webHostEnvironment.WebRootPath, "uploads", unit.ex_nvarchar1.Split('/')[2]);
+            var image = System.IO.File.OpenRead(path);
+            return File(image, "image/jpeg");
+        }
+
     }
 }

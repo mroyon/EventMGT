@@ -133,6 +133,16 @@ namespace  Web.Core.Frame.Presenters
 			Result = response.Success ? response._ajaxresponse as object : response.Errors;
 		}
 
-        
+
+        /// <summary>
+        /// GetUnitLogoByUserId
+        /// </summary>
+        /// <param name="response"></param>
+        public void GetUnitLogoByUserId(Gen_UnitResponse response)
+        {
+            ContentResult.StatusCode = (int)(response.Success ? HttpStatusCode.OK : httpStatusCodeParser.SetHttpStatusCode(response.Errors));
+            ContentResult.Content = response.Success ? JsonSerializer.SerializeObject(new Gen_UnitResponse(response._gen_Unit, response.Success)) : JsonSerializer.SerializeObject(response.Errors);
+            Result = response.Success ? response._ajaxresponse as object : response.Errors;
+        }
     }
 }

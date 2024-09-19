@@ -67,8 +67,10 @@ namespace IBFO.Core.IBusinessFacadeObjects.General
         
         #region for Dropdown 
 		[OperationContract]
-		Task<IList<gen_dropdownEntity>> GetDataForDropDown(gen_unitEntity gen_unit, CancellationToken cancellationToken); 
-		#endregion
-    
+		Task<IList<gen_dropdownEntity>> GetDataForDropDown(gen_unitEntity gen_unit, CancellationToken cancellationToken);
+        [OperationContract]
+        Task<gen_unitEntity> GetUnitByUserId(string userId, CancellationToken cancellationToken);
+        #endregion
+
     }
 }

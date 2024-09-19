@@ -317,6 +317,42 @@ namespace Web.Core.Frame.UseCases
 			}
 		}
 
-        
+        //Task<string> Igen_unitFacadeObjects.GetUnitLogoByUserId(Guid userId, CancellationToken cancellationToken)
+
+        /// <summary>
+        /// GetUnitLogoByUserId
+        /// </summary>
+        /// <param name="response"></param>
+        public async Task<bool> GetUnitByUserId(string userId, ICRUDRequestHandler<Gen_UnitResponse> outputPort)
+        {
+            CancellationToken cancellationToken = new CancellationToken();
+            try
+            {
+                var oblist = await BFC.Core.FacadeCreatorObjects.General.gen_unitFCC.GetFacadeCreate(_contextAccessor).GetUnitByUserId(userId, cancellationToken);
+
+                if (oblist != null )
+                {
+                    outputPort.GetSingle(new Gen_UnitResponse(oblist, true));
+                    return true;
+                }
+                else
+                {
+                    Gen_UnitResponse objResponse = new Gen_UnitResponse(false, _sharedLocalizer["NO_DATA_FOUND"], new Error(
+                    "404",
+                    _sharedLocalizer["NO_DATA_FOUND"]));
+                    _logger.LogInformation(JsonConvert.SerializeObject(objResponse));
+                    outputPort.GetSingle(objResponse);
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                Gen_UnitResponse objResponse = new Gen_UnitResponse(false, _sharedLocalizer["DATA_FETCH_ERROR"], new Error(
+                "500",
+                ex.Message));
+                _logger.LogInformation(JsonConvert.SerializeObject(objResponse));
+                return true;
+            }
+        }
     }
 }
