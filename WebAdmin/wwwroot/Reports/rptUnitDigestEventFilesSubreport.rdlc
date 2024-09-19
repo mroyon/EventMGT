@@ -129,7 +129,6 @@
             <KeepTogether>true</KeepTogether>
             <DataSetName>DataSet1</DataSetName>
             <Top>0.125in</Top>
-            <Left>0.0875in</Left>
             <Height>0.97542in</Height>
             <Width>2.31812in</Width>
             <Style>
@@ -142,7 +141,7 @@
         <Height>1.20042in</Height>
         <Style />
       </Body>
-      <Width>2.50291in</Width>
+      <Width>2.31812in</Width>
       <Page>
         <PageHeight>8.27in</PageHeight>
         <PageWidth>11.69in</PageWidth>

@@ -926,8 +926,18 @@ IHttpContextAccessor contextAccessor)
                     try
                     {
                         gen_eventfileinfoReportEntity objFile = new gen_eventfileinfoReportEntity();
-                        try { objFile.ImageData1 = ConvertImageToByteArray(ObjEventFiles[i + 0].FileUrl); } catch { }
-                        try { objFile.ImageData2 = ConvertImageToByteArray(ObjEventFiles[i + 1].FileUrl); } catch { }
+                        try
+                        {
+                            objFile.ImageData1 = ConvertImageToByteArray(ObjEventFiles[i + 0].FileUrl);
+                            objFile.image1 = ObjEventFiles[i + 0].FileUrl;
+                        }
+                        catch { }
+                        try
+                        {
+                            objFile.ImageData2 = ConvertImageToByteArray(ObjEventFiles[i + 1].FileUrl);
+                            objFile.image2 = ObjEventFiles[i + 1].FileUrl;
+                        }
+                        catch { }
                         //try { objFile.ImageData3 = ConvertImageToByteArray(ObjEventFiles[i + 2].FileUrl); } catch { }
                         //try { objFile.ImageData4 = ConvertImageToByteArray(ObjEventFiles[i + 3].FileUrl); } catch { }
                         i = i + 1;
