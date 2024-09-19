@@ -20,8 +20,8 @@ function updateLanguage(culture, returnUrl) {
     console.log(dataobject)
 
     if (culture == 'bn-BD') {
-        $('input').css("font-family", "'SutonnyMJ','AdarshaLipiNormal','Helvetica Neue', Helvetica, Arial, sans-serif");
-        $('.banglafont').css("font-family", "'SutonnyMJ','AdarshaLipiNormal','Helvetica Neue', Helvetica, Arial, sans-serif");
+        $('input').css("font-family", "'Kalpurush','SutonnyMJ','AdarshaLipiNormal','Helvetica Neue', Helvetica, Arial, sans-serif");
+        $('.banglafont').css("font-family", "'Kalpurush','SutonnyMJ','AdarshaLipiNormal','Helvetica Neue', Helvetica, Arial, sans-serif");
 
     } else {
         $('input').css("font-family", "'Helvetica Neue', Helvetica, Arial, sans-serif");
