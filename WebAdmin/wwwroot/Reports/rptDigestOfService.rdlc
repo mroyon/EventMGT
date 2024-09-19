@@ -190,7 +190,7 @@
                                 <TextRun>
                                   <Value>ক্র/নং</Value>
                                   <Style>
-                                    <FontFamily>solaimanLipi</FontFamily>
+                                    <FontFamily>Kalpurush</FontFamily>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -211,7 +211,6 @@
                             <PaddingBottom>2pt</PaddingBottom>
                           </Style>
                         </Textbox>
-                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell>
@@ -225,7 +224,7 @@
                                 <TextRun>
                                   <Value>তারিখ/ মাস</Value>
                                   <Style>
-                                    <FontFamily>solaimanLipi</FontFamily>
+                                    <FontFamily>Kalpurush</FontFamily>
                                     <FontWeight>Normal</FontWeight>
                                   </Style>
                                 </TextRun>
@@ -260,7 +259,7 @@
                                 <TextRun>
                                   <Value>ইভেন্ট</Value>
                                   <Style>
-                                    <FontFamily>solaimanLipi</FontFamily>
+                                    <FontFamily>Kalpurush</FontFamily>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -294,7 +293,7 @@
                                 <TextRun>
                                   <Value>মন্তব্য</Value>
                                   <Style>
-                                    <FontFamily>solaimanLipi</FontFamily>
+                                    <FontFamily>Kalpurush</FontFamily>
                                   </Style>
                                 </TextRun>
                               </TextRuns>
@@ -320,7 +319,7 @@
                   </TablixCells>
                 </TablixRow>
                 <TablixRow>
-                  <Height>0.69097in</Height>
+                  <Height>0.70486in</Height>
                   <TablixCells>
                     <TablixCell>
                       <CellContents>
@@ -332,7 +331,9 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value>=RowNumber(Nothing)</Value>
-                                  <Style />
+                                  <Style>
+                                    <FontFamily>Kalpurush</FontFamily>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style>
@@ -348,8 +349,8 @@
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>20pt</PaddingTop>
-                            <PaddingBottom>20pt</PaddingBottom>
+                            <PaddingTop>10pt</PaddingTop>
+                            <PaddingBottom>10pt</PaddingBottom>
                           </Style>
                         </Textbox>
                       </CellContents>
@@ -365,6 +366,7 @@
                                 <TextRun>
                                   <Value>=Fields!eventstartdate.Value</Value>
                                   <Style>
+                                    <FontFamily>Kalpurush</FontFamily>
                                     <FontWeight>Normal</FontWeight>
                                     <Format>dd-MM-yyyy</Format>
                                   </Style>
@@ -383,8 +385,8 @@
                             </Border>
                             <PaddingLeft>2pt</PaddingLeft>
                             <PaddingRight>2pt</PaddingRight>
-                            <PaddingTop>20pt</PaddingTop>
-                            <PaddingBottom>20pt</PaddingBottom>
+                            <PaddingTop>10pt</PaddingTop>
+                            <PaddingBottom>10pt</PaddingBottom>
                           </Style>
                         </Textbox>
                       </CellContents>
@@ -402,7 +404,9 @@
                                     <TextRun>
                                       <Value>=Fields!eventdescription.Value</Value>
                                       <MarkupType>HTML</MarkupType>
-                                      <Style />
+                                      <Style>
+                                        <FontFamily>Kalpurush</FontFamily>
+                                      </Style>
                                     </TextRun>
                                   </TextRuns>
                                   <Style />
@@ -429,7 +433,7 @@
                                   <Value>=Fields!eventid.Value</Value>
                                 </Parameter>
                               </Parameters>
-                              <Top>0.28056in</Top>
+                              <Top>0.31944in</Top>
                               <Height>0.38542in</Height>
                               <Width>7.5932in</Width>
                               <ZIndex>1</ZIndex>
@@ -443,11 +447,9 @@
                           <KeepTogether>true</KeepTogether>
                           <Style>
                             <Border>
-                              <Style>None</Style>
-                            </Border>
-                            <BottomBorder>
+                              <Color>Silver</Color>
                               <Style>Solid</Style>
-                            </BottomBorder>
+                            </Border>
                           </Style>
                         </Rectangle>
                       </CellContents>
@@ -462,7 +464,9 @@
                               <TextRuns>
                                 <TextRun>
                                   <Value />
-                                  <Style />
+                                  <Style>
+                                    <FontFamily>Kalpurush</FontFamily>
+                                  </Style>
                                 </TextRun>
                               </TextRuns>
                               <Style />
@@ -514,9 +518,8 @@
               <BreakLocation>End</BreakLocation>
             </PageBreak>
             <Top>1.4283in</Top>
-            <Left>0in</Left>
-            <Height>0.95901in</Height>
-            <Width>10.61908in</Width>
+            <Height>0.97289in</Height>
+            <Width>10.61907in</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -534,7 +537,7 @@
                     <Value>ডাইজেষ্ট অব সার্ভিস</Value>
                     <Style>
                       <FontStyle>Normal</FontStyle>
-                      <FontFamily>solaimanLipi</FontFamily>
+                      <FontFamily>Kalpurush</FontFamily>
                       <FontWeight>Normal</FontWeight>
                       <TextDecoration>Underline</TextDecoration>
                       <Color>#000000</Color>
@@ -569,7 +572,7 @@
                     <Value>ক্রোড়পত্র ক</Value>
                     <Style>
                       <FontStyle>Normal</FontStyle>
-                      <FontFamily>SolaimanLipi</FontFamily>
+                      <FontFamily>Kalpurush</FontFamily>
                       <TextDecoration>Underline</TextDecoration>
                       <Color>#000000</Color>
                     </Style>
@@ -606,6 +609,7 @@
                     <Value>পত্র নং ওকেপি-১০/৩৪/কিউ তারিখ ১১ সেপ্টেম্বর ২০২৪</Value>
                     <Style>
                       <FontStyle>Normal</FontStyle>
+                      <FontFamily>Kalpurush</FontFamily>
                       <TextDecoration>Underline</TextDecoration>
                       <Color>#000000</Color>
                     </Style>
@@ -614,6 +618,7 @@
                     <Value xml:space="preserve"> </Value>
                     <Style>
                       <FontStyle>Normal</FontStyle>
+                      <FontFamily>Kalpurush</FontFamily>
                       <TextDecoration>None</TextDecoration>
                       <Color>#000000</Color>
                     </Style>
@@ -650,6 +655,7 @@
                     <Value>=Fields!unitname.Value</Value>
                     <Style>
                       <FontStyle>Normal</FontStyle>
+                      <FontFamily>Kalpurush</FontFamily>
                       <TextDecoration>Underline</TextDecoration>
                       <Color>#000000</Color>
                     </Style>
@@ -711,14 +717,48 @@
               <PaddingBottom>2pt</PaddingBottom>
             </Style>
           </Textbox>
+          <Textbox Name="Textbox10">
+            <CanGrow>true</CanGrow>
+            <KeepTogether>true</KeepTogether>
+            <Paragraphs>
+              <Paragraph>
+                <TextRuns>
+                  <TextRun>
+                    <Value>সীমিত</Value>
+                    <Style>
+                      <FontFamily>Kalpurush</FontFamily>
+                      <Color>Silver</Color>
+                    </Style>
+                  </TextRun>
+                </TextRuns>
+                <Style>
+                  <TextAlign>Center</TextAlign>
+                </Style>
+              </Paragraph>
+            </Paragraphs>
+            <rd:DefaultName>Textbox9</rd:DefaultName>
+            <Left>0.00417in</Left>
+            <Height>0.25in</Height>
+            <Width>10.61236in</Width>
+            <ZIndex>6</ZIndex>
+            <Style>
+              <Border>
+                <Style>None</Style>
+              </Border>
+              <PaddingLeft>2pt</PaddingLeft>
+              <PaddingRight>2pt</PaddingRight>
+              <PaddingTop>2pt</PaddingTop>
+              <PaddingBottom>2pt</PaddingBottom>
+            </Style>
+          </Textbox>
         </ReportItems>
-        <Height>2.3873in</Height>
+        <Height>3.32898in</Height>
         <Style />
       </Body>
       <Width>10.6207in</Width>
       <Page>
         <PageFooter>
-          <Height>0.35417in</Height>
+          <Height>0.29999in</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
@@ -731,7 +771,7 @@
                     <TextRun>
                       <Value>সীমিত</Value>
                       <Style>
-                        <FontFamily>solaimanLipi</FontFamily>
+                        <FontFamily>Kalpurush</FontFamily>
                       </Style>
                     </TextRun>
                   </TextRuns>
@@ -741,10 +781,9 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox9</rd:DefaultName>
-              <Top>0.05in</Top>
-              <Left>5.03in</Left>
+              <Top>0.04999in</Top>
               <Height>0.25in</Height>
-              <Width>1in</Width>
+              <Width>10.61236in</Width>
               <Style>
                 <Border>
                   <Style>None</Style>
