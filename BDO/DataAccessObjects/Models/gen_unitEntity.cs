@@ -3,6 +3,8 @@ using System.Runtime.Serialization;
 using System.Data;
 using BDO.Core.Base;
 using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Http;
+using System.Collections.Generic;
 
 
 namespace BDO.Core.DataAccessObjects.Models
@@ -25,8 +27,8 @@ namespace BDO.Core.DataAccessObjects.Models
         protected long ? _ex_bigint2;
         protected decimal ? _ex_decimal1;
         protected decimal ? _ex_decimal2;
-                
-        
+
+
         [DataMember]
         public long ? unitid
         {
@@ -127,8 +129,10 @@ namespace BDO.Core.DataAccessObjects.Models
             get { return _ex_decimal2; }
             set { _ex_decimal2 = value; this.OnChnaged(); }
         }
+
+
         
-        
+
         #endregion
     
         #region Constructor

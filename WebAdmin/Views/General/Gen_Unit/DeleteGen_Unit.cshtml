@@ -29,12 +29,23 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="labelNormal required " asp-for="unitcode"></label>
-                                <input asp-for="unitcode" class="form-control" required readonly></input>
+                                <input asp-for="unitcode" class="form-control" required readonly/>
                                 <span asp-validation-for="unitcode" class="unitcodeerror text-danger" id="unitcodeerror"></span>
                             </div>
                         </div>
                     </div>
-                    
+                    <div class="row" style="margin-bottom:1%;">
+                        <div class="col-md-6">
+                            @if (!string.IsNullOrEmpty(Model.ex_nvarchar1))
+                            {
+                                <img id="imgLogo" src="@Model.ex_nvarchar1" alt="Unit Logo" style="border: 1px dotted green;" width="200" height="200" />
+                            }
+                            else
+                            {
+                                <p>No image found!</p>
+                            }
+                        </div>
+                    </div>
                     
                      <div class="row btn-toolbar">
                         <div class="col-md-6 ">

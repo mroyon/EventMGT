@@ -16,13 +16,18 @@ using BDO.Core.DataAccessObjects.CommonEntities;
 using WebAdmin.Providers;
 using Newtonsoft.Json;
 using Web.Core.Frame.UseCases;
+using Microsoft.AspNetCore.Hosting;
+using System.Collections.Generic;
+using Microsoft.AspNetCore.StaticFiles;
+using System.IO;
+using SharpCompress.Common;
 
 namespace WebAdmin.Controllers
 {
     /// <summary>
     /// Gen_UnitController
     /// </summary>
-     [Authorize(Policy = "KAFSecurityPolicy")]
+    [Authorize(Policy = "KAFSecurityPolicy")]
     [AutoValidateAntiforgeryToken]
     public class Gen_UnitController : BaseController
     {
@@ -31,14 +36,14 @@ namespace WebAdmin.Controllers
         private readonly ICacheProvider _cacheProvider;
 
 
-        
-        
+
+
 
         private readonly ILogger<Gen_UnitController> _logger;
         private readonly IStringLocalizer _sharedLocalizer;
         private readonly IAuthenticationSchemeProvider _schemeProvider;
-        
-        
+        private readonly IWebHostEnvironment _webHostEnvironment;
+
         //to Enable SignalR Inj
         //private readonly IHubContext<HubUserContext> _hubuserContext;
         //private readonly IUserConnectionManager _userConnectionManager;
@@ -59,7 +64,8 @@ namespace WebAdmin.Controllers
         /// <param name="hubuserContext"></param>
         /// <param name="userConnectionManager"></param>
         /// <param name="cacheProvider"></param>
-       
+        /// <param name="webHostEnvironment"></param>
+
         public Gen_UnitController(
             IGen_UnitUseCase gen_UnitUseCase,
             Gen_UnitPresenter gen_UnitPresenter,
@@ -68,24 +74,25 @@ namespace WebAdmin.Controllers
             IAuthenticationSchemeProvider schemeProvider
             //,IHubContext<HubUserContext> hubuserContext
             //,IUserConnectionManager userConnectionManager
-            ,ICacheProvider cacheProvider
-            
-             
+            , ICacheProvider cacheProvider
+            , IWebHostEnvironment webHostEnvironment
+
             )
         {
             _gen_UnitUseCase = gen_UnitUseCase;
             _gen_UnitPresenter = gen_UnitPresenter;
             _logger = loggerFactory.CreateLogger<Gen_UnitController>();
             _schemeProvider = schemeProvider;
-            
-            
-             
-             
-             
+
+
+
+
+
             //_hubuserContext = hubuserContext;
             //_userConnectionManager = userConnectionManager;
             _cacheProvider = cacheProvider;
-            
+            _webHostEnvironment = webHostEnvironment;
+
             var type = typeof(SharedResource);
             var assemblyName = new AssemblyName(type.GetTypeInfo().Assembly.FullName);
             _sharedLocalizer = factory.Create("SharedResource", assemblyName.Name);
@@ -154,10 +161,23 @@ namespace WebAdmin.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> AddGen_Unit([FromBody] gen_unitEntity request)
+        public async Task<IActionResult> AddGen_Unit([FromForm] gen_unitEntity request)
         {
             if (!User.Identity.IsAuthenticated) { return RedirectToAction("Account", "Login"); }
-            if (!ModelState.IsValid) { return BadRequest(ModelState); }
+            if (!ModelState.IsValid) { return BadRequest(ModelState); }            
+
+            if (request.file != null)
+            {
+
+                var fileName = $"{Guid.NewGuid()}-{Path.GetFileName(request.file.FileName)}";
+                var filePath = Path.Combine(_webHostEnvironment.WebRootPath, "uploads", fileName);
+                request.ex_nvarchar1 = "../uploads/" + fileName;
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    await request.file.CopyToAsync(stream);
+                }                
+            }
+
             await _gen_UnitUseCase.Save(new Gen_UnitRequest(request), _gen_UnitPresenter);
             return _gen_UnitPresenter.ContentResult;
         }
@@ -176,10 +196,10 @@ namespace WebAdmin.Controllers
             objEntity.unitid = long.Parse(objClsPrivate.DecodeUrlParamsWithoutURI("unitid", input).ToString());
             await _gen_UnitUseCase.GetSingle(new Gen_UnitRequest(objEntity), _gen_UnitPresenter);
             objEntity = _gen_UnitPresenter.Result as gen_unitEntity;
-            
-            
-            
-            
+
+
+
+
             return View("../General/Gen_Unit/EditGen_Unit", _gen_UnitPresenter.Result);
         }
 
@@ -190,10 +210,37 @@ namespace WebAdmin.Controllers
         /// <returns></returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> EditGen_Unit([FromBody] gen_unitEntity request)
+        public async Task<IActionResult> EditGen_Unit([FromForm] gen_unitEntity request)
         {
             if (!User.Identity.IsAuthenticated) { return RedirectToAction("Account", "Login"); }
             if (!ModelState.IsValid) { return BadRequest(ModelState); }
+
+            if (request.file != null)
+            {
+                gen_unitEntity oldObjEntity = new gen_unitEntity { unitid=request.unitid };
+                await _gen_UnitUseCase.GetSingle(new Gen_UnitRequest(oldObjEntity), _gen_UnitPresenter);
+                oldObjEntity = _gen_UnitPresenter.Result as gen_unitEntity;
+                if (oldObjEntity.ex_nvarchar1 != null)
+                {
+                    var oldFilePath = Path.Combine(_webHostEnvironment.WebRootPath, "uploads", oldObjEntity.ex_nvarchar1);
+                    if (System.IO.File.Exists(oldFilePath))
+                    {
+                        // Delete the file
+                        System.IO.File.Delete(oldFilePath);
+                    }
+                }
+               
+
+
+                var newFileName = $"{Guid.NewGuid()}-{Path.GetFileName(request.file.FileName)}";
+                var newFilePath = Path.Combine(_webHostEnvironment.WebRootPath, "uploads", newFileName);
+                request.ex_nvarchar1 = "../uploads/" + newFileName;
+                using (var stream = new FileStream(newFilePath, FileMode.Create))
+                {
+                    await request.file.CopyToAsync(stream);
+                }
+            }
+
             await _gen_UnitUseCase.Update(new Gen_UnitRequest(request), _gen_UnitPresenter);
             return _gen_UnitPresenter.ContentResult;
         }
@@ -210,11 +257,12 @@ namespace WebAdmin.Controllers
             if (!User.Identity.IsAuthenticated) { return RedirectToAction("Account", "Login"); }
             gen_unitEntity objEntity = new gen_unitEntity();
             objEntity.unitid = long.Parse(objClsPrivate.DecodeUrlParamsWithoutURI("unitid", input).ToString());
+
             await _gen_UnitUseCase.GetSingle(new Gen_UnitRequest(objEntity), _gen_UnitPresenter);
             objEntity = _gen_UnitPresenter.Result as gen_unitEntity;
-            
-            
-            
+
+
+
             return View("../General/Gen_Unit/GetSingleGen_Unit", _gen_UnitPresenter.Result);
         }
 
@@ -231,9 +279,7 @@ namespace WebAdmin.Controllers
             gen_unitEntity objEntity = new gen_unitEntity();
             objEntity.unitid = long.Parse(objClsPrivate.DecodeUrlParamsWithoutURI("unitid", input).ToString());
             await _gen_UnitUseCase.GetSingle(new Gen_UnitRequest(objEntity), _gen_UnitPresenter);
-            objEntity = _gen_UnitPresenter.Result as gen_unitEntity;
-            
-            
+            objEntity = _gen_UnitPresenter.Result as gen_unitEntity;            
             
             return View("../General/Gen_Unit/DeleteGen_Unit", _gen_UnitPresenter.Result);
         }
@@ -248,48 +294,63 @@ namespace WebAdmin.Controllers
         public async Task<IActionResult> DeleteGen_Unit([FromBody] gen_unitEntity request)
         {
             if (!User.Identity.IsAuthenticated) { return RedirectToAction("Account", "Login"); }
-           /*				 ModelState.Remove("unitid");
-				 ModelState.Remove("unit");
-				 ModelState.Remove("unitcode");
-				 ModelState.Remove("ex_nvarchar3");
-*/
+            /*				 ModelState.Remove("unitid");
+                  ModelState.Remove("unit");
+                  ModelState.Remove("unitcode");
+                  ModelState.Remove("ex_nvarchar3");
+ */
             if (!ModelState.IsValid) { return BadRequest(ModelState); }
             await _gen_UnitUseCase.Delete(new Gen_UnitRequest(request), _gen_UnitPresenter);
+            
+            gen_unitEntity delObjEntity = new gen_unitEntity();
+            await _gen_UnitUseCase.GetSingle(new Gen_UnitRequest(new gen_unitEntity { unitid=request.unitid}), _gen_UnitPresenter);
+            delObjEntity = _gen_UnitPresenter.Result as gen_unitEntity;
+
+            if (delObjEntity.ex_nvarchar1 != null)
+            {
+                var oldFilePath = Path.Combine(_webHostEnvironment.WebRootPath, "uploads", delObjEntity.ex_nvarchar1);
+                if (System.IO.File.Exists(oldFilePath))
+                {
+                    // Delete the file
+                    System.IO.File.Delete(oldFilePath);
+                }
+            }
+
             return _gen_UnitPresenter.ContentResult;
         }
-        
-      
-        
+
+
+
         /// <summary>
-		/// GetDataForDropDown Gen_Unit
-			/// </summary>
-			/// <param name="request"></param>
-			/// <returns></returns>
-			[HttpPost]
-			[AutoValidateAntiforgeryToken]
-			public async Task<IActionResult> GetDataForDropDowndGen_Unit([FromBody] S2Parameters request)
-			{
-				try
-				{
-					gen_unitEntity objrequest = new gen_unitEntity();
-					objrequest.BaseSecurityParam = new BDO.Core.Base.SecurityCapsule();
-					objrequest.BaseSecurityParam = request.BaseSecurityParam;
-					objrequest.CurrentPage = request.s2PageNum.GetValueOrDefault(1);
-					objrequest.PageSize = request.s2PageSize.GetValueOrDefault(10);
-					objrequest.SortExpression = " unit asc ";
-					objrequest.strCommonSerachParam = request.s2SearchTerm;
-					objrequest.ControllerName = "Gen_Unit";
-					await _gen_UnitUseCase.GetDataForDropDown(new Gen_UnitRequest(objrequest), _gen_UnitPresenter);
-					return Json(_gen_UnitPresenter.Result);
-				}
-				catch (Exception ex)
-				{
-					throw ex;
-				}
-			}
+        /// GetDataForDropDown Gen_Unit
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [AutoValidateAntiforgeryToken]
+        public async Task<IActionResult> GetDataForDropDowndGen_Unit([FromBody] S2Parameters request)
+        {
+            try
+            {
+                gen_unitEntity objrequest = new gen_unitEntity();
+                objrequest.BaseSecurityParam = new BDO.Core.Base.SecurityCapsule();
+                objrequest.BaseSecurityParam = request.BaseSecurityParam;
+                objrequest.CurrentPage = request.s2PageNum.GetValueOrDefault(1);
+                objrequest.PageSize = request.s2PageSize.GetValueOrDefault(10);
+                objrequest.SortExpression = " unit asc ";
+                objrequest.strCommonSerachParam = request.s2SearchTerm;
+                objrequest.ControllerName = "Gen_Unit";
+                await _gen_UnitUseCase.GetDataForDropDown(new Gen_UnitRequest(objrequest), _gen_UnitPresenter);
+                return Json(_gen_UnitPresenter.Result);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
 
 
-        
+
         [HttpPost]
         [AutoValidateAntiforgeryToken]
         public async Task<IActionResult> GetDataForDropDowndGen_Unit_ByUser([FromBody] S2Parameters request)
@@ -313,6 +374,6 @@ namespace WebAdmin.Controllers
             }
         }
 
-        
+
     }
 }
