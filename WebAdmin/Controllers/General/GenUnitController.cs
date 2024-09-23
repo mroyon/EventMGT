@@ -25,6 +25,8 @@ using System.Collections.Generic;
 using Microsoft.AspNetCore.StaticFiles;
 using System.IO;
 using SharpCompress.Common;
+using System.Linq;
+using IdentityServer4.Models;
 
 namespace WebAdmin.Controllers
 {
@@ -168,19 +170,28 @@ namespace WebAdmin.Controllers
         public async Task<IActionResult> AddGen_Unit([FromForm] gen_unitEntity request)
         {
             if (!User.Identity.IsAuthenticated) { return RedirectToAction("Account", "Login"); }
-            if (!ModelState.IsValid) { return BadRequest(ModelState); }            
-
+            
             if (request.file != null)
             {
-
-                var fileName = $"{Guid.NewGuid()}-{Path.GetFileName(request.file.FileName)}";
-                var filePath = Path.Combine(_webHostEnvironment.WebRootPath, "uploads", fileName);
-                request.ex_nvarchar1 = "../uploads/" + fileName;
-                using (var stream = new FileStream(filePath, FileMode.Create))
+                var allowedExtensions = new[] { ".jpg", ".jpeg", ".png", ".gif" };
+                var extension = Path.GetExtension(request.file.FileName).ToLowerInvariant();
+                if (!allowedExtensions.Contains(extension))
                 {
-                    await request.file.CopyToAsync(stream);
-                }                
+                    ModelState.AddModelError("file", "Invalid file type. Only .jpg, .jpeg, .png, and .gif are allowed.");
+                }
+                else
+                {
+                    var fileName = $"{Guid.NewGuid()}-{Path.GetFileName(request.file.FileName)}";
+                    var filePath = Path.Combine(_webHostEnvironment.WebRootPath, "uploads", fileName);
+                    request.ex_nvarchar1 = "../uploads/" + fileName;
+                    using (var stream = new FileStream(filePath, FileMode.Create))
+                    {
+                        await request.file.CopyToAsync(stream);
+                    }
+                }
             }
+
+            if (!ModelState.IsValid) { return BadRequest(ModelState); }
 
             await _gen_UnitUseCase.Save(new Gen_UnitRequest(request), _gen_UnitPresenter);
             return _gen_UnitPresenter.ContentResult;
@@ -217,33 +228,41 @@ namespace WebAdmin.Controllers
         public async Task<IActionResult> EditGen_Unit([FromForm] gen_unitEntity request)
         {
             if (!User.Identity.IsAuthenticated) { return RedirectToAction("Account", "Login"); }
-            if (!ModelState.IsValid) { return BadRequest(ModelState); }
 
             if (request.file != null)
             {
-                gen_unitEntity oldObjEntity = new gen_unitEntity { unitid=request.unitid };
-                await _gen_UnitUseCase.GetSingle(new Gen_UnitRequest(oldObjEntity), _gen_UnitPresenter);
-                oldObjEntity = _gen_UnitPresenter.Result as gen_unitEntity;
-                if (oldObjEntity.ex_nvarchar1 != null)
+                var allowedExtensions = new[] { ".jpg", ".jpeg", ".png", ".gif" };
+                var extension = Path.GetExtension(request.file.FileName).ToLowerInvariant();
+                if (!allowedExtensions.Contains(extension))
                 {
-                    var oldFilePath = Path.Combine(_webHostEnvironment.WebRootPath, "uploads", oldObjEntity.ex_nvarchar1);
-                    if (System.IO.File.Exists(oldFilePath))
+                    ModelState.AddModelError("file", "Invalid file type. Only .jpg, .jpeg, .png, and .gif are allowed.");
+                }
+                else
+                {
+                    gen_unitEntity oldObjEntity = new gen_unitEntity { unitid = request.unitid };
+                    await _gen_UnitUseCase.GetSingle(new Gen_UnitRequest(oldObjEntity), _gen_UnitPresenter);
+                    oldObjEntity = _gen_UnitPresenter.Result as gen_unitEntity;
+                    if (oldObjEntity.ex_nvarchar1 != null)
                     {
-                        // Delete the file
-                        System.IO.File.Delete(oldFilePath);
+                        var oldFilePath = Path.Combine(_webHostEnvironment.WebRootPath, "uploads", oldObjEntity.ex_nvarchar1);
+                        if (System.IO.File.Exists(oldFilePath))
+                        {
+                            // Delete the file
+                            System.IO.File.Delete(oldFilePath);
+                        }
+                    }
+
+                    var newFileName = $"{Guid.NewGuid()}-{Path.GetFileName(request.file.FileName)}";
+                    var newFilePath = Path.Combine(_webHostEnvironment.WebRootPath, "uploads", newFileName);
+                    request.ex_nvarchar1 = "../uploads/" + newFileName;
+                    using (var stream = new FileStream(newFilePath, FileMode.Create))
+                    {
+                        await request.file.CopyToAsync(stream);
                     }
                 }
-               
-
-
-                var newFileName = $"{Guid.NewGuid()}-{Path.GetFileName(request.file.FileName)}";
-                var newFilePath = Path.Combine(_webHostEnvironment.WebRootPath, "uploads", newFileName);
-                request.ex_nvarchar1 = "../uploads/" + newFileName;
-                using (var stream = new FileStream(newFilePath, FileMode.Create))
-                {
-                    await request.file.CopyToAsync(stream);
-                }
             }
+                     
+            if (!ModelState.IsValid) { return BadRequest(ModelState); }
 
             await _gen_UnitUseCase.Update(new Gen_UnitRequest(request), _gen_UnitPresenter);
             return _gen_UnitPresenter.ContentResult;

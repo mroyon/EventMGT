@@ -23,13 +23,13 @@ $(function () {
     $('body').on('click', '#btnAddGen_Unit', function (e) {
         try {
             e.preventDefault();
-            if (_cusFormValidate('frmAddGen_Unit')) {               
+            if (_cusFormValidate('frmAddGen_Unit')) {
                 var formData = new FormData();
                 formData.append('unitid', $('#unitid').val());
                 formData.append('unit', $('#unit').val());
                 formData.append('unitcode', $('#unitcode').val());
                 formData.append('file', $('#file')[0].files[0]);
-                
+
                 ajaxPostObjectHandlerWithFiles("/Gen_Unit/AddGen_Unit", formData, function (response) {
                     if (response._ajaxresponse.responsestatus == "success") {
                         showSuccessAlert("Success", response._ajaxresponse.responsetext, "OK", RedirectToLanding, LandingGen_Unit);
@@ -65,6 +65,21 @@ $(function () {
 
         } catch (e) {
             showErrorAlert("Error", e.message, "OK");
+        }
+    });
+
+
+    $("body").on("change", "#file", function () {
+        var file = this.files[0];
+        if (file) {
+            var reader = new FileReader();
+
+            // When file is loaded, set the image source to the loaded data
+            reader.onload = function (e) {
+                $('#imagePreview').attr('src', e.target.result); // Update the preview image
+            }
+
+            reader.readAsDataURL(file); // Read the image file as a data URL
         }
     });
 
