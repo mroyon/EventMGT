@@ -408,10 +408,14 @@ namespace WebAdmin.Controllers
             await _gen_UnitUseCase.GetUnitByUserId(userId, _gen_UnitPresenter);
 
             var unit = _gen_UnitPresenter.Result as gen_unitEntity;
-            var path = Path.Combine(_webHostEnvironment.WebRootPath, "uploads", unit.ex_nvarchar1.Split('/')[2]);
-            var image = System.IO.File.OpenRead(path);
-            return File(image, "image/jpeg");
-        }
+            var path = unit != null && !string.IsNullOrEmpty(unit.ex_nvarchar1) ? Path.Combine(_webHostEnvironment.WebRootPath, "uploads", unit.ex_nvarchar1.Split('/')[2]) : "";
+            if (!string.IsNullOrEmpty(path))
+            {
+                var image = System.IO.File.OpenRead(path);
+                return File(image, "image/jpeg");
+            }
 
+            return NotFound();
+        }
     }
 }
