@@ -415,7 +415,7 @@ namespace WebAdmin.Controllers
                 return File(image, "image/jpeg");
             }
 
-            return NotFound();
+            return Ok("");
         }
     }
 }
