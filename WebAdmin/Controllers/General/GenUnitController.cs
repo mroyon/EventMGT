@@ -229,6 +229,10 @@ namespace WebAdmin.Controllers
         {
             if (!User.Identity.IsAuthenticated) { return RedirectToAction("Account", "Login"); }
 
+            gen_unitEntity oldObjEntity = new gen_unitEntity { unitid = request.unitid };
+            await _gen_UnitUseCase.GetSingle(new Gen_UnitRequest(oldObjEntity), _gen_UnitPresenter);
+            oldObjEntity = _gen_UnitPresenter.Result as gen_unitEntity;
+
             if (request.file != null)
             {
                 var allowedExtensions = new[] { ".jpg", ".jpeg", ".png", ".gif" };
@@ -238,10 +242,7 @@ namespace WebAdmin.Controllers
                     ModelState.AddModelError("file", "Invalid file type. Only .jpg, .jpeg, .png, and .gif are allowed.");
                 }
                 else
-                {
-                    gen_unitEntity oldObjEntity = new gen_unitEntity { unitid = request.unitid };
-                    await _gen_UnitUseCase.GetSingle(new Gen_UnitRequest(oldObjEntity), _gen_UnitPresenter);
-                    oldObjEntity = _gen_UnitPresenter.Result as gen_unitEntity;
+                {                    
                     if (oldObjEntity.ex_nvarchar1 != null)
                     {
                         var oldFilePath = Path.Combine(_webHostEnvironment.WebRootPath, "uploads", oldObjEntity.ex_nvarchar1);
@@ -259,6 +260,13 @@ namespace WebAdmin.Controllers
                     {
                         await request.file.CopyToAsync(stream);
                     }
+                }
+            }
+            else
+            {
+                if (!string.IsNullOrEmpty(oldObjEntity.ex_nvarchar1))
+                {
+                    request.ex_nvarchar1 = oldObjEntity.ex_nvarchar1;
                 }
             }
                      
