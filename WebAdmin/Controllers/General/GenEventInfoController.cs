@@ -275,7 +275,7 @@ IHttpContextAccessor contextAccessor)
                     string contentType = string.Empty;
                     new FileExtensionContentTypeProvider().TryGetContentType(file.FileName, out contentType);
                     objFile.filetype = contentType;
-                    objFile.extension = Path.GetExtension(filePath); ;
+                    objFile.extension = Path.GetExtension(filePath); 
                     objFile.filesize = file.Length;
                     objFile.filedescription = item.fileDescription;
                     objFile.BaseSecurityParam = request.BaseSecurityParam;
