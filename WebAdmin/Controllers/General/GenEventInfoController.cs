@@ -574,6 +574,35 @@ IHttpContextAccessor contextAccessor)
         public async Task<IActionResult> SearchEventInfo(string returnUrl)
         {
             if (!User.Identity.IsAuthenticated) { return RedirectToAction("Account", "Login"); }
+
+            var claimsIdentity = (ClaimsIdentity)User.Identity;
+            var userid = claimsIdentity.Claims.Where(p => p.Type == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier").FirstOrDefault().Value;
+
+            gen_unitEntity objrequest = new gen_unitEntity();
+            objrequest.BaseSecurityParam = new BDO.Core.Base.SecurityCapsule();
+            objrequest.BaseSecurityParam.userid = Guid.Parse(userid);
+            objrequest.CurrentPage = 1;
+            objrequest.PageSize = 10;
+            objrequest.SortExpression = " unit asc ";
+            objrequest.ControllerName = "Gen_Unit";
+
+            await _gen_UnitUseCase.GetDataForDropDownByUserId(new Gen_UnitRequest(objrequest), _gen_UnitPresenter);
+            try
+            {
+                List<gen_dropdownEntity> Data = (List<gen_dropdownEntity>)(((AjaxResponse)_gen_UnitPresenter.Result).data);
+                if (Data.Count == 1)
+                {
+                    var datagen_unit = (new { Id = Data.FirstOrDefault().Id, Text = Data.FirstOrDefault().Text });
+                    ViewBag.preloadedDatagen_unit = JsonConvert.SerializeObject(datagen_unit);
+                }
+            }
+            catch (Exception)
+            {
+
+            }
+
+
+
             return View("../General/Gen_EventInfo/SearchEvent", new gen_eventinfoEntity());
         }
 

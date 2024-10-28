@@ -621,7 +621,7 @@ namespace DAC.Core.DataAccessObjects.General
         {
         try
             {
-				const string SP = "gen_eventinfo_GAPgListView";
+				const string SP = "gen_eventinfo_GAPgListView_Ext";
 				using (DbCommand cmd = Database.GetStoredProcCommand(SP))
 				{
 					AddTotalRecordParameter(cmd);
@@ -631,6 +631,9 @@ namespace DAC.Core.DataAccessObjects.General
                     FillSequrityParameters(gen_eventinfo.BaseSecurityParam, cmd, Database);
                     
 					FillParameters(gen_eventinfo, cmd,Database);
+
+                    if (gen_eventinfo.BaseSecurityParam.userid.HasValue)
+				            Database.AddInParameter(cmd, "@userid", DbType.Guid, gen_eventinfo.BaseSecurityParam.userid);
                     
 					if (!string.IsNullOrEmpty (gen_eventinfo.strCommonSerachParam))
                         Database.AddInParameter(cmd, "@CommonSerachParam", DbType.String,  "%"+gen_eventinfo.strCommonSerachParam+"%");
