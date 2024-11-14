@@ -32,6 +32,7 @@
     <Platforms>AnyCPU;x64;x86</Platforms>
 	<RunAnalyzersDuringBuild>False</RunAnalyzersDuringBuild>
 	<GenerateDocumentationFile>True</GenerateDocumentationFile>
+	<DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
