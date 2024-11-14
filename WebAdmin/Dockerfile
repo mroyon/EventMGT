@@ -37,8 +37,15 @@ RUN apt-get update && apt-get install -y \
 RUN locale-gen en_US.UTF-8 \
     && locale-gen bn_BD.UTF-8
 
+#RUN apt-get update && apt-get install -y wget
+
+#RUN wget https://drive.usercontent.google.com/uc?id=1ATnHqnglHl85NXksk7dLu2Z3losM0OKu&export=download --no-check-certificate -O
+#RUN wget --no-check-certificate -O script.sql "https://drive.google.com/uc?id=1ATnHqnglHl85NXksk7dLu2Z3losM0OKu&export=download"
+
+#RUN mv script.sql /tmp/script.sql
+
 # Directly set the locale environment variables
-ENV ASPNETCORE_URLS=https://0.0.0.0:5001
+ENV ASPNETCORE_URLS=http://0.0.0.0:5001
 ENV LANG=en_US.UTF-8
 ENV LANGUAGE=en_US.UTF-8
 ENV LC_ALL=en_US.UTF-8

@@ -33,8 +33,8 @@ services:
         URL="https://drive.usercontent.google.com/uc?id=${FILE_ID}&export=download"
 
         # Download the SQL script using wget (you can also use curl)
-        wget --no-check-certificate -O $DESTINATION "$URL"
-
+        #wget --no-check-certificate -O $DESTINATION "$URL"
+        wget --no-check-certificate -O "$DESTINATION" "https://drive.google.com/uc?id=1ATnHqnglHl85NXksk7dLu2Z3losM0OKu&export=download"
         # Run the SQL script using sqlcmd
         /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P $SA_PASSWORD -i $DESTINATION
 
@@ -52,10 +52,10 @@ services:
     ports:
       - "5001:5001"
     environment:
-      ASPNETCORE_URLS: "https://0.0.0.0:5001"
+      ASPNETCORE_URLS: "http://0.0.0.0:5001"
       ASPNETCORE_ENVIRONMENT: "Production"
       REDIS_CONNECTION: "redis:6380"  # Redis service name and port
-      MONGODB_CONNECTION: "mongodb://mongo:27018"  # MongoDB connection string
+      MONGODB_CONNECTION: "mongo:27018"  # MongoDB connection string
       DB_CONNECTION_STRING: "Server=sqlserver,1433;Database=EventMGT;User Id=sa;Password=KafEvent007;"  # SQL Server connection string
     depends_on:
       - redis
