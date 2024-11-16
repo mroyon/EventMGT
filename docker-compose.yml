@@ -34,10 +34,10 @@ services:
 
         # Download the SQL script using wget (you can also use curl)
         #wget --no-check-certificate -O $DESTINATION "$URL"
-        wget --no-check-certificate -O "$DESTINATION" "https://drive.google.com/uc?id=1ATnHqnglHl85NXksk7dLu2Z3losM0OKu&export=download"
+        wget --no-check-certificate -O "/tmp/script.sql" "https://drive.google.com/uc?id=1ATnHqnglHl85NXksk7dLu2Z3losM0OKu&export=download"
         # Run the SQL script using sqlcmd
-        /opt/mssql-tools/bin/sqlcmd -S localhost -U sa -P $SA_PASSWORD -i $DESTINATION
-
+        #/opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P $SA_PASSWORD -i $DESTINATION
+        /opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P KafEvent007 -i /tmp/script.sql -C
         # Finally, start SQL Server after the script runs
         /opt/mssql/bin/sqlservr
     networks:
