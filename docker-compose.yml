@@ -19,27 +19,39 @@ services:
     environment:
         - ACCEPT_EULA=Y
         - SA_PASSWORD=KafEvent007
+        - DESTINATION=/tmp/script.sql
+        - URL=https://drive.google.com/uc?id=1ATnHqnglHl85NXksk7dLu2Z3losM0OKu&export=download
+    user: root
     ports:
       - "1433:1433"
+    healthcheck:
+      test: ["CMD-SHELL", "/opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P $$SA_PASSWORD -C -Q 'SELECT 1' || exit 1"]
+      interval: 10s
+      retries: 10
+      start_period: 10s
+      timeout: 3s
     command:
       - /bin/bash
       - -c
       - |
-        # Define the Google Drive file ID for the SQL script
-        FILE_ID="1ATnHqnglHl85NXksk7dLu2Z3losM0OKu"  # Replace with your actual file ID
-        DESTINATION="/tmp/script.sql"
-        
-        # Construct the Google Drive download URL
-        URL="https://drive.usercontent.google.com/uc?id=${FILE_ID}&export=download"
-
-        # Download the SQL script using wget (you can also use curl)
-        #wget --no-check-certificate -O $DESTINATION "$URL"
-        wget --no-check-certificate -O "/tmp/script.sql" "https://drive.google.com/uc?id=1ATnHqnglHl85NXksk7dLu2Z3losM0OKu&export=download"
+       
+        # Download the SQL script using wget
+        wget -v --no-check-certificate -O $$DESTINATION $$URL && echo 'Download succeeded!' || echo 'Download failed!'
+        # Use dockerize to wait for SQL Server to be ready
+        /opt/mssql/bin/sqlservr &
+        # Wait 30 seconds for it to be available
+        # (lame, I know, but there's no nc available to start prodding network ports)
+        sleep 30
+        # Run every script in /scripts
+        # TODO set a flag so that this is only done once on creation, 
+        # and not every time the container runs
+        # dockerize -wait tcp://sqlserver:1433 -timeout 60s
+        echo "SQL Server is ready!"
         # Run the SQL script using sqlcmd
-        #/opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P $SA_PASSWORD -i $DESTINATION
-        /opt/mssql-tools18/bin/sqlcmd -S localhost -U sa -P KafEvent007 -i /tmp/script.sql -C
+        echo "SA_PASSWORD: $$SA_PASSWORD, DESTINATION: $$DESTINATION"
+        /opt/mssql-tools18/bin/sqlcmd -S sqlserver -U sa -P $$SA_PASSWORD -i $$DESTINATION -C
         # Finally, start SQL Server after the script runs
-        /opt/mssql/bin/sqlservr
+        #/opt/mssql/bin/sqlservr
     networks:
        - bmc-net
   
