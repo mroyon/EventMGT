@@ -34,11 +34,9 @@ RUN apt-get update && apt-get install -y \
 RUN locale-gen en_US.UTF-8 \
     && locale-gen bn_BD.UTF-8
 # Directly set the locale environment variables
-ENV ASPNETCORE_URLS=http://0.0.0.0:5001
 ENV LANG=en_US.UTF-8
 ENV LANGUAGE=en_US.UTF-8
 ENV LC_ALL=en_US.UTF-8
-
 # This stage is used to publish the service project to be copied to the final stage
 FROM build AS publish
 ARG BUILD_CONFIGURATION=Release
@@ -47,5 +45,7 @@ RUN dotnet publish "./WebAdmin.csproj" -c $BUILD_CONFIGURATION -o /app/publish /
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
+#used to store uploaded files
 RUN mkdir -p /app/wwwroot/uploads
+EXPOSE 5001/tcp
 ENTRYPOINT ["dotnet", "WebAdmin.dll"]
