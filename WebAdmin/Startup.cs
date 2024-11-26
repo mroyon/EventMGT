@@ -48,7 +48,6 @@ namespace WebAdmin
         /// <param name="services"></param>
         public IServiceProvider  ConfigureServices(IServiceCollection services)
         {
-            
             services.InstallServicesInAssembly(_configuration);
 
             services.AddAutoMapper(typeof(Startup));
