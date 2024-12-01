@@ -63,6 +63,8 @@
   <ItemGroup>
     <Folder Include="Services\Extended\" />
   </ItemGroup>
- 
+	<ItemGroup>
+		<RuntimeHostConfigurationOption Include="System.Drawing.EnableUnixSupport" Value="true" />
+	</ItemGroup>
 
 </Project>

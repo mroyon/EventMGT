@@ -903,7 +903,8 @@ IHttpContextAccessor contextAccessor)
           List<gen_eventfileinfoEntity> gen_eventfileinfoList)
         {
             string fileDirPath = _webhost.WebRootPath;
-            string rdlcFilePath = string.Format("{0}\\Reports\\rptUnitDigest.rdlc", fileDirPath);
+            string rdlcFilePath = Path.Combine("wwwroot", "Reports", "rptUnitDigest.rdlc");
+            //string rdlcFilePath = string.Format("{0}\\Reports\\rptUnitDigest.rdlc", fileDirPath);
 
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
             Encoding.GetEncoding("windows-1252");

@@ -1482,7 +1482,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
-
+	<ItemGroup>
+		<RuntimeHostConfigurationOption Include="System.Drawing.EnableUnixSupport" Value="true" />
+	</ItemGroup>
 	<ItemGroup>
 		<Content Update="*\.cshtml">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>

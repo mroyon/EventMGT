@@ -48,6 +48,7 @@ namespace WebAdmin
         /// <param name="services"></param>
         public IServiceProvider  ConfigureServices(IServiceCollection services)
         {
+            System.AppContext.SetSwitch("System.Drawing.EnableUnixSupport", true);
             services.InstallServicesInAssembly(_configuration);
 
             services.AddAutoMapper(typeof(Startup));
