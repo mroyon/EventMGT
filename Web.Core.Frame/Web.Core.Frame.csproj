@@ -63,9 +63,5 @@
 		<ProjectReference Include="..\IDAC\IDAC.csproj" />
 	</ItemGroup>
 
-	<ItemGroup>
-	  <Folder Include="Dto\UseCaseRequests\Extended\" />
-	</ItemGroup>
-
 
 </Project>

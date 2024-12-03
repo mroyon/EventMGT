@@ -15,18 +15,20 @@ using BDO.Core.DataAccessObjects.Models;
 using BDO.Core.DataAccessObjects.CommonEntities;
 using WebAdmin.Providers;
 using Newtonsoft.Json;
+using Web.Core.Frame.Interfaces.UseCases.Extended.IUserCase;
+using Web.Core.Frame.UseCases;
 
 namespace WebAdmin.Controllers
 {
     /// <summary>
-    /// Gen_EventCategoryController
+    /// BackupController
     /// </summary>
     //[Authorize(Policy = "KAFSecurityPolicy")]
     [AutoValidateAntiforgeryToken]
     public class BackupController : BaseController
     {
-        private readonly IGen_EventCategoryUseCase _gen_EventCategoryUseCase;
-        private readonly Gen_EventCategoryPresenter _gen_EventCategoryPresenter;
+        private readonly IBackupUseCase _backupUseCase;
+        private readonly BackupPresenter _backupPresenter;
         private readonly ILogger<BackupController> _logger;
         private readonly IStringLocalizer _sharedLocalizer;
 
@@ -36,22 +38,22 @@ namespace WebAdmin.Controllers
         public IConfiguration _configuration { get; }
 
         /// <summary>
-        /// BackupController
+        /// 
         /// </summary>
-        /// <param name="gen_EventCategoryUseCase"></param>
-        /// <param name="gen_EventCategoryPresenter"></param>
+        /// <param name="backupUseCase"></param>
+        /// <param name="backupPresenter"></param>
         /// <param name="loggerFactory"></param>
         /// <param name="factory"></param>
 
         public BackupController(
-            IGen_EventCategoryUseCase gen_EventCategoryUseCase,
-            Gen_EventCategoryPresenter gen_EventCategoryPresenter,
+            IBackupUseCase backupUseCase,
+            BackupPresenter backupPresenter,
             ILoggerFactory loggerFactory,
             IStringLocalizerFactory factory
             )
         {
-            _gen_EventCategoryUseCase = gen_EventCategoryUseCase;
-            _gen_EventCategoryPresenter = gen_EventCategoryPresenter;
+            _backupUseCase = backupUseCase;
+            _backupPresenter = backupPresenter;
             _logger = loggerFactory.CreateLogger<BackupController>();
 
             var type = typeof(SharedResource);
@@ -59,5 +61,31 @@ namespace WebAdmin.Controllers
             _sharedLocalizer = factory.Create("SharedResource", assemblyName.Name);
         }
 
+        /// <summary>
+        /// LandingBackup
+        /// </summary>
+        /// <param name="returnUrl"></param>
+        /// <returns></returns>
+        [AllowAnonymous]
+        public async Task<IActionResult> LandingBackup(string returnUrl)
+        {
+            if (!User.Identity.IsAuthenticated) { return RedirectToAction("Account", "Login"); }
+            return View("../Backup/LandingBackup", new backupEntity());
+        }
+
+        /// <summary>
+        /// SaveDatabaseBackup
+        /// </summary>
+        /// <param name="request"></param>
+        /// <returns></returns>
+        [HttpPost]
+        [AllowAnonymous]
+        public async Task<IActionResult> SaveDatabaseBackup([FromBody] backupEntity request)
+        {
+            if (!User.Identity.IsAuthenticated) { return RedirectToAction("Account", "Login"); }
+            if (!ModelState.IsValid) { return BadRequest(ModelState); }
+            await _backupUseCase.BackupDatabase(new BackupRequest(request), _backupPresenter);
+            return _backupPresenter.ContentResult;
+        }
     }
 }

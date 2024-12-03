@@ -40,6 +40,7 @@ namespace Web.Core.Frame
             builder.RegisterType<Gen_UnitPresenter>().InstancePerLifetimeScope();
             builder.RegisterType<Gen_UserUnitPresenter>().InstancePerLifetimeScope();
 
+            builder.RegisterType<BackupPresenter>().InstancePerLifetimeScope();
 
 
         }

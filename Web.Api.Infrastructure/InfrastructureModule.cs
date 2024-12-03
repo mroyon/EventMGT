@@ -39,6 +39,7 @@ namespace Web.Api.Infrastructure
 
 
             builder.RegisterType<FileUploadClient>().As<IFileUploadClient>().SingleInstance().FindConstructorsWith(new InternalConstructorFinder());
+            builder.RegisterType<DatabaseBackupService>().As<IDatabaseBackupService>().SingleInstance().FindConstructorsWith(new InternalConstructorFinder());
         }
     }
 }

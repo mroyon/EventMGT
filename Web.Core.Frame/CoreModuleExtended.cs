@@ -1,6 +1,7 @@
 ﻿using Autofac;
 using CLL.LLClasses.Models;
 using Web.Core.Frame.Interfaces.UseCases;
+using Web.Core.Frame.Interfaces.UseCases.Extended.IUserCase;
 using Web.Core.Frame.UseCases;
 
 namespace Web.Core.Frame
@@ -35,9 +36,10 @@ namespace Web.Core.Frame
             builder.RegisterType<Gen_EventFileInfoUseCase>().As<IGen_EventFileInfoUseCase>().InstancePerLifetimeScope();
 
 
+            builder.RegisterType<BackupUseCase>().As<IBackupUseCase>().InstancePerLifetimeScope();
 
 
 
         }
-	}
+    }
 }

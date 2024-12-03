@@ -18,7 +18,6 @@
         <div class="card">
             <div class="card-header ">
                 <div class="col d-flex">
-                    <img src="@Url.Action("GetUnitLogo", "Gen_Unit")" style="max-width: 70px;" />
                     <h6 class="card-title customcardheader">Back Up File</h6>
                 </div>
             </div>
@@ -37,21 +36,24 @@
                                 </div>
                             </div>
                         </div>
-                        @* <div class="row">
+                        <div class="row ">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                   
-                                    <input type="text" id="path" value="" placeholder="Enter folder path or click a folder" />
-                                    <button id="browse">Browse</button>
+                                    <label class="labelNormal" asp-for="filepath"></label>
+                                    <input type="text" style="display:none;" />
+                                    <input asp-for="filepath" class="form-control" autocomplete="off" placeholder="Enter folder path here" />
+                                    <span asp-validation-for="filepath" class="filepatherror text-danger " id="filepatherror"></span>
                                 </div>
                             </div>
-                        </div> *@
-                        
+                        </div>
                         <div class="row">
                             <div class="row btn-toolbar">
                                 <div class="col-md-6 ">
                                     <div class="form-group">
-                                        <button type="submit" id="btnStartBackup" class="btn btn-primary btn-md"><i class="fa fa-search"></i>Start Backup</button>
+                                        <button type="submit" id="btnStartBackup" class="btn btn-primary btn-md">
+                                            <i class="fa fa-paper-plane" aria-hidden="true"></i>
+                                             Start Backup
+                                        </button>
                                     </div>
                                 </div>
                             </div>
@@ -68,26 +70,34 @@
 
 @section Scripts {
     <script>
-        function selectFolder() {
-            // Trigger the folder picker input
-            document.getElementById("folderPicker").click();
+        function RedirectToLanding(params) {
+            if (typeof params != 'undefined')
+                window.location.href = params;
         }
-        // document.getElementById("folderPicker").addEventListener("change", function (event) {
-        //     // Extract the folder path from the first selected file
-        //     const filepath = event.target.files.length > 0
-        //         ? event.target.files[0].webkitRelativePath.split("/")[0]
-        //         : "";
+        $(function () {
+            document.getElementById("filepath").setAttribute("autocomplete", "off");
+            $('body').on('click', '#btnStartBackup', function (e) {
+            try {
+                e.preventDefault();
+                if (_cusFormValidate('frmBackup')) {
+                    var dataobject = {
+                        backuptype: $("#backuptype").val(),
+                        filepath: $("#filepath").val(),
+                    };
+                    ajaxPostObjectHandler("/Backup/SaveDatabaseBackup", dataobject, function (response) {
 
-        //     // Display the folder path in the input field
-        //     document.getElementById("filepath").value = filepath || "No folder selected";
-        // });
-        document.getElementById("folderPicker").addEventListener("change", function (event) {
-            if (event.target.files.length > 0) {
-                // Get the folder path from the first file's relative path
-                const folderPath = event.target.files[0].webkitRelativePath.split("/")[0];
-                document.getElementById("folderPath").value = folderPath;
+                        console.log(response)
+                        if (response.responsestatus == "success") {
+                                showSuccessAlert("Success", response.responsetext, "OK", RedirectToLanding, "/Backup/LandingBackup");
+                        }
+                    }, true);
+                }
+
+            } catch (e) {
+                showErrorAlert("Error", e.message, "OK");
             }
         });
+     });
     </script>
 }
 
