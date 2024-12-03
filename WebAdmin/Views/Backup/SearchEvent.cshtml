@@ -1,0 +1,510 @@
+﻿@using CLL
+@model BDO.Core.DataAccessObjects.Models.gen_eventinfoEntity
+@inject CLL.Localization.LocalizeService SharedLocalizer
+
+@using Microsoft.Extensions.Options
+@{
+    ViewData["Title"] = "Search Event";
+}
+
+<style>
+    .customcardheader {
+        font-size: xx-large !important;
+        font-weight: 700 !important;
+    }
+</style>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header ">
+                <div class="col d-flex">
+                    <img src="@Url.Action("GetUnitLogo", "Gen_Unit")" style="max-width: 70px;" />
+                    <h6 class="card-title customcardheader">Event Information Search</h6>
+                </div>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <form method="POST" id="frmAddGen_EventInfo" class="my-login-validation" novalidate="" autocomplete="off">
+                    <div class="card-body">
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="labelNormal required " asp-for="unitid">Unit</label>
+                                    @await Component.InvokeAsync("S2FilterGen_Unit", new { selectid = "unitid", preloaded = ViewBag.preloadedDatagen_unit, isReadOnly = false, multiple = false, isRequired = true, pkey = -99 })
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="labelNormal" asp-for="eventcategoryid"></label>
+                                    @await Component.InvokeAsync("S2Gen_EventCategory", new { selectid = "eventcategoryid", preloaded = ViewBag.preloadedDatagen_eventcategory, isReadOnly = false, multiple = false, isRequired = true, pkey = -99 })
+                                    <span asp-validation-for="eventcategoryid" class="eventcategoryiderror text-danger " id="eventcategoryiderror"></span>
+                                </div>
+                            </div>
+
+
+                        </div>
+
+                        <div class="row" hidden>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="labelNormal" asp-for="eventid"></label>
+                                    @await Component.InvokeAsync("S2Gen_Event", new { selectid = "eventid", preloaded = ViewBag.preloadedDatagen_event, isReadOnly = false, multiple = false, isRequired = true, pkey = -99 })
+                                    <span asp-validation-for="eventid" class="eventiderror text-danger " id="eventcategoryiderror"></span>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12" hidden>
+                                <div class="form-group">
+                                    <label class="labelNormal" asp-for="eventcode"></label>
+                                    <input asp-for="eventcode" class="form-control" autocomplete="off" required />
+                                    <span asp-validation-for="eventcode" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="labelNormal" asp-for="eventname"></label>
+                                    <input asp-for="eventname" class="form-control" autocomplete="off" required />
+                                    <span asp-validation-for="eventname" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="labelNormal" asp-for="eventdescription"></label>
+                                    <input asp-for="eventdescription" class="form-control" autocomplete="off" required />
+                                    <span asp-validation-for="eventdescription" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row ">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="labelNormal" asp-for="eventstartdate"></label>
+                                    <div class="input-group date bs-datepicker">
+                                        <input asp-for="eventstartdate" class="form-control " type="text" placeholder="dd/mm/yyyy" />
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">
+                                                <i class="far fa-calendar-alt"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <span asp-validation-for="eventstartdate" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="labelNormal" asp-for="eventenddate"></label>
+                                    <div class="input-group date bs-datepicker">
+                                        <input asp-for="eventenddate" class="form-control " type="text" placeholder="dd/mm/yyyy" />
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text">
+                                                <i class="far fa-calendar-alt"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                    <span asp-validation-for="eventenddate" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="row btn-toolbar">
+                                <div class="col-md-6 ">
+                                    <div class="form-group">
+                                        <button type="submit" id="btnSearchEventInfo" class="btn btn-primary btn-md"><i class="fa fa-search"></i>Search</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="card-body">
+                <form method="POST" id="frmDTGen_EventInfolist" class="my-login-validation" novalidate="" autocomplete="off">
+                    <div class="row btn-toolbar">
+                        <div class="col-md-6 ">
+                            <div class="form-group">
+                                <button type="button" id="btnDownloadReport" class="btn btn-success btn-md"><i class="fa fa-download"></i> Download Report</button>
+                                <button type="button" id="btnDownloadReport_UnitDigest"  class="btn btn-success btn-md"><i class="fa fa-download"></i> Download Unit Digest Report</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+
+                            <table id="DTGen_EventInfolist" class="table table-striped table-bordered" @*style="width:100%"*@ cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th class="d-none"><label class="labelNormal  ">eventid</label></th>
+                                        <th width="50px"><label class="labelNormal  ">Sl</label></th>
+
+                                        <th><label class="labelNormal  " asp-for="eventname"></label></th>
+                                        <th><label class="labelNormal  " asp-for="eventdescription"></label></th>
+                                        <th><label class="labelNormal  " asp-for="eventstartdate"></label></th>
+                                        @* <th><label class="labelNormal  ">Files</label></th> *@
+                                        <th width="150px"><label class="labelNormal  ">Actions</label></th>
+                                    </tr>
+                                </thead>
+                            </table>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+            <!-- ./card-body -->
+            <div class="card-footer">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="modal fade banglafont"
+                             id="exampleModal"
+                             tabindex="-1"
+                             role="dialog"
+                             aria-labelledby="exampleModalLabel"
+                             aria-hidden="true"
+                             data-bs-backdrop="static">
+                            <div class="modal-dialog modal-xl">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel"></h5>
+                                        <button type="button"
+                                                class="close"
+                                                data-bs-dismiss="modal"
+                                                aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="photo-gallery">
+                                            <div class="container">
+                                                <div class="row photos">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button"
+                                                class="btn btn-secondary"
+                                                data-bs-dismiss="modal">
+                                            Close
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /.col -->
+                </div>
+                <!-- /.row -->
+            </div>
+            <!-- /.card-footer -->
+        </div>
+        <!-- /.card -->
+    </div>
+    <!-- /.col -->
+</div>
+
+
+@section Scripts {
+    <script>
+        $(function () {
+
+            $("#btnDownloadReport").hide();
+            $("#btnDownloadReport_UnitDigest").hide();
+            var table;
+
+            $('body').on('click', '#btnSearchEventInfo', function (e) {
+                try {
+                    event.preventDefault();
+                    loadSearch();
+                } catch (e) {
+                    showErrorAlert("Error", e.message, "OK");
+                }
+            });
+
+            function loadSearch() {
+                try {
+                    table.destroy();
+                } catch { }
+                $('span[data-valmsg-for]').text('');
+                if (!$("#unitid").val()) {
+                    $('span[data-valmsg-for="unitid"]').text('Please select Unit.');
+                    return;
+                }
+
+                var dataobject = {
+                    eventcategoryid: $("#eventcategoryid").val(),
+                    eventcode: $("#eventcode").val(),
+                    eventname: $("#eventname").val(),
+                    unitid: $("#unitid").val(),
+                    eventdescription: $("#eventdescription").val(),
+                    eventstartdate: GetDateFromTextBox($("#eventstartdate").val()),
+                    eventenddate: GetDateFromTextBox($("#eventenddate").val()),
+                }
+
+                table = $("#DTGen_EventInfolist").DataTable({
+                    "ajax": $.fn.dataTable.json({
+                        url: "/Gen_EventInfo/SearchEventInfo",
+                        data: dataobject
+                    }),
+                    "buttons": {
+                        "buttons": []
+                    },
+                    columnDefs: [
+                        { targets: 0, "visible": false, searchable: false },
+                        { targets: 1, "visible": true, "sortable": true },
+                        { targets: 2, "visible": true, "sortable": true },
+                        { targets: 3, "visible": true, "sortable": true },
+                        { targets: 4, "visible": true, "sortable": true },
+                        { targets: 5, "visible": true, "sortable": false, "className": "text-center" }
+                    ],
+                    "columns": [
+                        {
+                            "data": "eventid",
+                            "name": "eventid",
+                            "autoWidth": true
+                        },
+                        {
+                            "data": "eventcode",
+                            "name": "eventcode",
+                            "autoWidth": true,
+                            "render": function (data, type, row, meta) {
+                                return meta.row + 1; // Row numbers start from 1
+                            }
+                        },
+                        {
+                            "data": "eventname", render: function (data, type, full, row) {
+                                return `<span class='banglafont'>` + data + `</span>`;
+                            }
+                        },
+                        {
+                            "data": "eventdescription",
+                            "name": "eventdescription",
+                            "autoWidth": true
+                        },
+                        {
+                            "data": "eventstartdate",
+                            "name": "eventstartdate",
+                            "autoWidth": true,
+                            render: function (data, type, full, row) {
+                                return moment(data).format("DD-MM-YYYY");
+                            }
+                        },
+                        {
+                            "data": "eventid", render: function (data, type, full, row) {
+                                $("#btnDownloadReport").show();
+                                $("#btnDownloadReport_UnitDigest").show();
+                                var button = "<button type='button' class='btn btn-info btn-md mr-1' onclick='ViewEventFiles(this)' data-eventname='" + full.eventname + "' data-eventid='" + data + "'><i class='fas fa-eye'></i> View Files</button>";
+                                return button;
+                            }
+                        }
+                    ]
+
+                });
+
+            }
+
+            $('.bs-datepicker').datepicker({
+                format: "dd/mm/yyyy",
+                autoclose: true,
+                clearBtn: true,
+                startView: 0,
+                language: "en",
+                todayHighlight: true
+            });
+        });
+
+
+        function ViewEventFiles(cntrl) {
+            var eventid = $(cntrl).attr('data-eventid')
+
+            var dataobject = {
+                eventid: $(cntrl).attr('data-eventid')
+            };
+            ajaxPostObjectHandler("/Gen_EventInfo/GetEventFileInfoByEvent", dataobject, function (response) {
+                if (response.status == "success") {
+                    var baseURL = window.location.origin;
+                    var myModal = new bootstrap.Modal(document.getElementById("exampleModal"), {});
+                    var modalBody = "";
+                    $(".photos").empty();
+                    $("#exampleModalLabel").text($(cntrl).attr('data-eventname'));
+                    $.each(response.data, function (key, value) {
+                        var filepath = baseURL + "/uploads/" + value.filename;
+                        modalBody += "<div class='col-sm-6 col-md-4 col-lg-3 item'><a href='" + filepath + "' data-lightbox='photos'><img class='img-fluid' src='" + filepath + "'><span class='caption'>" + "" + "</span></a></div>";
+                    });
+                    $(".photos").append(modalBody);
+                    myModal.show();
+                }
+                else {
+                    console.log("No File Found")
+                }
+            }, true);
+        }
+
+        function ViewReport(cntrl) {
+            var eventid = $(cntrl).attr('data-eventid')
+            $('span[data-valmsg-for]').text('');
+            if (!$("#unitid").val()) {
+                $('span[data-valmsg-for="unitid"]').text('Please select Unit.');
+                return;
+            }
+            var dataobject = {
+                eventcategoryid: $("#eventcategoryid").val(),
+                eventcode: $("#eventcode").val(),
+                eventname: $("#eventname").val(),
+                unitid: $("#unitid").val(),
+                eventdescription: $("#eventdescription").val(),
+                eventstartdate: GetDateFromTextBox($("#eventstartdate").val()),
+                eventenddate: GetDateFromTextBox($("#eventenddate").val()),
+            }
+
+            ajaxPostObjectHandler("/Gen_EventInfo/GetReport_DigestOfService", dataobject, function (response) {
+                console.log("I am Happy")
+                var base64 = response.data;
+                const linkSource = `data:application/pdf;base64,${base64}`;
+                const downloadLink = document.createElement("a");
+                const fileName = "abc.pdf";
+                downloadLink.href = linkSource;
+                downloadLink.download = fileName;
+                downloadLink.click();
+
+            }, true);
+        }
+
+        function ViewReport_UnitDigest(cntrl) {
+            var eventid = $(cntrl).attr('data-eventid')
+            $('span[data-valmsg-for]').text('');
+            if (!$("#unitid").val()) {
+                $('span[data-valmsg-for="unitid"]').text('Please select Unit.');
+                return;
+            }
+            var dataobject = {
+                eventcategoryid: $("#eventcategoryid").val(),
+                eventcode: $("#eventcode").val(),
+                eventname: $("#eventname").val(),
+                unitid: $("#unitid").val(),
+                eventdescription: $("#eventdescription").val(),
+                eventstartdate: GetDateFromTextBox($("#eventstartdate").val()),
+                eventenddate: GetDateFromTextBox($("#eventenddate").val()),
+            }
+
+            ajaxPostObjectHandler("/Gen_EventInfo/GetReport_UnitDigest", dataobject, function (response) {
+                console.log("I am Happy")
+                var base64 = response.data;
+                const linkSource = `data:application/pdf;base64,${base64}`;
+                const downloadLink = document.createElement("a");
+                const fileName = "abc.pdf";
+                downloadLink.href = linkSource;
+                downloadLink.download = fileName;
+                downloadLink.click();
+
+            }, true);
+        }
+
+        lightbox.option({
+            'resizeDuration': 200,
+            'wrapAround': true,
+            //'albumLabel': ""
+        })
+
+        $("#btnDownloadReport").click(function () {
+            $.blockUI();
+            var dataobject = {
+                eventcategoryid: $("#eventcategoryid").val(),
+                eventcode: $("#eventcode").val(),
+                eventname: $("#eventname").val(),
+                unitid: $("#unitid").val(),
+                eventdescription: $("#eventdescription").val(),
+                eventstartdate: GetDateFromTextBox($("#eventstartdate").val()),
+                eventenddate: GetDateFromTextBox($("#eventenddate").val()),
+            }
+
+            $.ajax({
+                type: "POST",
+                url: "/Gen_EventInfo/GetReport_DigestOfService",
+                data: JSON.stringify(dataobject),
+                contentType: "application/json",
+                headers: {
+                    'X-CSRF-TOKEN-WEBADMINHEADER': $('#X-CSRF-TOKEN-WEBADMINHEADER').val()
+                },
+                xhrFields: {
+                    responseType: 'blob'  // Important to specify for binary data (PDF)
+                },
+                success: function (data) {
+                    console.log(data)
+                    var blob = new Blob([data], { type: "application/pdf" });
+                    var link = document.createElement('a');
+                    link.href = window.URL.createObjectURL(blob);
+                    link.download = "Digest-of-Service_" + $('#unitid').select2('data')[0].text + ".pdf";
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                    $.unblockUI();
+                },
+                error: function (xhr, status, error) {
+                    console.log(xhr)
+                    console.log(status)
+                    console.log(error)
+                    alert("An error occurred while downloading the report.");
+                }
+            });
+
+
+        });
+        $("#btnDownloadReport_UnitDigest").click(function () {
+            $.blockUI();
+            var dataobject = {
+                eventcategoryid: $("#eventcategoryid").val(),
+                eventcode: $("#eventcode").val(),
+                eventname: $("#eventname").val(),
+                unitid: $("#unitid").val(),
+                eventdescription: $("#eventdescription").val(),
+                eventstartdate: GetDateFromTextBox($("#eventstartdate").val()),
+                eventenddate: GetDateFromTextBox($("#eventenddate").val()),
+            }
+
+            $.ajax({
+                type: "POST",
+                url: "/Gen_EventInfo/GetReport_UnitDigest",
+                data: JSON.stringify(dataobject),
+                contentType: "application/json",
+                headers: {
+                        'X-CSRF-TOKEN-WEBADMINHEADER': $('#X-CSRF-TOKEN-WEBADMINHEADER').val()
+                },
+                xhrFields: {
+                    responseType: 'blob'  // Important to specify for binary data (PDF)
+                },
+                success: function (data) {
+                    console.log(data)
+                    var blob = new Blob([data], { type: "application/pdf" });
+                    var link = document.createElement('a');
+                    link.href = window.URL.createObjectURL(blob);
+                    link.download = "Digest_" + $('#unitid').select2('data')[0].text + ".pdf";
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                    $.unblockUI();
+                },
+                error: function (xhr, status, error) {
+                    console.log(xhr)
+                    console.log(status)
+                    console.log(error)
+                    alert("An error occurred while downloading the report.");
+                }
+            });
+
+            
+        });
+    </script>
+}
+
+
+

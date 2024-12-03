@@ -1,0 +1,95 @@
+﻿@using CLL
+@model BDO.Core.DataAccessObjects.Models.backupEntity
+@inject CLL.Localization.LocalizeService SharedLocalizer
+
+@using Microsoft.Extensions.Options
+@{
+    ViewData["Title"] = "Backup";
+}
+
+<style>
+    .customcardheader {
+        font-size: xx-large !important;
+        font-weight: 700 !important;
+    }
+</style>
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="card-header ">
+                <div class="col d-flex">
+                    <img src="@Url.Action("GetUnitLogo", "Gen_Unit")" style="max-width: 70px;" />
+                    <h6 class="card-title customcardheader">Back Up File</h6>
+                </div>
+            </div>
+            <!-- /.card-header -->
+            <div class="card-body">
+                <form method="POST" id="frmBackup" class="my-login-validation" novalidate="" autocomplete="off">
+                    <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label class="labelNormal" asp-for="backuptype"></label>
+                                    <select class="form-select" id="backuptype">
+                                        <option value="DB" selected>Database</option>
+                                    </select>
+                                    <span asp-validation-for="backuptype" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        @* <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                   
+                                    <input type="text" id="path" value="" placeholder="Enter folder path or click a folder" />
+                                    <button id="browse">Browse</button>
+                                </div>
+                            </div>
+                        </div> *@
+                        
+                        <div class="row">
+                            <div class="row btn-toolbar">
+                                <div class="col-md-6 ">
+                                    <div class="form-group">
+                                        <button type="submit" id="btnStartBackup" class="btn btn-primary btn-md"><i class="fa fa-search"></i>Start Backup</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- /.card -->
+    </div>
+    <!-- /.col -->
+</div>
+
+
+@section Scripts {
+    <script>
+        function selectFolder() {
+            // Trigger the folder picker input
+            document.getElementById("folderPicker").click();
+        }
+        // document.getElementById("folderPicker").addEventListener("change", function (event) {
+        //     // Extract the folder path from the first selected file
+        //     const filepath = event.target.files.length > 0
+        //         ? event.target.files[0].webkitRelativePath.split("/")[0]
+        //         : "";
+
+        //     // Display the folder path in the input field
+        //     document.getElementById("filepath").value = filepath || "No folder selected";
+        // });
+        document.getElementById("folderPicker").addEventListener("change", function (event) {
+            if (event.target.files.length > 0) {
+                // Get the folder path from the first file's relative path
+                const folderPath = event.target.files[0].webkitRelativePath.split("/")[0];
+                document.getElementById("folderPath").value = folderPath;
+            }
+        });
+    </script>
+}
+
+
+
