@@ -56,7 +56,14 @@ namespace Web.Core.Frame.Interfaces.Services
 
                 var builder = new SqlConnectionStringBuilder(_connectionString);
                 string databaseName = builder.InitialCatalog;
-                var query = $"BACKUP DATABASE [{databaseName}] TO DISK = @BackupFilePath";
+                //var query = $"BACKUP DATABASE [{databaseName}] TO DISK = @BackupFilePath";
+                var backupSql = $@"
+                                BACKUP DATABASE [{databaseName}]
+                                TO DISK = @BackupFilePath
+                                WITH FORMAT, INIT, 
+                                NAME = '{databaseName}_FullBackup', 
+                                SKIP, NOREWIND, NOUNLOAD, STATS = 10";
+
                 string defaultPath = System.IO.Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Downloads");
                 backupFilePath = !string.IsNullOrEmpty(backupFilePath) ? backupFilePath : defaultPath;
                 string filepathFull = System.IO.Path.Combine(backupFilePath, databaseName + "_" + DateTime.Now.ToString("ddMMyyyyhhmm") + ".bak");
@@ -68,7 +75,7 @@ namespace Web.Core.Frame.Interfaces.Services
 
                 using (var connection = new SqlConnection(_connectionString))
                 {
-                    using (var command = new SqlCommand(query, connection))
+                    using (var command = new SqlCommand(backupSql, connection))
                     {
                         command.Parameters.AddWithValue("@BackupFilePath", filepathFull);
 
