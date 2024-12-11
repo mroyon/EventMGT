@@ -108,22 +108,22 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="labelNormal required " asp-for="eventname"></label>
-                                <input asp-for="eventname" class="form-control" required></input>
+                                <input asp-for="eventname" class="form-control" required placeholder="ইভেন্ট টাইটেল প্রদান করুন"></input>
                                 <span asp-validation-for="eventname" class="eventnameerror text-danger " id="eventnameerror"></span>
                             </div>
                         </div>
                     </div>
                     <div class="row ">
                         <div class="col-md-6">
-                            <div class="form-group">
+                            <div class="form-group">                                               
                                 <label class="labelNormal required " asp-for="eventstartdate"></label>
                                 <div class="input-group date bs-datepicker">
-                                    <input asp-for="eventstartdate" class="form-control " type="text" placeholder="dd/mm/yyyy" required />
-                                    <div class="input-group-prepend">
+                                    <input asp-for="eventstartdate" class="form-control " type="text" placeholder="তারিখ নির্বাচন করুন" required />
+                                    @* <div class="input-group-prepend">
                                         <span class="input-group-text">
                                             <i class="far fa-calendar-alt"></i>
                                         </span>
-                                    </div>
+                                    </div> *@
                                 </div>
                                 <span asp-validation-for="eventstartdate" class="text-danger"></span>
                             </div>
@@ -142,7 +142,7 @@
                         </div>
                        
                     </div>
-                   
+                  
                     <div class="row">
                         <div class="col-8 ">
                             <div class="form-group">
@@ -219,14 +219,21 @@
         $(function () {
             // var datepicker = $.fn.datepicker.noConflict(); return $.fn.datepicker to previously assigned value
             // $.fn.bootstrapDP = datepicker;
-            $('.bs-datepicker').datepicker({
-                format: "dd/mm/yyyy",
-                autoclose: true,
-                clearBtn: true,
-                startView: 0,
-                language: "en",
-                todayHighlight: true
-            });
+            // $('.bs-datepicker').datepicker({
+            //     format: "dd/mm/yyyy",
+            //     autoclose: true,
+            //     clearBtn: true,
+            //     startView: 0,
+            //     language: "en",
+            //     todayHighlight: true
+            // });
+
+            $.bdatepicker.setDefaults(bn);
+            $('#eventstartdate').bdatepicker({
+                dateFormat: "dd/mm/yyyy",
+                changeMonth: true,
+                changeYear: true
+            }, bn);
         })
     </script>
     <script>
