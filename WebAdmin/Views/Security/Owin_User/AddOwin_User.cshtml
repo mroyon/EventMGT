@@ -10,7 +10,7 @@
     {
         _userplaceholder = "kuwaitarmy.gov.kw@*****";
     }
-}
+}   
 
 
 <div class="row">
@@ -27,7 +27,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="labelNormal required " asp-for="username"></label>
-                                <input asp-for="username" class="form-control" onfocusout="ValidateUserName(this); return false;" placeholder='@_userplaceholder' />
+                                <input asp-for="username" class="form-control" onfocusout="ValidateUserName(this); return false;"  />
                                 <span asp-validation-for="username" class="text-danger"></span>
                             </div>
                         </div>
