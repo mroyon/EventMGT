@@ -61,7 +61,7 @@ $(function () {
     $('body').on('click', '#btnchangepassword', function (event) {
         try {
             event.preventDefault();
-            
+            //debugger;
             if (_cusFormValidate('frmchangepassword')) {
                 var dataobject = {
                     emailaddress: $("#emailaddress").val(),
@@ -70,14 +70,22 @@ $(function () {
                     confirmpassword: $("#confirmpassword").val()
                 };
                 /*console.log(dataobject)*/
+                if ($("#password").val() === $("#newpassword").val()) {
+                    showErrorAlert("New Password can't be same as Old Password!");
+                    return;
+                }
                 ajaxPostObjectHandler("/Account/ChangePasswordPost", dataobject, function (response) {
-                    var res = $.parseJSON(response);
-                    if (res._ajaxresponse.responsestatus == "success") {
-                        showSuccessAlert("Success", res._ajaxresponse.responsetext, "OK");
-                        window.location.reload();
+                    var res = response;
+                    //console.log(response)
+                    if (res.responsestatus == "success") {
+                        showSuccessAlert("Success", res.responsetext, "OK");
+                        setTimeout(function () {
+                            window.location.reload();
+                        }, 2000);
+                        
                     }
                     else {
-                        showErrorAlert(res._ajaxresponse.responsetitle, res._ajaxresponse.responsetext, "OK");
+                        showErrorAlert(res.responsetitle, res.responsetext, "OK");
                     }
                 }, true);
             }

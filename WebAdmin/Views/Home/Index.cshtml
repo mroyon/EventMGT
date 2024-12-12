@@ -11,6 +11,20 @@
 
 <script>
     $(function () {
-        window.location.href = "/Gen_EventInfo/AddGen_EventInfo";
-    })
+
+        var redirectFlag = @Json.Serialize(ViewBag.RedirectFlag);
+
+        if (redirectFlag) {
+            $.get("/Account/ChangePassword", function (response) {
+                _cusTriggerModal("modal-common", response);
+            });
+         // window.location.href = "/Gen_EventInfo/ForcedPasswordChange";
+
+        //      ajaxGetHandler("/Account/ChangePassword", { returnUrl: "/" }, function (response) {
+        //     _cusTriggerModal("modal-common", response);
+        // }, false, false);
+
+        }
+        else window.location.href = "/Gen_EventInfo/AddGen_EventInfo";
+    });
 </script>

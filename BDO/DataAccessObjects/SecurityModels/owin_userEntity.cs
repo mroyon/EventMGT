@@ -68,6 +68,7 @@ namespace BDO.Core.DataAccessObjects.SecurityModels
         protected string _apitokenJson;
         protected long? _webuseronly;
         protected long? _roleid;
+        protected bool? _ispasswordtochange;
 
 
         [DataMember]
@@ -428,6 +429,13 @@ namespace BDO.Core.DataAccessObjects.SecurityModels
         }
 
         [DataMember]
+        public bool? ispasswordtochange
+        {
+            get { return _ispasswordtochange; }
+            set { _ispasswordtochange = value; this.OnChnaged(); }
+        }
+
+        [DataMember]
         [Display(Name = "reviewedby", ResourceType = typeof(CLL.LLClasses.SecurityModels._owin_user))]
         public long? reviewedby
         {
@@ -618,6 +626,10 @@ namespace BDO.Core.DataAccessObjects.SecurityModels
                 if (!reader.IsDBNull(reader.GetOrdinal("UpdatedDate"))) this.BaseSecurityParam.updateddate = reader.GetDateTime(reader.GetOrdinal("UpdatedDate"));
                 if (!reader.IsDBNull(reader.GetOrdinal("IPAddress"))) this.BaseSecurityParam.ipaddress = reader.GetString(reader.GetOrdinal("IPAddress"));
                 if (!reader.IsDBNull(reader.GetOrdinal("TS"))) this.BaseSecurityParam.ts = reader.GetInt64(reader.GetOrdinal("ts"));
+
+                if (!reader.IsDBNull(reader.GetOrdinal("IsPasswordToChange"))) _ispasswordtochange = reader.GetBoolean(reader.GetOrdinal("IsPasswordToChange"));
+
+
                 CurrentState = EntityState.Unchanged;
             }
         }

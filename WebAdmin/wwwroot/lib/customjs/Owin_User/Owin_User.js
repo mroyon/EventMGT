@@ -26,13 +26,13 @@ function ValidateEmail(email) {
     }
 }
 function ValidateUserName(user) {
-    var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+    var Usernameformat = /^[a-zA-Z0-9]+$/;
     if (user.value) {
-        if (user.value.match(mailformat)) {
+        if (user.value.match(Usernameformat)) {
             return true;
         }
         else {
-            showErrorAlert("Warning!", "You have entered an invalid user name", "OK");
+            showErrorAlert("Warning!", "Invalid UserName! Please enter only letters and numbers, with no spaces or special characters.", "OK");
             return false;
         }
     }

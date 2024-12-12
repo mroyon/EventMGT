@@ -28,6 +28,7 @@ using System.Net.Http;
 using System.Text;
 using Web.Core.Frame.Dto.UseCaseRequests;
 using Web.Core.Frame.UseCases;
+using Org.BouncyCastle.Asn1.Ocsp;
 
 namespace WebAdmin.Controllers
 {
@@ -119,11 +120,15 @@ namespace WebAdmin.Controllers
         [AllowAnonymous]
         public async Task<IActionResult> Login(string returnUrl)
         {
+            var flg = User.Claims.FirstOrDefault(c => c.Type == "IsPasswordToChange")?.Value;
+
             if (User.Identity.IsAuthenticated)
             {
                 return RedirectToAction("Index", "Home");
             }
             var vm = await BuildLoginViewModelAsync(returnUrl);
+
+
 
             try
             {
@@ -233,6 +238,70 @@ namespace WebAdmin.Controllers
             };
             return Json(new AjaxResponse("200", _sharedLocalizer["VERIFY"].Value, CLL.LLClasses._Status._statusSuccess, CLL.LLClasses._Status._titleInformation, "/"));
         }
+
+
+
+        //[AllowAnonymous]
+        //[ValidateAntiForgeryToken]
+        //public async Task<IActionResult> LogoutAfterChangePassword()
+        //{
+        //    var claimsIdentity = HttpContext.User.Identity as ClaimsIdentity;
+        //    await _userManager.logoutowin_userlogintrail(claimsIdentity);
+        //    await _signInManager.SignOutAsync();
+
+        //    // Clear the user context
+        //    HttpContext.User = new ClaimsPrincipal(new ClaimsIdentity());
+
+        //    // Redirect to the home page or a specified URL
+        //    return RedirectToAction("Index", "Home");
+        //}
+
+
+        //[AllowAnonymous]
+        //[ValidateAntiForgeryToken]
+        //public async Task<IActionResult> LogoutAfterChangePassword([FromBody] owin_userEntity request)
+        //{
+        //    var returnUrl = request.ReturnUrl;
+        //    ViewData["ReturnUrl"] = returnUrl;
+
+        //    // Clean up ModelState
+        //    ModelState.Remove("emailaddress");
+        //    ModelState.Remove("password");
+        //    ModelState.Remove("passwordquestion");
+        //    ModelState.Remove("passwordkey");
+        //    ModelState.Remove("passwordvector");
+        //    ModelState.Remove("locked");
+        //    ModelState.Remove("approved");
+        //    ModelState.Remove("loweredusername");
+        //    ModelState.Remove("applicationid");
+        //    ModelState.Remove("masteruserid");
+        //    ModelState.Remove("newpassword");
+        //    ModelState.Remove("username");
+        //    ModelState.Remove("isanonymous");
+        //    ModelState.Remove("masprivatekey");
+        //    ModelState.Remove("maspublickey");
+        //    ModelState.Remove("confirmpassword");
+        //    ModelState.Remove("passwordsalt");
+        //    ModelState.Remove("pkeyex");
+        //    ModelState.Remove("roleid");
+
+        //    // Sign out logic
+        //    var idp = User?.FindFirst(JwtClaimTypes.IdentityProvider)?.Value;
+        //    ClaimsIdentity claimsIdentity = HttpContext.User.Identity as ClaimsIdentity;
+        //    await _userManager.logoutowin_userlogintrail(claimsIdentity);
+        //    await _signInManager.SignOutAsync();
+        //    HttpContext.User = new ClaimsPrincipal(new ClaimsIdentity());
+
+        //    var vm = new owin_userEntity
+        //    {
+        //        AutomaticRedirectAfterSignOut = AccountOptions.AutomaticRedirectAfterSignOut,
+        //        ClientName = string.Empty,
+        //        SignOutIframeUrl = string.Empty,
+        //    };
+
+        //    // Return valid JSON result
+        //    return Json(new { status = "200", message = _sharedLocalizer["VERIFY"].Value, redirectUrl = "/" });
+        //}
 
 
         /// <summary>
@@ -372,6 +441,7 @@ namespace WebAdmin.Controllers
             return ViewComponent("ChangePassword");
         }
 
+
         /// <summary>
         /// ChangePasswordPost
         /// </summary>
@@ -411,9 +481,14 @@ namespace WebAdmin.Controllers
             request.username = claimsIdentity.Name;
             request.emailaddress = HttpContext.User.Claims.FirstOrDefault(c => c.Type == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress").Value;
 
+            //await _auth_UseCase.ChangePassword(new Auth_Request(request), _auth_UsePresenter);
+            //return Json(_auth_UsePresenter.ContentResult.Content);
             await _auth_UseCase.ChangePassword(new Auth_Request(request), _auth_UsePresenter);
-            return Json(_auth_UsePresenter.ContentResult.Content);
+            //return await LogoutAfterChangePassword(request) ?? _auth_UsePresenter.ContentResult;
+            return await Logout(request) ?? _auth_UsePresenter.ContentResult;
         }
+
+
 
         //AddUser
         [HttpGet]
@@ -561,10 +636,10 @@ namespace WebAdmin.Controllers
         //    return Ok(dummytext);
         //}
 
-        
-       
 
 
-        
+
+
+
     }
 }

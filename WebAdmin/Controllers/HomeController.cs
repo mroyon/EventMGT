@@ -92,14 +92,20 @@ namespace WebAdmin.Controllers
         /// <returns></returns>
         public async Task<IActionResult> Index()
         {
+            owin_userEntity objrequest = new owin_userEntity();
+
             try
             {
-                owin_userEntity objrequest = new owin_userEntity();
                 objrequest.userid = new Guid(HttpContext.User.Claims.FirstOrDefault(c => c.Type == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier").Value);
+                //objrequest.ispasswordtochange = Convert.ToBoolean(HttpContext.User.Claims.ToList().Where(p => p.Type == "IsPasswordToChange").FirstOrDefault().Value);
+                
+                //ViewBag.RedirectFlag = objrequest.ispasswordtochange;
+                ViewBag.RedirectFlag = Convert.ToBoolean(HttpContext.User.Claims.ToList().Where(p => p.Type == "IsPasswordToChange").FirstOrDefault().Value);
+
+
                 await _homeUseCase.LoadMenuByUserID(new HomeRequest(objrequest), _homePresenter);
                 var menus = _homePresenter.jsonString;
                 HttpContext.Session.SetRedis("menuitem", menus);
-
                 //var result = ((IEnumerable)menus).Cast<object>().ToList();
                 //session
                 //var str = HttpContext.Session.GetRedis<string>("menuitem");
@@ -117,6 +123,9 @@ namespace WebAdmin.Controllers
                 throw ex;
             }
             //throw new Exception("first exception");
+
+          
+
             return View();
         }
 
