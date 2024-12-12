@@ -33,12 +33,26 @@ $(document).ready(function () {
         skin: 'oxide-dark',
         //content_css: 'dark',
         content_css: 'white',
-        menubar: false,
+        //menubar: false,
+        menubar: 'file edit view insert format tools table help',
         statusbar: false,
-        toolbar: 'undo redo | bold italic underline strikethrough | fontselect fontsizeselect formatselect | alignleft aligncenter alignright alignjustify | outdent indent |  numlist bullist checklist | forecolor backcolor casechange permanentpen formatpainter removeformat | pagebreak | charmap emoticons | fullscreen  preview save print | insertfile image media pageembed template link anchor codesample | a11ycheck ltr rtl | showcomments addcomment',
+        toolbar: 'undo redo | bold italic underline strikethrough | fontselect fontsizeselect formatselect | alignleft aligncenter alignright alignjustify | outdent indent |  numlist bullist checklist | forecolor backcolor casechange permanentpen formatpainter removeformat | pagebreak | charmap emoticons | fullscreen  preview save print | insertfile image media pageembed template link anchor codesample | a11ycheck ltr rtl | showcomments addcomment | code fullscreen',
         quickbars_selection_toolbar: 'bold italic | quicklink h2 h3 blockquote quickimage quicktable',
-        plugins: 'lists',
-
+        //plugins: [
+        //    'advlist autolink lists link image charmap print preview anchor', 
+        //    'searchreplace visualblocks code fullscreen',
+        //    'insertdatetime media table paste code help wordcount',
+        //    'emoticons hr pagebreak nonbreaking',
+        //    'charmap quickbars save autoresize'
+        //], 
+        //toolbar: `undo redo | fontselect fontsizeselect formatselect | bold italic underline strikethrough backcolor |
+        //        alignleft aligncenter alignright alignjustify | bullist numlist outdent indent checklist |
+        //        forecolor backcolor casechange permanentpen formatpainter removeformat | link image media | code fullscreen`,
+        height: 500,
+        plugins: 'paste fullscreen',
+        paste_as_text: true,
+        //valid_elements: 'p,strong,em,br',
+        forced_root_block: 'p',
         setup: function (editor) {
             editor.on('change', function () {
                 tinymce.triggerSave();
@@ -405,7 +419,7 @@ function checkTime(i) {
 function GetDateFromTextBox(strdate) {
     if (strdate != "" && typeof strdate !== 'undefined') {
 
-        var retdate = moment(moment(strdate, 'DD-MM-YYYY')).format('YYYY-MM-DD');
+        var retdate = moment(moment(strdate, 'DD-MM-YYYY')).locale("en").format('YYYY-MM-DD');
 
         return retdate;
     }
