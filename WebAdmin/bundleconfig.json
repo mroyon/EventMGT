@@ -119,9 +119,10 @@
     "outputFileName": "wwwroot/dist/js/jquery.min.js",
     "inputFiles": [
       "wwwroot/lib/jquery/jquery.js",
-      "wwwroot/lib/popper.js/umd/popper.js",
-      "wwwroot/lib/jquery/jquery.blockui.js"
-
+      "wwwroot/lib/popper.js/umd/popper.js"
+      //"wwwroot/lib/jquery/jquery.blockui.js",
+      //"wwwroot/lib/localize/local_bn.js",
+      //"wwwroot/lib/jquery.ui/jquery_bangla_date_picker.js"
     ],
     "minify": { "enabled": true }
   },
@@ -129,7 +130,8 @@
     "outputFileName": "wwwroot/dist/js/bootstrap.min.js",
     "inputFiles": [
       "wwwroot/lib/bootstrap/js/bootstrap.js",
-      "wwwroot/lib/moment/moment.js"
+      "wwwroot/lib/moment/moment.js",
+      "wwwroot/lib/moment/bn.js"
 
     ],
     "minify": { "enabled": false }

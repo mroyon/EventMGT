@@ -91,12 +91,12 @@
                                 <div class="form-group">
                                     <label class="labelNormal" asp-for="eventstartdate"></label>
                                     <div class="input-group date bs-datepicker">
-                                        <input asp-for="eventstartdate" class="form-control " type="text" placeholder="dd/mm/yyyy" />
-                                        <div class="input-group-prepend">
+                                        <input asp-for="eventstartdate" class="form-control " type="text" placeholder="তারিখ নির্বাচন করুন" />
+                                        @* <div class="input-group-prepend">
                                             <span class="input-group-text">
                                                 <i class="far fa-calendar-alt"></i>
                                             </span>
-                                        </div>
+                                        </div> *@
                                     </div>
                                     <span asp-validation-for="eventstartdate" class="text-danger"></span>
                                 </div>
@@ -105,12 +105,12 @@
                                 <div class="form-group">
                                     <label class="labelNormal" asp-for="eventenddate"></label>
                                     <div class="input-group date bs-datepicker">
-                                        <input asp-for="eventenddate" class="form-control " type="text" placeholder="dd/mm/yyyy" />
-                                        <div class="input-group-prepend">
+                                        <input asp-for="eventenddate" class="form-control " type="text" placeholder="তারিখ নির্বাচন করুন" />
+                                        @* <div class="input-group-prepend">
                                             <span class="input-group-text">
                                                 <i class="far fa-calendar-alt"></i>
                                             </span>
-                                        </div>
+                                        </div> *@
                                     </div>
                                     <span asp-validation-for="eventenddate" class="text-danger"></span>
                                 </div>
@@ -149,9 +149,9 @@
 
                                         <th><label class="labelNormal  " asp-for="eventname"></label></th>
                                         <th><label class="labelNormal  " asp-for="eventdescription"></label></th>
-                                        <th><label class="labelNormal  " asp-for="eventstartdate"></label></th>
+                                        <th width="200px" ><label class="labelNormal  " asp-for="eventstartdate"></label></th>
                                         @* <th><label class="labelNormal  ">Files</label></th> *@
-                                        <th width="150px"><label class="labelNormal  ">Actions</label></th>
+                                        <th width="130px"><label class="labelNormal  ">Actions</label></th>
                                     </tr>
                                 </thead>
                             </table>
@@ -216,7 +216,18 @@
 @section Scripts {
     <script>
         $(function () {
-
+            $.bdatepicker.setDefaults(bn);
+            $('#eventstartdate').bdatepicker({
+                dateFormat: "dd/mm/yyyy",
+                changeMonth: true,
+                changeYear: true
+            }, bn);
+            $('#eventenddate').bdatepicker({
+                dateFormat: "dd/mm/yyyy",
+                changeMonth: true,
+                changeYear: true
+            }, bn);
+            
             $("#btnDownloadReport").hide();
             $("#btnDownloadReport_UnitDigest").hide();
             var table;
@@ -295,7 +306,7 @@
                             "name": "eventstartdate",
                             "autoWidth": true,
                             render: function (data, type, full, row) {
-                                return moment(data).format("DD-MM-YYYY");
+                                return convertToBanglaDateTime(data);//moment(data).format("DD-MM-YYYY");
                             }
                         },
                         {
@@ -318,16 +329,26 @@
 
             }
 
-            $('.bs-datepicker').datepicker({
-                format: "dd/mm/yyyy",
-                autoclose: true,
-                clearBtn: true,
-                startView: 0,
-                language: "en",
-                todayHighlight: true
-            });
+            // $('.bs-datepicker').datepicker({
+            //     format: "dd/mm/yyyy",
+            //     autoclose: true,
+            //     clearBtn: true,
+            //     startView: 0,
+            //     language: "en",
+            //     todayHighlight: true
+            // });
         });
 
+        function convertToBanglaDateTime(englishDateTime) {
+        // Set the moment locale to Bangla
+        moment.locale('bn');
+        
+        // Convert the English date-time string to Bangla
+        var banglaDateTime = moment(englishDateTime).locale('bn').format('dddd, DD MMMM yyyy');
+        
+        // Return the Bangla date-time
+        return banglaDateTime;
+        }
 
         function ViewEventFiles(cntrl) {
             var eventid = $(cntrl).attr('data-eventid')
