@@ -61,7 +61,7 @@ $(function () {
     $('body').on('click', '#btnchangepassword', function (event) {
         try {
             event.preventDefault();
-            
+            debugger;
             if (_cusFormValidate('frmchangepassword')) {
                 var dataobject = {
                     emailaddress: $("#emailaddress").val(),
@@ -71,13 +71,14 @@ $(function () {
                 };
                 /*console.log(dataobject)*/
                 ajaxPostObjectHandler("/Account/ChangePasswordPost", dataobject, function (response) {
-                    var res = $.parseJSON(response);
-                    if (res._ajaxresponse.responsestatus == "success") {
-                        showSuccessAlert("Success", res._ajaxresponse.responsetext, "OK");
+                    var res = response;
+                    console.log(response)
+                    if (res.responsestatus == "success") {
+                        showSuccessAlert("Success", res.responsetext, "OK");
                         window.location.reload();
                     }
                     else {
-                        showErrorAlert(res._ajaxresponse.responsetitle, res._ajaxresponse.responsetext, "OK");
+                        showErrorAlert(res.responsetitle, res.responsetext, "OK");
                     }
                 }, true);
             }

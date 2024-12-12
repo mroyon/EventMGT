@@ -107,6 +107,7 @@ namespace WebAdmin.IntraServices
 
             claims.Add(new Claim("Approved", user.approved.ToString()));
             claims.Add(new Claim("IsBlocked", user.locked.ToString()));
+            claims.Add(new Claim("IsPasswordToChange", user.ispasswordtochange == true ? user.ispasswordtochange.ToString() : "false"));
 
             var resLoginSerial = await _userManager.loginowin_userlogintrail(_securityCapsule);
             if(resLoginSerial > 0)

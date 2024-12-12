@@ -1168,6 +1168,9 @@
     <Content Update="Views\Account\LoginWithMobileId.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Update="Views\General\Gen_EventInfo\ForcedPasswordChange.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Update="Views\Account\PasswordReset.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
