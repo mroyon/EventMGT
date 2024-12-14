@@ -40,6 +40,7 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using DocumentFormat.OpenXml.Spreadsheet;
 using System.Text.RegularExpressions;
+using System.Drawing.Text;
 
 namespace WebAdmin.Controllers
 {
@@ -1024,6 +1025,63 @@ IHttpContextAccessor contextAccessor)
             }
 
             return new string(result);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> UploadFont(IFormFile file)
+        {
+            try
+            {
+                string fontName = "";
+                if (file == null || file.Length == 0)
+                {
+                    return BadRequest("No file uploaded.");
+                }
+
+
+                // Path where you want to save the font file
+                var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "fonts", file.FileName);
+
+                // Create the directory if it doesn't exist
+                var directory = Path.GetDirectoryName(path);
+                if (!Directory.Exists(directory))
+                {
+                    Directory.CreateDirectory(directory);
+                }
+
+                // Save the file to the specified path
+                using (var stream = new FileStream(path, FileMode.Create))
+                {
+                    await file.CopyToAsync(stream);
+                    fontName = GetFontNameFromTff(path);
+                }
+
+
+                System.IO.File.WriteAllText(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "fonts", "fontname.txt"), fontName);
+                //using (StreamWriter writer = new StreamWriter(path, false)) // 'false' ensures the file is overwritten (cleared)
+                //{
+                //    writer.WriteLine(fontName);  // Writes the text to the file
+                //}
+
+                return Ok(new { FilePath = path, fontname = fontName, status = "success" });
+            }
+            catch (Exception ex)
+            {
+                return Ok(new { status = "failed" });
+            }
+        }
+
+        public static string GetFontNameFromTff(string tffFilePath)
+        {
+            using (PrivateFontCollection fontCollection = new PrivateFontCollection())
+            {
+                fontCollection.AddFontFile(tffFilePath);
+                if (fontCollection.Families.Length > 0)
+                {
+                    return fontCollection.Families[0].Name;
+                }
+                return null; // Return null if no font is found.
+            }
         }
     }
 }

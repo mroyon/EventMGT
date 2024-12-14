@@ -108,11 +108,12 @@
                         <div class="col-md-12">
                             <div class="form-group">
                                 <label class="labelNormal required " asp-for="eventname"></label>
-                                <input asp-for="eventname" class="form-control" required placeholder="ইভেন্ট টাইটেল প্রদান করুন"></input>
+                                <input asp-for="eventname" class="form-control" required placeholder="ইভেন্ট টাইটেল প্রদান করুন" style="font-family:SutonnyMJ, AdarshaLipiNormal, Arial, Solaimanlipi, Helvetica, sans-serif;" />
                                 <span asp-validation-for="eventname" class="eventnameerror text-danger " id="eventnameerror"></span>
                             </div>
                         </div>
                     </div>
+                   
                     <div class="row ">
                         <div class="col-md-6">
                             <div class="form-group">                                               
@@ -132,6 +133,17 @@
                         </div>
                         
                     </div>
+                    <div class="row">
+                        @* <div class="col-md-3"></div>
+                        <div class="col-md-3"></div>
+                        <div class="col-md-3"></div> *@
+                        <div class="col-md-12 d-flex justify-content-end">
+                            <button type="button" class="btn btn-primary" id="btnAddFont">
+                                Add Fonts
+                            </button>
+                        </div>
+                    </div>
+
                     <div class="row ">
                         <div class="col-md-12">
                             <div class="form-group">
@@ -192,6 +204,45 @@
                             </div>
                         </div>
                     </div>
+
+                    <button type="button" id="changeFont" class="d-none"></button>
+                    <input id="fontname" class="form-control" hidden/>
+                    <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="myModalLabel">Add Font</h5>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    @* <div class="row ">
+                                        <div class="col-md-12">
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="checkbox" value="" id="defaultFont" checked>
+                                                <label class="form-check-label" for="flexCheckChecked">
+                                                    Is it default font?
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div> *@
+                                    <div class="row ">
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label class="labelNormal required " for="fontFile">Select Font</label>
+                                                <input id="fontFile" class="form-control" required placeholder="Font Path" type="file" />
+                                                <span validation-for="fontFile" class="fontFileerror text-danger " id="fontFileerror"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                                    <button type="button" id="SaveFont" class="btn btn-primary">Save changes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
             </form>
             <!-- ./card-body -->
@@ -213,7 +264,7 @@
 </div>
 
 @section Scripts {
-    <script src="~/lib/tinymce.js"></script>
+    <script src="~/lib/tinymce.js" asp-append-version="true"></script>
     <script src="~/lib/customjs/convertbangla/common-scripts.js"></script>
     <script src="~/lib/customjs/convertbangla/converter-scripts.js"></script>
     <script src="~/lib/customjs/convertbangla/custom-scripts.js"></script>
@@ -222,6 +273,14 @@
     <script src="~/lib/customjs/Gen_EventInfo/Gen_EventInfo.js"></script>
     <script>
         $(function () {
+            $('#eventname').on('input', function () {
+                // Get the value of the currently typed text
+                let typedText = $(this).val();
+                var t = "bijoy";
+                var content1 = cM(t, typedText);
+                // Set the value of all text boxes to the typed text
+                $('#eventname').val(content1);
+            });
 
             $.bdatepicker.setDefaults(bn);
             $('#eventstartdate').bdatepicker({
@@ -229,6 +288,38 @@
                 changeMonth: true,
                 changeYear: true
             }, bn);
+
+
+            const openModalBtn = document.getElementById('btnAddFont');
+            const modal = new bootstrap.Modal(document.getElementById('myModal'));
+
+            openModalBtn.addEventListener('click', function () {
+                modal.show();
+            });
+
+            const _saveFont = document.getElementById('SaveFont');
+
+            _saveFont.addEventListener('click', function () {
+                var formData = new FormData();
+                var fileInput = $('#fontFile')[0];
+
+                if (fileInput.files.length > 0) {
+                    formData.append('file', fileInput.files[0]);
+                    ajaxPostObjectHandlerWithFiles("/Gen_EventInfo/uploadFont", formData, function (response) {
+                        if (response.status == "success") {
+                            // $("#fontname").val(response.fontName);
+                            // $('#changeFont').click();
+
+                           
+                            $('#myModal').modal('hide');
+                            showSuccessAlert("Success", "Font uploaded successfully", "OK")
+                            window.location.reload();
+                        }
+                    }, false);
+                } else {
+                    alert('Please select a font file to upload.');
+                }
+            });
         })
     </script>
     <script>
