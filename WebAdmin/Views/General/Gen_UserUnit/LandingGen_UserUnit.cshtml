@@ -26,7 +26,7 @@
                                         <th><label class="labelNormal  " asp-for="serial"></label></th>
                                         <th><label class="labelNormal  " asp-for="unit"></label></th>
                                         <th><label class="labelNormal  " asp-for="username"></label></th>
-                                        <th width="350px">@SharedLocalizer.GetLocalizedHtmlString("ACTIONS_BUTTONS")</th>
+                                        @* <th width="350px">@SharedLocalizer.GetLocalizedHtmlString("ACTIONS_BUTTONS")</th> *@
                                     </tr>
                                 </thead>
                             </table>
@@ -92,18 +92,18 @@
                 columnDefs: [
                     { targets: 0, "visible": false, searchable: false },
                     { targets: 1, "visible": true, "sortable": true },
-                    { targets: 2, "visible": true, "sortable": true },
-                    { targets: 3, "visible": true, "sortable": false, "className": "text-center" }
+                    { targets: 2, "visible": true, "sortable": true }
+                    // { targets: 3, "visible": true, "sortable": false, "className": "text-center" }
                 ],
                 "columns": [
                     { "data": "serial", "name": "serial", "autoWidth": true },
                     { "data": "unit", "name": "unit", "autoWidth": true },
-                    { "data": "username", "name": "username", "autoWidth": true },
-                    {
-                        "data": "datatablebuttonscode", render: function (data, type, full, row) {
-                            return data;
-                        }
-                    }
+                     { "data": "username", "name": "username", "autoWidth": true }
+                    // {
+                    //     "data": "datatablebuttonscode", render: function (data, type, full, row) {
+                    //         return data;
+                    //     }
+                    // }
                 ]
             });
 
