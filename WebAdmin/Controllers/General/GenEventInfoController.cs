@@ -39,6 +39,7 @@ using System.Data;
 using System.Drawing;
 using System.Drawing.Imaging;
 using DocumentFormat.OpenXml.Spreadsheet;
+using System.Text.RegularExpressions;
 
 namespace WebAdmin.Controllers
 {
@@ -282,11 +283,25 @@ IHttpContextAccessor contextAccessor)
                     objGen_EventFileInfo.Add(objFile);
                 }
             }
+            request.eventdescription = RemoveBogusTags(request.eventdescription);
             request.EventfileinfoList = objGen_EventFileInfo;
             await _gen_EventInfoUseCase.SaveExt(new Gen_EventInfoRequest(request), _gen_EventInfoPresenter);
             return _gen_EventInfoPresenter.ContentResult;
         }
 
+        static string RemoveBogusTags(string html)
+        {
+            string res = "";
+            if(!string.IsNullOrEmpty(html))
+            {
+                // Regular expression to remove <p><br data-mce-bogus="1"></p> tags
+                string pattern = @"<p><br\s+data-mce-bogus=""1""></p>";
+                html = Regex.Replace(html, pattern, string.Empty);
+                string pattern2 = @"<p>&nbsp;</p>";
+                res = Regex.Replace(html, pattern2, string.Empty);
+            }
+            return res;
+        }
         /// <summary>
         /// Get View EditGen_EventInfo
         /// </summary>
@@ -408,7 +423,7 @@ IHttpContextAccessor contextAccessor)
                 }
             }
             request.EventfileinfoList = objGen_EventFileInfo;
-
+            request.eventdescription = RemoveBogusTags(request.eventdescription);
 
             await _gen_EventInfoUseCase.Update(new Gen_EventInfoRequest(request), _gen_EventInfoPresenter);
             return _gen_EventInfoPresenter.ContentResult;

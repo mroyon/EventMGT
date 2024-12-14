@@ -122,7 +122,8 @@
 
   <ItemGroup>    
     <Content Remove="wwwroot\lib\customjs\Gen_EventInfo\Gen_EventInfo.js" />    
-    <Content Remove="wwwroot\lib\customjs\UserManagement\usermanagement.js" />
+    <Content Remove="wwwroot\lib\customjs\UserManagement\usermanagement.js" />    
+    <Content Remove="wwwroot\lib\tinymce.js~RFf0eee4.TMP" />
     <Content Remove="wwwroot\Reports\KAFGetMilitaryInfo.rdlc" />
     <Content Remove="wwwroot\Reports\Sahel_ReenlistedRecruitmentService.rdlc" />
   </ItemGroup>
@@ -1462,6 +1463,9 @@
     <Content Update="Views\_ViewStart.cshtml">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Update="wwwroot\fonts\fontname.txt">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Update="wwwroot\lib\customjs\Bijoy2UnicodeConversion.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -1517,6 +1521,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Update="wwwroot\lib\jquery.ui\jquery-ui-bangla.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Update="wwwroot\lib\tinymce.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Update="wwwroot\Reports\rptDigestOfService.rdlc">

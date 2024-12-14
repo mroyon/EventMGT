@@ -105,7 +105,7 @@
                         </div>
                     </div>
                     <div class="row ">
-                        <div class="col-md-6">
+                        <div class="col-md-12">
                             <div class="form-group">
                                 <label class="labelNormal required " asp-for="eventname"></label>
                                 <input asp-for="eventname" class="form-control" required placeholder="ইভেন্ট টাইটেল প্রদান করুন"></input>
@@ -192,7 +192,6 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
             </form>
             <!-- ./card-body -->
@@ -214,19 +213,15 @@
 </div>
 
 @section Scripts {
+    <script src="~/lib/tinymce.js"></script>
+    <script src="~/lib/customjs/convertbangla/common-scripts.js"></script>
+    <script src="~/lib/customjs/convertbangla/converter-scripts.js"></script>
+    <script src="~/lib/customjs/convertbangla/custom-scripts.js"></script>
+
+    @* <script src="~/lib/customjs/bijoy2unicodeconversion.js"></script> *@
     <script src="~/lib/customjs/Gen_EventInfo/Gen_EventInfo.js"></script>
     <script>
         $(function () {
-            // var datepicker = $.fn.datepicker.noConflict(); return $.fn.datepicker to previously assigned value
-            // $.fn.bootstrapDP = datepicker;
-            // $('.bs-datepicker').datepicker({
-            //     format: "dd/mm/yyyy",
-            //     autoclose: true,
-            //     clearBtn: true,
-            //     startView: 0,
-            //     language: "en",
-            //     todayHighlight: true
-            // });
 
             $.bdatepicker.setDefaults(bn);
             $('#eventstartdate').bdatepicker({
