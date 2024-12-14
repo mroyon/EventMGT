@@ -273,14 +273,6 @@
     <script src="~/lib/customjs/Gen_EventInfo/Gen_EventInfo.js"></script>
     <script>
         $(function () {
-            $('#eventname').on('input', function () {
-                // Get the value of the currently typed text
-                let typedText = $(this).val();
-                var t = "bijoy";
-                var content1 = cM(t, typedText);
-                // Set the value of all text boxes to the typed text
-                $('#eventname').val(content1);
-            });
 
             $.bdatepicker.setDefaults(bn);
             $('#eventstartdate').bdatepicker({
