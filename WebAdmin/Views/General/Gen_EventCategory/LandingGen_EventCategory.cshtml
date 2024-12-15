@@ -26,8 +26,7 @@
                                     <tr>
 										 <th><label class="labelNormal  " asp-for="eventcategoryid"></label></th>
 										 <th><label class="labelNormal  " asp-for="eventcategory"></label></th>
-										 <th><label class="labelNormal  " asp-for="description"></label></th>
-										 <th><label class="labelNormal  " asp-for="ex_nvarchar3"></label></th>                                        <th>@SharedLocalizer.GetLocalizedHtmlString("ACTIONS_BUTTONS")</th>
+										 <th><label class="labelNormal  " asp-for="description"></label></th>                                        <th>@SharedLocalizer.GetLocalizedHtmlString("ACTIONS_BUTTONS")</th>
                                     </tr>
                                 </thead>
                             </table>
@@ -60,6 +59,7 @@
         $(function () {
              var dt = $("#DTGen_EventCategorylist").DataTable({
 				 "ajax": $.fn.dataTable.json({ url: "/Gen_EventCategory/ListGen_EventCategory" }),
+				 "searching":false,
 				 "buttons": { 
 					 "buttons": [ 
 						 { 
@@ -93,15 +93,13 @@
 				 columnDefs: [ 
 					 { targets: 0, "visible": false, searchable: false },
 					 { targets: 1, "visible": true, "sortable": true },
-					 { targets: 1, "visible": true, "sortable": true },
-					 { targets: 1, "visible": true, "sortable": true },
-					 { targets: 4, "visible": true, "sortable": false, "className": "text-center" }
+					 { targets: 2, "visible": true, "sortable": true },
+					 { targets: 3, "visible": true, "sortable": false, "className": "text-center" }
 				 ], 
 				 "columns": [ 
 					 { "data": "eventcategoryid", "name": "eventcategoryid", "autoWidth": true },
 					 { "data": "eventcategory", "name": "eventcategory", "autoWidth": true },
 					 { "data": "description", "name": "description", "autoWidth": true },
-					 { "data": "ex_nvarchar3", "name": "ex_nvarchar3", "autoWidth": true },
 					 { 
 							 "data": "datatablebuttonscode", render: function (data, type, full, row) { 
 									 return data;

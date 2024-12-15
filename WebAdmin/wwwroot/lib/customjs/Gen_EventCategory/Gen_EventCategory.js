@@ -47,11 +47,10 @@ $(function () {
                     eventcategory: $("#eventcategory").val(),
                     description: tinymce.get("description").getContent()
                 };
-
                 ajaxPostObjectHandler("/Gen_EventCategory/EditGen_EventCategory", dataobject, function (response) {
                     console.log(response);
                     if (response._ajaxresponse.responsestatus == "success") {
-                        showSuccessAlert("Success", response._ajaxresponse.responsetext, "OK");
+                        showSuccessAlert("Success", response._ajaxresponse.responsetext, "OK", RedirectToLanding, LandingGen_EventCategory);
                     }
                 }, true);
             }

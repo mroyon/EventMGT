@@ -331,7 +331,6 @@ namespace WebAdmin.Controllers
                   ModelState.Remove("ex_nvarchar3");
  */
             if (!ModelState.IsValid) { return BadRequest(ModelState); }
-            await _gen_UnitUseCase.Delete(new Gen_UnitRequest(request), _gen_UnitPresenter);
             
             gen_unitEntity delObjEntity = new gen_unitEntity();
             await _gen_UnitUseCase.GetSingle(new Gen_UnitRequest(new gen_unitEntity { unitid=request.unitid}), _gen_UnitPresenter);
@@ -346,7 +345,7 @@ namespace WebAdmin.Controllers
                     System.IO.File.Delete(oldFilePath);
                 }
             }
-
+            await _gen_UnitUseCase.Delete(new Gen_UnitRequest(delObjEntity), _gen_UnitPresenter);
             return _gen_UnitPresenter.ContentResult;
         }
 

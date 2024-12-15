@@ -23,9 +23,10 @@
                             <table id="DTGen_Unitlist" class="table table-striped table-bordered" @*style="width:100%"*@ cellspacing="0">
                                 <thead>
                                     <tr>
+                                        <th hidden><label class="labelNormal  " asp-for="unitid"></label></th>
                                         <th><label class="labelNormal  " asp-for="unit"></label></th>
                                         <th><label class="labelNormal  " asp-for="unitcode"></label></th>
-                                        <th><label class="labelNormal" >Logo</label></th>
+                                        <th><label class="labelNormal">Logo</label></th>
                                         <th>@SharedLocalizer.GetLocalizedHtmlString("ACTIONS_BUTTONS")</th>
                                     </tr>
                                 </thead>
@@ -58,6 +59,7 @@
     <script>
         $(function () {
             var dt = $("#DTGen_Unitlist").DataTable({
+                "searching":false,
                 "ajax": $.fn.dataTable.json({ url: "/Gen_Unit/ListGen_Unit" }),
                 "buttons": {
                     "buttons": [
@@ -90,16 +92,18 @@
                         }]
                 },
                 columnDefs: [
-                    { targets: 0, "visible": true, searchable: true },
-                    { targets: 1, "visible": true, searchable: true, "className": "text-center" },
-                    { targets: 2, "visible": true, "sortable": false, "className": "text-center" }
+                    { targets: 0, "visible": false, searchable: true },
+                    { targets: 1, "visible": true, searchable: true },
+                    { targets: 2, "visible": true, searchable: true, "className": "text-center" },
+                    { targets: 3, "visible": true, "sortable": false, "className": "text-center" }
                 ],
                 "columns": [
+                     { "data": "unitid", "name": "unitid"},
                     { "data": "unit", "name": "unit", "autoWidth": true },
                     { "data": "unitcode", "name": "unit code", "autoWidth": true },
                     {
                         "data": "ex_nvarchar1",  // Image column
-                        "render": function (data, type, row) {                          
+                        "render": function (data, type, row) {
                             // Use the data (ImagePath) to construct the img tag
 
                             if (data != null) {
