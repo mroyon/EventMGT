@@ -68,6 +68,7 @@
     <script>
         $(function () {
             var dt = $("#DTGen_EventInfolist").DataTable({
+                "searching":false,
                 "ajax": $.fn.dataTable.json({ url: "/Gen_EventInfo/ListGen_EventInfo" }),
                 "buttons": {
                     "buttons": [

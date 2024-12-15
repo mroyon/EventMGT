@@ -164,9 +164,9 @@ namespace DAC.Core.DataAccessObjects.General
                     if (!(string.IsNullOrEmpty(gen_eventinfo.eventname)))
                         Database.AddInParameter(cmd, "@EventName", DbType.String, gen_eventinfo.eventname);
                     if ((gen_eventinfo.eventstartdate.HasValue))
-                        Database.AddInParameter(cmd, "@EventStartDate", DbType.DateTime, gen_eventinfo.eventstartdate);
+                        Database.AddInParameter(cmd, "@EventStartDateFrom", DbType.DateTime, gen_eventinfo.eventstartdate);
                     if ((gen_eventinfo.eventenddate.HasValue))
-                        Database.AddInParameter(cmd, "@EventEndDate", DbType.DateTime, gen_eventinfo.eventenddate);
+                        Database.AddInParameter(cmd, "@EventStartDateTo", DbType.DateTime, gen_eventinfo.eventenddate);
                     if (!(string.IsNullOrEmpty(gen_eventinfo.eventdescription)))
                         Database.AddInParameter(cmd, "@EventDescription", DbType.String, gen_eventinfo.eventdescription);
                     if (!(string.IsNullOrEmpty(gen_eventinfo.eventdescription1)))

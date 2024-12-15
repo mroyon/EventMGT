@@ -22,44 +22,44 @@ $(document).ready(function () {
 
      
 
-    //tinymce.init({
+    tinymce.init({
 
-    //    font_formats:
-    //        "Kalpurush=Kalpurush; SutonnyMJ=SutonnyMJ; AdarshaLipiNormal=AdarshaLipiNormal; Andale Mono=andale mono,times; Arial=arial,helvetica,sans-serif; Arial Black=arial black,avant garde; Book Antiqua=book antiqua,palatino; Comic Sans MS=comic sans ms,sans-serif; Courier New=courier new,courier; Georgia=georgia,palatino; Helvetica=helvetica; Impact=impact,chicago; Symbol=symbol; Tahoma=tahoma,arial,helvetica,sans-serif; Terminal=terminal,monaco; Times New Roman=times new roman,times; Trebuchet MS=trebuchet ms,geneva; Verdana=verdana,geneva; Webdings=webdings; Wingdings=wingdings,zapf dingbats",
+        font_formats:
+            "Kalpurush=Kalpurush; SutonnyMJ=SutonnyMJ; AdarshaLipiNormal=AdarshaLipiNormal; Andale Mono=andale mono,times; Arial=arial,helvetica,sans-serif; Arial Black=arial black,avant garde; Book Antiqua=book antiqua,palatino; Comic Sans MS=comic sans ms,sans-serif; Courier New=courier new,courier; Georgia=georgia,palatino; Helvetica=helvetica; Impact=impact,chicago; Symbol=symbol; Tahoma=tahoma,arial,helvetica,sans-serif; Terminal=terminal,monaco; Times New Roman=times new roman,times; Trebuchet MS=trebuchet ms,geneva; Verdana=verdana,geneva; Webdings=webdings; Wingdings=wingdings,zapf dingbats",
 
-    //    mode: "textareas",
-    //    directionality: dir,
-    //    base_url: '/lib/tinymce',
-    //    skin: 'oxide-dark',
-    //    //content_css: 'dark',
-    //    content_css: 'white',
-    //    //menubar: false,
-    //    menubar: 'file edit view insert format tools table help',
-    //    statusbar: false,
-    //    toolbar: 'undo redo | bold italic underline strikethrough | fontselect fontsizeselect formatselect | alignleft aligncenter alignright alignjustify | outdent indent |  numlist bullist checklist | forecolor backcolor casechange permanentpen formatpainter removeformat | pagebreak | charmap emoticons | fullscreen  preview save print | insertfile image media pageembed template link anchor codesample | a11ycheck ltr rtl | showcomments addcomment | code fullscreen',
-    //    quickbars_selection_toolbar: 'bold italic | quicklink h2 h3 blockquote quickimage quicktable',
-    //    //plugins: [
-    //    //    'advlist autolink lists link image charmap print preview anchor', 
-    //    //    'searchreplace visualblocks code fullscreen',
-    //    //    'insertdatetime media table paste code help wordcount',
-    //    //    'emoticons hr pagebreak nonbreaking',
-    //    //    'charmap quickbars save autoresize'
-    //    //], 
-    //    //toolbar: `undo redo | fontselect fontsizeselect formatselect | bold italic underline strikethrough backcolor |
-    //    //        alignleft aligncenter alignright alignjustify | bullist numlist outdent indent checklist |
-    //    //        forecolor backcolor casechange permanentpen formatpainter removeformat | link image media | code fullscreen`,
-    //    height: 500,
-    //    plugins: 'paste fullscreen',
-    //    paste_as_text: true,
-    //    //valid_elements: 'p,strong,em,br',
-    //    forced_root_block: 'p',
-    //    setup: function (editor) {
-    //        editor.on('change', function () {
-    //            tinymce.triggerSave();
-    //            //validateRequiredfldTM();
-    //        });
-    //    }
-    //});
+        mode: "textareas",
+        directionality: dir,
+        base_url: '/lib/tinymce',
+        skin: 'oxide-dark',
+        //content_css: 'dark',
+        content_css: 'white',
+        //menubar: false,
+        menubar: 'file edit view insert format tools table help',
+        statusbar: false,
+        toolbar: 'undo redo | bold italic underline strikethrough | fontselect fontsizeselect formatselect | alignleft aligncenter alignright alignjustify | outdent indent |  numlist bullist checklist | forecolor backcolor casechange permanentpen formatpainter removeformat | pagebreak | charmap emoticons | fullscreen  preview save print | insertfile image media pageembed template link anchor codesample | a11ycheck ltr rtl | showcomments addcomment | code fullscreen',
+        quickbars_selection_toolbar: 'bold italic | quicklink h2 h3 blockquote quickimage quicktable',
+        //plugins: [
+        //    'advlist autolink lists link image charmap print preview anchor', 
+        //    'searchreplace visualblocks code fullscreen',
+        //    'insertdatetime media table paste code help wordcount',
+        //    'emoticons hr pagebreak nonbreaking',
+        //    'charmap quickbars save autoresize'
+        //], 
+        //toolbar: `undo redo | fontselect fontsizeselect formatselect | bold italic underline strikethrough backcolor |
+        //        alignleft aligncenter alignright alignjustify | bullist numlist outdent indent checklist |
+        //        forecolor backcolor casechange permanentpen formatpainter removeformat | link image media | code fullscreen`,
+        height: 500,
+        plugins: 'paste fullscreen',
+        paste_as_text: true,
+        //valid_elements: 'p,strong,em,br',
+        forced_root_block: 'p',
+        setup: function (editor) {
+            editor.on('change', function () {
+                tinymce.triggerSave();
+                //validateRequiredfldTM();
+            });
+        }
+    });
 
 
     window.history.pushState(null, "", window.location.href);
