@@ -358,7 +358,6 @@
                             <PaddingBottom>10pt</PaddingBottom>
                           </Style>
                         </Textbox>
-                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                     <TablixCell>
@@ -618,7 +617,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>পত্র নং ওকেপি-১০/৩৪/কিউ তারিখ ১১ সেপ্টেম্বর ২০২৪</Value>
+                    <Value>পত্র নং ওকেপি-১০/৩৪/কিউ তারিখ                     </Value>
                     <Style>
                       <FontStyle>Normal</FontStyle>
                       <FontFamily>Kalpurush</FontFamily>

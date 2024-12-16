@@ -114,7 +114,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="labelNormal required " asp-for="eventname"></label>
-                                <input asp-for="eventname" class="form-control" required readonly></input>
+                                <textarea cols="20" rows="1" asp-for="eventname" class="form-control" autocomplete="off" required placeholder="ইভেন্ট টাইটেল প্রদান করুন"></textarea>
                                 <span asp-validation-for="eventname" class="eventnameerror text-danger " id="eventnameerror"></span>
                             </div>
                         </div>
@@ -203,8 +203,11 @@
     <script src="~/lib/customjs/Gen_EventInfo/Gen_EventInfo.js"></script>
     <script>
         $(function () {
+            tinymce.get('eventname').setMode('readonly');
             tinymce.get('eventdescription').setMode('readonly');
 
+             var editor = tinymce.get('eventname');
+            editor.settings.height = "50px;"
         })
     </script>
     <script>

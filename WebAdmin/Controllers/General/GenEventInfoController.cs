@@ -752,7 +752,7 @@ IHttpContextAccessor contextAccessor)
             string rdlcFilePath = string.Format("{0}\\Reports\\rptDigestOfService.rdlc", fileDirPath);
 
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
-            Encoding.GetEncoding("windows-1252");
+            Encoding.GetEncoding("UTF-8");
 
             string FileName = "DigestOfService_" + System.DateTime.Now.ToString("ddMMyyyyhhmmss");
             string extension;
@@ -766,7 +766,7 @@ IHttpContextAccessor contextAccessor)
                         };
 
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
-            Encoding.GetEncoding("windows-1252");
+            Encoding.GetEncoding("UTF-8");
 
             LocalReport report = new LocalReport();
             report.ReportPath = rdlcFilePath;
@@ -920,7 +920,7 @@ IHttpContextAccessor contextAccessor)
             string rdlcFilePath = string.Format("{0}\\Reports\\rptUnitDigest.rdlc", fileDirPath);
 
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
-            Encoding.GetEncoding("windows-1252");
+            Encoding.GetEncoding("UTF-8");
 
             string FileName = "Digest_" + System.DateTime.Now.ToString("ddMMyyyyhhmmss");
             string extension;
@@ -939,7 +939,7 @@ IHttpContextAccessor contextAccessor)
                         };
 
             Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
-            Encoding.GetEncoding("windows-1252");
+            Encoding.GetEncoding("UTF-16");
 
             LocalReport report = new LocalReport();
             report.ReportPath = rdlcFilePath;

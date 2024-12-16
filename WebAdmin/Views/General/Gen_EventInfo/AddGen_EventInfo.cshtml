@@ -25,9 +25,9 @@
                 padding: 8px;
             }
 
-            /* div.table .file-row:nth-child(odd) {
-                background: #f9f9f9;
-            } */
+    /* div.table .file-row:nth-child(odd) {
+                    background: #f9f9f9;
+                } */
 
     /* The total progress gets shown by event listeners */
 
@@ -46,8 +46,8 @@
     /* Hide the delete button initially */
 
     /* #previews .file-row .delete {
-        display: none;
-    } */
+            display: none;
+        } */
 
     /* Hide the start and cancel buttons and show the delete button */
 
@@ -60,16 +60,15 @@
         display: block;
     }
 
-    .dz-remove
-    {
+    .dz-remove {
         display: none;
     }
 
     .error.text-danger {
         display: none;
     }
-            
-    .customcardheader{
+
+    .customcardheader {
         font-size: xx-large !important;
         font-weight: 700 !important;
     }
@@ -79,7 +78,7 @@
 <div class="row">
     <div class="col-md-12">
         <div class="card">
-            <div class="card-header ">                
+            <div class="card-header ">
                 <div class="col d-flex">
                     <img src="@Url.Action("GetUnitLogo", "Gen_Unit")" style="max-width: 70px;" onerror="this.style.display='none'" />
                     <h6 class="card-title customcardheader">Event Information Entry Form</h6>
@@ -105,18 +104,19 @@
                         </div>
                     </div>
                     <div class="row ">
-                        <div class="col-md-12">
+                        <div class="col-md-6">
                             <div class="form-group">
                                 <label class="labelNormal required " asp-for="eventname"></label>
-                                <input asp-for="eventname" class="form-control" required placeholder="ইভেন্ট টাইটেল প্রদান করুন"  />
+                                <textarea cols="20" rows="1" asp-for="eventname" class="form-control" autocomplete="off" required placeholder="ইভেন্ট টাইটেল প্রদান করুন"></textarea>
+                                @* <input asp-for="eventname" class="form-control" required placeholder="ইভেন্ট টাইটেল প্রদান করুন"  /> *@
                                 <span asp-validation-for="eventname" class="eventnameerror text-danger " id="eventnameerror"></span>
                             </div>
                         </div>
                     </div>
-                   
+
                     <div class="row ">
                         <div class="col-md-6">
-                            <div class="form-group">                                               
+                            <div class="form-group">
                                 <label class="labelNormal required " asp-for="eventstartdate"></label>
                                 <div class="input-group date bs-datepicker">
                                     <input asp-for="eventstartdate" class="form-control " type="text" placeholder="তারিখ নির্বাচন করুন" required />
@@ -131,7 +131,7 @@
 
 
                         </div>
-                        
+
                     </div>
                     <div class="row">
                         @* <div class="col-md-3"></div>
@@ -152,9 +152,9 @@
                                 <span asp-validation-for="eventdescription" class="text-danger"></span>
                             </div>
                         </div>
-                       
+
                     </div>
-                  
+
                     <div class="row">
                         <div class="col-8 ">
                             <div class="form-group">
@@ -179,11 +179,11 @@
                                             <strong class="error text-danger" data-dz-errormessage></strong>
                                         </div>
                                         <div class="col-7">
-                                              <input type="text" class="file-description form-control" name="fileDescription" placeholder="Enter file description" />
+                                            <input type="text" class="file-description form-control" name="fileDescription" placeholder="Enter file description" />
                                         </div>
-                                        <div class="col-1"    >
+                                        <div class="col-1">
                                             <button data-dz-remove class="btn btn-danger btn-sm delete">
-                                                <i class="fa fa-trash" aria-hidden="true"></i>                                                
+                                                <i class="fa fa-trash" aria-hidden="true"></i>
                                             </button>
                                         </div>
                                     </div>
@@ -206,7 +206,7 @@
                     </div>
 
                     <button type="button" id="changeFont" class="d-none"></button>
-                    <input id="fontname" class="form-control" hidden/>
+                    <input id="fontname" class="form-control" hidden />
                     <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
                             <div class="modal-content">
@@ -273,6 +273,9 @@
     <script src="~/lib/customjs/Gen_EventInfo/Gen_EventInfo.js"></script>
     <script>
         $(function () {
+            var editor = tinymce.get('eventname');
+            editor.settings.height = "50px;"
+
 
             $.bdatepicker.setDefaults(bn);
             $('#eventstartdate').bdatepicker({
@@ -302,7 +305,7 @@
                             // $("#fontname").val(response.fontName);
                             // $('#changeFont').click();
 
-                           
+
                             $('#myModal').modal('hide');
                             showSuccessAlert("Success", "Font uploaded successfully", "OK")
                             window.location.reload();
@@ -349,7 +352,7 @@
                     clickable: ".fileinput-button", // Define the element that should be used as click trigger to select files.
                     init: function () {
                         var dropzoneInstance = this;
-                        
+
 
                         var dataobject = {
                             eventid: $("#eventid").val(),
@@ -364,7 +367,7 @@
                                 formData.append("eventid", $("#eventid").val());
                                 formData.append("eventcategoryid", $("#eventcategoryid").val());
                                 formData.append("eventorganizedby", $("#eventorganizedby").val());
-                                formData.append("eventname", $("#eventname").val());
+                                formData.append("eventname", tinymce.get("eventname").getContent());
                                 formData.append("eventstartdate", GetDateFromTextBox($("#eventstartdate").val()));
                                 formData.append("eventdescription", tinymce.get("eventdescription").getContent());
 
@@ -394,7 +397,7 @@
                         });
 
                         function SubmitFormData(formData) {
-                            
+
                             ajaxPostObjectHandlerWithFiles("/Gen_EventInfo/AddGen_EventInfo", formData, function (response) {
                                 $.unblockUI();
                                 if (response._ajaxresponse.responsestatus == "success") {

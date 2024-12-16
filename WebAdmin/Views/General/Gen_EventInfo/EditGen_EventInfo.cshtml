@@ -120,7 +120,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label class="labelNormal required " asp-for="eventname"></label>
-                                <input asp-for="eventname" class="form-control" required></input>
+                                <textarea cols="20" rows="1" asp-for="eventname" class="form-control" autocomplete="off" required placeholder="ইভেন্ট টাইটেল প্রদান করুন"></textarea>
                                 <span asp-validation-for="eventname" class="eventnameerror text-danger " id="eventnameerror"></span>
                             </div>
                         </div>
@@ -253,6 +253,8 @@
             //     language: "en",
             //     todayHighlight: true
             // });
+             var editor = tinymce.get('eventname');
+            editor.settings.height = "50px;";
 
              $.bdatepicker.setDefaults(bn);
             $('#eventstartdate').bdatepicker({
@@ -370,7 +372,7 @@
                             formData.append("eventcategoryid", $("#eventcategoryid").val());
                             formData.append("eventorganizedby", $("#eventorganizedby").val());
                             formData.append("eventcode", $("#eventcode").val());
-                            formData.append("eventname", $("#eventname").val());
+                            formData.append("eventname", tinymce.get("eventname").getContent());
                             formData.append("eventstartdate", GetDateFromTextBox($("#eventstartdate").val()));
                             formData.append("eventdescription", tinymce.get("eventdescription").getContent());
 
