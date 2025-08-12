@@ -204,7 +204,7 @@
     "outputFileName": "wwwroot/dist/js/vendor-datatables.min.js",
     "inputFiles": [
 
-      "wwwroot/lib/datatables.net/jquery.dataTables.js",
+      "wwwroot/lib/datatables.net/dataTables.js",
 
 
       "wwwroot/lib/datatables.net-bs4/dataTables.bootstrap4.js",
