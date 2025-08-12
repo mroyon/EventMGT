@@ -73,13 +73,11 @@
       ]
     },
     {
-      "library": "jqueryui@1.12.1",
+      "library": "jqueryui@1.14.1",
       "destination": "wwwroot/lib/jquery.ui/",
       "files": [
         "jquery-ui.min.js",
-        "jquery-ui.css",
-        "jquery-ui.js",
-        "jquery-ui.min.css"
+        "jquery-ui.js"
       ]
     },
     {
@@ -263,7 +261,7 @@
       "destination": "wwwroot/lib/tinymce/"
     },
     {
-      "library": "bootstrap-datepicker@1.9.0",
+      "library": "bootstrap-datepicker@1.10.0",
       "destination": "wwwroot/lib/bootstrap-datepicker/"
     },
     {
